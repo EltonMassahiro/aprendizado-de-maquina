@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 O Machine Learnin | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 O Machine Learnin | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 O Machine Learnin | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"/>
+<link rel="next" href="references.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicionário"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="o-machine-learnin.html"><a href="o-machine-learnin.html"><i class="fa fa-check"></i><b>4</b> O Machine Learnin</a><ul>
+<li class="chapter" data-level="4.1" data-path="o-machine-learnin.html"><a href="o-machine-learnin.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+<li class="chapter" data-level="4.2" data-path="o-machine-learnin.html"><a href="o-machine-learnin.html#overfitting-e-underfitting"><i class="fa fa-check"></i><b>4.2</b> Overfitting e Underfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>5</b> Literature</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="o-machine-learnin" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> O Machine Learnin</h1>
+<p>Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado <strong>Machine Learning (ML)</strong>. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ela é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Como modelos estatísticos, busca entender a estrutura dos dados modelos que atendam a certos pressupostos - muitas vezes não temos conhecimento de como essa estrutura se parece.</p>
+<p><span class="citation">Samuel (<a href="#ref-samuel1959some">1959</a>)</span>, engenheiro do MIT popularizou o termo <em>“Machine Learning”</em> (Aprendizado de Máquina), descrevendo o conceito com “um campo de estudo que dá aos computadores a habilidade de aprender sem terem sidos programados para tal” <span class="citation">(Simon <a href="#ref-simon2013too">2013</a>)</span>. Com a expansão da internet e seu abundante armazenamento de dados na web, o <em>Big data</em>, foi necessário - ainda é - aprimorar sistemas de organização, classificação, análise de dados e identificação de padrões para tratá-los. Isso fez com que o Aprendizado de Máquina entrasse em destaque e passasse a ser uma das áreas mais importantes. Na seção <a href="i-a.html#i-a">2</a> foi apresentado alguns exemplos de aplicações de IA, o mesmo se aplicam para o ML.</p>
+<p>Um aprendizado de máquina <strong>não</strong> é o mesmo que uma lista de instruções. Imagine uma criança aprendendo a andar de bicicleta, ela pode até receber algumas instruções para melhorar seu aprendizado, mas provável que ela irá aprender melhor com a tentativa e erro. Pedala, cai, levanta, pedala novamente e assim sucessivamente até ela realmente saber andar. Da forma similar ocorre com o Aprendizado de Máquina.</p>
+<div id="como-a-máquina-aprende" class="section level2">
+<h2><span class="header-section-number">4.1</span> Como a máquina aprende?</h2>
+<p>Para facilitar a compressão, imagine que você é um vendedor e está interessado em clietes “bons pagadores” e “maus pagadores”. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clietes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.</p>
+<p>Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos já classificados entre cliente bom pagador e mau pagador e suas respectivas características para treiná-lo. Com estes dados o algoritmo irá aprender por meio de com quais condições são necessárias para o cliente ser classificado como bom pagador ou mau pagador. Importante ressaltar que existem diferentes algoritmos de Aprendizado de Máquina que poderiam resolver esse problema, de acordo com modelos estatíticos e comandos computacionais que atendam a certos pressupostos.</p>
+<ul>
+<li><strong>Mas como sabemos que essas previsões são confiáveis?</strong></li>
+</ul>
+</div>
+<div id="overfitting-e-underfitting" class="section level2">
+<h2><span class="header-section-number">4.2</span> Overfitting e Underfitting</h2>
+<p>São dois termos <strong>muito importantes</strong> nesta área. O Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles.</p>
+<ul>
+<li><p><strong>Overfitting</strong>: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino, que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados de teste, o modelo tenta aplicar as mesmas regras decoradas, porém com dados novos (diferentes do treuno) esta regra não tem validade, e o desempenho é afetado.</p></li>
+<li><p><strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</p></li>
+</ul>
+<pre><code>knitr::include_graphics(rep(&#39;G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/graficofit&#39;, 3))
+</code></pre>
+<p>Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-samuel1959some">
+<p>Samuel, Arthur L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” <em>IBM Journal of Research and Development</em> 3 (3): 210–29.</p>
+</div>
+<div id="ref-simon2013too">
+<p>Simon, Phil. 2013. <em>Too Big to Ignore: The Business Case for Big Data</em>. Vol. 72. John Wiley &amp; Sons.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-ML.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

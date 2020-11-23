@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="i-a.html"/>
+<link rel="next" href="machinelearning.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicio"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
+<li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>5</b> Pré-processamento</a><ul>
+<li class="chapter" data-level="5.1" data-path="preprocesso.html"><a href="preprocesso.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>5.1</b> Dados faltantes e a Limpeza de dados</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="preprocesso.html"><a href="preprocesso.html#tratamento-de-dados-faltantes"><i class="fa fa-check"></i><b>5.1.1</b> Tratamento de dados faltantes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="preprocesso.html"><a href="preprocesso.html#outlier"><i class="fa fa-check"></i><b>5.1.2</b> <em>Outlier</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="preprocesso.html"><a href="preprocesso.html#transformação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Transformação de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="preprocesso.html"><a href="preprocesso.html#tipos-de-datasets"><i class="fa fa-check"></i><b>5.2.1</b> Tipos de <em>datasets</em></a></li>
+<li class="chapter" data-level="5.2.2" data-path="preprocesso.html"><a href="preprocesso.html#normalização-e-padronização"><i class="fa fa-check"></i><b>5.2.2</b> Normalização e padronização</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="preprocesso.html"><a href="preprocesso.html#features-selection---seleção-de-atributos-sa"><i class="fa fa-check"></i><b>5.3</b> Features Selection - Seleção de atributos (SA)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html"><i class="fa fa-check"></i><b>6</b> Algoritmos de Aprendizagem</a><ul>
+<li class="chapter" data-level="6.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-importância"><i class="fa fa-check"></i><b>6.1</b> Medidas de importância</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-informação"><i class="fa fa-check"></i><b>6.1.1</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="6.1.2" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-distância"><i class="fa fa-check"></i><b>6.1.2</b> Medidas de Distância</a></li>
+<li class="chapter" data-level="6.1.3" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-dependência"><i class="fa fa-check"></i><b>6.1.3</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="6.1.4" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-precisão"><i class="fa fa-check"></i><b>6.1.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="6.1.5" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-consistência"><i class="fa fa-check"></i><b>6.1.5</b> Medidas de consistência</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#teste-de-hipóteses-e-análise-de-variância"><i class="fa fa-check"></i><b>6.2</b> Teste de hipóteses e Análise de Variância</a></li>
+<li class="chapter" data-level="6.3" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#naive-bayes"><i class="fa fa-check"></i><b>6.3</b> Naive Bayes</a></li>
+<li class="chapter" data-level="6.4" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#regressão"><i class="fa fa-check"></i><b>6.4</b> Regressão</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#análise-de-regressão-linear"><i class="fa fa-check"></i><b>6.4.1</b> Análise de Regressão Linear</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#gradiente-descendente"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente</a></li>
+<li class="chapter" data-level="6.6" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#svm"><i class="fa fa-check"></i><b>6.6</b> SVM</a></li>
+<li class="chapter" data-level="6.7" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#arvores-de-decisão"><i class="fa fa-check"></i><b>6.7</b> Arvores de Decisão</a></li>
+<li class="chapter" data-level="6.8" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#elastic-net"><i class="fa fa-check"></i><b>6.8</b> Elastic Net</a></li>
+<li class="chapter" data-level="6.9" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#knn"><i class="fa fa-check"></i><b>6.9</b> KNN</a></li>
+<li class="chapter" data-level="6.10" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#k-means"><i class="fa fa-check"></i><b>6.10</b> K-means</a></li>
+<li class="chapter" data-level="6.11" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#pca"><i class="fa fa-check"></i><b>6.11</b> PCA</a></li>
+<li class="chapter" data-level="6.12" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#clusters"><i class="fa fa-check"></i><b>6.12</b> Clusters</a></li>
+<li class="chapter" data-level="6.13" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#aoc-e-roc"><i class="fa fa-check"></i><b>6.13</b> AOC E ROC</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html"><i class="fa fa-check"></i><b>7</b> Modelos nível II</a><ul>
+<li class="chapter" data-level="7.1" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#gradiente-boosting---estudar-boosting-e-bagging-dentro-de-emsemnble"><i class="fa fa-check"></i><b>7.1</b> Gradiente Boosting -&gt; estudar boosting e bagging dentro de Emsemnble</a></li>
+<li class="chapter" data-level="7.2" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
+<li class="chapter" data-level="7.3" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#redes-neurais"><i class="fa fa-check"></i><b>7.3</b> Redes Neurais</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html"><i class="fa fa-check"></i><b>8</b> Validação de um modelo</a><ul>
+<li class="chapter" data-level="8.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#overfitting-underfitting"><i class="fa fa-check"></i><b>8.1</b> <em>Overfitting, Underfitting</em></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>8.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>8.2</b> Validação Cruzada</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vertentes-de-uma-ia-e-fundamentação-filosófica" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Vertentes de uma IA e fundamentação filosófica</h1>
+<blockquote>
+<p>Os filósofos têm estado por aí há muito mais tempo que os computadores e vêm tentando resolver algumas questões que se relacionam à IA: como a mente funciona? É possível que as máquinas ajam com inteligência, de modo semelhante às pessoas, e, se isso acontecer, elas realmente terão mentes conscientes? Quais são as implicações éticas de máquinas inteligentes?</p>
+<p>“Inteligência Artificial”, <span class="citation">RUSSEL and Norvig (<a href="#ref-russel2013inteligencia">2013</a>)</span>.</p>
+</blockquote>
+<p>Com todo o desenvolvimento da IA, os algoritmos podem funcionar em níveis
+humanos em tarefas que aparentemente envolvem julgamento humano ou, como Turing acrescentou,
+“aprender a partir da experiência” e a capacidade de “distinguir o certo do errado”<span class="citation">(RUSSEL and Norvig <a href="#ref-russel2013inteligencia">2013</a>)</span>. Paul Meehl <span class="citation">(Meehl <a href="#ref-meehl1954clinical">1954</a>)</span> analisou os processos de tomada de decisão de especialistas treinados em tarefas subjetivas como prever o sucesso de um aluno em um programa de
+treinamento ou a reincidência de um criminoso e descobriu que algoritmos simples de aprendizado estatístico fizeram previsões melhores que os especialistas.</p>
+<p>A reflexão sobre “máquinas inteligentes e pensantes” é recente em nossa história e passa por longas discussões sobre o alcance dessa inteligência. Desde a classificação elaborada pelo filósofo John Searle em 1980, tomou-se na doutrina em geral a divisão do uso da inteligência
+artificial em <strong>“fraca”</strong> e <strong>“forte”</strong> <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span>.</p>
+<p>A inteligência artificial <strong>fraca</strong> “nos permite formular e testar hipóteses de forma mais rigorosa e precisa”, no entanto, ela é dependente da inserção do conhecimento fornecido pelo ser humano que a programa. A máquina não é capaz de produzir raciocínios próprios, autônomos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>; Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>. Seartle também explica que a máquina adequadamente preparada é realmente uma
+mente, no sentido de que os computadores que recebem os programas certos poderiam estar, literalmente, preparados para compreender eter outros estados cognitivos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span>.</p>
+<p><span class="citation">Searle (<a href="#ref-searle1980minds">1980</a>)</span> em seu <em>naturalismo biológico</em>, critica a inteligência artificial forte pois, segundo ele, as máquinas não possuem a complexidade de sistema nervoso, neurônios com axonios e dendritos e tudo mais. Para corroborar sua crítica, Searle descreve uma situação hipótetica simulando um programa que passa pelo teste de turing e que “não entende nada de suas entradas e saídas”, não havendo os requisitos para ser considerada uma mente.</p>
+<p>O sistema foi nomeado como <strong>“quarto chinês”</strong>. Ele se usa como exemplo com a situação de que não tem conhecimento da língua chinesa, estaria trancada e isolado num quarto recebendo uma folha de papel com ideogramas em chinês escritos. Por não conhecer a língua, não possui ideia alguma do que se trata. Em seguida, ele recebe uma seguda folha com ideiogramas chineses acompanhados de um conjunto de regras em inglês (língua nativa) que permitem a correlação da segunda folha com a primeira. Por fim, recebe uma terceira folha com ideogramas chineses, com regras em inglês que orientam a dar em respostas específicos ideogramas chineses associados a outros ideogramas da terceira folha, correlacionando os elementos da atual com as duas anteriores. As pessoas externas do quarto denominam a terceira folha como o “script”, a segunda folha de “história” e a primeira folha de “questões”. Essas pessoas consideram que os símbolos que Searle entregou em resposta à terceira folha são as “respostas às questões” e todo o conjunto de regras que lhe foi entrega são o “programa” <span class="citation">(Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>.</p>
+<p>Com o tempo Searle se torna melhor em dar respostas de acordo com as regras que permitem manipular os ideogramas chieses e de maneira similar ocorre com os programadores externos do quarto, que ficam bos em escrever os programas do ponto de vista externo. Qualquer pessoa que observa as resposta de Searle não contestaria de que Searle não fala chinês. Da mesma forma se o mesmo experimento fosse feito com textos em inglês, sua língua nativa, ele daria respostas em patamares semelhantes <span class="citation">(Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>.</p>
+<p>Searle conclui que no caso em chinês ele opera como um computador, respondendo corretamente mas sem a menor ideia do que está respondendo. Ao caso em inglês, ele irá responder como um ser humano e com consciência de suas respostas. O quarto se refere ao computador, o ser humano ao <em>software</em> de IA. Com isso ele assume que só seria possível produzir artificialmente uma máquina com sistema suficientemente semelhante a nós se poder duplicar exatamente as causas e seus efeitos, assim de fato seria possível produzir consciência, intencionalidade (fenômeno biológico dependente da
+bioquímica específica de suas origens) e tudo o mais usando princípios químicos diferentes dos usados por seres humanos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span> .</p>
+<p>Em contestamento a Searle, Daniel Dennett defende o projeto de Turing porque agir inteligente consiste na capacidade de processamento de informação <span class="citation">(Dennett <a href="#ref-dennett2009part">2009</a>)</span>. Segundo Dennett, o problema da mente deve ser abordado com base na teoria evolutiva darwiniana pois o que entendemos por mental está relacionado ao tipo de resposta que nosso organismo dá para as demandas que estão para além daquelas que dizem respeito à manutenção da vida <span class="citation">(Silveira <a href="#ref-da2013searle">2013</a>)</span>. Para ele, como ele denomina de <em>intencionalidade intrínseca</em>, Seartle errou em atribuir aos humanos a intencionalidade produzida exclusivamente pela interação das partes que constituem uma totalidade complexa, não necessitando de influências ou interferências externas. Para Dennet nossa intencionalidade não é original <span class="citation">(Dennett <a href="#ref-dennett2009part">2009</a>)</span>.</p>
+<p>Para Dennet o principal argumento criticando o argumento do quarto chinês, é a forma como investigamos os fenômenos mentais. É uma região que possibilita infinitas especulações, sendo o método das ciências empíricas o mais apropriado ao estudo da mente <span class="citation">(Silveira <a href="#ref-da2013searle">2013</a>)</span>.</p>
+<p>A diferença entre ambos é de natureza filosófica com ontologias e epistemologias divergentes. É notável a importância das discussões filosóficas. O antagonismo dicotômicos dos dois filósofos possuem fundamentações que auxiliam na compreensão da mente. Quando teremos estas respostas? As máquinas serão capazes de raciocinar algum dia? Até onde uma IA pode chegar?</p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-dennett2009part">
+<p>Dennett, Daniel C. 2009. “The Part of Cognitive Science That Is Philosophy.” <em>Topics in Cognitive Science</em> 1 (2): 231–36.</p>
+</div>
+<div id="ref-guimaraes2019inteligencia">
+<p>Guimarães, Rodrigo Régnier Chemim. 2019. “A Inteligência Artificial E a Disputa Por Diferentes Caminhos Em Sua Utilização Preditiva No Processo Penal.” <em>Revista Brasileira de Direito Processual Penal</em> 5 (3): 1555–88.</p>
+</div>
+<div id="ref-meehl1954clinical">
+<p>Meehl, Paul E. 1954. “Clinical Versus Statistical Prediction: A Theoretical Analysis and a Review of the Evidence Minneapolis: University of Minnesota Press.[Reprinted with New Preface.” In <em>In Proceedings of the 1955 Invitational Conference on Testing Problems</em>. Citeseer.</p>
+</div>
+<div id="ref-russel2013inteligencia">
+<p>RUSSEL, Stuart, and Peter Norvig. 2013. “Inteligência Artificial. Tradução de Regina célia Smille.” <em>Rio de Janeiro: Campus Elsevier</em>.</p>
+</div>
+<div id="ref-searle1980minds">
+<p>Searle, John R. 1980. “Minds, Brains, and Programs, from the Behavioral and Brain Sciences, Vol. 3.” <em>Cambridge University Press Http://Members. Aol. Com/NeoNoetics/MindsBrainsPrograms. Html From</em> 23: 2004.</p>
+</div>
+<div id="ref-da2013searle">
+<p>Silveira, José Atı́lio Pires da. 2013. “Searle E Dennett: Duas Perspectivas de Estudo Da Mente.” <em>Problemata: Revista Internacional de Filosofı́a</em> 4 (2): 238–58.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="i-a.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="machinelearning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-VertentesIA.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

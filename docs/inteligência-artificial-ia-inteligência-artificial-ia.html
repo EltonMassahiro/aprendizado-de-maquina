@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Inteligência Artificial (IA) Inteligência Artificial (IA) | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Inteligência Artificial (IA) Inteligência Artificial (IA) | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Inteligência Artificial (IA) Inteligência Artificial (IA) | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicionário"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inteligência-artificial-ia-inteligência-artificial-ia.html"><a href="inteligência-artificial-ia-inteligência-artificial-ia.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA) <span>Inteligência Artificial (IA)</span></a><ul>
+<li class="chapter" data-level="2.1" data-path="inteligência-artificial-ia-inteligência-artificial-ia.html"><a href="inteligência-artificial-ia-inteligência-artificial-ia.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="inteligência-artificial-ia-inteligência-artificial-ia.html"><a href="inteligência-artificial-ia-inteligência-artificial-ia.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="o-aprendizado-de-máquina.html"><a href="o-aprendizado-de-máquina.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>5</b> Literature</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inteligência-artificial-ia-inteligência-artificial-ia" class="section level1">
+<h1><span class="header-section-number">Capítulo 2</span> Inteligência Artificial (IA) <a href="#i-a">Inteligência Artificial (IA)</a></h1>
+<div id="o-que-é-ia-de-onde-veio-esse-conceito" class="section level2">
+<h2><span class="header-section-number">2.1</span> O que é IA? De onde veio esse conceito?</h2>
+<p>Humano (taxonomicamente Homo sapiens), termo que derivado do latim “homem sábio”. Pensamos, analisamos, aprendemos , prevemos e manipulamos. Somos seres <strong>inteligentes</strong>. Já pesquisou o significado de “inteligência” no dicionário?</p>
+<p>É importante entender o conceito de inteligência, pois nem tudo que o ser humano faz pode ser classificado como inteligente. Aprender somar para calcular a soma de <span class="math inline">\(2+2\)</span> é uma ação inteligente, mas copiar o resultado e colocar em sua folha de resultados que é 4 pode não ser tanto assim. Da mesma forma uma calculadora que executa um código passado por um humano, contendo dentro todos os passos a serem executados (algoritmos) para resolver esse cálculo, não é considerada.</p>
+<p>Quando tratamos da inteligência artificial não é fácil definir o que ela é. O seu próprio conceito vem sendo discutido e moldado ao longo do tempo. A idéia de construir uma máquina pensante ou um ser artificial que se assemelhasse aos humanos é muito antigo. O mito do Golem, por exemplo, um dos primeiros seres artificiais criados pelo homem. Dizia a lenda que o mito do Golem surgiu no século XIII quando uma matéria informe tornou-se num homúnculo a partir da invocação mágica de Elijah de Chelm que escreveu em sua fronta <em>“Shemhamforash”</em> - nome secreto de Deus <span class="citation">(MOSER <a href="#ref-moser2006golem">2006</a>)</span>. Na literatura foi publicado o famoso romance <em>Frankensteins</em> <span class="citation">(Shelley <a href="#ref-shelley1818frankenstein">1818</a>)</span> que relata a história de um estudante que constrói um monstro em seu laboratório. Mas como ela realmente surgiu?</p>
+<p>O primeiro trabalho a ser reconhecido como IA foi elaborado por <span class="citation">McCulloch and Pitts (<a href="#ref-mcculloch1943logical">1943</a>)</span> que tinha como propósito estudar como os neurônios podiam funcionar, modelando uma rede neural simples com circuitos elétricos. Os mesmos autores sugeriram que as redes neurais definidas em conformidade poderiam ser capazes de aprender. Por seguinte, <span class="citation">Hebb (<a href="#ref-hebb1949organization">1949</a>)</span> escreveu <em>The Organization of Behavior</em> que fortalecia as teorias de que o condicionamento psicológico estava presente em qualquer parte dos animais. Teve como a premissa de que dois neurônios participantes de uma sinapse, têm ativação simultânea, então a força da conexão entre eles deve ser seletivamente aumentada, ou seja, os caminhos neurais são fortalecidos cada vez que são utilizados.</p>
+<p>Em 1950, o matemático Claude E. Shannon publicou um artigo sobre como “ensinar” seu computador a jogar xadrez <span class="citation">(Shannon <a href="#ref-shannon1950xxii">1950</a>)</span>; no mesmo ano Alan Turing, em “Computing Machinery and Intelligence” <span class="citation">(TURING <a href="#ref-turing1950computing">1950</a>)</span>,
+sugeriu que, ao invés de perguntarmos se as máquinas podem pensar, devemos perguntar se as máquinas podem passar por um teste de inteligência comportamental, o teste de Turing. Uma forma de avaliar se uma máquina consegue se passar por um humano em uma conversa por escrito com um avaliador passando no teste caso o avaliador não conseguisse identificar se estava conversado com um computador ou com outro ser humano. No ano seguinte, os estudantes Marvin Minsky e Dean Edmonds construíram o SNARC, o primeiro computador de rede neural que simulava uma rede de 40 neurônios.</p>
+<p>1956, conferência de verão em Dartmouth College (Hanover, New Hamphire), foi oficializada o nascimento da IA. John McCarthy, Minsky, Claude Shannon e Nathaniel Rochester elaboram uma proposta dessa conferência a fim de reunir pesquisadores dos Estados Unidos interessados em teoria de redes neurais, autômatos e estudo da inteligência:</p>
+<blockquote>
+<p>Propusemos que um estudo de dois meses e dez homens sobre inteligência artificial fosse realizado durante o verão de 1956 no Dartmouth College, em Hanover, New Hampshire. O estudo foi para prosseguir com a conjectura básica de que cada aspecto de aprendizado ou qualquer outra característica da inteligência pode, em princípio, ser descrita com tanta precisão a ponto de
+que uma máquina pode ser feita para simulá-la. Será realizada uma tentativa para descobrir como fazer com que as máquinas usem a linguagem, a partir de abstrações e conceitos, resolvam os tipos
+de problemas hoje reservados aos seres humanos e se aperfeiçoarem. Achamos que poderá haver avanço significativo em um ou mais desses problemas se um grupo cuidadosamente selecionado de cientistas trabalhar em conjunto durante o verão.</p>
+<p>— “A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence” , <span class="citation">McCarthy et al. (<a href="#ref-mccarthy2006proposal">2006</a>)</span> , Agosto de 1955.</p>
+</blockquote>
+<p>Entre diversas ideias e apresentações, Allen Newell e Herbert Simon apresentaram o programa logic theorist, capaz de provar diversos teoremas e segundo Simon, capaz de pensar não numericamente. Apesar de muitos editores não se agradarem, esta importante proposta trouxe nos próximos anos, uma dominação nesse campo <span class="citation">(Russel and NORVIG <a href="#ref-russel2004inteligencia">2004</a>)</span>:</p>
+<ul>
+<li><p>General Problem Solver (GPS), projetado por <span class="citation">Newell and Shaw (<a href="#ref-newell1959variety">1959</a>)</span>, é um sistema que buscava imitar o homem na forma de resolver problemas. Concluíram de que a forma em como dividia um objetivo em sub objetivos e possíveis ações era similar à forma em como o homem fazia. Esta pesquisa ajudou a estabelecer os fundamentos teóricos dos sistemas de símbolos e forneceram à área da IA uma série de técnicas de programação voltadas à manipulação simbólica, por exemplo, as técnicas de busca heurística;</p></li>
+<li><p>a IBM produz alguns dos primeiros programas de IA, entre os quais, em 1959 o
+Geometry Theorem Prover;</p></li>
+<li><p>Arthur Samuel desenvolveu um programa capaz de jogar damas ao nível de um
+jogador de torneio. O programa jogava melhor do que o seu autor;</p></li>
+<li><p>John McCarthy no MIT, em 1958, define a linguagem de programação Lisp (List Processing) que se transformou na linguagem dominante
+da IA e publicou um artigo intitulado “Programs with common sense” <span class="citation">(McCarthy <a href="#ref-mccarthy1968programs">1968</a>)</span>,
+onde descrevia um programa hipotético designado por “Advice taker”, o qual pode
+ser visto como o primeiro sistema completo da IA;</p></li>
+<li><p><span class="citation">Slagle (<a href="#ref-slagle1963heuristic">1963</a>)</span>, com o programa SAINT, foi capaz de resolver problemas de cálcuo integral;</p></li>
+<li><p><span class="citation">Evans (<a href="#ref-evans1964program">1964</a>)</span> e <span class="citation">Bobrow (<a href="#ref-bobrow1967problems">1967</a>)</span>, com os respectivos programas ANALOGY e STUDENT, resolviam problemas de análises geométricas semelhantes aos testes de QI e problemas clássicos de álgebra.</p></li>
+<li><p>Em base de <span class="citation">Huffman (<a href="#ref-huffman1971impossible">1971</a>)</span>, <span class="citation">Waltz (<a href="#ref-waltz1975understanding">1975</a>)</span>, <span class="citation">Winograd (<a href="#ref-winograd1972understanding">1972</a>)</span>, <span class="citation">Winston (<a href="#ref-winston1970learning">1970</a>)</span> e <span class="citation">Fahlman (<a href="#ref-fahlman1974planning">1974</a>)</span>, foi elaborado o mundo de blocos, que consiste em um conjunto de blocos sólidos colocados sobre uma mesa de modo que a mão de um robô reorganize-os.</p></li>
+</ul>
+<p>Claro que os primeiros sistema houveram dificuldades com problemas mais difíceis. Desde traduções que exigiam conhecimento profundo para solucionar ambiguidades, por exemplo, como situações de necessidade de hardwares melhores e limitações fundamentais nas estruturas simples. Com ressalva, em <em>Perceptrons</em> <span class="citation">(Minsky and Papert <a href="#ref-minsky1969perceptrons">1969</a>)</span> demonstra que embora suas redes neurais simples (<em>perceptrons</em>) pudessem aprender, eram capazes de representar muito pouco. Mas com exigência da formalização acadêmica na década de 70, permitiu o desenvolvimento de sistemas com grande desempenho intelectual com perspectivas industriais e comerciais, surgindo novos sistemas dispostos a resolver problemas mais complexos do que antes:</p>
+<ul>
+<li><p>DENDRAL <span class="citation">(Buchanan, Sutherland, and Feigenbaum <a href="#ref-buchanan1969heuristic">1969</a>)</span>, analisa compostos orgânicos a fim de determinar sua estrutura molecular;</p></li>
+<li><p>MYCIN <span class="citation">(Buchanan and Shortliffe <a href="#ref-buchanan1984rule">1984</a>)</span>, Sistema pericial (expert system) foi capaz de diagnosticar infecções no sangue.</p></li>
+</ul>
+<p>E sucessivamente foi crescendo este enorme e maravilhoso campo. O japão lança o projeto “<em>Fifth Generation</em>” para construir em dez anos computadores inteligentes com capacidade de fazer milhões de inferências por segundo em 1981; uso de IA na guerra do Golfo em 1991; sistemas de perícia para casos médicos no mesmo ano; sistemas para condução de veículos automotores e detectores de colisões nas ruas (1993); reserva de viagens (1994); brinquedos inteligentes (2000); computador que se comunica ao nível de uma criança com 15 meses (2001). Ao longo dos anos da história da ciência da computação, a ênfase em <em>algoritmos</em> e tratamento de dados vem aumentando.</p>
+</div>
+<div id="a-arte-de-uma-ia" class="section level2">
+<h2><span class="header-section-number">2.2</span> A arte de uma IA</h2>
+<p>Atualmente, existem muitas atividades, pesquisas e aplicações em diversos temas que muitas vezes nem perbemos:</p>
+<ul>
+<li><p>Recomendações de mídia: com base em seu perfil de uso, o algoritmo compara filmes, músicas, clips, etc com base em vários usuários que possuem os gostos similares ao nosso. Recomedando aquilo que provavelmente irá nos agradar. Por exemplo Spotify, YouTube e Netflix.</p></li>
+<li><p>Reconhecimento de fala e assistentes virtuais: já refletiu sobre como funciona sua Google Assistente? Com ondas sonoras emitidas pela voz, o algoritmo reconhece palavras, frases e até mesmo o timbre, fornecendo respostas de acordo com o que recebe.</p></li>
+<li><p>Jogos: a inteligência artificial desenvolvida pela OpenAi conseguiu derrotar uma das melhores equipes do Dota 2 do mundo.</p></li>
+<li><p>Logística: a crise de 1991, por exemplo, no Golfo Pérsico. Foi utilizada a DART <span class="citation">(Cross and Walker <a href="#ref-cross1994dart">1994</a>)</span>, uma ferramenta que envolveu até 50.000 veículos, transporte de carga aérea e pessoa simultâneamente com o objetivo de realizar um planejamento logístico automatizado levando em conta rotas, pontos de partida e resolução de conflitos.</p></li>
+<li><p>Reconhecimento de imagens: identificação de objetos, pessoas, animais e qualquer figura com base em exemplos prévios, como por exemplo identificador de pessoas em uma foto do Facebook.</p></li>
+<li><p>Verificação de compras: detecção de comportamentos suspeitos a partir do histórico e perfil do usuário, como a e-commerce.</p></li>
+<li><p>Automóveis autônomos: por meio do algoritmo, visualiza a estrada, as placas, condição climática, outros veículos e diversos outros obstáculos para tomar decisões de seu trajeto sem a necessidade de uma pessoa.</p></li>
+</ul>
+<p>Poderíamos falar desde exemplos de inteligência artificial aplicados casos jurídicos, diagnósticos na área da saúde, identificadores de <em>fake news</em> (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (Artificial General Intelligence), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bobrow1967problems">
+<p>Bobrow, Daniel Gureasko. 1967. “Problems in Natural Language Communication with Computers.” <em>IEEE Transactions on Human Factors in Electronics</em>, no. 1: 52–55.</p>
+</div>
+<div id="ref-buchanan1984rule">
+<p>Buchanan, Bruce G, and Edward H Shortliffe. 1984. “Rule-Based Expert Systems: The Mycin Experiments of the Stanford Heuristic Programming Project.”</p>
+</div>
+<div id="ref-buchanan1969heuristic">
+<p>Buchanan, B, Georgia Sutherland, and EA Feigenbaum. 1969. “Heuristic Dendral: A Program for Generating Explanatory Hypotheses.” <em>Organic Chemistry</em>.</p>
+</div>
+<div id="ref-cross1994dart">
+<p>Cross, Stephen E, and Edward Walker. 1994. “Dart: Applying Knowledge-Based Planning and Scheduling to Crisis Action Planning.” <em>Intelligent Scheduling. Morgan Kaufmann</em>.</p>
+</div>
+<div id="ref-evans1964program">
+<p>Evans, Thomas G. 1964. “A Program for the Solution of a Class of Geometric-Analogy Intelligence-Test Questions.” AIR FORCE CAMBRIDGE RESEARCH LABS LG HANSCOM FIELD MASS.</p>
+</div>
+<div id="ref-fahlman1974planning">
+<p>Fahlman, Scott Elliott. 1974. “A Planning System for Robot Construction Tasks.” <em>Artificial Intelligence</em> 5 (1): 1–49.</p>
+</div>
+<div id="ref-hebb1949organization">
+<p>Hebb, Donald Olding. 1949. <em>The Organization of Behavior: A Neuropsychological Theory</em>. J. Wiley; Chapman &amp; Hall.</p>
+</div>
+<div id="ref-huffman1971impossible">
+<p>Huffman, David A. 1971. “Impossible Object as Nonsense Sentences.” <em>Machine Intelligence</em> 6: 295–324.</p>
+</div>
+<div id="ref-mccarthy1968programs">
+<p>McCarthy, J. 1968. “Programs with Common Sense’in Minsky M (Ed) Semantic Information Processing.” MIT Press: Cambridge Mass.</p>
+</div>
+<div id="ref-mccarthy2006proposal">
+<p>McCarthy, John, Marvin L Minsky, Nathaniel Rochester, and Claude E Shannon. 2006. “A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence, August 31, 1955.” <em>AI Magazine</em> 27 (4): 12–12.</p>
+</div>
+<div id="ref-mcculloch1943logical">
+<p>McCulloch, Warren S, and Walter Pitts. 1943. “A Logical Calculus of the Ideas Immanent in Nervous Activity.” <em>The Bulletin of Mathematical Biophysics</em> 5 (4): 115–33.</p>
+</div>
+<div id="ref-minsky1969perceptrons">
+<p>Minsky, Marvin L, and Seymour Papert. 1969. “Perceptrons: An Introduction to.” <em>Computational Geometry</em>.</p>
+</div>
+<div id="ref-moser2006golem">
+<p>MOSER, Joana de Mello. 2006. “O Golem.” <em>Estudos Em Homenagem a Margarida Llosa</em>, 323–36.</p>
+</div>
+<div id="ref-newell1959variety">
+<p>Newell, A, and JC Shaw. 1959. “A Variety Op Intelligent Learning in a General Problem Solver.” <em>RAND Report P-1742, Dated July</em> 6.</p>
+</div>
+<div id="ref-russel2004inteligencia">
+<p>Russel, Stuart, and Peter NORVIG. 2004. “Inteligência Artificial. 2. Edição.” <em>Rio de Janeiro: Campus</em>.</p>
+</div>
+<div id="ref-shannon1950xxii">
+<p>Shannon, Claude E. 1950. “XXII. Programming a Computer for Playing Chess.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 41 (314): 256–75.</p>
+</div>
+<div id="ref-shelley1818frankenstein">
+<p>Shelley, Mary. 1818. “Frankenstein or the Modem Prometheus.” <em>London: Printed for Lackington, Hughes, Harding, Mayor &amp; Jones</em>.</p>
+</div>
+<div id="ref-slagle1963heuristic">
+<p>Slagle, James R. 1963. “A Heuristic Program That Solves Symbolic Integration Problems in Freshman Calculus.” <em>Journal of the ACM (JACM)</em> 10 (4): 507–20.</p>
+</div>
+<div id="ref-turing1950computing">
+<p>TURING, INTELLIGENCE BY AM. 1950. “Computing Machinery and Intelligence-Am Turing.” <em>Mind</em> 59 (236): 433.</p>
+</div>
+<div id="ref-waltz1975understanding">
+<p>Waltz, David. 1975. “Understanding Line Drawings of Scenes with Shadows.” In <em>The Psychology of Computer Vision</em>. Citeseer.</p>
+</div>
+<div id="ref-winograd1972understanding">
+<p>Winograd, Terry. 1972. “Understanding Natural Language.” <em>Cognitive Psychology</em> 3 (1): 1–191.</p>
+</div>
+<div id="ref-winston1970learning">
+<p>Winston, Patrick H. 1970. “Learning Structural Descriptions from Examples.”</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-IA.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Algoritmos de Aprendizagem | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Algoritmos de Aprendizagem | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Algoritmos de Aprendizagem | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preprocesso.html"/>
+<link rel="next" href="modelos-nível-ii.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicio"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
+<li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>5</b> Pré-processamento</a><ul>
+<li class="chapter" data-level="5.1" data-path="preprocesso.html"><a href="preprocesso.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>5.1</b> Dados faltantes e a Limpeza de dados</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="preprocesso.html"><a href="preprocesso.html#tratamento-de-dados-faltantes"><i class="fa fa-check"></i><b>5.1.1</b> Tratamento de dados faltantes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="preprocesso.html"><a href="preprocesso.html#outlier"><i class="fa fa-check"></i><b>5.1.2</b> <em>Outlier</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="preprocesso.html"><a href="preprocesso.html#transformação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Transformação de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="preprocesso.html"><a href="preprocesso.html#tipos-de-datasets"><i class="fa fa-check"></i><b>5.2.1</b> Tipos de <em>datasets</em></a></li>
+<li class="chapter" data-level="5.2.2" data-path="preprocesso.html"><a href="preprocesso.html#normalização-e-padronização"><i class="fa fa-check"></i><b>5.2.2</b> Normalização e padronização</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="preprocesso.html"><a href="preprocesso.html#features-selection---seleção-de-atributos-sa"><i class="fa fa-check"></i><b>5.3</b> Features Selection - Seleção de atributos (SA)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html"><i class="fa fa-check"></i><b>6</b> Algoritmos de Aprendizagem</a><ul>
+<li class="chapter" data-level="6.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-importância"><i class="fa fa-check"></i><b>6.1</b> Medidas de importância</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-informação"><i class="fa fa-check"></i><b>6.1.1</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="6.1.2" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-distância"><i class="fa fa-check"></i><b>6.1.2</b> Medidas de Distância</a></li>
+<li class="chapter" data-level="6.1.3" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-dependência"><i class="fa fa-check"></i><b>6.1.3</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="6.1.4" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-precisão"><i class="fa fa-check"></i><b>6.1.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="6.1.5" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#medidas-de-consistência"><i class="fa fa-check"></i><b>6.1.5</b> Medidas de consistência</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#teste-de-hipóteses-e-análise-de-variância"><i class="fa fa-check"></i><b>6.2</b> Teste de hipóteses e Análise de Variância</a></li>
+<li class="chapter" data-level="6.3" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#naive-bayes"><i class="fa fa-check"></i><b>6.3</b> Naive Bayes</a></li>
+<li class="chapter" data-level="6.4" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#regressão"><i class="fa fa-check"></i><b>6.4</b> Regressão</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#análise-de-regressão-linear"><i class="fa fa-check"></i><b>6.4.1</b> Análise de Regressão Linear</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#gradiente-descendente"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente</a></li>
+<li class="chapter" data-level="6.6" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#svm"><i class="fa fa-check"></i><b>6.6</b> SVM</a></li>
+<li class="chapter" data-level="6.7" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#arvores-de-decisão"><i class="fa fa-check"></i><b>6.7</b> Arvores de Decisão</a></li>
+<li class="chapter" data-level="6.8" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#elastic-net"><i class="fa fa-check"></i><b>6.8</b> Elastic Net</a></li>
+<li class="chapter" data-level="6.9" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#knn"><i class="fa fa-check"></i><b>6.9</b> KNN</a></li>
+<li class="chapter" data-level="6.10" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#k-means"><i class="fa fa-check"></i><b>6.10</b> K-means</a></li>
+<li class="chapter" data-level="6.11" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#pca"><i class="fa fa-check"></i><b>6.11</b> PCA</a></li>
+<li class="chapter" data-level="6.12" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#clusters"><i class="fa fa-check"></i><b>6.12</b> Clusters</a></li>
+<li class="chapter" data-level="6.13" data-path="algoritmos-de-aprendizagem.html"><a href="algoritmos-de-aprendizagem.html#aoc-e-roc"><i class="fa fa-check"></i><b>6.13</b> AOC E ROC</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html"><i class="fa fa-check"></i><b>7</b> Modelos nível II</a><ul>
+<li class="chapter" data-level="7.1" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#gradiente-boosting---estudar-boosting-e-bagging-dentro-de-emsemnble"><i class="fa fa-check"></i><b>7.1</b> Gradiente Boosting -&gt; estudar boosting e bagging dentro de Emsemnble</a></li>
+<li class="chapter" data-level="7.2" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
+<li class="chapter" data-level="7.3" data-path="modelos-nível-ii.html"><a href="modelos-nível-ii.html#redes-neurais"><i class="fa fa-check"></i><b>7.3</b> Redes Neurais</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html"><i class="fa fa-check"></i><b>8</b> Validação de um modelo</a><ul>
+<li class="chapter" data-level="8.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#overfitting-underfitting"><i class="fa fa-check"></i><b>8.1</b> <em>Overfitting, Underfitting</em></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>8.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>8.2</b> Validação Cruzada</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="algoritmos-de-aprendizagem" class="section level1">
+<h1><span class="header-section-number">Capítulo 6</span> Algoritmos de Aprendizagem</h1>
+<p><em>Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.</em></p>
+<div id="medidas-de-importância" class="section level2">
+<h2><span class="header-section-number">6.1</span> Medidas de importância</h2>
+<blockquote>
+<p>Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência</p>
+<p>Tradução de <span class="citation">Liu and Motoda (<a href="#ref-liu2012feature">2012</a>)</span>.</p>
+</blockquote>
+<p>É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional <span class="citation">(Liu and Motoda <a href="#ref-liu2012feature">2012</a>)</span>. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas <span class="citation">(Lee <a href="#ref-lee2005seleccao">2005</a>)</span>.</p>
+<div id="medidas-de-informação" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Medidas de Informação</h3>
+<p>As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a <em>priori</em> e a incerteza a <em>posteriori</em> considerando-se o atributo <span class="math inline">\(X_i\)</span>. <span class="math inline">\(X_i\)</span> é preferido ao atributo <span class="math inline">\(X_j\)</span> se seu ganho de informação for maior que de <span class="math inline">\(X_j\)</span>. Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.</p>
+<p><span class="citation">Shannon (<a href="#ref-shannon1948mathematical">1948</a>)</span>, tomou como “ponto de partida” encontrar uma forma matemática de medir o quanto de informação existe na transmissão de uma mensagem de um ponto a outro, denominando-a entropia. Sua proposta baseava-se na ideia de que o aumento da probabilidade do próximo símbolo diminuiria o tamanho da informação. Com isso, a entropia pode ser definida como a quantidade de incerteza que há em uma mensagem e que diminui à medida que os símbolos são transmitidos (vai se conhecendo a mensagem), tendo-se então a informação, que pode ser vista como redução da incerteza <span class="citation">(Shannon <a href="#ref-shannon1948mathematical">1948</a>; Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>. Por exemplo: ao utilizarmos como idioma a nossa língua portuguesa e ao transmitir como símbolo a letra “q”, a probabilidade do próximo símbolo ser a letra “u” é maior que a de ser qualquer outro símbolo, enquanto que a probabilidade de ser novamente a letra “q” é praticamente nula <span class="citation">(Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>.</p>
+<p>Shannon define que a entropia pode ser calculada por meio da soma das probabilidades de ocorrência de cada símbolo pela expressão <span class="math inline">\(∑ p_i = 1 = 100\%\)</span>, em que <span class="math inline">\(p_i\)</span> representa a probabilidade do i-ésimo símbolo que compõe a mensagem. Segundo ele, estes símbolos devem ser representados através de sequências binárias, utilizando das propostas de <span class="citation">Nyquist (<a href="#ref-nyquist1924certain">1924</a>)</span> e <span class="citation">Hartley (<a href="#ref-hartley1928transmission">1928</a>)</span>. Sua proposta consistia em representar símbolos de um alfabeto através de um logaritmo de acordo com suas respectivas unidades de informação. A entropia proposta por ele é obtida pela média das medidas de Hartley <span class="citation">(Moser and Chen <a href="#ref-moser2012student">2012</a>)</span>.</p>
+<p>Se A é discreto com distribuição de probabilidade <span class="math inline">\(p(A)\)</span>, a entropia será:</p>
+<p><span class="math display" id="eq:entropia">\[\begin{equation} 
+  H(A)=- \sum p(A)log_2(p(A)) 
+  \tag{6.1}
+\end{equation}\]</span></p>
+<p>Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre “Sim” e “não”: quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero “sim”/“não” ou de ser 1 (100%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.</p>
+<div class="figure" style="text-align: center"><span id="fig:entropia"></span>
+<img src="Figuras/entropia.jpg" alt="Gràfico de Probabilidade x Entropia." width="70%" />
+<p class="caption">
+Figura 6.1: Gràfico de Probabilidade x Entropia.
+</p>
+</div>
+
+<p>O ganho de informação portanto mede a redução da entropia (nesse caso) causada pela partição dos exemplos de acordo com os valores do atributo.</p>
+<p><span class="math display" id="eq:ganhodeinf">\[\begin{equation} 
+  \mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i) 
+  \tag{6.2}
+\end{equation}\]</span></p>
+<p>É muito utilizado em algoritmo de <strong>Árvore de decisão</strong> que será apresentado nesta mesma seção com um exemplo de seu uso.</p>
+</div>
+<div id="medidas-de-distância" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Medidas de Distância</h3>
+<p>Também conhecidas com medidas de separabilidade, discriminação e divergência. Em caso de duas classes, um atributo <span class="math inline">\(X_i\)</span> é preferido ao atributo <span class="math inline">\(X_j\)</span> se fornece uma diferença maior que <span class="math inline">\(X_j\)</span> entre as probabilidades condicionais das duas classes. Uma das mais utilizadas é a distância Euclidiana.</p>
+</div>
+<div id="medidas-de-dependência" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Medidas de Dependência</h3>
+</div>
+<div id="medidas-de-precisão" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Medidas de Precisão</h3>
+</div>
+<div id="medidas-de-consistência" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Medidas de consistência</h3>
+</div>
+</div>
+<div id="teste-de-hipóteses-e-análise-de-variância" class="section level2">
+<h2><span class="header-section-number">6.2</span> Teste de hipóteses e Análise de Variância</h2>
+</div>
+<div id="naive-bayes" class="section level2">
+<h2><span class="header-section-number">6.3</span> Naive Bayes</h2>
+<p>Antes de falarmos sobre este algoritmo, vamos para o conceito matemático. Em (<a href="intro.html#dicio">1.2</a>) tratamos do Teorema de Bayes para <span class="math inline">\(n\)</span> atributos. Colocando-o como probabilidade condicional:</p>
+<p><span class="math display" id="eq:bayescond">\[\begin{equation} 
+  p(A|B_{1},...,B_{n}) = \\ p(A)p(B_{1}|A)p(B_{2}|A,B_{1}),p(B_{3}|A,B_{1},B_{2})...p(B_{n}|A,B_{1},B_{2},...,B_{n−1})
+  \tag{6.3}
+\end{equation}\]</span></p>
+<p>Assumindo que cada atributo <span class="math inline">\(B_i\)</span> é condicionalmente independente de todos os outros <span class="math inline">\(B_j\)</span> para <span class="math inline">\(j\neq i\)</span> e <span class="math inline">\(p(B_i|A,B_j)=p(B_i|A)\)</span> o modelo poderá ser expresso como:</p>
+<p><span class="math display" id="eq:bayesprodutorio">\[\begin{equation} 
+  p(A_k|B_1,...,B_n)=p(A_k)p(B_1|A_k)p(B_2|A_k),...=p(A_k)\prod_i^n p(B_i|A_k) \ k ∈{1,...,k}
+  \tag{6.4}
+\end{equation}\]</span></p>
+<p>Por fim para podermos classificarmos, aplicamos argumentos de máxima para otimizarmos a função, obtém-se o classificador de Naive Bayes:</p>
+<p><span class="math display" id="eq:naivebayes">\[\begin{equation} 
+  \mbox{classificador} \ \hat{y}=argmax \ p(A_k)\displaystyle \prod_{i=1}^n p(B_i|A_k) \ \ k ∈{1,...,k}
+  \tag{6.5}
+\end{equation}\]</span></p>
+<p>Lembrando que para cada atributo, a sua distribuição de probabilidades é assumida como normal.</p>
+<p>O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.</p>
+<p><strong>Exemplo:</strong> para facilitar, podemos supor que estamos trabalhando no diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de <span class="citation">Orgânica Digital (<a href="#ref-organica">2019</a>)</span>).</p>
+<p>Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doença (20%) e 80 pessoas estavam saudáveis (80%), sendo que das pessoas que possuíam a doença, 90% receberam o resultado positivo no teste da doença, e 30% das pessoas que não possuíam a doença também receberam o teste positivo. Caso uma nova pessoa realizar o teste e receber um resultado positivo, qual a probabilidade de ela realmente possuir a doença?</p>
+<div class="figure" style="text-align: center"><span id="fig:bayes"></span>
+<img src="Figuras/bayes.png" alt="Dados coletados de uma amostra de 100 pessoas aleatórias." width="70%" />
+<p class="caption">
+Figura 6.2: Dados coletados de uma amostra de 100 pessoas aleatórias.
+</p>
+</div>
+
+<p>Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença, dado que recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de “receber um resultado positivo, dado que tem a doença”. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.</p>
+<p>Ou seja, ao caso de ter a doença dado que o resultado deu positivo:
+<span class="math display">\[P(doença|positivo) = 20% * 90% \]</span> <span class="math display">\[P(doença|positivo) = 0,2 * 0,9 \]</span> <span class="math display">\[P(doença|positivo) = 0,18\]</span>
+Para o caso de não ter a doença, dado que deu positivo:
+<span class="math display">\[P(não \ doença|positivo) = 80% * 30%\]</span>
+<span class="math display">\[P(não \ doença|positivo) = 0,8 * 0,3\]</span>
+<span class="math display">\[P(não\ doença|positivo) = 0,24\]</span>
+Após isso precisamos normalizar os dados, para que a soma das duas probabilidades resulte 1 (100%). Como vimos em pré-processamento <a href="preprocesso.html#preprocesso">5</a>, a <strong>Normalização por reescala</strong> por meio de um valor mínimio e um máximo, gera um novo intervalo onde os valores de um atributo estão contidos. Um intervalo entre 0 e 1. Portanto, dividimos o resultado pela soma das duas probabilidades.</p>
+<p><span class="math display">\[P(doença|positivo) = 0,18/(0,18+0,24) = 0,4285\]</span>
+<span class="math display">\[P(não doença|positivo) = 0,24/(0,18+0,24) = 0,5714\]</span>
+Logo, podemos concluir que se o resultado do teste da nova pessoa for positivo, ela possui aproximadamente 43% (0,4285) de chance de estar doente.</p>
+<p><strong>Observação e resumo geral:</strong> Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma <strong>suposição de independência entre os preditores</strong> diferentemente do caso em <a href="intro.html#dicio">1.2</a> (Teorema de Bayes), ou seja, O Naive Bayes assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Ao caso da melancia, uma fruta verde, redonda e com um tamanho de diâmetro X é possível ser ela, porém mesmo que estas variáveis dependam uma das outras e de outras características, elas contribuem de forma independente para a probabilidade de que seja uma melancia. É um modelo simples de construir e útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.</p>
+<p>Por isso <em>Naive</em> vem do significado “ingênuo”, pois como a Figura <a href="algoritmos-de-aprendizagem.html#fig:naive">6.3</a> demonstra, os atributos contribuem de forma independente para a probabilidade de A.</p>
+<div class="figure" style="text-align: center"><span id="fig:naive"></span>
+<img src="Figuras/naive.png" alt="Gràfico de Probabilidade x Entropia." width="70%" />
+<p class="caption">
+Figura 6.3: Gràfico de Probabilidade x Entropia.
+</p>
+</div>
+
+</div>
+<div id="regressão" class="section level2">
+<h2><span class="header-section-number">6.4</span> Regressão</h2>
+<div id="análise-de-regressão-linear" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Análise de Regressão Linear</h3>
+<p>A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória, ela é supervisionada.</p>
+<p>Como na prática não conseguimos análisar uma população, trabalhamos em cima de amostras e estimamos para o todo, para que possamos fazer uma aproximação. Partimos da ideia de estimarmos uma função com dados amostrais com o menor erro possível.</p>
+<p>Seu modelo estatístico:
+<span class="math display" id="eq:reglinear">\[\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_1X_i}+e_i
+    \tag{6.6}
+\end{equation}\]</span></p>
+<p>em que:</p>
+<p><span class="math inline">\(\hat{Y_i}\)</span> é o valor observado com <span class="math inline">\(i\)</span> níveis de <span class="math inline">\(X\)</span> (estimador da esperança <span class="math inline">\(E(Y|Xi)\)</span>), <span class="math inline">\(\hat{\beta_0}\)</span> a constante de regressão estimado e intercepto de <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(\hat{\beta_1}\)</span> o coeficiente de regressão estimado que seria a variação de <span class="math inline">\(\hat{Y}\)</span> em função da variação de cada unidade de <span class="math inline">\(X\)</span>, <span class="math inline">\(X_i\)</span> com <span class="math inline">\(i\)</span> níveis da variável independente e <span class="math inline">\(\hat{e_i}\)</span> é o erro associado à distância entre o valor observado e o correspondente ponto na curva. Note que os “chapéis” em cima das variáveis é utilizado quando referimos a estimações, ou seja, são variáveis de dados amostrais e não a população.</p>
+<p>Com o propósito de obter uma equação estimada, precisamos minimizar os erros com o métodos dos mínimos quadrados (MMQ). Os estimadores de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> que minimizam os erros são:
+<span class="math display">\[\hat{\beta_1}=\frac{\sum^n_{i=1X_iY_i-\frac{\sum^n_{i=1}X_i\sum^n_{i=1}Y_i}{n}}}{\sum^n_{i=1}X^2_i-\frac{(\sum^n_{i=1}X_i)^2}{n}}=\frac{s_{xy}}{s_{xx}}\]</span></p>
+<p><span class="math display">\[\hat{\beta_0}=\overline{Y}-\hat{\beta_1}\overline{X}\]</span></p>
+<p>Temos então, a regressão linear simples ajustada:
+<span class="math display">\[\begin{equation}
+    \hat{Y}=\hat{\beta_0}+\hat{\beta_1}X
+    \label{reglinearajust}
+\end{equation}\]</span></p>
+<p>Como seus parâmetros <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>. O aumento de uma unidade de X, Y aumenta em <span class="math inline">\(\hat{\beta_1}\)</span> unidades.</p>
+<p>Para os interessados na dedução matemática, recomendo literaturas como <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span> que explicam de forma matricial sua dedução e aplicação para <span class="math inline">\(n\)</span> variáveis independentes</p>
+<p>Para que seja feito o modelo de regressão, ela depende das premissas: independência das variáveis erro, homogeneidade das variâncias, normalidade e relação linear entre as variáveis.</p>
+</div>
+</div>
+<div id="gradiente-descendente" class="section level2">
+<h2><span class="header-section-number">6.5</span> Gradiente Descendente</h2>
+</div>
+<div id="svm" class="section level2">
+<h2><span class="header-section-number">6.6</span> SVM</h2>
+</div>
+<div id="arvores-de-decisão" class="section level2">
+<h2><span class="header-section-number">6.7</span> Arvores de Decisão</h2>
+</div>
+<div id="elastic-net" class="section level2">
+<h2><span class="header-section-number">6.8</span> Elastic Net</h2>
+</div>
+<div id="knn" class="section level2">
+<h2><span class="header-section-number">6.9</span> KNN</h2>
+</div>
+<div id="k-means" class="section level2">
+<h2><span class="header-section-number">6.10</span> K-means</h2>
+</div>
+<div id="pca" class="section level2">
+<h2><span class="header-section-number">6.11</span> PCA</h2>
+</div>
+<div id="clusters" class="section level2">
+<h2><span class="header-section-number">6.12</span> Clusters</h2>
+</div>
+<div id="aoc-e-roc" class="section level2">
+<h2><span class="header-section-number">6.13</span> AOC E ROC</h2>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-gujarati2011econometria">
+<p>Gujarati, Damodar N, and Dawn C Porter. 2011. <em>Econometria Básica-5</em>. Amgh Editora.</p>
+</div>
+<div id="ref-hartley1928transmission">
+<p>Hartley, Ralph VL. 1928. “Transmission of Information 1.” <em>Bell System Technical Journal</em> 7 (3): 535–63.</p>
+</div>
+<div id="ref-lee2005seleccao">
+<p>Lee, Huei Diana. 2005. “Seleção de Atributos Importantes Para a Extração de Conhecimento de Bases de Dados.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-liu2012feature">
+<p>Liu, Huan, and Hiroshi Motoda. 2012. <em>Feature Selection for Knowledge Discovery and Data Mining</em>. Vol. 454. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-moser2012student">
+<p>Moser, Stefan M, and Po-Ning Chen. 2012. <em>A Student’s Guide to Coding and Information Theory</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-nyquist1924certain">
+<p>Nyquist, Harry. 1924. “Certain Factors Affecting Telegraph Speed.” <em>Transactions of the American Institute of Electrical Engineers</em> 43: 412–22.</p>
+</div>
+<div id="ref-organica">
+<p>Orgânica Digital. 2019. “Algoritmo de Classificação Naive Bayes.” In. <a href="https://www.organicadigital.com/blog/algoritmo-de-classificacao-naive-bayes/">https://www.organicadigital.com/blog/algoritmo-de-classificacao-naive-bayes/</a>.</p>
+</div>
+<div id="ref-paviotti2019consideraccoes">
+<p>Paviotti, José Renato, and Carlos J Magossi. 2019. “Considerações Sobre O Conceito de Entropia Na Teoria Da Informação.”</p>
+</div>
+<div id="ref-shannon1948mathematical">
+<p>Shannon, Claude E. 1948. “A Mathematical Theory of Communication.” <em>The Bell System Technical Journal</em> 27 (3): 379–423.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preprocesso.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelos-nível-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-Modelos.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

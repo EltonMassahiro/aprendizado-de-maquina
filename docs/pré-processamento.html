@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Pré-processamento | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Pré-processamento | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Pré-processamento | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="machinelearning.html"/>
+<link rel="next" href="modelos.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicio"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
+<li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pré-processamento.html"><a href="pré-processamento.html"><i class="fa fa-check"></i><b>5</b> Pré-processamento</a><ul>
+<li class="chapter" data-level="5.1" data-path="pré-processamento.html"><a href="pré-processamento.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>5.1</b> Dados faltantes e a Limpeza de dados</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="pré-processamento.html"><a href="pré-processamento.html#tratamento-de-dados-faltantes"><i class="fa fa-check"></i><b>5.1.1</b> Tratamento de dados faltantes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="pré-processamento.html"><a href="pré-processamento.html#outlier"><i class="fa fa-check"></i><b>5.1.2</b> <em>Outlier</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="pré-processamento.html"><a href="pré-processamento.html#transformação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Transformação de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="pré-processamento.html"><a href="pré-processamento.html#tipos-de-datasets"><i class="fa fa-check"></i><b>5.2.1</b> Tipos de <em>datasets</em></a></li>
+<li class="chapter" data-level="5.2.2" data-path="pré-processamento.html"><a href="pré-processamento.html#normalização-e-padronização"><i class="fa fa-check"></i><b>5.2.2</b> Normalização e padronização</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="pré-processamento.html"><a href="pré-processamento.html#features-selection---seleção-de-atributos-sa"><i class="fa fa-check"></i><b>5.3</b> Features Selection - Seleção de atributos (SA)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="modelos.html"><a href="modelos.html"><i class="fa fa-check"></i><b>6</b> Modelos</a></li>
+<li class="chapter" data-level="7" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html"><i class="fa fa-check"></i><b>7</b> Validação de um modelo</a><ul>
+<li class="chapter" data-level="7.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#overfitting-underfitting"><i class="fa fa-check"></i><b>7.1</b> <em>Overfitting, Underfitting</em></a><ul>
+<li class="chapter" data-level="7.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>7.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>7.2</b> Validação Cruzada</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pré-processamento" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Pré-processamento</h1>
+<p>Para o profissional que trabalha com Aprendizado de Máquina ou outras áreas, embora exigindo boa parte do tempo nesta etapa, é uma das mais importantes. O pré-processamento é um conjunto de atividades que buscar preparar, organizar e estruturar o banco de dados (<em>dataset</em>) para que possa trabalhar com os dados. Ela torna a informação de seus dados mais consistentes, com organização rígida e geralmente classificados de acordo com o seu formato (caracteres, binários, númericos, etc). Podemos dizer que ele é um conjunto de técnicas do campo de <strong>Mineração de dados (<em>Data mining</em>)</strong>, uma outra área além de Inteligência Artificial (que engloba Aprendiza de Máquina) – que já é grande por si só - , que trat-se de uma outra dimensão de estudos e metodologias, isso sem falarmos de outros campos além destes dois. Neste tópico, vamos abordar algumas delas que são muito utilizadas nesta área. Note que em todos os procedimentos de Aprendizado de Máquina existe inúmeras metodologias para serem aplicadas em cada etapa e, de acordo com o interesse do pesquisador, pode ser utilizado diferentes estratégias com diferentes combinações. Não há uma receita de bolo, sabemos que precisamos extrair dados, pré-processalos (aplicar uma(s) estratégia para analisar, classificar os atributos, eliminar os redundantes, preencher ou eliminar os faltantes), desenvolver seus modelos de Aprendizado de Máquina, treiná-los e por fim, avaliar todo o seu modelo. É… Não é fácil, mas todo esse procedimento é fundamental para que se obtenha um modelo adequado. Portanto nesta seção busquei separar em alguns tópicos para facilitar a compreensão, porém entenda que <strong>TODAS</strong> as metodologias e estratégias podem ser combinadas e estão entrelaçadas. É como vários conjuntos em um <em>Diagrama de Venn</em> que estão dentro do Pré-processamento que está dentro de Mineração de dados e que está interseccionada com Aprendizado de Máquina (dentro de IA).</p>
+<p><strong>Não se assuste:</strong> No último capítulo deste livro estará um diagrama e uma explicação mais “cronológica” de todo esse cosmos, com suas “gálaxias” e sistemas “solares” de conteúdo.</p>
+<div id="dados-faltantes-e-a-limpeza-de-dados" class="section level2">
+<h2><span class="header-section-number">5.1</span> Dados faltantes e a Limpeza de dados</h2>
+<p>Durante o desenvolvimento destes modelos é comum se deparar com dados faltantes em seu banco de dados e que podem ser ocasionadas por razões diversas como não preenchimento cadastral, problemas de armazenamento de dados ou até mesmo situações aleatórias não identificadas. A escolha da forma de tratar esses dados faltantes é fundamental para o modelo. Os valores faltantes total quando todas as informações são perdidas ou parcial quando somente uma parte delas são perdidas</p>
+<p><span class="citation">(Little and Rubin <a href="#ref-little2019statistical">2019</a>)</span>, descrevem que os motivos de aparecimento de dados faltantes são comumente classificados em:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><em>Missing Completely at Random (MCAR)</em></strong>: neste caso, as observações faltante surgiram de maneira aleatória, portanto as razões para as perdas não são relacionadas às respostas do sujeito. O uníco problema gerado pelos dados faltantes é a perda de poder da análise a ser realizada. Por exemplo, um jovem que deixou de responder uma questão de sua prova sem querer, sem motivo algum.</p></li>
+<li><p><strong><em>Missing at Random (MAR)</em></strong>: os dados faltantes dependem das variáveis preenchidas e, portanto, podem ser totalmente explicadas pelas variáveis presentes no conjunto de dados. É possível não viesar a análise, considerando as informações que causam estes dados faltantes. Como por exemplo uma pesquisa elaborada por uma universidade com a finalidade de analisar a renda das mulheres em sua cidade porém não possui recursos financeiros suficiente para entrevistar todas as mulheres. A pesquisa é respondida por uma parcela de mulheres na cidade e todas as envolvidas estão com os dados completamente observados, seria analisado uma amostra aleatória de mulheres.</p></li>
+<li><p><strong><em>Missing Not at Random (MNAR)</em></strong>: nesta situação os dados faltante são gerados de forma não mensurável, isto é, de eventos que o pesquisador não consegue observar e não tem controle. É o pior caso e algumas vezes, é necessário técnica mais robustas. Em geral,dados situados nos extremos da distribuição são mais propensos a serem faltantes (muito baixos ou altos em relação ao padrão da amostra).</p></li>
+</ol>
+<div id="tratamento-de-dados-faltantes" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Tratamento de dados faltantes</h3>
+<p>Existem diversas metodologias de tratamentos em dados faltantes. Quando os dados são faltantes em um conjunto de dados, existem cinco grandes categorias de tratamento de análise que um pesquisador deve escolher. Como mencionado anteriormente e ainda reforço, a escolha do tratamento de análise de dados faltantes tem implicações importantes para a acurácia e o viés das estimativas. A Tabela 1 resume as definições e os maiores problemas nos cinco tipos de análises <span class="citation">(Andrade et al. <a href="#ref-tecnicasinput">2019</a>)</span>.</p>
+<table>
+<caption><strong>Tabela 1</strong> : Metodologia de dados faltantes. Determinados termos estão na seção <a href="intro.html#dicio">1.2</a> e alguns outros serão apresentados ao longo do livro.</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><strong>Técnicas de Análise para dados faltantes</strong></th>
+<th align="center"><strong>Definições</strong></th>
+<th align="center"><strong>Maiores Problemas</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Listwise Deletion</strong></td>
+<td align="center">Exclui todos os casos para os quais alguns dados estão faltando</td>
+<td align="center">Descarta dados de respondentes com respostas parciais. Menor amostra, menor potência. Viés em MAR e MNAR.</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Pairwise Delection</strong></td>
+<td align="center">Calcula as estimativas (médias, EP, correlações) usando todos os casos disponíveis com dados relevantes para cada estimativa.</td>
+<td align="center">Diferentes correlações representam misturas de subpopulação. Às vezes, a matriz de covariância não é definida positiva. Viés em MAR e MNAR. Nenhuma amostra faz sentido para a matriz de correlação (EP impreciso).</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Imputação Simples</strong></td>
+<td align="center">Preenche cada valor faltante, por exemplo média, por regressão, etc.</td>
+<td align="center">A imputação média (entre casos) e a imputação por regressão são ambas tendenciosas sob MCAR! Nenhuma amostra faz sentido para a matriz de correlação (EP impreciso). EP’s subestimados se você tratar o conjunto de dados como completo.</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Máxima Verossimilhança (MV)</strong></td>
+<td align="center">Estima diretamente os parâmetros de interesse a partir de uma matriz de dados incompleta; ou calcula estimativas como média, desvio padrão, ou correlação usando algum algoritmo.</td>
+<td align="center">Não-viesada sob MCAR e MAR. Melhora à medida que adiciona mais variáveis ao modelo de imputação. Número de variáveis deve ser menor que 100. EP’S preciso para FIML. para o algoritmo EM, nenhuma amostra faz sentido para a matriz de correlação (EP impreciso).</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Imputação Múltipla (IM)</strong></td>
+<td align="center">Imputa valores faltantes várias vezes, cria-se <em>m</em> conjuntos de dados completamente imputados. Executa a análise em cada conjunto de dados imputado. Combina os <em>m</em> resultados para obter estimativas de parâmetros e erros padrão.</td>
+<td align="center">Imparcial sob MCAR e MAR. Melhora à medida que adiciona mais variáveis ao modelo de imputação. O número de variáveis deve ser menor que 100. EP’s precisos. Fornece estimativas ligeiramente diferentes a cada vez que analisa os dados. Em Equações Estruturais, piora a convergência.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><em>Listwise</em> deletion</strong>: exclui todos os casos para os quais alguns dados estão faltando . A eliminação dos casos frequentemente reduz muito o tamanho da amostra e o poder estatístico do teste de hipóteses. Importante o pesquisador se atentar que mesmo quando o poder do teste parece adequado, este método pode produzir estimativas de parâmetros tendenciosas sob dados faltantes sistemático (MAR e MNAR). O <em>listwise deletion</em> restringe a população-alvo do estudo, assim em geral quase nunca se utiliza esse procedimento. Uma vez que ele descarta dados que custaram tempo, disponibilidade dos participantes e até mesmo recursos financeiros, a eliminação desses participantes da pesquisa pode violar o princípio ético da pesquisa <span class="citation">(Rosenthal <a href="#ref-rosenthal1994science">1994</a>)</span>.</li>
+</ul>
+<p>Resumo geral: elimina todos os casos que possuem dados faltantes em sua pesquisa.</p>
+<ul>
+<li><strong><em>Pairwise</em> deletion</strong>: este método tenta minimizar a perda que ocorre em <em>Listwise deletion</em>. Como exemplo a matriz de correlação. Uma correlação como explicada em <a href="intro.html#dicio">1.2</a>, mede a força da relação entre duas variáveis. Para cada par de variáveis para os quais os dados estão disponíveis, o coeficiente de correlação indicará a força. Em <em>Listwise</em> será o mesmo tamanho para todas as correlações excluindo toda observação faltante, em <em>Pairwise deletion</em> irá variar. Ela exclui apenas os casos que não tem respostas completas dentro da observação, aproveitando o maior número de casos possíveis.</li>
+</ul>
+<p>Resumo geral: ao invés de eliminar as observações (coluna ou linha inteira da matriz) com dados faltantes, como <em>listwise deletion</em>, este metodo elimina apenas os casos que não tem respostas completas nas combinações das observações, aproveitando o maior número possível.</p>
+<ul>
+<li><strong>Imputação simples</strong><em>: envolve o preenchimento de cada dado
+faltante com uma suposição de qual deve ser o valor que está
+faltando no conjunto de dados. Os exemplos mais comuns de imputação simples são: imputação pela média - substituição de cada valor faltante pela média do grupo para a variável correspondente; imputação </em>hot deck* - substituição de cada dado faltante por um valor “doador” que possui um escore similar em outras variáveis; e imputação por regressão – substituindo cada valor faltante por um valor predito com base em um modelo de regressão múltipla (será explicado conceito de regressão posteriormente), obtido a partir dos valores observados <span class="citation">(Andrade et al. <a href="#ref-tecnicasinput">2019</a>)</span>. A maioria das técnicas de imputação simples é tendenciosa. Por exemplo, a imputação pela média insere uma média constante para cada valor faltante, as estimativas da variância e da correlação serão tendenciosas – mesmo que o mecanismo de dados faltantes seja completamente aleatório (MCAR). A imputação por regressão leva à subestimação da variância e superestimação da correlação (pois os valores imputados estarão exatamente na linha de regressão). Pode-se melhorar ao caso de regressão adicionando um termo de erro aleatório aos valores imputados (regressão estocástica), no entanto, ainda são imprecisas. Ao caso dos testes de hipóteses, não estima com precisão o erro padrão <span class="citation">(Andrade et al. <a href="#ref-tecnicasinput">2019</a>)</span>.</li>
+</ul>
+<p>Resumo geral: envolve o preenchimento de cada dado faltante com uma “boa adivinhação” de qual deve ser o valor que está faltando no conjunto de dados, sendo essa estimação de acordo com o pesquisador e sua pesquisa (média, regressão, etc).</p>
+<ul>
+<li><strong>Imputação múltipla (IM)</strong>: cada valor faltante é substituído por dois ou mais valores imputados e ordenados a fim de representar a incerteza sobre qual valor imputar, permitindo que as estimativas das variâncias estimadas sejam calculadas com dados completos <span class="citation">(Rubin <a href="#ref-rubin2004multiple">2004</a>)</span>. Assim, <span class="math inline">\(m\)</span> imputações atribuídas a cada valor faltante gera <span class="math inline">\(n\)</span> conjuntos de dados completados que são analisados inerente aos valores observados da amostra.</li>
+</ul>
+<p>Muitos utilizam este método, visto que aumenta a eficiência de estimação, facilita o estudo direto da sensibilidade de inferências, abrange uma variedade de análises e geralmente válidas por incorporar incertezas devido à falta de dados. Tornando-os mais eficientes que a imputação simples, porém mais trabalhosa e ocupa mais espaço de armazenamento. Em desvantagem desse método,pode surgir discrepância na variância quando se admite pressupostos equivocados (modelo escolhido não consistente com os dados), com isso um <span class="math inline">\(m\)</span> pequeno se torna mais adequado com menor gravidez. Uma das característica mais importantes desse método é que os valores faltantes para cada envolvido é predito a partir de seus próprios valores observados, com o ruído aleatório adicionado para preservar uma correta quantidade de variabilidade nos dados imputados <span class="citation">(Schafer and Graham <a href="#ref-schafer2002missing">2002</a>)</span>.</p>
+<p><span class="citation">Schafer (<a href="#ref-schafer1999multiple">1999</a>)</span> recomenda que a quantidade necessária de imputações para que a estimativa de conjunto de dados tenha relativa eficiência, com a seguinte equação:</p>
+<p><span class="math display" id="eq:qimputm">\[\begin{equation} 
+  RE=\sqrt{1+\frac{\lambda}{m}}
+  \tag{5.1}
+\end{equation}\]</span></p>
+<p>onde, é <span class="math inline">\(m\)</span> é a quantidade do conjunto de dados completados e <span class="math inline">\(\lambda\)</span> é a taxa de informação - caso fosse 50% dos dados faltantes, <span class="math inline">\(\lambda=0,5\)</span>.</p>
+<p>Claro que o método para mensurar a quantidade necessária <strong>varia de acordo com o tema da pesquisa e a escolha do pesquisador</strong>. Dependendo área que o pesquisador está interessado, pode-se haver outras recomendações para mensurar a quantidade.</p>
+<p>A IM é composto basicamente por três passos <span class="citation">(Assunção <a href="#ref-assunccao2012estrategias">2012</a>)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Imputação dos dados:</strong> são gerados <strong>m</strong> bancos de dados completos através de técnicas adequadas que devem levar em conta ao máximo a relação entre os dados faltantes e os observados. Existe diversos métodos que podem ser utilizadas para este primeiro passo, um dos mais utilizados atualmente é o método de <strong>regressão linear bayesiana</strong> - ao caso de não entender o que são as técnicas de Regressão linear nem de Bayes, as seções XXXXXXXXXXXX instruem.</li>
+</ol>
+<p>Este método tem como resposta a variável que possui dados faltantes (<span class="math inline">\(Y\)</span>) e como variáveis preditoras são utilizadas as demais variáveis presentes (<span class="math inline">\(X_1, X_2,..., X_k\)</span>), com <span class="math inline">\(k\)</span> número de preditoras. Na abordagem Bayesiana, a regressão linear é formulada através de distribições de probabilidade ao invés da abordagem clássica. Seu modelo será:</p>
+<p><span class="math display">\[Y_i \sim N(\beta^T X_k , \sigma ^2 I)\]</span>
+A variável dependente <span class="math inline">\(Y_i\)</span> é gerada a partir de uma Distribuição Normal (Gaussiana) <a href="intro.html#dicio">1.2</a> caracterizada pela média e variância (<span class="math inline">\(\sigma^2\)</span>. A média é o produto entre os parâmetros <span class="math inline">\(\beta\)</span> e variáveis independentes <span class="math inline">\(X_k\)</span>. O objetivo deste método é determinar a distribuição posterior para os parâmetros do modelo ao invés de encontrar um único valor. A resposta e seus parâmetros são gerados por meio de uma distribuição de probabilidade.</p>
+<p>Para encontrar as distribuições dos parâmetros do modelo, a inferência bayesiana utiliza o Teorema de Bayes para combinar informações prévias ao experimento e dados de amostra com o objetivo de deduzir as propriedades sobre um parâmetro de interesse a partir dos dados de entrada <span class="math inline">\(X_k\)</span> e de saída <span class="math inline">\(Y\)</span>. A aplicação de Bayes neste contexto seria:</p>
+<p><span class="math display" id="eq:reglinbayes">\[\begin{equation}
+  P(\beta|y,X)=\frac{P(y|\beta,X)P(\beta|X)}{P(y|X)}
+  \tag{5.2}
+\end{equation}\]</span></p>
+<p>onde <span class="math inline">\(P(\beta|X)\)</span> reflete a incerteza de <span class="math inline">\(\beta\)</span>. Qualquer informação que se tenha inicialmente sobre o parâmetro é tratado como ela (pode ser utilizada como não informativa).
+Em <span class="math inline">\(P(y|\beta,X)\)</span> é a verossimilhança que diz respeito a distribuição característica dos dados (interpretada como no caso clássico). O denominado <span class="math inline">\(P(y|X)\)</span> é tratada como uma constante de normalização para a equação e reflete a probabilidade que pode-se obter qualquer dado.</p>
+<p><strong>Ressalto</strong> que existe diversos métodos nesta primeira etapa e recomendo o leitor interessado, buscar outras literaturas.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Análise dos bancos de dados gerados pelo passo 1:</strong> ao criar o conjunto de dados imputados, é importante fazer uma análise separadamente para cada um dos <span class="math inline">\(m\)</span> banco de dados da mesma forma como tradicionalmente se faz, o modelo pode variar de acordo com o pesquisador - são apresentadas na seção SEIS AQUI COLOCAR A SEÇÃO DEPOIS.</p></li>
+<li><p><strong>Combinar os resultados:</strong> com as análises realizadas, precisa-se combinar os resultados apropriados para obter a inferência da imputação repetida. Por meio do passo 2, obtém-se estimativas para o parâmetro de interesse <span class="math inline">\(D\)</span>. Estas estimativas podem ser qualquer medida escalar como médias, variâncias, correlações, coeficientes de regressão por exemplo. A estimativa <span class="math inline">\(D\)</span> será a combinação será a média das estimativas individuais.</p></li>
+</ol>
+<p><span class="math display" id="eq:mediaimputmul">\[\begin{equation}
+  \overline{D}=\frac{1}{m}\displaystyle \sum^{m}_{s=}\hat{D}_s
+  \tag{5.3}
+\end{equation}\]</span></p>
+<p>Em seguida, a variância combinada é calculada:</p>
+<p><span class="math display" id="eq:varimputmul">\[\begin{equation}
+T  =\overline{E}+ (1+\frac{1}{m})F
+  \tag{5.4}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\overline{E}= \frac{1}{m}\displaystyle \sum^{m}_{s=} E_s\)</span> é a média das variâncias que preserva a variabilidade natural (<span class="math inline">\(E\)</span>) do parâmetro de interesse nos <span class="math inline">\(m\)</span> banco de dados e <span class="math inline">\(F=\frac{1}{(m+1)}\displaystyle \sum^{m}_{s=}(\hat{D}_s-\overline{D})^2\)</span> o componentes que estima a incerteza causada pelos dados faltantes. Se <span class="math inline">\(F\)</span> for muito pequeno as estimativas dos parâmetros são muito semelhantes, com menos incerteza. Do contrário as incertezas variam muito.</p>
+<p>Resumo geral: a imputação múltipla executa uma rotina de imputação simples repetidamente (múltiplas associações sobre os valores plausíveis) e consegue estimar sem víes o erro padrão. Ocorre as imputações muitas vezes contabilizando a imprecisão de cada imputação.</p>
+<ul>
+<li><strong>Método de máxima verossimilhança (EM - Expecativa-maximização)</strong>: proposto por <span class="citation">Fisher (<a href="#ref-fisher1912absolute">1912</a>)</span> , é um método paramétrico (ver <a href="intro.html#dicio">1.2</a>) que parte do princípio de especificar como a função de verossimilhança (ver <a href="intro.html#dicio">1.2</a>) deveria ser utilizada como um instrumento de redução de dados <span class="citation">Casella and Berger (<a href="#ref-casella2010inferencia">2010</a>)</span>. Este método consiste na escolha do conjunto de valores para os parâmetros que torne um máximo a função de verossimilhança. A inferência de verossimilhança pode ser considerada como um processo de obtenção de informação sobre um vetor de parâmetros <span class="math inline">\(\theta\)</span>, a partir do ponto <span class="math inline">\(x\)</span> do conjunto amostral, por meio da função de verossimilhança. Vários vetores podem produzir a mesma verossimilhança, reduzindo a informação de <span class="math inline">\(\theta\)</span> <span class="citation">(Cordeiro <a href="#ref-cordeiro1999introduccao">1999</a>)</span>.</li>
+</ul>
+<p>O objetivo é encontrar uma estimativa do parâmetro <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\hat{\theta}\)</span>, que maximize a verossimilhança. Portanto, utiliza-se o conceito de derivada (diferenciação) e igualamos a zero <span class="citation">(Bolfarine and Sandoval <a href="#ref-bolfarine2001introduccao">2001</a>)</span>.
+<span class="math display" id="eq:derivadaverossimilhanca">\[\begin{equation}
+  L&#39;(\theta;x)=\frac{\delta L(\theta;x)}{\delta \theta}=0
+\tag{5.5}
+\end{equation}\]</span></p>
+<p>Para inferir se é um ponto máximo, aplica-se a segunda derivada e verificar se o resultado é menor que zero <span class="citation">(Bolfarine and Sandoval <a href="#ref-bolfarine2001introduccao">2001</a>)</span>.</p>
+<p><span class="math display" id="eq:derivadadoisverossimilhanca">\[\begin{equation}
+  L&#39;&#39;(\hat{ \theta};x)=\frac{\delta^2 log L(\theta;x)}{\delta \theta^2}&lt;0
+\tag{5.6}
+\end{equation}\]</span></p>
+<p>Com algoritmo EM (Expectativa-maximização), por <span class="citation">Dempster, Laird, and Rubin (<a href="#ref-dempster1977maximum">1977</a>)</span> é um procedimento que realiza a estimativa dos parâmetros (vetor de médias e a matriz de covariância) por meio da máxima verossimilhança em conjuntos amostrais incompletos (dados faltantes) e pode ser utilizado como uma ferramenta para inserção de dados. Por um processo iterativo, na etapa E(Estimação/Esperança) se estima os dados faltantes para completar a matriz dos dados, no caso calcula-se a esperança condicional (média condicional) da função de log-verossimilhança; no passo M (Maximização), com os dados completados, encontra-se um <span class="math inline">\(\hat{\theta}\)</span> que maximiza a esperança condicional da log-verossimilança e então seu resultado é usado para fazer a inferência no passo E e assim sucessivamente até que o algoritmo processado tenha convergido, ou seja, a diferença entre o valores da verossimilhança dos dados incompletos na <span class="math inline">\(k\)</span>-ésima e na <span class="math inline">\((k+1)\)</span>-ésima iteração seja tão pequena <span class="citation">(Enders <a href="#ref-enders2010applied">2010</a> ; Pereira <a href="#ref-pereira2019inserccao">2019</a>)</span>.</p>
+<p>Resumo geral: o algoritmo EM, faz a etapa E com a função de verossimilhança para encontrar um valor médio e preencher os dados faltantes, faz a etapa M utilizando a máximização de verossimilhança para encontrar um valor médio com o menor erro possível e continua, a partir do resultado do segundo passo, sucessivamente até convergir no melhor valor e menor erro possível (global) para preencher os dados faltantes.</p>
+<p>Além de dados faltantes, é possível lidarmos com grande volume de dados. Por isso, o processamento computacional se torna cada vez mais complexo e para aumentarmos a eficiência e reduzir os custos usamos o processo de redução de dados ou a hierarquização para separarmos os conjuntos a serem estudados. Pode-se por meio de <strong>Agregação de cubo de dados</strong> (atividade de construção de um cubo de dados) que apesar de gerar maior necessidade de armazenamento, permite um processamento mais rápido por não necessitar varrer toda a base em busca de determinado valor. A <strong>Seleção de subconjuntos de atributos</strong> para utilizar os atributos altamente relevantes em detrimento dos menos relevantes (como por exemplo verificar pela significância). Ou também <strong>reduzir a numerosidade </strong> ou <strong>dimensionalidade</strong> que permitem que os dados seja estimados por alternativas de representação de dados menores e compactados e alguns métodos para hierarquizar as variáveis. Na seção de XXXXXXXXXXXX serão apresentados as principais estratégias.</p>
+</div>
+<div id="outlier" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> <em>Outlier</em></h3>
+<p>Um <em>outlier</em> é um valor que se encontra distante da normalidade e que provavelmente causará anomalias nos resultados obtidos, pois pode viesar negativamente todo o resultado de uma análise e que seu comportamento pode ser justamente o que está sendo procurado. São basicamente dados que se diferenciam drasticamente dos outros, conhecidos como anomalias, pontos fora da curva, dados discrepantes, ruídos, e que estão fora da distribuição normal.</p>
+<p>Pode-se verificar dados incomuns apenas verificando a taebla, mas dependendo do tamanho de seu banco de dados não é uma boa recomendação. Uma das melhores maneiras de identificarmos dados <em>outliers</em> é utilizando gráficos. Ao plotar um gráfico o analista consegue verificar que existe algo diferente. Como exemplo, um estudo no sistema de saúde brasileiro pela <span class="citation">AQUARELA (<a href="#ref-aquarela">2017</a>)</span> utilizando dados da prefeitura de Vitória no Espírito Santo, analisando fatores que levam as pessoas a não comparecerem em consultas agendadas no sistema público de saúde da cidade. Padrões encontrados de que mulheres comparecerem muito mais que os homens e crianças faltam poucos às consultas, porém, uma senhora <em>outlier</em>, com 79 anos agendou uma consulta e com 365 dias de antecedência apareceu à consulta. Neste caso, convém ser estudado o <em>outlier</em> pelo comportamento trazer informações relevantes que podem ser adotadas para aumentar a taxa de assiduidade nos agendamentos. <em>Outlier</em> do caso indicado pela seta vermelha <a href="pré-processamento.html#fig:outlier">5.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:outlier"></span>
+<img src="Figuras/outlier.jpg" alt="“Gráfico de estudo no sistema de saúde apresentando outlier (AQUARELA 2017).”" width="70%" />
+<p class="caption">
+Figura 5.1: “Gráfico de estudo no sistema de saúde apresentando <em>outlier</em> <span class="citation">(AQUARELA <a href="#ref-aquarela">2017</a>)</span>.”
+</p>
+</div>
+
+<p>Por diversos motivos pode ocorrer de ter presença de <em>outlier</em> nos dados e podem viesar negativamente todo resultado de uma análise e seu comportamente pode muitas vezes ser o que justamente o pesquisador está procurando. Há possibilidade do <em>outlier</em> ser importante para o pesquisador entender o por que da anomalia estar acontecendo, ou para identificar algum dado extraído erroneamente, por exemplo.</p>
+<p>Uma maneira mais complexa e muito precisa, é de identificá-los através de análise dos dados. Encontrando a distribuição estatísticas que mais e aproxima à distribuição dos dados e utilizar métodos estatísticos para detectar as anomalias. Como por exemplo o uso de histograma e a distribuição normal para verificar os dados que estão dentro e fora do intervalo de confiança (ver <a href="intro.html#dicio">1.2</a> Distribuição normal).</p>
+</div>
+</div>
+<div id="transformação-de-dados" class="section level2">
+<h2><span class="header-section-number">5.2</span> Transformação de dados</h2>
+<div id="tipos-de-datasets" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Tipos de <em>datasets</em></h3>
+<p>A escolha das medidas estatísticas para sua análise ou modelo de Aprendizado de Máquina dependem muito dos tipos de dados das variáveis em observação. Estes tipos de dados podem ser numéricos (como uma sala de aula, com alunos que variam sua altura de 1,51 metros a 1,98 metros) e categórico (como uma classificação num hospital de pacientes doentes ou não doentes), embora esses dois tipos podem ser subdivididos como números inteiros e ponto flutuante para variáveis numéricas e booleano, ordinal ou nominal para variáveis categóricas.</p>
+<p>As subdivisões mais comuns são:
+- Variáveis Numéricas:
+1. Variáveis inteiras (exemplo: <span class="math inline">\(1,2,3,..., n\)</span>);
+2. Variáveis de ponto flutuante (parte fracionária, por exemplo: 1,17; 0,10; 47,2).</p>
+<ul>
+<li>Variáveis categóricas:
+<ol style="list-style-type: decimal">
+<li>Variáveis booleanas (dicotômicas, binárias: Verdadeiro e Falso).</li>
+<li>Variáveis ordinais (1º, 2º, 3º, etc).</li>
+<li>Variáveis nominais (não possuem ordenação como por exemplo, cor dos olhos: azuis, castanhos, pretos e verdes).</li>
+</ol></li>
+</ul>
+<p>Importante ressaltar que quando trabalhamos dentro da programação, possuem mais tipos além de <em>int</em> (númericos inteiros) <em>char</em> (caracteres) e <em>float</em> (pontos flutuantes), como o <em>double</em> que armazena números com ponto flutuantes com precisão dubla com o dobro da capacidade de <em>float</em>, <em>string</em> como cadeia de caracteres.</p>
+<p>Muitos algoritmos possuem a limitação de trabalhar somente com atributos qualitativos (variáveis categóricas), com isso muitas vezes é necessário aplicar algum método capaz de transformar um atributo quantitativo em um atributo qualitativo (faixas de valores). Uma estratégia que cresce ao longo do tempo é o processo de <strong>discretização</strong> que transforma atributos contínuos em atributos discretos como por exemplo, dividir alturas entre menor que 1,70 metros e maior igual que 1,70 metros. Dependendo do estudo pode ser adequado, embora o pesquisador precisa tomar muito cuidado pois é provável que possar perder algumas informações. De mesmo modo, é possível transformar variáveis categóricas em númericas, como por exemplo classificar tamanhos como pequeno = 1, médio = 2 e grande = 3 possibilitando por meio do mapeamento manter a ordem dos valores (<span class="citation">Batista and others (<a href="#ref-batista2003pre">2003</a>)</span>).</p>
+<p>É bem comum estes tipos de tratamento de dados ao caso de datas, como trabalhos que aplicam-se <strong>séries temporais</strong> em que o pesquisador precisa estudar a sazonalidade de algum objeto de estudo. A soja por exemplo pode-se analisar sua tendência ao longo dos anos, mas quando tratamos os dados e analisamos em outro período podemos verificar que possui sazonalidades em sua produção. Em análises para investimentos também, atentar o comportamento mensal e diário das ações de uma empresa, muitas vezes está com tendência de alta num âmbito mensal, porém ao analisar diariamente é possível que esteja em baixa.</p>
+<p>Para facilitar a compreensão, considere a série temporal <em>AirPassengers</em> que representa o número de passageiros mensalmente em uma empresa de transporte aéreo ao período de 1949 a 1960 <span class="citation">(Box and Jenkins <a href="#ref-box1976time">1976</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:airpassengers"></span>
+<img src="Figuras/airpassengers.png" alt="“Gráfico de estudo no sistema de saúde apresentando outlier (AQUARELA 2017).”" width="70%" />
+<p class="caption">
+Figura 5.2: “Gráfico de estudo no sistema de saúde apresentando <em>outlier</em> <span class="citation">(AQUARELA <a href="#ref-aquarela">2017</a>)</span>.”
+</p>
+</div>
+
+<p>Para o campo de transformação de dados e séries temporais, ao leitor que pretende ir mais a fundo nestes outros “galhos” de estudos. Recomendo buscar outras literaturas que tem como foco este temas. Em discretizações por exemplo, <span class="citation">Dougherty, Kohavi, and Sahami (<a href="#ref-dougherty1995supervised">1995</a>)</span> e <span class="citation">Garcia et al. (<a href="#ref-garcia2012survey">2012</a>)</span> abordam diversos métodos que podem agradá-lo.</p>
+</div>
+<div id="normalização-e-padronização" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Normalização e padronização</h3>
+<p>Muitos conjuntos de dados apresentam atributos contínuos que espalham-se em diferentes faixas de valores ou possuem distintas variações, devido às suas naturezas ou escalas em que foram medidas. Estas diferenças podem ser fundamentais e precisam ser levadas em conta <span class="citation">(CARVALHO et al. <a href="#ref-carvalho2011inteligencia">2011</a>)</span>. Em situações também para validarmos a análise variância precisa-se dos requisitos de atiditividade, independência, normalidade e homogeneidade de variâncias - será apresentada em ANOVA seção XXXXXXXX. Quando alguma das características mencionadas acontece ou não verifica seus requisitos o pesquisador, antes de fazer uma análise não-paramétrica (<a href="intro.html#dicio">1.2</a>), pode-se transformar seus dados <span class="citation">(Banzatto and Kronka <a href="#ref-banzatto1992experimentaccao">1992</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Normalização por reescala:</strong> através de um valor mínimio e um máximo, gera um novo intervalo onde os valores de um atributo estão contidos. Um intervalo entre 0 e 1.
+<span class="math display" id="eq:normalizacao">\[\begin{equation}
+x_{ij}=\frac{x_{ij}-min_j}{max_j-min_j}
+\tag{5.7}
+\end{equation}\]</span></li>
+</ol>
+<p>sendo <span class="math inline">\(x_i\)</span> a observação de ordem <span class="math inline">\(i\)</span>, <span class="math inline">\(min_j\)</span> e <span class="math inline">\(max\)</span> os valores mínimos e máximos do atributo <span class="math inline">\(j\)</span> respectivamente.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Transformação de raiz quadrada:</strong> frequentemente utilizada para dados de contagens que geralmente segue uma distribuição de Poisson (<a href="intro.html#dicio">1.2</a>), onde a média é igual à variância <span class="citation">(Banzatto and Kronka <a href="#ref-banzatto1992experimentaccao">1992</a>)</span>.</li>
+</ol>
+<p><span class="math display" id="eq:transraiz">\[\begin{equation}
+\sqrt{x_i}
+\tag{5.8}
+\end{equation}\]</span></p>
+<p>sendo <span class="math inline">\(x_i\)</span> representando as observações do banco de dados. Quando ocorrem zeros ou valores baixos (menores que 10 ou 15), recomenda-se <span class="math inline">\(\sqrt{x+0,5} \ \mbox{ou} \sqrt{x+1,0}\)</span> <span class="citation">(Banzatto and Kronka <a href="#ref-banzatto1992experimentaccao">1992</a>)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Transformação angular:</strong> recomenda-se para dados expressos em porcentagens, que geralmente seguem a distribuição binomial (<a href="intro.html#dicio">1.2</a>). Atualmente existe tabelas apropriadas para essa transformação <span class="citation">(Banzatto and Kronka <a href="#ref-banzatto1992experimentaccao">1992</a>)</span>. Segundo <span class="citation">Banzatto and Kronka (<a href="#ref-banzatto1992experimentaccao">1992</a>)</span> porcentagens entre 30% e 70% ou as porcentagens são resultantes da divisão dos valores observados nas parcelas por um valor constante tornam-se desnecessárias e pode-se analisar diretamente os dados originais, mas atente-se pois algumas vezes variar essas exceções de acordo com sua área e pesquisador que a propõe.</li>
+</ol>
+<p><span class="math display" id="eq:transang">\[\begin{equation}
+arc \ sen \sqrt{\frac{x}{100}}
+\tag{5.9}
+\end{equation}\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Transformação logaritmica:</strong> quando verificada determinada proporcionalidade entre as médias e desvios padrões dos diversos tratamentos. É geralmente utilizada para problemas de assimetria (<a href="intro.html#dicio">1.2</a>). Em casos, por exemplo, tratamentos com amplitude alta como uma população numerosa que varia de 1.000 a 10.000 indivíduos ou tratamentos de baixa amplitude de 10 a 100 indivíduos. Esta trasformação pode ser útil.</li>
+</ol>
+<p><span class="math display" id="eq:translog">\[\begin{equation}
+log(x) \ \mbox{ou} ln(x)
+\tag{5.10}
+\end{equation}\]</span></p>
+<p>Uma vez transformados os dados em logaritmos, a soma de dados logarítmicos não tem o mesmo valor que a soma de seus antilogaritmos, mas representa o produto destes.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Padronização:</strong> é um método muito utilizado por diversas áreas de pesquisa. Neste caso diferentes atributos podem abranger diferentes intervalos, porém possuir os mesmos valores para alguma medida de posição e de variação <span class="citation">(CARVALHO et al. <a href="#ref-carvalho2011inteligencia">2011</a>)</span>. Imagine você como economista interessado em avaliar o desempenho da produção de soja com as variáveis econômicas e monetárias o Brasil e possui as seguintes variáveis: produção de soja anual medida em milhares de toneladas, taxa básica de juros SELIC medida em porcentagem, receita média anual em milhares de reais, área plantada de soja medida em hectares. Já podemos perceber que todos possuem medidas e grandezas bem diferente uma das outras. Este o propósito da padronização, deixar com que todas as variáveis tenham uma medida em comum.</li>
+</ol>
+<p><span class="math display" id="eq:padronizacao">\[\begin{equation}
+x_{ij}=\frac{x_{ij}-\overline{X}}{S_j}
+\tag{5.11}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\overline{X_j}\)</span> e <span class="math inline">\(S_j\)</span> representam a média e o desvio padrão do atributo <span class="math inline">\(j\)</span> respectivamente. Após a transformação todos os atributos terão a média zero e desvio-padrão unitário.</p>
+<p>Caso transformado seu banco de dados e seu banco de dados apresentarem uma distribuição contínua não-normal, ou não-homogênea ou não-aditiva, não há outra alternativa senão utilizar a estatística não-paramétrica.</p>
+<p>Resumo geral: Muitos conjuntos de dados apresentam atributos contínuos que espalham-se em diferentes faixas de valores ou possuem variações diferentes, por motivo de suas naturezas ou escalas medidas. Estas diferenças podem ser muito importantes e precisam ser levadas em conta para não causar erros em sua pesquisa. Para isso usam-se alguns métodos para transformar seus dados para que possam ser trabalhados, apresentados os principais neste livro. Em situações para fazermos análise variância precisa-se também ser transformado seus dados caso não cumpra seus requisitos. Caso o problema ainda persistir, precisa-se utilizar estatística não-paramétrica.</p>
+</div>
+</div>
+<div id="features-selection---seleção-de-atributos-sa" class="section level2">
+<h2><span class="header-section-number">5.3</span> Features Selection - Seleção de atributos (SA)</h2>
+<p>Uma literatura que achei bastante interessante foi <span class="citation">Parmezan et al. (<a href="#ref-parmezan2012avaliaccao">2012</a>)</span>. Seguindo sua estrutura a respeito de Seleção de atributos. Podemos definir SA como a determinação de um subconjunto ótimo de atributos, partindo de algum critério ou medida de importância, que representa a informação importante dos dados <span class="citation">(Parmezan et al. <a href="#ref-parmezan2012avaliaccao">2012</a>)</span>. Extraímos um subconjunto de <span class="math inline">\(P\)</span> atributos a partir de um conjunto original de <span class="math inline">\(N\)</span> atributos, sendo <span class="math inline">\(P\leq M\)</span> <span class="citation">(Parmezan et al. <a href="#ref-parmezan2012avaliaccao">2012</a>; Liu and Motoda <a href="#ref-liu1998feature">1998</a>; Lee <a href="#ref-lee2005seleccao">2005</a>)</span>. A cada conjunto de dados com <span class="math inline">\(M\)</span> atributos, existem <span class="math inline">\(2^M\)</span> subconjuntos de atributos candidatos <span class="citation">(Langley and others <a href="#ref-langley1994selection">1994</a>)</span>.</p>
+<p>Existem diversas metodologias para selecionarmos os atributos que podem variar em sentido de buscas e estratégias para a seleção. Repare que os tópicos mencionados anteriormente também são utilizados para remoção e seleção, foi fragmentado apenas para facilitar a compreensão.</p>
+<p>O “sentido de busca” influencia na determinação do(S) ponto(s) de partida no espaço de busca, ou seja, na direção em que a busca será realizada e os operadores que serão utilizados. Elas são categorizadas, seguindo <span class="citation">Parmezan et al. (<a href="#ref-parmezan2012avaliaccao">2012</a>)</span> e <span class="citation">Liu and Motoda (<a href="#ref-liu2008computational">2008</a>)</span>, em:</p>
+<p>• <strong>Forward Selection - Seleção para Frente:</strong> o estado inicial é estabelecido como vazio (subconjunto vazio de atributos), e os atributos são incluídos um por vez;</p>
+<p>• <strong>Backward Elimination - Eliminação por Trás:</strong> o ponto de partida é iniciado com o conjunto de todos os atributos (completo), tais quais são removidos sucessivamente;</p>
+<p>• <strong>Bidirectional Search - Pesquisa Bidirecional:</strong> como o próprio nome diz, duas buscas são processadas simultâneamente. Ambas terminam quando atingem o centro do espaço de busca, ou quando uma das buscas encontra os melhores atributos antes de alcançar o centro do espaço de busca;</p>
+<p>• <strong>Random Search - Pesquisa Aleatória:</strong> com o propósito de evitar que a busca fique restrita a ótimos locais. Não tem uma direção específica para buscar, pois o ponto de partida da busca e o modo de adicionar ou remover atributos são decididos aleatoriamente.</p>
+<p>Além dos sentidos de busca, existem diversas abordagens que avaliam subconjuntos de atributos e que podem remover tanto atributos irrelevantes quanto redundantes <span class="citation">(Parmezan et al. <a href="#ref-parmezan2012avaliaccao">2012</a>; Liu and Motoda <a href="#ref-liu2008computational">2008</a>)</span>. A seguir, as principais abordagens:</p>
+<p>• <strong><em>Filter</em> - Filtro:</strong></p>
+<p>Com a finalidade de filtrar atributos não importantes, essa abordagem é feita antes da construção dos modelos. A ideia é simplesmente receber como entrada o
+conjunto de exemplos descrito utilizando somente o subconjunto de atributos importantes identificados. Ela ocorre antes do aprendizado de máquina <span class="citation">(John, Kohavi, and Pfleger <a href="#ref-john1994irrelevant">1994</a>)</span> e utiliza-se métodos estatísticos diversos para esta seleção, como por exemplo árvores de decisão ou as “medidas de importância” que são apresentadas na próxima seção.</p>
+<p>• <strong><em>Wrapper</em>- Empacotar:</strong> ocorre também externamente ao algoritmo de aprendizado. Este método gera um subconjuto candidato de atributos, executa o algoritmo de aprendizado considerado somente esse subcojunto selecionado de treinamento e avalia a precisão desse classificador. Repete-se esse processo para cada subconjunto de atributos até buscar um bom modelo. Como exemplo temos a análise por arvores de decisão e florestas aleatórias (serão apresentadas mais a frente). Tem como desvantagem o custo operacional desta abordagem. Exemplo de aplicações: <em>Naive Bayes</em> e Máquina de vetores de suporte para classificação.</p>
+<p>• <strong><em>Embedded</em> - Embutida:</strong> é realizada internamente pelo próprio algoritmo de extração de padrões. Esta estratégia seleciona o subconjunto de atributos no processo de construção do modelo de classificação, durante a fase de treinamento, e geralmente são específicos para um dado algoritmo de aprendizado. A principal diferença dos métodos do tipo <em>embedded</em> e <em>wrapper</em>,
+é que em <em>embedded</em> depende em relação a um modelo preditivo específico, assim não permite a sua implementação em combinação com outros modelos <span class="citation">(Souza <a href="#ref-souza2014computational">2014</a>)</span>.</p>
+<p>Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o excesso de categorias - que ironicamente tem o propósito de organizar e facilitar. Basicamente são estratégias diferentes com sentidos diferentes de se iniciar a busca de atributos que podem ser irrelevantes ou relevantes: antes de criar um modelo de Aprendizado de maquina; usa-se um modelo de aprendizado para selecionar os atributos antes de iniciar uma etapa de análise [pode-se até mesmo realizar outro algoritmo de aprendizado após este algoritmo de seleção] ou a própria seleção com a análise [mesmo algoritmo para selecionar e concluir]). Quando misturamos esta estratégia, denominamos de <strong>híbridos</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:diferenssa"></span>
+<img src="Figuras/diferenssa.png" alt="“Diferença de Filter, Wrapper e Embedded respectivamente (modificado de Covões (2010)).”" width="70%" />
+<p class="caption">
+Figura 5.3: “Diferença de <em>Filter</em>, <em>Wrapper</em> e <em>Embedded</em> respectivamente (modificado de <span class="citation">Covões (<a href="#ref-covoes2010seleccao">2010</a>)</span>).”
+</p>
+</div>
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-tecnicasinput">
+<p>Andrade, Dalton Francisco de, Adriano Ferreti Borgatto, Pedro Henrique Araujo, and Jeovani Schmitt. 2019. <em>Caderno de Pesquisa 1: Técnicas de Imputação de Dados Na Análise de Questionários Contextuais</em>. Brasília: Cebraspe.</p>
+</div>
+<div id="ref-aquarela">
+<p>AQUARELA. 2017. “Otimizando Agendamentos Médicos Com Inteligência Artificial.” <em>AQUARELA</em>. <a href="https://www.aquare.la/otimizando-agendamentos-medicos-com-inteligencia-artificial/">https://www.aquare.la/otimizando-agendamentos-medicos-com-inteligencia-artificial/</a>.</p>
+</div>
+<div id="ref-assunccao2012estrategias">
+<p>Assunção, Fernando. 2012. “Estratégias Para Tratamento de Variáveis Com Dados Faltantes Durante O Desenvolvimento de Modelos Preditivos.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-banzatto1992experimentaccao">
+<p>Banzatto, David Ariovaldo, and S do N Kronka. 1992. “Experimentação Agrı́cola.” <em>Jaboticabal: Funep</em> 2.</p>
+</div>
+<div id="ref-batista2003pre">
+<p>Batista, Gustavo Enrique de Almeida Prado, and others. 2003. “Pré-Processamento de Dados Em Aprendizado de Máquina Supervisionado.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-bolfarine2001introduccao">
+<p>Bolfarine, Heleno, and Mônica Carneiro Sandoval. 2001. <em>Introdução à Inferência Estatı́stica</em>. Vol. 2. SBM.</p>
+</div>
+<div id="ref-box1976time">
+<p>Box, George EP, and Gwilym M Jenkins. 1976. “Time Series Analysis: Forecasting and Control San Francisco.” <em>Calif: Holden-Day</em>.</p>
+</div>
+<div id="ref-carvalho2011inteligencia">
+<p>CARVALHO, ACPLF, K Faceli, A LORENA, and J Gama. 2011. “Inteligência Artificial–Uma Abordagem de Aprendizado de Máquina.” <em>Rio de Janeiro: LTC</em>.</p>
+</div>
+<div id="ref-casella2010inferencia">
+<p>Casella, George, and Roger L Berger. 2010. “Inferência Estatı́stica.” <em>São Paulo: Cengage Learning</em>.</p>
+</div>
+<div id="ref-cordeiro1999introduccao">
+<p>Cordeiro, Gauss Moutinho. 1999. <em>Introduçao a Teoria Assintótica</em>. IMPA.</p>
+</div>
+<div id="ref-covoes2010seleccao">
+<p>Covões, Thiago Ferreira. 2010. “Seleção de Atributos via Agrupamento.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-dempster1977maximum">
+<p>Dempster, Arthur P, Nan M Laird, and Donald B Rubin. 1977. “Maximum Likelihood from Incomplete Data via the Em Algorithm.” <em>Journal of the Royal Statistical Society: Series B (Methodological)</em> 39 (1): 1–22.</p>
+</div>
+<div id="ref-dougherty1995supervised">
+<p>Dougherty, James, Ron Kohavi, and Mehran Sahami. 1995. “Supervised and Unsupervised Discretization of Continuous Features.” In <em>Machine Learning Proceedings 1995</em>, 194–202. Elsevier.</p>
+</div>
+<div id="ref-enders2010applied">
+<p>Enders, Craig K. 2010. <em>Applied Missing Data Analysis</em>. Guilford press.</p>
+</div>
+<div id="ref-fisher1912absolute">
+<p>Fisher, Ronald A. 1912. “On an Absolute Criterion for Fitting Frequency Curves.” <em>Messenger of Mathematics</em> 41: 155–56.</p>
+</div>
+<div id="ref-garcia2012survey">
+<p>Garcia, Salvador, Julian Luengo, José Antonio Sáez, Victoria Lopez, and Francisco Herrera. 2012. “A Survey of Discretization Techniques: Taxonomy and Empirical Analysis in Supervised Learning.” <em>IEEE Transactions on Knowledge and Data Engineering</em> 25 (4): 734–50.</p>
+</div>
+<div id="ref-john1994irrelevant">
+<p>John, George H, Ron Kohavi, and Karl Pfleger. 1994. “Irrelevant Features and the Subset Selection Problem.” In <em>Machine Learning Proceedings 1994</em>, 121–29. Elsevier.</p>
+</div>
+<div id="ref-langley1994selection">
+<p>Langley, Pat, and others. 1994. “Selection of Relevant Features in Machine Learning.” In <em>Proceedings of the Aaai Fall Symposium on Relevance</em>, 184:245–71. Citeseer.</p>
+</div>
+<div id="ref-lee2005seleccao">
+<p>Lee, Huei Diana. 2005. “Seleção de Atributos Importantes Para a Extração de Conhecimento de Bases de Dados.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-little2019statistical">
+<p>Little, Roderick JA, and Donald B Rubin. 2019. <em>Statistical Analysis with Missing Data</em>. Vol. 793. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-liu2008computational">
+<p>Liu, H, and H Motoda. 2008. “Computational Methods of Feature Selection (Chapman &amp; Hall/Crc Data Mining and Knowledge Discovery Series).”</p>
+</div>
+<div id="ref-liu1998feature">
+<p>Liu, Huan, and Hiroshi Motoda. 1998. <em>Feature Extraction, Construction and Selection: A Data Mining Perspective</em>. Vol. 453. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-parmezan2012avaliaccao">
+<p>Parmezan, Antonio Rafael Sabino, Huei Diana Lee, Newton Spolaôr, and Wu Feng Chung. 2012. “Avaliação de Métodos Para Seleção de Atributos Importantes Para Aprendizado de Máquina Supervisionado No Processo de Mineração de Dados.”</p>
+</div>
+<div id="ref-pereira2019inserccao">
+<p>Pereira, Simone Guimarães. 2019. “Inserção de Dados Faltantes Não Aleatórios Para Estimativa de Variável Geometalúrgica.”</p>
+</div>
+<div id="ref-rosenthal1994science">
+<p>Rosenthal, Robert. 1994. “Science and Ethics in Conducting, Analyzing, and Reporting Psychological Research.” <em>Psychological Science</em> 5 (3): 127–34.</p>
+</div>
+<div id="ref-rubin2004multiple">
+<p>Rubin, Donald B. 2004. <em>Multiple Imputation for Nonresponse in Surveys</em>. Vol. 81. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-schafer1999multiple">
+<p>Schafer, Joseph L. 1999. “Multiple Imputation: A Primer.” <em>Statistical Methods in Medical Research</em> 8 (1): 3–15.</p>
+</div>
+<div id="ref-schafer2002missing">
+<p>Schafer, Joseph L, and John W Graham. 2002. “Missing Data: Our View of the State of the Art.” <em>Psychological Methods</em> 7 (2): 147.</p>
+</div>
+<div id="ref-souza2014computational">
+<p>Souza, Francisco Alexandre de. 2014. “Computational Intelligence Methodologies for Soft Sensors Development in Industrial Processes.” PhD thesis.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="machinelearning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-preprocessamento.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
