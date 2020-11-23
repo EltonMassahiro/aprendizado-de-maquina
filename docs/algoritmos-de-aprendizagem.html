@@ -52,6 +52,68 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -132,6 +194,7 @@
 <li class="chapter" data-level="8.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>8.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>8.2</b> Validação Cruzada</a></li>
+<li class="chapter" data-level="8.3" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>8.3</b> Como escolher um bom modelo?</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -282,7 +345,7 @@ Figura 6.4: Gráfico de Probabilidade x Entropia.
 <p>Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o <strong>Método dos Mínimos Quadrados (MMQ)</strong> atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> que minimizam os erros.</p>
 <p>Como não podemos observar a função de regressão populacional (FRP), precisamos estimálo por meio da função de regressão amostral:
 <span class="math display">\[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \\ Y_i=\hat{Y_i}+\hat{\mu_i}
-\\ \mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1 X_i}\]</span></p>
+\\ \mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]</span></p>
 <p>Podemos ver que os erros <span class="math inline">\(\hat{\mu_i}\)</span> (resíduos) são basicamente as diferenças entre os valores observados e estimados de <span class="math inline">\(Y\)</span>. Ao caso de dados com <span class="math inline">\(n\)</span> pares de observações de <span class="math inline">\(Y\)</span> e <span class="math inline">\(X\)</span>, queremos encontrar a FRA que se encontra o mais próximo possível do <span class="math inline">\(Y\)</span> observado, ou seja, escolher a
 FRA de modo que a soma dos resíduos <span class="math inline">\(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\)</span> seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura <a href="algoritmos-de-aprendizagem.html#fig:mmq">6.5</a>, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultari a possibilidade de minimizarmos.</p>
 <div class="figure" style="text-align: center"><span id="fig:mmq"></span>
@@ -340,11 +403,35 @@ Figura 6.6: Critério do minímos quadrados <span class="citation">Gujarati and 
 <p>Por manipulação algébrica, podemos verificar também que <span class="math inline">\(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\)</span>, sendo <span class="math inline">\(S^2_x\ \mbox{e} \ S^2_y\)</span> as respectivas variâncias amostrais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 <p>Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em <a href="algoritmos-de-aprendizagem.html#medidasdep">6.1.3</a>, que mede o grau de associação entre duas variáveis.</p>
 <p><span class="math display">\[r=\pm \sqrt{r^2}\]</span></p>
-<p>AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA</p>
+<p>AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA e falar de ANOVA</p>
+<p><strong>Não esqueça:</strong> dependendo das variáveis em estudo é possível que haja comportamento polinomial ao observarmos no gráfico, podendo ser quadrática, cúbica, etc. Os procedimentos são os mesmos de que linear, mas basicamente incluímos a variável e seu respectivo grau. Dependendo do comportamento muitas vezes é mais fácil ao invés e manter em exponencial (não linear), linearizarmos a função por meio dos logaritmos, semi-logaritmicos entre outros. Isso faz com que temos menos trabalho para tratarmos e estimarmos os parâmetros da função exponencial.</p>
+<div class="figure" style="text-align: center"><span id="fig:explog"></span>
+<img src="Figuras/explog.PNG" alt="Em (a) curva de função exponencial e (b) após aplicarmos o logaritmo (Gujarati and Porter 2011)." width="70%" />
+<p class="caption">
+Figura 6.7: Em (a) curva de função exponencial e (b) após aplicarmos o logaritmo <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>)</span>.
+</p>
+</div>
+
+<p>Atualmente é bem comum utilizarmos o modelo <strong>log-log</strong>, pois seu coeficiente angular <span class="math inline">\(\beta_i\)</span> mede a <strong>elasticidade</strong> de <span class="math inline">\(Y\)</span> em relação a <span class="math inline">\(X\)</span>, ou seja, a variação percentual de <span class="math inline">\(Y\)</span> correspondente a uma variação percentual em <span class="math inline">\(X\)</span>. Por exemplo: na Figura <a href="algoritmos-de-aprendizagem.html#fig:explog">6.7</a> se <span class="math inline">\(Y\)</span> representa a quantidade demandada de camisetas e <span class="math inline">\(X\)</span> seu preço unitário. Em (a) temos a relação da quantidade de demanda por camisetas e o preço, mas com a transformação logaritmica teremos a estimação de <span class="math inline">\(-\beta_2\)</span> (pois é uma reta descendente) que indica a elasticidade preço (variação em <span class="math inline">\(ln(Y)\)</span> por unidade de variação em <span class="math inline">\(ln(X)\)</span>). Portanto teríamos a variação percentual da quantidade demandada de camisetas dada uma variação percentual do preço. Atente-se: <strong>porcentagem</strong> <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>)</span>.</p>
 <p>Resumo geral: Em palavras, r2 mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão.</p>
 </div>
 <div id="regressão-linear-múltipla" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Regressão Linear Múltipla</h3>
+<p>Na prática deparamos com muitas outros fatores que podem influenciar em sua variável dependente <span class="math inline">\(Y\)</span>. Portanto são acrescentadas dentro de seu modelo de regressão mais variáveis, o que é conhecido como <strong>Regressão Linear Múltipla</strong>, nada mais do que uma ampliação da regressão linear simples. Num modelo, por exemplo, com três variáveis (caso mais simples) pode ser expressa para a amostra como:</p>
+<p><span class="math display" id="eq:regmult">\[\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_{1}}X_{1i}+\hat{\beta_{2}}X_{2i}+\mu_i
+    \tag{6.13}
+\end{equation}\]</span></p>
+<p>Da mesma forma, <span class="math inline">\(Y_i\)</span> a variável dependente, <span class="math inline">\(X_{2}\)</span> e <span class="math inline">\(X_{3}\)</span> as independentes explanatórias (explicativa), <span class="math inline">\(\mu_i\)</span> o erro estocático e <span class="math inline">\(i\)</span> para indicar <span class="math inline">\(i\)</span>-ésima observação. Ao caso dos parâmetros, <span class="math inline">\(\beta_0\)</span> como intercepto, <span class="math inline">\(\beta_1\)</span> e <span class="math inline">\(\beta_2\)</span> os <strong>coeficientes parciais de regressão/angulares</strong>. <span class="math inline">\(\beta_2\)</span> mede a variação no valor médio de <span class="math inline">\(Y\)</span> (esperança de <span class="math inline">\(Y\)</span>), por unidade de variação em <span class="math inline">\(X_2\)</span>, mantendo <span class="math inline">\(X_3\)</span> constante, ou seja, traz o efeito “direto” de uma unidade de variação em <span class="math inline">\(X_2\)</span> sobre o valor médio de <span class="math inline">\(Y\)</span>, excluindo o efeito de <span class="math inline">\(X_3\)</span> na média de <span class="math inline">\(Y\)</span>. De mesmo modo, <span class="math inline">\(X_3\)</span> com <span class="math inline">\(X_2\)</span> constante.</p>
+<p>A regressão múltipla pressupõe as mesma hipóteses de que a regressão linear simples, porém como acréscimo - e muito importante- que as variáveis independentes devem estar <strong>ausentes de multicolinearidade</strong>, ou seja, não devem haver relação linear entre si. Se essa relação linear existir entre <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span> <strong>são colineares</strong> ou <strong>linearmente dependentes</strong>, do contrário <strong>linearmente independentes</strong>. Caso a multicolinearidade for perfeita, os coeficientes de regressão das variáveis <span class="math inline">\(X\)</span> serão indeterminados e seus erros padrão, infinitos. Se a multicolinearidade for menos que perfeita, serão determinado mas com grandes erros padrão (em relação aos próprios
+coeficientes), o que trará um modelo ruim para sua estimação.</p>
+<p>Para medirmos a multicolinearidade é comum a análise de <strong>correlação de pearson</strong> entre todas as variáveis, como mencionada em <strong>Medidas de Dependência <a href="algoritmos-de-aprendizagem.html#medidasdep">6.1.3</a></strong>, ou analisar a ocorrência de intervalo de confiança mais amplo, verificação de razões “t” insignificantes mesmo que seu <span class="math inline">\(R^2\)</span> esteja alto, parâmetros estimados muitos sensíveis a qualquer alteração de dados e comumente utilizado para verificar o <strong>fator de inflação de variância (FIV)</strong> <span class="citation">(Montgomery, Peck, and Vining <a href="#ref-montgomery2012introduction">2012</a>)</span>, que pode ser expressa como:</p>
+<p><span class="math display" id="eq:vif">\[\begin{equation}
+    VIF_j=\frac{1}{1-r^2_j} \ \ j=1,2,...,p
+    \tag{6.14}
+\end{equation}\]</span></p>
+<p>sendo <span class="math inline">\(r^2\)</span> o coeficiente de correlação ao quadrado e <span class="math inline">\(j\)</span> para referir as variáveis. Por exemplo, se <span class="math inline">\(r^2_{23}\)</span>, refe-se ao coeficiente de correlação entre as variáveis <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span>. Segundo ,quando este indicador apresenta o valor acima de cinco, é possível a existência de multicolinearidade <span class="citation">(Maroco <a href="#ref-maroco2014analise">2014</a>)</span>.</p>
+<p>De mesmo modo que em regressão linear simples, são estimados os MQO, Máxima verossimilhança e o <strong>coeficiente de determinação múltiplo <span class="math inline">\(R^2\)</span></strong> (mesma interpratação para regressão linear simples <span class="math inline">\(r^2\)</span>) para que se obtenha a melhor aproximação possível.</p>
 </div>
 </div>
 <div id="gradiente-descendente" class="section level2">
@@ -394,6 +481,12 @@ Figura 6.6: Critério do minímos quadrados <span class="citation">Gujarati and 
 </div>
 <div id="ref-liu2012feature">
 <p>Liu, Huan, and Hiroshi Motoda. 2012. <em>Feature Selection for Knowledge Discovery and Data Mining</em>. Vol. 454. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-maroco2014analise">
+<p>Maroco, João. 2014. “Análise Estatı́stica Com O Spss.” <em>Statistics</em> 6.</p>
+</div>
+<div id="ref-montgomery2012introduction">
+<p>Montgomery, Douglas C, Elizabeth A Peck, and G Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. Vol. 821. John Wiley &amp; Sons.</p>
 </div>
 <div id="ref-moser2012student">
 <p>Moser, Stefan M, and Po-Ning Chen. 2012. <em>A Student’s Guide to Coding and Information Theory</em>. Cambridge University Press.</p>

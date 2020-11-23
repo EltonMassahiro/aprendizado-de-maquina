@@ -863,7 +863,7 @@ Para facilitar a compreensão, vamos supor um exemplo de um questionário com re
 
 }
 
-\caption{Gràfico de Probabilidade x Entropia.}\label{fig:entropia}
+\caption{Gráfico de Probabilidade x Entropia.}\label{fig:entropia}
 \end{figure}
 
 
@@ -882,8 +882,19 @@ O ganho de informação portanto mede a redução da entropia (nesse caso) causa
 
 Também conhecidas com medidas de separabilidade, discriminação e divergência. Em caso de duas classes, um atributo \(X_i\) é preferido ao atributo \(X_j\) se fornece uma diferença maior que \(X_j\) entre as probabilidades condicionais das duas classes. Uma das mais utilizadas é a distância Euclidiana.
 
-\hypertarget{medidas-de-dependuxeancia}{%
-\subsection{Medidas de Dependência}\label{medidas-de-dependuxeancia}}
+\hypertarget{medidasdep}{%
+\subsection{Medidas de Dependência}\label{medidasdep}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
+
+}
+
+\caption{Padrões de correlação. Elaborado por \citet{gujarati2011econometria} e adaptado \citet{theil1978}.}\label{fig:correlacao}
+\end{figure}
+
+
 
 \hypertarget{medidas-de-precisuxe3o}{%
 \subsection{Medidas de Precisão}\label{medidas-de-precisuxe3o}}
@@ -963,7 +974,7 @@ Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{f
 
 }
 
-\caption{Gràfico de Probabilidade x Entropia.}\label{fig:naive}
+\caption{Gráfico de Probabilidade x Entropia.}\label{fig:naive}
 \end{figure}
 
 
@@ -976,34 +987,160 @@ Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{f
 
 A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória, ela é supervisionada.
 
-Como na prática não conseguimos análisar uma população, trabalhamos em cima de amostras e estimamos para o todo, para que possamos fazer uma aproximação. Partimos da ideia de estimarmos uma função com dados amostrais com o menor erro possível.
+Como na prática não conseguimos análisar uma população, trabalhamos em cima de amostras e estimamos para o todo, para que possamos fazer uma aproximação. Partimos da ideia de estimarmos uma função com dados amostrais com o menor erro possível. Portanto, o \(Y_i\) (população) observado pode ser expresso como:
 
-Seu modelo estatístico:
 \begin{equation}
-    Y_i=\hat{\beta_0}+\hat{\beta_1X_i}+e_i
-    \label{eq:reglinear}
+    Y_i=\hat{Y_i}+\hat{\mu_i}
+    \label{eq:frp}
+\end{equation}
+
+E o modelo para função de regressão amostral:
+\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_1 X_i}+\hat{\mu_i}
+    \label{eq:fra}
 \end{equation}
 
 em que:
 
-\(\hat{Y_i}\) é o valor observado com \(i\) níveis de \(X\) (estimador da esperança \(E(Y|Xi)\)), \(\hat{\beta_0}\) a constante de regressão estimado e intercepto de \(\hat{Y}\), \(\hat{\beta_1}\) o coeficiente de regressão estimado que seria a variação de \(\hat{Y}\) em função da variação de cada unidade de \(X\), \(X_i\) com \(i\) níveis da variável independente e \(\hat{e_i}\) é o erro associado à distância entre o valor observado e o correspondente ponto na curva. Note que os ``chapéis'' em cima das variáveis é utilizado quando referimos a estimações, ou seja, são variáveis de dados amostrais e não a população.
+\(\hat{Y_i}\) é o valor observado com \(i\) níveis de \(X\) (estimador da esperança \(E(Y|Xi)\)), \(\hat{\beta_0}\) a constante de regressão estimado e intercepto de \(\hat{Y}\), \(\hat{\beta_1}\) o coeficiente de regressão estimado que seria a variação de \(\hat{Y}\) em função da variação de cada unidade de \(X\), \(X_i\) com \(i\) níveis da variável independente e \(\hat{\mu_i}\) é o erro associado à distância entre o valor observado e o correspondente ponto na curva. Note que os ``chapéis'' em cima das variáveis é utilizado quando referimos a estimações, ou seja, são variáveis de dados amostrais e não a população.
 
-Com o propósito de obter uma equação estimada, precisamos minimizar os erros com o métodos dos mínimos quadrados (MMQ). Os estimadores de \(\beta_0\) e \(\beta_1\) que minimizam os erros são:
-\[\hat{\beta_1}=\frac{\sum^n_{i=1X_iY_i-\frac{\sum^n_{i=1}X_i\sum^n_{i=1}Y_i}{n}}}{\sum^n_{i=1}X^2_i-\frac{(\sum^n_{i=1}X_i)^2}{n}}=\frac{s_{xy}}{s_{xx}}\]
+Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o \textbf{Método dos Mínimos Quadrados (MMQ)} atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores \(\beta_0\) e \(\beta_1\) que minimizam os erros.
 
-\[\hat{\beta_0}=\overline{Y}-\hat{\beta_1}\overline{X}\]
+Como não podemos observar a função de regressão populacional (FRP), precisamos estimálo por meio da função de regressão amostral:
+\[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \\ Y_i=\hat{Y_i}+\hat{\mu_i}
+\\ \mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]
 
-Temos então, a regressão linear simples ajustada:
+Podemos ver que os erros \(\hat{\mu_i}\) (resíduos) são basicamente as diferenças entre os valores observados e estimados de \(Y\). Ao caso de dados com \(n\) pares de observações de \(Y\) e \(X\), queremos encontrar a FRA que se encontra o mais próximo possível do \(Y\) observado, ou seja, escolher a
+FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura \ref{fig:mmq}, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultari a possibilidade de minimizarmos.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/mmq} 
+
+}
+
+\caption{Critério do minímos quadrados \citet{gujarati2011econometria}.}\label{fig:mmq}
+\end{figure}
+
+
+
+Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que elevamos os resíduos ao quadrado. Fazendo isso, o método dá mais peso aos resíduos (não irão mais se anular), podendo visualizar melhor o ``tamanho'' do erro total e obter propriedades estatísticas mais desejáveis.
+
 \begin{equation}
-    \hat{Y}=\hat{\beta_0}+\hat{\beta_1}X
-    \label{reglinearajust}
+    \sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \\ = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1 X_i})^2 
+    \label{eq:mmqeq}
 \end{equation}
 
-Como seus parâmetros \(\hat{\beta_0}\) e \(\hat{\beta_1}\). O aumento de uma unidade de X, Y aumenta em \(\hat{\beta_1}\) unidades.
+O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) e \(\beta_1\) que proporcionam o menor valor possível (encontrando \(\hat{\beta_0}\) e \(\hat{\beta_1}\)) de \(\sum \hat{\mu}_i\). Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatísticoler, como por exemplo a seção 3A de \citet{gujarati2011econometria}) encontra-se:
 
-Para os interessados na dedução matemática, recomendo literaturas como \citet{gujarati2011econometria} que explicam de forma matricial sua dedução e aplicação para \(n\) variáveis independentes
+\begin{equation}
+    \sum Y_i=n\hat{\beta_0} + \hat{\beta_1} \sum X_i
+    \label{eq:sumyi}
+\end{equation}
+
+\begin{equation}
+    \sum Y_i X_i=\hat{\beta_0} \sum X_i + \hat{\beta_1} \sum X_i^2
+    \label{eq:sumyixi}
+\end{equation}
+
+AQUI VOU COLOCAR DO JEITO Q FIZ EM ECONOMETRIA COM AS DEFINCOES E AS DERIVADAS
 
 Para que seja feito o modelo de regressão, ela depende das premissas: independência das variáveis erro, homogeneidade das variâncias, normalidade e relação linear entre as variáveis.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Coeficiente de determinação \(r^2\): medir a qualidade de seu ajuste}
+\end{itemize}
+
+Estimamos os parâmetros e o erro da função, agora precisamos considerar a \textbf{qualidade do ajuste} da linha de regressão ajustada a um conjunto de dados, ou seja, vamos descobrir quão ``bom'' o ajuste dessa linha de regressão
+amostral é adequada aos dados. Se todas as observações estivessem exatamente em cima da linha de regressão, seria ``perfeito'', o que raramente acontece e provávelmente seria um problema de \textbf{Overfitting} (será apresentado no próximo capítulo para verificarmos a validade do modelo). O coeficiente de terminação \(r^2\) é um medida que diz quanto a linha de regressão
+amostral ajusta-se aos dados.
+
+Para entendermos melhor, vamos visualizar por Diagrama de Venn \citep{kennedy1981ballentine}. O círculo \(Y\) representa a variação da variável dependente \(Y\) e o círculo \(X\), a variação da variável explanatória \(X\) como vimos em regressão linear. A área sombreada indica o quanto em que a variação de \(Y\) é explicada pela variação de \(X\). Quanto maior a área sobreposta, maior a parte da variação de \(Y\) é explicada por \(X\). O coefiente de determinação \(r^2\) é apenas a medida numérica dessa sobreposição. Na Figura \ref{fig:ballentine}, conforme move-se da esquerda para a direita, a sobreposição aumenta, ou seja, uma proporção cada vez maior da variação de \(Y\)
+é explicada por \(X\) (o \(r^2\) aumenta). Sem sobreposição, \(r^2=0\) e com total sobreposição, \(r^2=1\), pois 100\% da variação de \(Y\) é explicada por \(X\). Portanto o coefienciente situa-se no intervalo entre 0 e 1.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ballentine} 
+
+}
+
+\caption{Critério do minímos quadrados \citet{gujarati2011econometria}.}\label{fig:ballentine}
+\end{figure}
+
+
+
+Podemos chegar ao coeficiente de determinação apenas por manipulação algébrica:
+
+\[\mbox{sabemos que:} \ y_i=\hat{y}_i+\hat{\mu}_i \\
+\mbox{elevando ao quadrado e somando a amostra:} \ \sum y^2_i=\sum \hat{y}^2_i+\sum \hat{\mu}^2_i+2\sum \hat{y}_i \hat{\mu}_i \\
+\mbox{como} \ \sum \hat{\mu}_i=0, \ \mbox{temos que:}\ \sum y^2_i= \hat{y}^2_i+\sum \hat{\mu}^2_i \\ \sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i \]
+
+\begin{equation}
+    \mbox{podemos dizer} \ SQT=SQE+SQR
+    \label{eq:sqt}
+\end{equation}
+
+sendo SQT a soma total dos quadrados, SQE a soma do quadrados explicados e SQR soma dos quadrados dos resíduos.
+
+\[\mbox{dividindo a equação anterior por SQT:}\\ 1=\frac{SQE}{SQT}+\frac{SQR}{SQT} \\ \mbox{definindo}\ r^2 \ \mbox{como:} \ \frac{SQE}{SQT} \]
+
+\begin{equation}
+    \mbox{obtemos:} \ r^2=1-\frac{SQR}{SQT} \rightarrow 1 - \frac{\sum \hat{\mu}_i}{\sum (Y_i - \overline{Y}_i)^2}
+    \label{eq:coefdet}
+\end{equation}
+
+Por manipulação algébrica, podemos verificar também que \(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\), sendo \(S^2_x\ \mbox{e} \ S^2_y\) as respectivas variâncias amostrais de \(X\) e \(Y\).
+
+Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em \ref{medidasdep}, que mede o grau de associação entre duas variáveis.
+
+\[r=\pm \sqrt{r^2}\]
+
+AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA e falar de ANOVA
+
+\textbf{Não esqueça:} dependendo das variáveis em estudo é possível que haja comportamento polinomial ao observarmos no gráfico, podendo ser quadrática, cúbica, etc. Os procedimentos são os mesmos de que linear, mas basicamente incluímos a variável e seu respectivo grau. Dependendo do comportamento muitas vezes é mais fácil ao invés e manter em exponencial (não linear), linearizarmos a função por meio dos logaritmos, semi-logaritmicos entre outros. Isso faz com que temos menos trabalho para tratarmos e estimarmos os parâmetros da função exponencial.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/explog} 
+
+}
+
+\caption{Em (a) curva de função exponencial e (b) após aplicarmos o logaritmo \citep{gujarati2011econometria}.}\label{fig:explog}
+\end{figure}
+
+
+
+Atualmente é bem comum utilizarmos o modelo \textbf{log-log}, pois seu coeficiente angular \(\beta_i\) mede a \textbf{elasticidade} de \(Y\) em relação a \(X\), ou seja, a variação percentual de \(Y\) correspondente a uma variação percentual em \(X\). Por exemplo: na Figura \ref{fig:explog} se \(Y\) representa a quantidade demandada de camisetas e \(X\) seu preço unitário. Em (a) temos a relação da quantidade de demanda por camisetas e o preço, mas com a transformação logaritmica teremos a estimação de \(-\beta_2\) (pois é uma reta descendente) que indica a elasticidade preço (variação em \(ln(Y)\) por unidade de variação em \(ln(X)\)). Portanto teríamos a variação percentual da quantidade demandada de camisetas dada uma variação percentual do preço. Atente-se: \textbf{porcentagem} \citep{gujarati2011econometria}.
+
+Resumo geral: Em palavras, r2 mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão.
+
+\hypertarget{regressuxe3o-linear-muxfaltipla}{%
+\subsection{Regressão Linear Múltipla}\label{regressuxe3o-linear-muxfaltipla}}
+
+Na prática deparamos com muitas outros fatores que podem influenciar em sua variável dependente \(Y\). Portanto são acrescentadas dentro de seu modelo de regressão mais variáveis, o que é conhecido como \textbf{Regressão Linear Múltipla}, nada mais do que uma ampliação da regressão linear simples. Num modelo, por exemplo, com três variáveis (caso mais simples) pode ser expressa para a amostra como:
+
+\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_{1}}X_{1i}+\hat{\beta_{2}}X_{2i}+\mu_i
+    \label{eq:regmult}
+\end{equation}
+
+Da mesma forma, \(Y_i\) a variável dependente, \(X_{2}\) e \(X_{3}\) as independentes explanatórias (explicativa), \(\mu_i\) o erro estocático e \(i\) para indicar \(i\)-ésima observação. Ao caso dos parâmetros, \(\beta_0\) como intercepto, \(\beta_1\) e \(\beta_2\) os \textbf{coeficientes parciais de regressão/angulares}. \(\beta_2\) mede a variação no valor médio de \(Y\) (esperança de \(Y\)), por unidade de variação em \(X_2\), mantendo \(X_3\) constante, ou seja, traz o efeito ``direto'' de uma unidade de variação em \(X_2\) sobre o valor médio de \(Y\), excluindo o efeito de \(X_3\) na média de \(Y\). De mesmo modo, \(X_3\) com \(X_2\) constante.
+
+A regressão múltipla pressupõe as mesma hipóteses de que a regressão linear simples, porém como acréscimo - e muito importante- que as variáveis independentes devem estar \textbf{ausentes de multicolinearidade}, ou seja, não devem haver relação linear entre si. Se essa relação linear existir entre \(X_2\) e \(X_3\) \textbf{são colineares} ou \textbf{linearmente dependentes}, do contrário \textbf{linearmente independentes}. Caso a multicolinearidade for perfeita, os coeficientes de regressão das variáveis \(X\) serão indeterminados e seus erros padrão, infinitos. Se a multicolinearidade for menos que perfeita, serão determinado mas com grandes erros padrão (em relação aos próprios
+coeficientes), o que trará um modelo ruim para sua estimação.
+
+Para medirmos a multicolinearidade é comum a análise de \textbf{correlação de pearson} entre todas as variáveis, como mencionada em \textbf{Medidas de Dependência \ref{medidasdep}}, ou analisar a ocorrência de intervalo de confiança mais amplo, verificação de razões ``t'' insignificantes mesmo que seu \(R^2\) esteja alto, parâmetros estimados muitos sensíveis a qualquer alteração de dados e comumente utilizado para verificar o \textbf{fator de inflação de variância (FIV)} \citep{montgomery2012introduction}, que pode ser expressa como:
+
+\begin{equation}
+    VIF_j=\frac{1}{1-r^2_j} \ \ j=1,2,...,p
+    \label{eq:vif}
+\end{equation}
+
+sendo \(r^2\) o coeficiente de correlação ao quadrado e \(j\) para referir as variáveis. Por exemplo, se \(r^2_{23}\), refe-se ao coeficiente de correlação entre as variáveis \(X_2\) e \(X_3\). Segundo ,quando este indicador apresenta o valor acima de cinco, é possível a existência de multicolinearidade \citep{maroco2014analise}.
+
+De mesmo modo que em regressão linear simples, são estimados os MQO, Máxima verossimilhança e o \textbf{coeficiente de determinação múltiplo \(R^2\)} (mesma interpratação para regressão linear simples \(r^2\)) para que se obtenha a melhor aproximação possível.
 
 \hypertarget{gradiente-descendente}{%
 \section{Gradiente Descendente}\label{gradiente-descendente}}
@@ -1104,6 +1241,9 @@ A fim de que não haja previsões desastrosas geradas pelo modelo, para medirmos
 
 Após a realização do pré-processamento (analisar), iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
 Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com
+
+\hypertarget{como-escolher-um-bom-modelo}{%
+\section{Como escolher um bom modelo?}\label{como-escolher-um-bom-modelo}}
 
   \bibliography{book.bib,packages.bib}
 
