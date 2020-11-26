@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2020-11-25" />
+<meta name="date" content="2020-11-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -114,7 +114,9 @@
 <li class="chapter" data-level="6.4.3" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#modelo-de-probabilidade-linear-mpl"><i class="fa fa-check"></i><b>6.4.3</b> Modelo de Probabilidade Linear (MPL)</a></li>
 <li class="chapter" data-level="6.4.4" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#exemplos"><i class="fa fa-check"></i><b>6.4.4</b> Exemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#gradiente-descendente-gd"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente (GD)</a></li>
+<li class="chapter" data-level="6.5" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#gradiente-descendente-gd"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente (GD)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#exemplos-1"><i class="fa fa-check"></i><b>6.5.1</b> Exemplos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#algoritmos-de-aprendizagem---parte-i"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte I</a><ul>
 <li class="chapter" data-level="7.1" data-path="algoritmos-de-aprendizagem-parte-i.html"><a href="algoritmos-de-aprendizagem-parte-i.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
@@ -255,13 +257,13 @@ Figura 6.2: Padrões de correlação. Elaborado por <span class="citation">Gujar
   p(A_k|B_1,...,B_n)=p(A_k)p(B_1|A_k)p(B_2|A_k),...=p(A_k)\prod_i^n p(B_i|A_k) \ k ∈{1,...,k}
   \tag{6.4}
 \end{equation}\]</span></p>
-<p>Por fim para podermos classificarmos, aplicamos argumentos de máxima para otimizarmos a função, obtém-se o classificador de Naive Bayes:</p>
+<p>Por fim para podermos classificar, aplicamos argumento de máxima para otimizarmos a função, assim obtém-se o classificador de Naive Bayes:</p>
 <p><span class="math display" id="eq:naivebayes">\[\begin{equation} 
   \mbox{classificador} \ \hat{y}=argmax \ p(A_k)\displaystyle \prod_{i=1}^n p(B_i|A_k) \ \ k ∈{1,...,k}
   \tag{6.5}
 \end{equation}\]</span></p>
 <p>Lembrando que para cada atributo, a sua distribuição de probabilidades é assumida como normal.</p>
-<p>O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.</p>
+<p>O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa na prática e caso haja variáveis categóricas num conjunto de dados de teste que não forem treinadas, o modelo não irá estimar estas novas variáveis.</p>
 <p><strong>Exemplo:</strong> para facilitar, podemos supor que estamos trabalhando no diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de <span class="citation">Orgânica Digital (<a href="#ref-organica">2019</a>)</span>).</p>
 <p>Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doença (20%) e 80 pessoas estavam saudáveis (80%), sendo que das pessoas que possuíam a doença, 90% receberam o resultado positivo no teste da doença, e 30% das pessoas que não possuíam a doença também receberam o teste positivo. Caso uma nova pessoa realizar o teste e receber um resultado positivo, qual a probabilidade de ela realmente possuir a doença?</p>
 <div class="figure" style="text-align: center"><span id="fig:bayes"></span>
@@ -271,11 +273,11 @@ Figura 6.3: Dados coletados de uma amostra de 100 pessoas aleatórias.
 </p>
 </div>
 
-<p>Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença, dado que recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de “receber um resultado positivo, dado que tem a doença”. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.</p>
+<p>Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença dado que ela recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de “receber um resultado positivo, dado que tem a doença”. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.</p>
 <p>Ou seja, ao caso de ter a doença dado que o resultado deu positivo:
-<span class="math display">\[P(doença|positivo) = 20% * 90% \]</span> <span class="math display">\[P(doença|positivo) = 0,2 * 0,9 \]</span> <span class="math display">\[P(doença|positivo) = 0,18\]</span>
+<span class="math display">\[P(doença|positivo) = 20\% . 90\% \]</span> <span class="math display">\[P(doença|positivo) = 0,2 * 0,9 \]</span> <span class="math display">\[P(doença|positivo) = 0,18\]</span>
 Para o caso de não ter a doença, dado que deu positivo:
-<span class="math display">\[P(não \ doença|positivo) = 80% * 30%\]</span>
+<span class="math display">\[P(não \ doença|positivo) = 80\%.30\%\]</span>
 <span class="math display">\[P(não \ doença|positivo) = 0,8 * 0,3\]</span>
 <span class="math display">\[P(não\ doença|positivo) = 0,24\]</span>
 Após isso precisamos normalizar os dados, para que a soma das duas probabilidades resulte 1 (100%). Como vimos em pré-processamento <a href="preprocesso.html#preprocesso">5</a>, a <strong>Normalização por reescala</strong> por meio de um valor mínimio e um máximo, gera um novo intervalo onde os valores de um atributo estão contidos. Um intervalo entre 0 e 1. Portanto, dividimos o resultado pela soma das duas probabilidades.</p>
@@ -528,15 +530,15 @@ Figura 6.8: Gráfico tridimensional a exemplo de Gradiente Descendente <span cla
 
 <p>O algoritmo pode ser expresso como:</p>
 <p><span class="math display" id="eq:GD">\[\begin{equation}
-    \theta_j := \theta_j - \alpha \frac{\delta}{\delta \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1 
+    \theta_j := \theta_j - \alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1 
     \tag{6.23}
 \end{equation}\]</span></p>
 <p>com <span class="math inline">\(j\)</span> referindo-se à quantidade de observações (parâmetros que pretendemos estimar) da amostra.</p>
-<p>O algoritmo é processado da seguinte forma: imagine na mesma Figura <a href="algoritmos-de-aprendizagem-parte-i.html#fig:gd">6.8</a> que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em <span class="math inline">\(Z=10\)</span>. Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de <span class="math inline">\(Z\)</span> ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu <span class="math inline">\(\alpha\)</span> um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com <span class="math inline">\(\alpha \frac{\delta}{\delta \theta_j}J(\theta_0,\theta_1)\)</span>. Caso fosse uma taxa pequena de <span class="math inline">\(\alpha\)</span>, seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de <span class="math inline">\(Z\)</span> (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.</p>
-<p>Com o primeiro passo dado (supor passo <span class="math inline">\(1 = 40\)</span>), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada <span class="math inline">\(\theta\)</span> <strong>simultâneamente</strong> (se são dois <span class="math inline">\(\thetas\)</span> de entrada para a função, atualiza-se para os dois) até encontrar o novo valor ótimo do próximo passo no ponto <span class="math inline">\(2=15\)</span>. Conforme vai se aproximando de <span class="math inline">\(Z\)</span>, seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de <span class="math inline">\(Z=10\)</span> que é o ponto ótimo da função.</p>
+<p>O algoritmo é processado da seguinte forma: imagine na mesma Figura <a href="algoritmos-de-aprendizagem-parte-i.html#fig:gd">6.8</a> que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em <span class="math inline">\(Z=10\)</span>. Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de <span class="math inline">\(Z\)</span> ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu <span class="math inline">\(\alpha\)</span> um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com <span class="math inline">\(\alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1)\)</span>. Caso fosse uma taxa pequena de <span class="math inline">\(\alpha\)</span>, seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de <span class="math inline">\(Z\)</span> (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.</p>
+<p>Com o primeiro passo dado (supor passo <span class="math inline">\(1 = 40\)</span>), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada <span class="math inline">\(\theta\)</span> <strong>simultâneamente</strong> (caso dois <span class="math inline">\(\theta\)</span>’s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto <span class="math inline">\(2=15\)</span>. Conforme vai se aproximando de <span class="math inline">\(Z\)</span>, seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de <span class="math inline">\(Z=10\)</span> que é o ponto ótimo da função.</p>
 <p>Assim o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (sim! Podemos encontrar os parâmetros dos exemplos de regressão com este algoritmo também!)</p>
 <p>Desta forma, atribuímos (“<span class="math inline">\(:=\)</span>”) para a própria observação de entrada da função receber ela mesma subtraída <span class="math inline">\(\alpha\)</span> que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). <strong><span class="math inline">\(\alpha\)</span>( learning rate - taxa de aprendizagem)</strong> é um valor fixo que controla o tamanho do passo em cada iteração: quando <span class="math inline">\(\alpha\)</span> for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). <span class="citation">Rendle and Schmidt-Thieme (<a href="#ref-rendle2008online">2008</a>)</span> divulgaram que a fatoração de matrizes para a predição de <em>ratings</em> nos dados do desafio <em>Netflix</em> precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.</p>
-<p>Para facilitar a compreensão do efeito da taxa de variação, observe a Figura <a href="#gd1"><strong>??</strong></a>. No primeiro gráfico você inicia seu algoritmo com o valor <span class="math inline">\(\theta\)</span> e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (<span class="math inline">\(\frac{\delta}{\delta\theta}j(\theta)\geq 0\)</span>), portanto em <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor positivo}\)</span>, faz que com que esse novo <span class="math inline">\(\theta\)</span> (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (<span class="math inline">\(\frac{\delta}{\delta\theta}j(\theta)\leq 0\)</span>), portanto <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor negativo}\)</span>, fará com que o novo <span class="math inline">\(\theta\)</span> seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.</p>
+<p>Para facilitar a compreensão do efeito da taxa de variação, observe a Figura <a href="#gd1"><strong>??</strong></a>. No primeiro gráfico você inicia seu algoritmo com o valor <span class="math inline">\(\theta\)</span> e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\geq 0\)</span>), portanto em <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor positivo}\)</span>, faz que com que esse novo <span class="math inline">\(\theta\)</span> (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\leq 0\)</span>), portanto <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor negativo}\)</span>, fará com que o novo <span class="math inline">\(\theta\)</span> seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.</p>
 <div class="figure" style="text-align: center"><span id="fig:gd1"></span>
 <img src="Figuras/gd1.png" alt="Efeito da taxa de variação no Gradiente Descendente." width="70%" />
 <p class="caption">
@@ -545,7 +547,194 @@ Figura 6.9: Efeito da taxa de variação no Gradiente Descendente.
 </div>
 
 <p>Como pode-se perceber, a taxa de aprendizagem e a taxa de variação são fundamentais e complementares para o algoritmo de GD, pois elas dizem o tamanho do passo e em que posição estamos em relação ao ponto ótimo da função.</p>
+<div id="exemplos-1" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Exemplos</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Uma variável:</strong>Vamos supor a seguinte função custo:</li>
+</ol>
+<p><span class="math display">\[j(\theta)=\theta^2\]</span></p>
+<p>Queremos minimizá-la <span class="math inline">\(min \ j(\theta)\)</span>. Portanto precisamos inicialmente colocar um número aleatório para nosso parâmetro - não ótimo - para que o algoritmo atualize a cada iteração. Vamos supor a taxa de aprendizagem (<em>learning rate</em>) <span class="math inline">\(\alpha=0,1\)</span> e <span class="math inline">\(\theta=4\)</span> para facilitar. Ou seja, <span class="math inline">\(j(\theta)=4^2=16\)</span>. Vamos atualizar os parâmetros:</p>
+<p><span class="math display">\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \\ 
+\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}
+\\ \theta:= \theta -\alpha.2\theta \\ \mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \\ \theta:=4-0,1 \ .\ 2\ .\ 4 \\
+\rightarrow \theta:=3,2
+\]</span>
+Na iteração obtemos <span class="math inline">\(\theta=3,2\)</span>. Se subsituirmos em <span class="math inline">\(j(\theta)\)</span> novamente, iremos obter <span class="math inline">\(j(\theta)=(3,2)^2=10,24\)</span>. Agora atualizando novamente para a próxima iteração:
+<span class="math display">\[\theta:= \theta -\alpha.2\theta \\ \theta:=3,2-0,1\ .\ 2\ .\ 3,2 \\
+\theta:= 2,56\]</span></p>
+<p>Portanto, <span class="math inline">\(j(\theta)=(2,56)^2=6,55\)</span>. Sucessivamente, vamos fazendo as iterações até convergir:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">3,2</td>
+<td align="center">10,24</td>
+</tr>
+<tr class="odd">
+<td align="center">2,56</td>
+<td align="center">6,55</td>
+</tr>
+<tr class="even">
+<td align="center">2,04</td>
+<td align="center">4,19</td>
+</tr>
+<tr class="odd">
+<td align="center">1,632</td>
+<td align="center">2,663</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Da mesma forma, se iniciarmos o algoritmo com -4:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-4</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">-3,2</td>
+<td align="center">10,24</td>
+</tr>
+<tr class="odd">
+<td align="center">-2,56</td>
+<td align="center">6,55</td>
+</tr>
+<tr class="even">
+<td align="center">-2,04</td>
+<td align="center">4,19</td>
+</tr>
+<tr class="odd">
+<td align="center">-1,632</td>
+<td align="center">2,663</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Note que conforme <span class="math inline">\(\theta\)</span> diminui, o custo também. Conforme mais iterações são aplicadas, mais “ótimo” será. Graficamente:</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Duas variáveis:</strong> Vamos supor a seguinte função de custo com <span class="math inline">\(\alpha=0,1\)</span>, <span class="math inline">\(\theta_1=1\)</span> e <span class="math inline">\(\theta_2=2\)</span>:
+<span class="math display">\[j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2 \\ 
+j(\theta_1,\theta_2)=1^2+2^2=5\]</span>
+Queremos <span class="math inline">\(min \ j(\theta_1,\theta_2)\)</span>Como explicado, ao caso de haver mais de um parâmetro precisamos separar atualizar cada um simultâneamente e aplicar derivada parcial em sua função:</li>
+</ol>
+<p><span class="math display">\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2) \\
+\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\\
+\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
+\mbox{e}\ \ \frac{d}{d\theta_2}j(\theta_1,\theta_2)=2\theta_2\]</span></p>
+<p><span class="math display">\[\mbox{substituindo:} \\
+\theta_1:=\theta_1-\alpha.\ 2\theta_1 \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha .\ 2\theta_2 \\
+\mbox{inserindo os valores:}\\
+\theta_1:=1-0,1.\ 2.\ 1 \ \ \mbox{e}\ \ \theta_2:=2-0,1.\ 2.\ 2 \\
+\theta_1:=0,8 \ \mbox{e} \ \theta_2=1,6\]</span></p>
+<p>Portanto após a iteração, temos que <span class="math inline">\(j(\theta_1,\theta_2)=0,8^2+1,6^2=3,2\)</span>. Da mesma forma, para a próxima iteração temos:</p>
+<p><span class="math display">\[\theta_1:=0,8-0,1.\ 2.\ 0,8 \ \ \mbox{e}\ \ \theta_2:=1,6-0,1.\ 2.\ 1,6 \\
+\theta_1:=0,64 \ \mbox{e} \ \theta_2=1,28\]</span></p>
+<p>Portanto teremos <span class="math inline">\(j(\theta_1,\theta_2)=0,64^2+1,28^2=2,048\)</span>. Assim sucessivamente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta_1\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(\theta_2\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta_1,\theta_2)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">0,8</td>
+<td align="center">1,6</td>
+<td align="center">3,2</td>
+</tr>
+<tr class="odd">
+<td align="center">0,64</td>
+<td align="center">1,28</td>
+<td align="center">2,48</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Por fim, o gráfico:</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Erro quadrado médio (Regressão Linear Simples:)</strong> Observe a função de regressão linear:
+<span class="math display">\[f_\theta(X)=\theta_0+\theta_1*X\]</span></li>
+</ol>
+<p>A função de custo:
+<span class="math display">\[j(\theta)=\frac{1}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]</span></p>
+<p>Primeiramente vamos encontrar a derivada parcial de <span class="math inline">\(j(\theta_0,\theta_1)\)</span>:
+<span class="math display">\[\frac{d}{d\theta_0}j(\theta_0,\theta_1=\frac{d}{d\theta_0}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i) \\
+\frac{d}{d\theta_1}j(\theta_0,\theta_1=\frac{d}{d\theta_1}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)x^i\]</span>
+Com isso, basta aplicarmos o banco de dados de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> em seu modelo e de seus dois <span class="math inline">\(\theta&#39;s\)</span> de entrada. Repetindo as iterações e identificando os parâmetros que se aproximam</p>
 
+</div>
 </div>
 </div>
 <h3>References</h3>
