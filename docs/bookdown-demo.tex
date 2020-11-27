@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-11-23}
+\date{2020-11-27}
 
 \begin{document}
 \maketitle
@@ -240,7 +240,9 @@ de altura, respectivamente, sendo que 60\% dos trabalhadores são mulheres. Um t
 \end{enumerate}
 
 \emph{Solução:} pelo enunciado ``que seja homem dado que o trabalhador escolhido tenha mais de 1,75m'', podemos perceber que já possuímos uma afirmação que já foi escolhido uma pessoa que tenha mais que 1,75m e queremos saber se é homem. Por meio da questão anterior sabemos a probabilidade P(\textgreater{} 1,75m). Portanto:
-\[P(H| > 1, 75m) = \frac{P(> 1, 75m|H).P(H)}{P(> 1, 75m)}=\frac{0,04.0,4}{0, 022} \\ → 72,73\% \ \mbox{de probabilidade de ser homem dado que seja maior que 1,75m.}\]
+\[P(H| > 1, 75m) = \frac{P(> 1, 75m|H).P(H)}{P(> 1, 75m)}=\frac{0,04.0,4}{0, 022} \]
+
+\[→ 72,73\% \ \mbox{de probabilidade de ser homem dado que seja maior que 1,75m.}\]
 
 \begin{itemize}
 \tightlist
@@ -394,7 +396,7 @@ Em contestamento a Searle, Daniel Dennett defende o projeto de Turing porque agi
 
 Para Dennet o principal argumento criticando o argumento do quarto chinês, é a forma como investigamos os fenômenos mentais. É uma região que possibilita infinitas especulações, sendo o método das ciências empíricas o mais apropriado ao estudo da mente \citep{da2013searle}.
 
-A diferença entre ambos é de natureza filosófica com ontologias e epistemologias divergentes. É notável a importância das discussões filosóficas. O antagonismo dicotômicos dos dois filósofos possuem fundamentações que auxiliam na compreensão da mente. Quando teremos estas respostas? As máquinas serão capazes de raciocinar algum dia? Até onde uma IA pode chegar?
+A diferença entre ambos é de natureza filosófica com ontologias e epistemologias divergentes. É notável a importância das discussões filosóficas. O antagonismo dicotômico dos dois filósofos possuem fundamentações que auxiliam na compreensão da mente. Quando teremos estas respostas? As máquinas serão capazes de raciocinar algum dia? Até onde uma IA pode chegar?
 
 \hypertarget{machinelearning}{%
 \chapter{O Aprendizado de Máquina}\label{machinelearning}}
@@ -408,9 +410,9 @@ Um aprendizado de máquina \textbf{não} é o mesmo que uma lista de instruçõe
 \hypertarget{como-a-muxe1quina-aprende}{%
 \section{Como a máquina aprende?}\label{como-a-muxe1quina-aprende}}
 
-Para facilitar a compressão, imagine que você é um vendedor e está interessado em clietes ``bons pagadores'' e ``maus pagadores''. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clietes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.
+Para facilitar a compressão, imagine que você é um vendedor e está interessado em clientes ``bons pagadores'' e ``maus pagadores''. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clientes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.
 
-Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos que passaram por toda uma análise se havia dados faltantes, redundantes, etc e já classificados entre cliente bom pagador e mau pagador e suas respectivas características para treiná-lo. Com estes dados o algoritmo irá aprender por meio de com quais condições são necessárias para o cliente ser classificado como bom pagador ou mau pagador. Importante ressaltar que existem diferentes algoritmos de Aprendizado de Máquina que poderiam resolver esse problema, de acordo com modelos estatíticos e comandos computacionais que atendam a certos pressupostos.
+Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos que passaram por toda uma análise se havia dados faltantes, redundantes, etc e já classificados entre cliente bom pagador e mau pagador e suas respectivas características para treiná-lo. Com estes dados o algoritmo irá aprender por meio de com quais condições são necessárias para o cliente ser classificado como bom pagador ou mau pagador. Importante ressaltar que existem diferentes algoritmos de Aprendizado de Máquina que poderiam resolver esse problema, de acordo com modelos estatísticos e comandos computacionais que atendam a certos pressupostos.
 
 \begin{itemize}
 \tightlist
@@ -694,7 +696,7 @@ Para facilitar a compreensão, considere a série temporal \emph{AirPassengers} 
 
 }
 
-\caption{``Gráfico de estudo no sistema de saúde apresentando \emph{outlier} \citep{aquarela}.''}\label{fig:airpassengers}
+\caption{``Número de passageiros tratados mensalmente \citep{box1976time}.''}\label{fig:airpassengers}
 \end{figure}
 
 
@@ -823,13 +825,69 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 
 
 
-\hypertarget{algoritmos-de-aprendizagem}{%
-\chapter{Algoritmos de Aprendizagem}\label{algoritmos-de-aprendizagem}}
+\hypertarget{Algoritmosaprendizagem}{%
+\chapter{Algoritmos de Aprendizagem - Parte I}\label{Algoritmosaprendizagem}}
 
 \emph{Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.}
 
+Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulos irei apresentar:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Medidas de Importância:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Medidas de Informação
+\item
+  Medidas de Distância
+\item
+  Medidas de Dependência
+\item
+  Medidas de Precisão
+\item
+  Medidas de Consistência
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Teste de Hipóteses
+\end{enumerate}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Naive Bayes
+\item
+  Regressão
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Regressão Linear Simples
+\item
+  Regressão Múltipla
+\item
+  Modelo de Probabilidade Linear
+\item
+  Gradiente Descendente
+\end{itemize}
+
 \hypertarget{medidas-de-importuxe2ncia}{%
-\section{Medidas de importância}\label{medidas-de-importuxe2ncia}}
+\section{Medidas de Importância}\label{medidas-de-importuxe2ncia}}
 
 \begin{quote}
 Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência
@@ -855,7 +913,7 @@ Se A é discreto com distribuição de probabilidade \(p(A)\), a entropia será:
   \label{eq:entropia}
 \end{equation}
 
-Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre ``Sim'' e ``não'': quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero ``sim''/``não'' ou de ser 1 (100\%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.
+Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre ``sim'' e ``não'': quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero ``sim''/``não'' ou de ser 1 (100\%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.
 
 \begin{figure}
 
@@ -922,7 +980,7 @@ Assumindo que cada atributo \(B_i\) é condicionalmente independente de todos os
   \label{eq:bayesprodutorio}
 \end{equation}
 
-Por fim para podermos classificarmos, aplicamos argumentos de máxima para otimizarmos a função, obtém-se o classificador de Naive Bayes:
+Por fim para podermos classificar, aplicamos argumento de máxima para otimizarmos a função, assim obtém-se o classificador de Naive Bayes:
 
 \begin{equation} 
   \mbox{classificador} \ \hat{y}=argmax \ p(A_k)\displaystyle \prod_{i=1}^n p(B_i|A_k) \ \ k ∈{1,...,k}
@@ -931,7 +989,7 @@ Por fim para podermos classificarmos, aplicamos argumentos de máxima para otimi
 
 Lembrando que para cada atributo, a sua distribuição de probabilidades é assumida como normal.
 
-O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.
+O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa na prática e caso haja variáveis categóricas num conjunto de dados de teste que não forem treinadas, o modelo não irá estimar estas novas variáveis.
 
 \textbf{Exemplo:} para facilitar, podemos supor que estamos trabalhando no diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de \citet{organica}).
 
@@ -948,14 +1006,12 @@ Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doe
 
 
 
-Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença, dado que recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de ``receber um resultado positivo, dado que tem a doença''. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.
+Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença dado que ela recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de ``receber um resultado positivo, dado que tem a doença''. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.
 
 Ou seja, ao caso de ter a doença dado que o resultado deu positivo:
-\[P(doença|positivo) = 20% * 90% 
-\] \[P(doença|positivo) = 0,2 * 0,9 \] \[P(doença|positivo) = 0,18\]
+\[P(doença|positivo) = 20\% . 90\% \] \[P(doença|positivo) = 0,2 * 0,9 \] \[P(doença|positivo) = 0,18\]
 Para o caso de não ter a doença, dado que deu positivo:
-\[P(não \ doença|positivo) = 80% * 30%
-\]
+\[P(não \ doença|positivo) = 80\%.30\%\]
 \[P(não \ doença|positivo) = 0,8 * 0,3\]
 \[P(não\ doença|positivo) = 0,24\]
 Após isso precisamos normalizar os dados, para que a soma das duas probabilidades resulte 1 (100\%). Como vimos em pré-processamento \ref{preprocesso}, a \textbf{Normalização por reescala} por meio de um valor mínimio e um máximo, gera um novo intervalo onde os valores de um atributo estão contidos. Um intervalo entre 0 e 1. Portanto, dividimos o resultado pela soma das duas probabilidades.
@@ -979,11 +1035,11 @@ Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{f
 
 
 
-\hypertarget{regressuxe3o}{%
-\section{Regressão}\label{regressuxe3o}}
+\hypertarget{reg}{%
+\section{Regressão}\label{reg}}
 
-\hypertarget{anuxe1lise-de-regressuxe3o-linear}{%
-\subsection{Análise de Regressão Linear}\label{anuxe1lise-de-regressuxe3o-linear}}
+\hypertarget{reglin}{%
+\subsection{Análise de Regressão Linear Simples}\label{reglin}}
 
 A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória, ela é supervisionada.
 
@@ -996,7 +1052,7 @@ Como na prática não conseguimos análisar uma população, trabalhamos em cima
 
 E o modelo para função de regressão amostral:
 \begin{equation}
-    Y_i=\hat{\beta_0}+\hat{\beta_1 X_i}+\hat{\mu_i}
+    Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i}
     \label{eq:fra}
 \end{equation}
 
@@ -1027,7 +1083,7 @@ FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) se
 Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que elevamos os resíduos ao quadrado. Fazendo isso, o método dá mais peso aos resíduos (não irão mais se anular), podendo visualizar melhor o ``tamanho'' do erro total e obter propriedades estatísticas mais desejáveis.
 
 \begin{equation}
-    \sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \\ = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1 X_i})^2 
+    \sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \\ = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1})X_i^2 
     \label{eq:mmqeq}
 \end{equation}
 
@@ -1116,8 +1172,8 @@ Atualmente é bem comum utilizarmos o modelo \textbf{log-log}, pois seu coeficie
 
 Resumo geral: Em palavras, r2 mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão.
 
-\hypertarget{regressuxe3o-linear-muxfaltipla}{%
-\subsection{Regressão Linear Múltipla}\label{regressuxe3o-linear-muxfaltipla}}
+\hypertarget{regmult}{%
+\subsection{Regressão Linear Múltipla}\label{regmult}}
 
 Na prática deparamos com muitas outros fatores que podem influenciar em sua variável dependente \(Y\). Portanto são acrescentadas dentro de seu modelo de regressão mais variáveis, o que é conhecido como \textbf{Regressão Linear Múltipla}, nada mais do que uma ampliação da regressão linear simples. Num modelo, por exemplo, com três variáveis (caso mais simples) pode ser expressa para a amostra como:
 
@@ -1142,14 +1198,339 @@ sendo \(r^2\) o coeficiente de correlação ao quadrado e \(j\) para referir as 
 
 De mesmo modo que em regressão linear simples, são estimados os MQO, Máxima verossimilhança e o \textbf{coeficiente de determinação múltiplo \(R^2\)} (mesma interpratação para regressão linear simples \(r^2\)) para que se obtenha a melhor aproximação possível.
 
-\hypertarget{gradiente-descendente}{%
-\section{Gradiente Descendente}\label{gradiente-descendente}}
+\hypertarget{mpl}{%
+\subsection{Modelo de Probabilidade Linear (MPL)}\label{mpl}}
+
+Considerando um modelo típico de regressão linear simples:
+\[Y_i=\beta_0+\beta_1 X_i+\mu_i \]
+
+em que \(X =\)sua renda e \(Y=1\) de que você compre um celular e \(0\) não compre. Como o regressando é binário, ou dicotômico, chamamos de probabilidade linear (MPL). Pode ser interpretada como probabilidade condicional de que o evento ocorra dado \(X_i\), isto é, Pr \((Yi = 1 | Xi)\). Neste caso, é a probabilidade de você comprar um celular e cuja renda é dado por \(X_i\).
+
+Para entender este modelo, vamos supor \(E(\hat{\mu}_i)=0\) para evitarmos estimadores tendenciosos (erros). Portanto:
+
+\begin{equation}
+    E(Y_i|X_i)=\beta_0+\beta_1 X_i
+    \label{eq:regcond}
+\end{equation}
+
+Com \(P_i=\)probabilidade de que \(Y_i=1\)(ocorrência do evento) e \((1-P_i)\)=probabilidade de \(Y_i=0\)(não ocorrência do evento). \(Y_i\) possui a seguinte \textbf{distribuição de probabilidade de Bernoulli}:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\textbf{\(Y_i\)} & \textbf{Probabilidade}\tabularnewline
+\midrule
+\endhead
+\(0\) & \(1-P_i\)\tabularnewline
+\(1\) & \(P_i\)\tabularnewline
+\textbf{Total} & \(1\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Aplicando a esperança, obtemos:
+
+\begin{equation}
+    E(Y_i)=0(1-P_i)+1(P_i)=P_i
+    \label{eq:esperbernoulli}
+\end{equation}
+
+Igualando \eqref{eq:esperbernoulli} com \eqref{eq:regcond}, obtemos:
+
+\begin{equation}
+    E(Y_i|X_i)=\beta_0+\beta_1 X_i
+    \label{eq:regprob}
+\end{equation}
+
+Isso verifica que a esperança condicional do modelo de regressão \eqref{eq:frp} pode ser interpretada como a probabilidade
+condicional de \(Yi\). Note que, como explicado em \ref{dicio} sobre \textbf{Distribuição Bernoulli} e \textbf{Distribuição Binominal}, caso haja \(n\) observações independentes, cada um com uma probabilidade \(p\) (sucesso) e probabilidade \((1 - p)\) (fracasso) e \(X\) dessas observações representarem o número de sucessos, \(X\) então segue a distribuição binomial (com médi \(np\) e variância \(np(1-p)\). Lembrando que a probabilidade \(P_i\) situa-se entre 0 e 1 \(\rightarrow 0 \leq E(Y_i|X_i) \leq 1\).
+
+Alguns detalhes importantes:
+
+\begin{itemize}
+\item
+  A hipótese de normalidade de \(\mu_i\) não se verifica no caso dos modelos de probabilidade linear, pois os termos de erro assumem também apenas dois valores, seguindo a distribuição de Bernoulli. Se objetivo for a estimação pontual, a hipótese de normalidade deixa de ser necessária \citep{gujarati2011econometria} e que conforme aumentamos o tamanho da amostra indefinidamente, os estimadores de MQO tendem geralmente a distribuir-se normalmente.
+\item
+  Como sabe-se, a média e variância de uma distribuição Bernoulli possuem respectivamente \(p\) e \(p(1-p)\). Logo a variância é heterocedástica \(var(\mu_i)=P_i(1-P_i)\) e portanto os estimadores de MQO não são eficientes (não possuem variância mínima). Podemos fazer a transformação para que seja homocedástico:
+  \[\sqrt{E(Y_i|X_i)-[1-E(Y_i|X_i)]}=\sqrt{P_i(1-P_i)=\sqrt{w_i}}\]
+  \begin{equation}
+    \frac{Y_i}{\sqrt{w)i}} = \frac{\beta_0}{\sqrt{w)i}}+\frac{\beta_1 X_i}{\sqrt{w)i}}+\frac{\mu_i}{\sqrt{w)i}}
+    \label{eq:probhomecedastico}
+  \end{equation}
+\end{itemize}
+
+Com a transformação, pode-se calcular por MQO (ponderados).
+
+\textbf{Alternativas para o MPL:}
+
+\begin{itemize}
+\item
+  Como mencionado, a probabilidade condicional situa-se entre \(0\) e \(1\), porém por MQO não levarem em conta esta restrição. Pode-se verificar os valores que constam entre o intervalo, considerando os valores negativos como \(0\) e maiores que \(1\) como iguais a \(1\) ou aplicar algum outro modelo para garanti-los dentro dos intervalos.
+\item
+  O \(R^2\) costuma-se situar muito abaixo de 1. Por ser limitado em caso de modelos binários, muitos pesquisadores buscam evitar seu uso.
+\end{itemize}
+
+Os modelos mais comuns para ser utilizado como alternativa ao MPL são o \textbf{logit} e o \textbf{probit} para evitar estes problemas.
+
+\hypertarget{logit}{%
+\subsubsection{Logit}\label{logit}}
+
+A fim de fazer com que \(P_i\) varie entre 0 e 1 e relacione-se linearmente a \(X_i\), a \textbf{função de distribuição logística} pode ser expressa como:
+
+\begin{equation}
+    P_i=\frac{1}{1+e^{-Z_i}}=\frac{e^Z_i}{1+e^Z_i}
+    \label{eq:logitpi}
+\end{equation}
+
+e \((1-P_i)\) da probabilidade fracasso:
+
+\begin{equation}
+    1-P_i=\frac{1}{1+e^{Z_i}}\rightarrow e^{Z_i}
+    \label{eq:logitmenospi}
+\end{equation}
+
+onde \(Z_i=\beta_0+\beta_1X_i\). Assim \(Z_i\) varia de \(-\infty\) a \(\infty\) e portanto \(P_i\) entre 0 e 1.
+
+Para estimarmos a MQO, precisamos linearizar a função:
+
+\begin{equation}
+    L_i=ln(\frac{P_i}{1-P_i})=Z_i=\beta_0+\beta_1 X_i
+    \label{eq:logitlinear}
+\end{equation}
+
+O modelo \textbf{logit} faz com que:
+
+\begin{itemize}
+\item
+  A probabilidade varie entre 0 e 1, enquanto \(Z\) e \(L\) possam variar de \(-\infty\) a \(\infty\);
+\item
+  Mesmo que as probabilides não sejam lineares, \(L\) é linear em \(X\);
+\item
+  Pode-se aplicar com mais regressores e com mesma interpretação angular medindo a variação de \(L\) para uma unidade variação em \(X\) e para o intercepto;
+\item
+  Se \(L\) torna-se maior e positivo quando as chances do evento de interesse ocorrer aumenta, do contrário (maior e negativo) de não ocorrer;
+\item
+  Como em MPL, o modelo Logit é heterocedástico precisa-se ponderar \citep{gujarati2011econometria, cox1970analysis}:
+  \begin{equation}
+    \sqrt{w_i}L_i=\beta_0 \sqrt{w_i}+\beta_1\sqrt{w_i}X_i+\sqrt{w_i}\mu_i 
+    \label{eq:mqplogit}
+  \end{equation}
+\end{itemize}
+
+em que, com a variância \(\hat{\sigma}^2=\frac{1}{N_i\hat{P_i}(1-\hat{P_i})}\), \(W_i\) é o peso \(N_i\hat{P_i}(1-\hat{P_i})\). Por fim, aplicar o mínimos quadrados ponderados (da mesma forma que MQO, porém com a nova transformação de dados) e estimarmos os parâmetros normalmente.
+
+Como o \(R^2\) não é significativa nos modelos binários. É comum utilizar as \textbf{pseudo \$R\^{}2} {[}long1997regression{]} - existe uma variedade delas - ou o \textbf{Count \(R^2\)} que nada mais é que o número de previsões corretas com o número total de observações. Para a hiótese nula de que todos os coeficientes angulares são simultâneamente iguais a zero, utiliza-se a \textbf{estatística da razão de verossimilhança} que segue a distribuição \(\chi^2\) que equivale ao teste F.
+
+\hypertarget{probit}{%
+\subsubsection{Probit}\label{probit}}
+
+\hypertarget{tobit}{%
+\subsubsection{Tobit}\label{tobit}}
+
+\hypertarget{exemplos}{%
+\subsection{Exemplos}\label{exemplos}}
+
+\hypertarget{gradiente-descendente-gd-gd}{%
+\section{Gradiente Descendente (GD) \{GD\}}\label{gradiente-descendente-gd-gd}}
+
+Para a obtenção dos parâmetros de forma analítica, como regressões, muitas vezes é difícil obter os parâmetros que minimizam determinada função de interesse. Dificuldades em obter a solução do sistema na forma fechada (ou não existir) ou quando \(n\) é muito grande, o cálculo da inversa (estimando os parâmetros matricialmente) pode ser muito caro computacionalmente.
+
+O \textbf{Gradiente Descendente (GD)} pode ser muito útil dependendo da situação, conhecido também como \textbf{máximo declive}, é um método númerico utilizado em otimização. Tem como finalidade identificar um mínimo local de uma função de modo iterativo, no qual a cada iteração toma-se a direção do gradiente. Muitas vezes serve como base para algoritmos de segunda ordem como Métodos de Newton, por exemplo.
+
+É uma função para casos gerais, por praticidade vamos supor que temos uma função denominada custo com apenas dois parâmetros \(J(\theta_0,\theta_1)\) e queremos estimar seus parâmetros que minimizam seus erros. Inicialmente atribuímos quaisquer estimativas iniciais para valores de \(\theta_0\) e \(\theta_1\), com o GD vamos alterandos os valores dos \(\theta's\) para reduzirmos \(J(\theta_0,\theta_1)\) até que se chegue a um valor mínimo local.
+
+Um exemplo que gosto muito, por \citet{andrewcoursera}: observe a Figura \ref{fig:gd} e imagine que você está em um campo, com dois montes. Mantenha sua imaginação de que está situado na cruz preta - ponto 0 - no primeiro monte vermelho. Com o GD vamos olhar 360 graus ao redor do ponto em que você está situado apenas para descobrir a resposta de que ``se você fosse dar um pequeno passo em alguma direção ao seu redor com o objetivo de ir para o ponto mais baixo do campo o mais rápido possível, para qual direção você deve andar?''
+
+Supondo que após olhar para todos os lados, com análise de GD você descobriu que seu primeiro passo será no ponto 1 da Figura \ref{fig:gd}. Após isso, você observa novamente para todos os lados e faz outra análise de GD para verificar aonde você vai se deslocar em seu segundo passo para chegar o mais rápido possível até concluir que será o ponto 2. Assim, sucessivamente, você vai se deslocando para os respectivos pontos 3, 4 e sucessivamente até convergir em seu objetivo Z, porém caso você iniciasse pelo ponto K, é bem possível que por meio do GD você descesse o monte por outro trajeto, encontrando outros pontos ótimos locais até chegar a outro ponto otimizado (descer por completo o monte). Esta é a ideia do Gradiente Descendente, por meio de iterações, o algoritmo vai identificando os pontos ótimos (estimadores mínimos) até convergir num ótimo local da função.
+
+Em caso de funções simples como regressão linear, não é necessário o uso de GD. Mas em casos com muitas variáveis e ordens, pode ser bem viável.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gd} 
+
+}
+
+\caption{Gráfico tridimensional a exemplo de Gradiente Descendente \citep{andrewcoursera}.}\label{fig:gd}
+\end{figure}
+
+
+
+O algoritmo pode ser expresso como:
+
+\begin{equation}
+    \theta_j := \theta_j - \alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1 
+    \label{eq:GD}
+\end{equation}
+
+com \(j\) referindo-se à quantidade de observações (parâmetros que pretendemos estimar) da amostra.
+
+O algoritmo é processado da seguinte forma: imagine na mesma Figura \ref{fig:gd} que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em \(Z=10\). Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de \(Z\) ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu \(\alpha\) um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com \(\alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1)\). Caso fosse uma taxa pequena de \(\alpha\), seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de \(Z\) (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.
+
+Com o primeiro passo dado (supor passo \(1 = 40\)), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada \(\theta\) \textbf{simultâneamente} (caso dois \(\theta\)'s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto \(2=15\). Conforme vai se aproximando de \(Z\), seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de \(Z=10\) que é o ponto ótimo da função.
+
+Assim o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (sim! Podemos encontrar os parâmetros dos exemplos de regressão com este algoritmo também!)
+
+Desta forma, atribuímos (``\(:=\)'') para a própria observação de entrada da função receber ela mesma subtraída \(\alpha\) que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). \textbf{\(\alpha\)( learning rate - taxa de aprendizagem)} é um valor fixo que controla o tamanho do passo em cada iteração: quando \(\alpha\) for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). \citet{rendle2008online} divulgaram que a fatoração de matrizes para a predição de \emph{ratings} nos dados do desafio \emph{Netflix} precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.
+
+Para facilitar a compreensão do efeito da taxa de variação, observe a Figura \ref{fig:gd1}. No primeiro gráfico você inicia seu algoritmo com o valor \(\theta\) e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (\(\frac{d}{d\theta}j(\theta)\geq 0\)), portanto em \(\theta=\theta-\alpha.\mbox{um valor positivo}\), faz que com que esse novo \(\theta\) (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (\(\frac{d}{d\theta}j(\theta)\leq 0\)), portanto \(\theta=\theta-\alpha.\mbox{um valor negativo}\), fará com que o novo \(\theta\) seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gd1} 
+
+}
+
+\caption{Efeito da taxa de variação no Gradiente Descendente.}\label{fig:gd1}
+\end{figure}
+
+
+
+Como pode-se perceber, a taxa de aprendizagem e a taxa de variação são fundamentais e complementares para o algoritmo de GD, pois elas dizem o tamanho do passo e em que posição estamos em relação ao ponto ótimo da função.
+
+\hypertarget{exemplos-1}{%
+\subsection{Exemplos}\label{exemplos-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Uma variável:}Vamos supor a seguinte função custo:
+\end{enumerate}
+
+\[j(\theta)=\theta^2\]
+
+Queremos minimizá-la \(min \ j(\theta)\). Portanto precisamos inicialmente colocar um número aleatório para nosso parâmetro - não ótimo - para que o algoritmo atualize a cada iteração. Vamos supor a taxa de aprendizagem (\emph{learning rate}) \(\alpha=0,1\) e \(\theta=4\) para facilitar. Ou seja, \(j(\theta)=4^2=16\). Vamos atualizar os parâmetros:
+
+\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \\ 
+\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}
+\\ \theta:= \theta -\alpha.2\theta \\ \mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \\ \theta:=4-0,1 \ .\ 2\ .\ 4 \\
+\rightarrow \theta:=3,2
+\]
+Na iteração obtemos \(\theta=3,2\). Se subsituirmos em \(j(\theta)\) novamente, iremos obter \(j(\theta)=(3,2)^2=10,24\). Agora atualizando novamente para a próxima iteração:
+\[\theta:= \theta -\alpha.2\theta \\ \theta:=3,2-0,1\ .\ 2\ .\ 3,2 \\
+\theta:= 2,56\]
+
+Portanto, \(j(\theta)=(2,56)^2=6,55\). Sucessivamente, vamos fazendo as iterações até convergir:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\textbf{\(\theta\)} & \textbf{\(j(\theta)\)}\tabularnewline
+\midrule
+\endhead
+4 & 16\tabularnewline
+3,2 & 10,24\tabularnewline
+2,56 & 6,55\tabularnewline
+2,04 & 4,19\tabularnewline
+1,632 & 2,663\tabularnewline
+. & .\tabularnewline
+. & .\tabularnewline
+. & .\tabularnewline
+0 & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+Da mesma forma, se iniciarmos o algoritmo com -4:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\textbf{\(\theta\)} & \textbf{\(j(\theta)\)}\tabularnewline
+\midrule
+\endhead
+-4 & 16\tabularnewline
+-3,2 & 10,24\tabularnewline
+-2,56 & 6,55\tabularnewline
+-2,04 & 4,19\tabularnewline
+-1,632 & 2,663\tabularnewline
+. & .\tabularnewline
+. & .\tabularnewline
+. & .\tabularnewline
+0 & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+Note que conforme \(\theta\) diminui, o custo também. Conforme mais iterações são aplicadas, mais ``ótimo'' será. Graficamente para -4 em vermelho e +4 em azul:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gdx2} 
+
+}
+
+\caption{Função \(X^2\) com valores de entrada -4 e +4.}\label{fig:gdx2}
+\end{figure}
+
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Duas variáveis:} Vamos supor a seguinte função de custo com \(\alpha=0,1\), \(\theta_1=1\) e \(\theta_2=2\):
+  \[j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2 \\ 
+  j(\theta_1,\theta_2)=1^2+2^2=5\]
+  Queremos \(min \ j(\theta_1,\theta_2)\)Como explicado, ao caso de haver mais de um parâmetro precisamos separar atualizar cada um simultâneamente e aplicar derivada parcial em sua função:
+\end{enumerate}
+
+\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2) \\
+\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\\
+\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
+\mbox{e}\ \ \frac{d}{d\theta_2}j(\theta_1,\theta_2)=2\theta_2\]
+
+\[\mbox{substituindo:} \\
+\theta_1:=\theta_1-\alpha.\ 2\theta_1 \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha .\ 2\theta_2 \\
+\mbox{inserindo os valores:}\\
+\theta_1:=1-0,1.\ 2.\ 1 \ \ \mbox{e}\ \ \theta_2:=2-0,1.\ 2.\ 2 \\
+\theta_1:=0,8 \ \mbox{e} \ \theta_2=1,6\]
+
+Portanto após a iteração, temos que \(j(\theta_1,\theta_2)=0,8^2+1,6^2=3,2\). Da mesma forma, para a próxima iteração temos:
+
+\[\theta_1:=0,8-0,1.\ 2.\ 0,8 \ \ \mbox{e}\ \ \theta_2:=1,6-0,1.\ 2.\ 1,6 \\
+\theta_1:=0,64 \ \mbox{e} \ \theta_2=1,28\]
+
+Portanto teremos \(j(\theta_1,\theta_2)=0,64^2+1,28^2=2,048\). Assim sucessivamente:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+\textbf{\(\theta_1\)} & \textbf{\(\theta_2\)} & \textbf{\(j(\theta_1,\theta_2)\)}\tabularnewline
+\midrule
+\endhead
+1 & 2 & 5\tabularnewline
+0,8 & 1,6 & 3,2\tabularnewline
+0,64 & 1,28 & 2,48\tabularnewline
+. & . & .\tabularnewline
+. & . & .\tabularnewline
+. & . & .\tabularnewline
+0 & & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Erro quadrado médio (Regressão Linear Simples:)} Observe a função de regressão linear:
+  \[f_\theta(X)=\theta_0+\theta_1*X\]
+\end{enumerate}
+
+A função de custo:
+\[j(\theta)=\frac{1}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
+
+Primeiramente vamos encontrar a derivada parcial de \(j(\theta_0,\theta_1)\):
+\[\frac{d}{d\theta_0}j(\theta_0,\theta_1=\frac{d}{d\theta_0}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i) \\
+\frac{d}{d\theta_1}j(\theta_0,\theta_1=\frac{d}{d\theta_1}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)x^i\]
+Pode-se também multiplicar a função de custo por \(\frac{1}{2}\) para que quando faz-se a derivada, facilite no cálculo e multiplicar a função de custo por um escalar não irá afetar a localização do mínimo.
+\[j(\theta)=\frac{1}{2m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
+Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \(Y\) em seu modelo e de seus dois \(\theta's\) de entrada. Repetindo as iterações para atualizar seus valores até a convergência e identificando os parâmetros que se aproximam.
+
+\hypertarget{algoritmos-de-aprendizagem---parte-ii}{%
+\chapter{Algoritmos de Aprendizagem - Parte II}\label{algoritmos-de-aprendizagem---parte-ii}}
 
 \hypertarget{svm}{%
 \section{SVM}\label{svm}}
 
-\hypertarget{arvores-de-decisuxe3o}{%
-\section{Arvores de Decisão}\label{arvores-de-decisuxe3o}}
+\hypertarget{uxe1rvores-de-decisuxe3o}{%
+\section{Árvores de Decisão}\label{uxe1rvores-de-decisuxe3o}}
 
 \hypertarget{elastic-net}{%
 \section{Elastic Net}\label{elastic-net}}
@@ -1167,16 +1548,13 @@ De mesmo modo que em regressão linear simples, são estimados os MQO, Máxima v
 \section{Clusters}\label{clusters}}
 
 \hypertarget{aoc-e-roc}{%
-\section{AOC E ROC}\label{aoc-e-roc}}
+\section{AOC e ROC}\label{aoc-e-roc}}
 
-\hypertarget{modelos-nuxedvel-ii}{%
-\chapter{Modelos nível II}\label{modelos-nuxedvel-ii}}
+\hypertarget{modelos-nivel-iii}{%
+\section{modelos nivel III}\label{modelos-nivel-iii}}
 
-\hypertarget{gradiente-boosting---estudar-boosting-e-bagging-dentro-de-emsemnble}{%
-\section{Gradiente Boosting -\textgreater{} estudar boosting e bagging dentro de Emsemnble}\label{gradiente-boosting---estudar-boosting-e-bagging-dentro-de-emsemnble}}
-
-\hypertarget{random-forest}{%
-\section{Random Forest}\label{random-forest}}
+\hypertarget{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}{%
+\section{grad boosting -\textgreater{} estudar boosting e bagging dentro de emseamble}\label{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}}
 
 \hypertarget{redes-neurais}{%
 \section{Redes Neurais}\label{redes-neurais}}

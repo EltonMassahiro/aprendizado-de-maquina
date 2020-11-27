@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Algoritmos de Aprendizagem - Parte I | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Algoritmos de Aprendizagem - Parte I | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Algoritmos de Aprendizagem - Parte I | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-11-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preprocesso.html"/>
+<link rel="next" href="algoritmos-de-aprendizagem-parte-ii.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicio"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
+<li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>5</b> Pré-processamento</a><ul>
+<li class="chapter" data-level="5.1" data-path="preprocesso.html"><a href="preprocesso.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>5.1</b> Dados faltantes e a Limpeza de dados</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="preprocesso.html"><a href="preprocesso.html#tratamento-de-dados-faltantes"><i class="fa fa-check"></i><b>5.1.1</b> Tratamento de dados faltantes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="preprocesso.html"><a href="preprocesso.html#outlier"><i class="fa fa-check"></i><b>5.1.2</b> <em>Outlier</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="preprocesso.html"><a href="preprocesso.html#transformação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Transformação de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="preprocesso.html"><a href="preprocesso.html#tipos-de-datasets"><i class="fa fa-check"></i><b>5.2.1</b> Tipos de <em>datasets</em></a></li>
+<li class="chapter" data-level="5.2.2" data-path="preprocesso.html"><a href="preprocesso.html#normalização-e-padronização"><i class="fa fa-check"></i><b>5.2.2</b> Normalização e padronização</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="preprocesso.html"><a href="preprocesso.html#features-selection---seleção-de-atributos-sa"><i class="fa fa-check"></i><b>5.3</b> Features Selection - Seleção de atributos (SA)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html"><i class="fa fa-check"></i><b>6</b> Algoritmos de Aprendizagem - Parte I</a><ul>
+<li class="chapter" data-level="6.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-importância"><i class="fa fa-check"></i><b>6.1</b> Medidas de Importância</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-informação"><i class="fa fa-check"></i><b>6.1.1</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-distância"><i class="fa fa-check"></i><b>6.1.2</b> Medidas de Distância</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidasdep"><i class="fa fa-check"></i><b>6.1.3</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="6.1.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-precisão"><i class="fa fa-check"></i><b>6.1.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="6.1.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-consistência"><i class="fa fa-check"></i><b>6.1.5</b> Medidas de consistência</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#teste-de-hipóteses-e-análise-de-variância"><i class="fa fa-check"></i><b>6.2</b> Teste de hipóteses e Análise de Variância</a></li>
+<li class="chapter" data-level="6.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#naive-bayes"><i class="fa fa-check"></i><b>6.3</b> Naive Bayes</a></li>
+<li class="chapter" data-level="6.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#reg"><i class="fa fa-check"></i><b>6.4</b> Regressão</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#reglin"><i class="fa fa-check"></i><b>6.4.1</b> Análise de Regressão Linear Simples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#regmult"><i class="fa fa-check"></i><b>6.4.2</b> Regressão Linear Múltipla</a></li>
+<li class="chapter" data-level="6.4.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#mpl"><i class="fa fa-check"></i><b>6.4.3</b> Modelo de Probabilidade Linear (MPL)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exemplos"><i class="fa fa-check"></i><b>6.4.4</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#gradiente-descendente-gd-gd"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente (GD) {GD}</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exemplos-1"><i class="fa fa-check"></i><b>6.5.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte II</a><ul>
+<li class="chapter" data-level="7.1" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
+<li class="chapter" data-level="7.2" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#árvores-de-decisão"><i class="fa fa-check"></i><b>7.2</b> Árvores de Decisão</a></li>
+<li class="chapter" data-level="7.3" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#elastic-net"><i class="fa fa-check"></i><b>7.3</b> Elastic Net</a></li>
+<li class="chapter" data-level="7.4" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#knn"><i class="fa fa-check"></i><b>7.4</b> KNN</a></li>
+<li class="chapter" data-level="7.5" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#k-means"><i class="fa fa-check"></i><b>7.5</b> K-means</a></li>
+<li class="chapter" data-level="7.6" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#pca"><i class="fa fa-check"></i><b>7.6</b> PCA</a></li>
+<li class="chapter" data-level="7.7" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#clusters"><i class="fa fa-check"></i><b>7.7</b> Clusters</a></li>
+<li class="chapter" data-level="7.8" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#aoc-e-roc"><i class="fa fa-check"></i><b>7.8</b> AOC e ROC</a></li>
+<li class="chapter" data-level="7.9" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#modelos-nivel-iii"><i class="fa fa-check"></i><b>7.9</b> modelos nivel III</a></li>
+<li class="chapter" data-level="7.10" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble"><i class="fa fa-check"></i><b>7.10</b> grad boosting -&gt; estudar boosting e bagging dentro de emseamble</a></li>
+<li class="chapter" data-level="7.11" data-path="algoritmos-de-aprendizagem-parte-ii.html"><a href="algoritmos-de-aprendizagem-parte-ii.html#redes-neurais"><i class="fa fa-check"></i><b>7.11</b> Redes Neurais</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html"><i class="fa fa-check"></i><b>8</b> Validação de um modelo</a><ul>
+<li class="chapter" data-level="8.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#overfitting-underfitting"><i class="fa fa-check"></i><b>8.1</b> <em>Overfitting, Underfitting</em></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>8.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>8.2</b> Validação Cruzada</a></li>
+<li class="chapter" data-level="8.3" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>8.3</b> Como escolher um bom modelo?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Algoritmosaprendizagem" class="section level1">
+<h1><span class="header-section-number">Capítulo 6</span> Algoritmos de Aprendizagem - Parte I</h1>
+<p><em>Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.</em></p>
+<p>Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulos irei apresentar:</p>
+<ol style="list-style-type: decimal">
+<li>Medidas de Importância:</li>
+</ol>
+<ul>
+<li>Medidas de Informação</li>
+<li>Medidas de Distância</li>
+<li>Medidas de Dependência</li>
+<li>Medidas de Precisão</li>
+<li>Medidas de Consistência</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Teste de Hipóteses</li>
+</ol>
+<ul>
+<li></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Naive Bayes</p></li>
+<li>Regressão</li>
+</ol>
+<ul>
+<li>Regressão Linear Simples</li>
+<li>Regressão Múltipla</li>
+<li>Modelo de Probabilidade Linear</li>
+<li>Gradiente Descendente</li>
+</ul>
+<div id="medidas-de-importância" class="section level2">
+<h2><span class="header-section-number">6.1</span> Medidas de Importância</h2>
+<blockquote>
+<p>Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência</p>
+<p>Tradução de <span class="citation">Liu and Motoda (<a href="#ref-liu2012feature">2012</a>)</span>.</p>
+</blockquote>
+<p>É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional <span class="citation">(Liu and Motoda <a href="#ref-liu2012feature">2012</a>)</span>. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas <span class="citation">(Lee <a href="#ref-lee2005seleccao">2005</a>)</span>.</p>
+<div id="medidas-de-informação" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Medidas de Informação</h3>
+<p>As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a <em>priori</em> e a incerteza a <em>posteriori</em> considerando-se o atributo <span class="math inline">\(X_i\)</span>. <span class="math inline">\(X_i\)</span> é preferido ao atributo <span class="math inline">\(X_j\)</span> se seu ganho de informação for maior que de <span class="math inline">\(X_j\)</span>. Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.</p>
+<p><span class="citation">Shannon (<a href="#ref-shannon1948mathematical">1948</a>)</span>, tomou como “ponto de partida” encontrar uma forma matemática de medir o quanto de informação existe na transmissão de uma mensagem de um ponto a outro, denominando-a entropia. Sua proposta baseava-se na ideia de que o aumento da probabilidade do próximo símbolo diminuiria o tamanho da informação. Com isso, a entropia pode ser definida como a quantidade de incerteza que há em uma mensagem e que diminui à medida que os símbolos são transmitidos (vai se conhecendo a mensagem), tendo-se então a informação, que pode ser vista como redução da incerteza <span class="citation">(Shannon <a href="#ref-shannon1948mathematical">1948</a>; Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>. Por exemplo: ao utilizarmos como idioma a nossa língua portuguesa e ao transmitir como símbolo a letra “q”, a probabilidade do próximo símbolo ser a letra “u” é maior que a de ser qualquer outro símbolo, enquanto que a probabilidade de ser novamente a letra “q” é praticamente nula <span class="citation">(Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>.</p>
+<p>Shannon define que a entropia pode ser calculada por meio da soma das probabilidades de ocorrência de cada símbolo pela expressão <span class="math inline">\(∑ p_i = 1 = 100\%\)</span>, em que <span class="math inline">\(p_i\)</span> representa a probabilidade do i-ésimo símbolo que compõe a mensagem. Segundo ele, estes símbolos devem ser representados através de sequências binárias, utilizando das propostas de <span class="citation">Nyquist (<a href="#ref-nyquist1924certain">1924</a>)</span> e <span class="citation">Hartley (<a href="#ref-hartley1928transmission">1928</a>)</span>. Sua proposta consistia em representar símbolos de um alfabeto através de um logaritmo de acordo com suas respectivas unidades de informação. A entropia proposta por ele é obtida pela média das medidas de Hartley <span class="citation">(Moser and Chen <a href="#ref-moser2012student">2012</a>)</span>.</p>
+<p>Se A é discreto com distribuição de probabilidade <span class="math inline">\(p(A)\)</span>, a entropia será:</p>
+<p><span class="math display" id="eq:entropia">\[\begin{equation} 
+  H(A)=- \sum p(A)log_2(p(A)) 
+  \tag{6.1}
+\end{equation}\]</span></p>
+<p>Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre “sim” e “não”: quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero “sim”/“não” ou de ser 1 (100%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.</p>
+<div class="figure" style="text-align: center"><span id="fig:entropia"></span>
+<img src="Figuras/entropia.jpg" alt="Gráfico de Probabilidade x Entropia." width="70%" />
+<p class="caption">
+Figura 6.1: Gráfico de Probabilidade x Entropia.
+</p>
+</div>
+
+<p>O ganho de informação portanto mede a redução da entropia (nesse caso) causada pela partição dos exemplos de acordo com os valores do atributo.</p>
+<p><span class="math display" id="eq:ganhodeinf">\[\begin{equation} 
+  \mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i) 
+  \tag{6.2}
+\end{equation}\]</span></p>
+<p>É muito utilizado em algoritmo de <strong>Árvore de decisão</strong> que será apresentado nesta mesma seção com um exemplo de seu uso.</p>
+</div>
+<div id="medidas-de-distância" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Medidas de Distância</h3>
+<p>Também conhecidas com medidas de separabilidade, discriminação e divergência. Em caso de duas classes, um atributo <span class="math inline">\(X_i\)</span> é preferido ao atributo <span class="math inline">\(X_j\)</span> se fornece uma diferença maior que <span class="math inline">\(X_j\)</span> entre as probabilidades condicionais das duas classes. Uma das mais utilizadas é a distância Euclidiana.</p>
+</div>
+<div id="medidasdep" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Medidas de Dependência</h3>
+<div class="figure" style="text-align: center"><span id="fig:correlacao"></span>
+<img src="Figuras/correlacao.png" alt="Padrões de correlação. Elaborado por Gujarati and Porter (2011) e adaptado Henri (1978)." width="70%" />
+<p class="caption">
+Figura 6.2: Padrões de correlação. Elaborado por <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span> e adaptado <span class="citation">Henri (<a href="#ref-theil1978">1978</a>)</span>.
+</p>
+</div>
+
+</div>
+<div id="medidas-de-precisão" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Medidas de Precisão</h3>
+</div>
+<div id="medidas-de-consistência" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Medidas de consistência</h3>
+</div>
+</div>
+<div id="teste-de-hipóteses-e-análise-de-variância" class="section level2">
+<h2><span class="header-section-number">6.2</span> Teste de hipóteses e Análise de Variância</h2>
+</div>
+<div id="naive-bayes" class="section level2">
+<h2><span class="header-section-number">6.3</span> Naive Bayes</h2>
+<p>Antes de falarmos sobre este algoritmo, vamos para o conceito matemático. Em (<a href="intro.html#dicio">1.2</a>) tratamos do Teorema de Bayes para <span class="math inline">\(n\)</span> atributos. Colocando-o como probabilidade condicional:</p>
+<p><span class="math display" id="eq:bayescond">\[\begin{equation} 
+  p(A|B_{1},...,B_{n}) = \\ p(A)p(B_{1}|A)p(B_{2}|A,B_{1}),p(B_{3}|A,B_{1},B_{2})...p(B_{n}|A,B_{1},B_{2},...,B_{n−1})
+  \tag{6.3}
+\end{equation}\]</span></p>
+<p>Assumindo que cada atributo <span class="math inline">\(B_i\)</span> é condicionalmente independente de todos os outros <span class="math inline">\(B_j\)</span> para <span class="math inline">\(j\neq i\)</span> e <span class="math inline">\(p(B_i|A,B_j)=p(B_i|A)\)</span> o modelo poderá ser expresso como:</p>
+<p><span class="math display" id="eq:bayesprodutorio">\[\begin{equation} 
+  p(A_k|B_1,...,B_n)=p(A_k)p(B_1|A_k)p(B_2|A_k),...=p(A_k)\prod_i^n p(B_i|A_k) \ k ∈{1,...,k}
+  \tag{6.4}
+\end{equation}\]</span></p>
+<p>Por fim para podermos classificar, aplicamos argumento de máxima para otimizarmos a função, assim obtém-se o classificador de Naive Bayes:</p>
+<p><span class="math display" id="eq:naivebayes">\[\begin{equation} 
+  \mbox{classificador} \ \hat{y}=argmax \ p(A_k)\displaystyle \prod_{i=1}^n p(B_i|A_k) \ \ k ∈{1,...,k}
+  \tag{6.5}
+\end{equation}\]</span></p>
+<p>Lembrando que para cada atributo, a sua distribuição de probabilidades é assumida como normal.</p>
+<p>O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa na prática e caso haja variáveis categóricas num conjunto de dados de teste que não forem treinadas, o modelo não irá estimar estas novas variáveis.</p>
+<p><strong>Exemplo:</strong> para facilitar, podemos supor que estamos trabalhando no diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de <span class="citation">Orgânica Digital (<a href="#ref-organica">2019</a>)</span>).</p>
+<p>Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doença (20%) e 80 pessoas estavam saudáveis (80%), sendo que das pessoas que possuíam a doença, 90% receberam o resultado positivo no teste da doença, e 30% das pessoas que não possuíam a doença também receberam o teste positivo. Caso uma nova pessoa realizar o teste e receber um resultado positivo, qual a probabilidade de ela realmente possuir a doença?</p>
+<div class="figure" style="text-align: center"><span id="fig:bayes"></span>
+<img src="Figuras/bayes.png" alt="Dados coletados de uma amostra de 100 pessoas aleatórias." width="70%" />
+<p class="caption">
+Figura 6.3: Dados coletados de uma amostra de 100 pessoas aleatórias.
+</p>
+</div>
+
+<p>Com o algoritmo de Naive Bayes, buscamos encontrar uma probabilidade da pessoa possuir a doença dado que ela recebeu um resultado positivo, multiplicando a probabilidade de possuir a doença pela probabilidade de “receber um resultado positivo, dado que tem a doença”. De mesmo modo verificar a probabilidade de não possuir a doença dado que recebeu um resultado positivo.</p>
+<p>Ou seja, ao caso de ter a doença dado que o resultado deu positivo:
+<span class="math display">\[P(doença|positivo) = 20\% . 90\% \]</span> <span class="math display">\[P(doença|positivo) = 0,2 * 0,9 \]</span> <span class="math display">\[P(doença|positivo) = 0,18\]</span>
+Para o caso de não ter a doença, dado que deu positivo:
+<span class="math display">\[P(não \ doença|positivo) = 80\%.30\%\]</span>
+<span class="math display">\[P(não \ doença|positivo) = 0,8 * 0,3\]</span>
+<span class="math display">\[P(não\ doença|positivo) = 0,24\]</span>
+Após isso precisamos normalizar os dados, para que a soma das duas probabilidades resulte 1 (100%). Como vimos em pré-processamento <a href="preprocesso.html#preprocesso">5</a>, a <strong>Normalização por reescala</strong> por meio de um valor mínimio e um máximo, gera um novo intervalo onde os valores de um atributo estão contidos. Um intervalo entre 0 e 1. Portanto, dividimos o resultado pela soma das duas probabilidades.</p>
+<p><span class="math display">\[P(doença|positivo) = 0,18/(0,18+0,24) = 0,4285\]</span>
+<span class="math display">\[P(não doença|positivo) = 0,24/(0,18+0,24) = 0,5714\]</span>
+Logo, podemos concluir que se o resultado do teste da nova pessoa for positivo, ela possui aproximadamente 43% (0,4285) de chance de estar doente.</p>
+<p><strong>Observação e resumo geral:</strong> Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma <strong>suposição de independência entre os preditores</strong> diferentemente do caso em <a href="intro.html#dicio">1.2</a> (Teorema de Bayes), ou seja, O Naive Bayes assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Ao caso da melancia, uma fruta verde, redonda e com um tamanho de diâmetro X é possível ser ela, porém mesmo que estas variáveis dependam uma das outras e de outras características, elas contribuem de forma independente para a probabilidade de que seja uma melancia. É um modelo simples de construir e útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.</p>
+<p>Por isso <em>Naive</em> vem do significado “ingênuo”, pois como a Figura <a href="Algoritmosaprendizagem.html#fig:naive">6.4</a> demonstra, os atributos contribuem de forma independente para a probabilidade de A.</p>
+<div class="figure" style="text-align: center"><span id="fig:naive"></span>
+<img src="Figuras/naive.png" alt="Gráfico de Probabilidade x Entropia." width="70%" />
+<p class="caption">
+Figura 6.4: Gráfico de Probabilidade x Entropia.
+</p>
+</div>
+
+</div>
+<div id="reg" class="section level2">
+<h2><span class="header-section-number">6.4</span> Regressão</h2>
+<div id="reglin" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Análise de Regressão Linear Simples</h3>
+<p>A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória, ela é supervisionada.</p>
+<p>Como na prática não conseguimos análisar uma população, trabalhamos em cima de amostras e estimamos para o todo, para que possamos fazer uma aproximação. Partimos da ideia de estimarmos uma função com dados amostrais com o menor erro possível. Portanto, o <span class="math inline">\(Y_i\)</span> (população) observado pode ser expresso como:</p>
+<p><span class="math display" id="eq:frp">\[\begin{equation}
+    Y_i=\hat{Y_i}+\hat{\mu_i}
+    \tag{6.6}
+\end{equation}\]</span></p>
+<p>E o modelo para função de regressão amostral:
+<span class="math display" id="eq:fra">\[\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i}
+    \tag{6.7}
+\end{equation}\]</span></p>
+<p>em que:</p>
+<p><span class="math inline">\(\hat{Y_i}\)</span> é o valor observado com <span class="math inline">\(i\)</span> níveis de <span class="math inline">\(X\)</span> (estimador da esperança <span class="math inline">\(E(Y|Xi)\)</span>), <span class="math inline">\(\hat{\beta_0}\)</span> a constante de regressão estimado e intercepto de <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(\hat{\beta_1}\)</span> o coeficiente de regressão estimado que seria a variação de <span class="math inline">\(\hat{Y}\)</span> em função da variação de cada unidade de <span class="math inline">\(X\)</span>, <span class="math inline">\(X_i\)</span> com <span class="math inline">\(i\)</span> níveis da variável independente e <span class="math inline">\(\hat{\mu_i}\)</span> é o erro associado à distância entre o valor observado e o correspondente ponto na curva. Note que os “chapéis” em cima das variáveis é utilizado quando referimos a estimações, ou seja, são variáveis de dados amostrais e não a população.</p>
+<p>Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o <strong>Método dos Mínimos Quadrados (MMQ)</strong> atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> que minimizam os erros.</p>
+<p>Como não podemos observar a função de regressão populacional (FRP), precisamos estimálo por meio da função de regressão amostral:
+<span class="math display">\[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \\ Y_i=\hat{Y_i}+\hat{\mu_i}
+\\ \mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]</span></p>
+<p>Podemos ver que os erros <span class="math inline">\(\hat{\mu_i}\)</span> (resíduos) são basicamente as diferenças entre os valores observados e estimados de <span class="math inline">\(Y\)</span>. Ao caso de dados com <span class="math inline">\(n\)</span> pares de observações de <span class="math inline">\(Y\)</span> e <span class="math inline">\(X\)</span>, queremos encontrar a FRA que se encontra o mais próximo possível do <span class="math inline">\(Y\)</span> observado, ou seja, escolher a
+FRA de modo que a soma dos resíduos <span class="math inline">\(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\)</span> seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura <a href="Algoritmosaprendizagem.html#fig:mmq">6.5</a>, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultari a possibilidade de minimizarmos.</p>
+<div class="figure" style="text-align: center"><span id="fig:mmq"></span>
+<img src="Figuras/mmq.PNG" alt="Critério do minímos quadrados Gujarati and Porter (2011)." width="70%" />
+<p class="caption">
+Figura 6.5: Critério do minímos quadrados <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span>.
+</p>
+</div>
+
+<p>Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que elevamos os resíduos ao quadrado. Fazendo isso, o método dá mais peso aos resíduos (não irão mais se anular), podendo visualizar melhor o “tamanho” do erro total e obter propriedades estatísticas mais desejáveis.</p>
+<p><span class="math display" id="eq:mmqeq">\[\begin{equation}
+    \sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \\ = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1})X_i^2 
+    \tag{6.8}
+\end{equation}\]</span></p>
+<p>O método dos mínimos quadrados nos oferece estimativas únicas de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> que proporcionam o menor valor possível (encontrando <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>) de <span class="math inline">\(\sum \hat{\mu}_i\)</span>. Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatísticoler, como por exemplo a seção 3A de <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span>) encontra-se:</p>
+<p><span class="math display" id="eq:sumyi">\[\begin{equation}
+    \sum Y_i=n\hat{\beta_0} + \hat{\beta_1} \sum X_i
+    \tag{6.9}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:sumyixi">\[\begin{equation}
+    \sum Y_i X_i=\hat{\beta_0} \sum X_i + \hat{\beta_1} \sum X_i^2
+    \tag{6.10}
+\end{equation}\]</span></p>
+<p>AQUI VOU COLOCAR DO JEITO Q FIZ EM ECONOMETRIA COM AS DEFINCOES E AS DERIVADAS</p>
+<p>Para que seja feito o modelo de regressão, ela depende das premissas: independência das variáveis erro, homogeneidade das variâncias, normalidade e relação linear entre as variáveis.</p>
+<ul>
+<li><strong>Coeficiente de determinação <span class="math inline">\(r^2\)</span>: medir a qualidade de seu ajuste</strong></li>
+</ul>
+<p>Estimamos os parâmetros e o erro da função, agora precisamos considerar a <strong>qualidade do ajuste</strong> da linha de regressão ajustada a um conjunto de dados, ou seja, vamos descobrir quão “bom” o ajuste dessa linha de regressão
+amostral é adequada aos dados. Se todas as observações estivessem exatamente em cima da linha de regressão, seria “perfeito”, o que raramente acontece e provávelmente seria um problema de <strong>Overfitting</strong> (será apresentado no próximo capítulo para verificarmos a validade do modelo). O coeficiente de terminação <span class="math inline">\(r^2\)</span> é um medida que diz quanto a linha de regressão
+amostral ajusta-se aos dados.</p>
+<p>Para entendermos melhor, vamos visualizar por Diagrama de Venn <span class="citation">(Kennedy <a href="#ref-kennedy1981ballentine">1981</a>)</span>. O círculo <span class="math inline">\(Y\)</span> representa a variação da variável dependente <span class="math inline">\(Y\)</span> e o círculo <span class="math inline">\(X\)</span>, a variação da variável explanatória <span class="math inline">\(X\)</span> como vimos em regressão linear. A área sombreada indica o quanto em que a variação de <span class="math inline">\(Y\)</span> é explicada pela variação de <span class="math inline">\(X\)</span>. Quanto maior a área sobreposta, maior a parte da variação de <span class="math inline">\(Y\)</span> é explicada por <span class="math inline">\(X\)</span>. O coefiente de determinação <span class="math inline">\(r^2\)</span> é apenas a medida numérica dessa sobreposição. Na Figura <a href="Algoritmosaprendizagem.html#fig:ballentine">6.6</a>, conforme move-se da esquerda para a direita, a sobreposição aumenta, ou seja, uma proporção cada vez maior da variação de <span class="math inline">\(Y\)</span>
+é explicada por <span class="math inline">\(X\)</span> (o <span class="math inline">\(r^2\)</span> aumenta). Sem sobreposição, <span class="math inline">\(r^2=0\)</span> e com total sobreposição, <span class="math inline">\(r^2=1\)</span>, pois 100% da variação de <span class="math inline">\(Y\)</span> é explicada por <span class="math inline">\(X\)</span>. Portanto o coefienciente situa-se no intervalo entre 0 e 1.</p>
+<div class="figure" style="text-align: center"><span id="fig:ballentine"></span>
+<img src="Figuras/ballentine.png" alt="Critério do minímos quadrados Gujarati and Porter (2011)." width="70%" />
+<p class="caption">
+Figura 6.6: Critério do minímos quadrados <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span>.
+</p>
+</div>
+
+<p>Podemos chegar ao coeficiente de determinação apenas por manipulação algébrica:</p>
+<p><span class="math display">\[\mbox{sabemos que:} \ y_i=\hat{y}_i+\hat{\mu}_i \\
+\mbox{elevando ao quadrado e somando a amostra:} \ \sum y^2_i=\sum \hat{y}^2_i+\sum \hat{\mu}^2_i+2\sum \hat{y}_i \hat{\mu}_i \\
+\mbox{como} \ \sum \hat{\mu}_i=0, \ \mbox{temos que:}\ \sum y^2_i= \hat{y}^2_i+\sum \hat{\mu}^2_i \\ \sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i \]</span></p>
+<p><span class="math display" id="eq:sqt">\[\begin{equation}
+    \mbox{podemos dizer} \ SQT=SQE+SQR
+    \tag{6.11}
+\end{equation}\]</span></p>
+<p>sendo SQT a soma total dos quadrados, SQE a soma do quadrados explicados e SQR soma dos quadrados dos resíduos.</p>
+<p><span class="math display">\[\mbox{dividindo a equação anterior por SQT:}\\ 1=\frac{SQE}{SQT}+\frac{SQR}{SQT} \\ \mbox{definindo}\ r^2 \ \mbox{como:} \ \frac{SQE}{SQT} \]</span></p>
+<p><span class="math display" id="eq:coefdet">\[\begin{equation}
+    \mbox{obtemos:} \ r^2=1-\frac{SQR}{SQT} \rightarrow 1 - \frac{\sum \hat{\mu}_i}{\sum (Y_i - \overline{Y}_i)^2}
+    \tag{6.12}
+\end{equation}\]</span></p>
+<p>Por manipulação algébrica, podemos verificar também que <span class="math inline">\(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\)</span>, sendo <span class="math inline">\(S^2_x\ \mbox{e} \ S^2_y\)</span> as respectivas variâncias amostrais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p>Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em <a href="Algoritmosaprendizagem.html#medidasdep">6.1.3</a>, que mede o grau de associação entre duas variáveis.</p>
+<p><span class="math display">\[r=\pm \sqrt{r^2}\]</span></p>
+<p>AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA e falar de ANOVA</p>
+<p><strong>Não esqueça:</strong> dependendo das variáveis em estudo é possível que haja comportamento polinomial ao observarmos no gráfico, podendo ser quadrática, cúbica, etc. Os procedimentos são os mesmos de que linear, mas basicamente incluímos a variável e seu respectivo grau. Dependendo do comportamento muitas vezes é mais fácil ao invés e manter em exponencial (não linear), linearizarmos a função por meio dos logaritmos, semi-logaritmicos entre outros. Isso faz com que temos menos trabalho para tratarmos e estimarmos os parâmetros da função exponencial.</p>
+<div class="figure" style="text-align: center"><span id="fig:explog"></span>
+<img src="Figuras/explog.PNG" alt="Em (a) curva de função exponencial e (b) após aplicarmos o logaritmo (Gujarati and Porter 2011)." width="70%" />
+<p class="caption">
+Figura 6.7: Em (a) curva de função exponencial e (b) após aplicarmos o logaritmo <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>)</span>.
+</p>
+</div>
+
+<p>Atualmente é bem comum utilizarmos o modelo <strong>log-log</strong>, pois seu coeficiente angular <span class="math inline">\(\beta_i\)</span> mede a <strong>elasticidade</strong> de <span class="math inline">\(Y\)</span> em relação a <span class="math inline">\(X\)</span>, ou seja, a variação percentual de <span class="math inline">\(Y\)</span> correspondente a uma variação percentual em <span class="math inline">\(X\)</span>. Por exemplo: na Figura <a href="Algoritmosaprendizagem.html#fig:explog">6.7</a> se <span class="math inline">\(Y\)</span> representa a quantidade demandada de camisetas e <span class="math inline">\(X\)</span> seu preço unitário. Em (a) temos a relação da quantidade de demanda por camisetas e o preço, mas com a transformação logaritmica teremos a estimação de <span class="math inline">\(-\beta_2\)</span> (pois é uma reta descendente) que indica a elasticidade preço (variação em <span class="math inline">\(ln(Y)\)</span> por unidade de variação em <span class="math inline">\(ln(X)\)</span>). Portanto teríamos a variação percentual da quantidade demandada de camisetas dada uma variação percentual do preço. Atente-se: <strong>porcentagem</strong> <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>)</span>.</p>
+<p>Resumo geral: Em palavras, r2 mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão.</p>
+</div>
+<div id="regmult" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Regressão Linear Múltipla</h3>
+<p>Na prática deparamos com muitas outros fatores que podem influenciar em sua variável dependente <span class="math inline">\(Y\)</span>. Portanto são acrescentadas dentro de seu modelo de regressão mais variáveis, o que é conhecido como <strong>Regressão Linear Múltipla</strong>, nada mais do que uma ampliação da regressão linear simples. Num modelo, por exemplo, com três variáveis (caso mais simples) pode ser expressa para a amostra como:</p>
+<p><span class="math display" id="eq:regmult">\[\begin{equation}
+    Y_i=\hat{\beta_0}+\hat{\beta_{1}}X_{1i}+\hat{\beta_{2}}X_{2i}+\mu_i
+    \tag{6.13}
+\end{equation}\]</span></p>
+<p>Da mesma forma, <span class="math inline">\(Y_i\)</span> a variável dependente, <span class="math inline">\(X_{2}\)</span> e <span class="math inline">\(X_{3}\)</span> as independentes explanatórias (explicativa), <span class="math inline">\(\mu_i\)</span> o erro estocático e <span class="math inline">\(i\)</span> para indicar <span class="math inline">\(i\)</span>-ésima observação. Ao caso dos parâmetros, <span class="math inline">\(\beta_0\)</span> como intercepto, <span class="math inline">\(\beta_1\)</span> e <span class="math inline">\(\beta_2\)</span> os <strong>coeficientes parciais de regressão/angulares</strong>. <span class="math inline">\(\beta_2\)</span> mede a variação no valor médio de <span class="math inline">\(Y\)</span> (esperança de <span class="math inline">\(Y\)</span>), por unidade de variação em <span class="math inline">\(X_2\)</span>, mantendo <span class="math inline">\(X_3\)</span> constante, ou seja, traz o efeito “direto” de uma unidade de variação em <span class="math inline">\(X_2\)</span> sobre o valor médio de <span class="math inline">\(Y\)</span>, excluindo o efeito de <span class="math inline">\(X_3\)</span> na média de <span class="math inline">\(Y\)</span>. De mesmo modo, <span class="math inline">\(X_3\)</span> com <span class="math inline">\(X_2\)</span> constante.</p>
+<p>A regressão múltipla pressupõe as mesma hipóteses de que a regressão linear simples, porém como acréscimo - e muito importante- que as variáveis independentes devem estar <strong>ausentes de multicolinearidade</strong>, ou seja, não devem haver relação linear entre si. Se essa relação linear existir entre <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span> <strong>são colineares</strong> ou <strong>linearmente dependentes</strong>, do contrário <strong>linearmente independentes</strong>. Caso a multicolinearidade for perfeita, os coeficientes de regressão das variáveis <span class="math inline">\(X\)</span> serão indeterminados e seus erros padrão, infinitos. Se a multicolinearidade for menos que perfeita, serão determinado mas com grandes erros padrão (em relação aos próprios
+coeficientes), o que trará um modelo ruim para sua estimação.</p>
+<p>Para medirmos a multicolinearidade é comum a análise de <strong>correlação de pearson</strong> entre todas as variáveis, como mencionada em <strong>Medidas de Dependência <a href="Algoritmosaprendizagem.html#medidasdep">6.1.3</a></strong>, ou analisar a ocorrência de intervalo de confiança mais amplo, verificação de razões “t” insignificantes mesmo que seu <span class="math inline">\(R^2\)</span> esteja alto, parâmetros estimados muitos sensíveis a qualquer alteração de dados e comumente utilizado para verificar o <strong>fator de inflação de variância (FIV)</strong> <span class="citation">(Montgomery, Peck, and Vining <a href="#ref-montgomery2012introduction">2012</a>)</span>, que pode ser expressa como:</p>
+<p><span class="math display" id="eq:vif">\[\begin{equation}
+    VIF_j=\frac{1}{1-r^2_j} \ \ j=1,2,...,p
+    \tag{6.14}
+\end{equation}\]</span></p>
+<p>sendo <span class="math inline">\(r^2\)</span> o coeficiente de correlação ao quadrado e <span class="math inline">\(j\)</span> para referir as variáveis. Por exemplo, se <span class="math inline">\(r^2_{23}\)</span>, refe-se ao coeficiente de correlação entre as variáveis <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span>. Segundo ,quando este indicador apresenta o valor acima de cinco, é possível a existência de multicolinearidade <span class="citation">(Maroco <a href="#ref-maroco2014analise">2014</a>)</span>.</p>
+<p>De mesmo modo que em regressão linear simples, são estimados os MQO, Máxima verossimilhança e o <strong>coeficiente de determinação múltiplo <span class="math inline">\(R^2\)</span></strong> (mesma interpratação para regressão linear simples <span class="math inline">\(r^2\)</span>) para que se obtenha a melhor aproximação possível.</p>
+</div>
+<div id="mpl" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Modelo de Probabilidade Linear (MPL)</h3>
+<p>Considerando um modelo típico de regressão linear simples:
+<span class="math display">\[Y_i=\beta_0+\beta_1 X_i+\mu_i \]</span></p>
+<p>em que <span class="math inline">\(X =\)</span>sua renda e <span class="math inline">\(Y=1\)</span> de que você compre um celular e <span class="math inline">\(0\)</span> não compre. Como o regressando é binário, ou dicotômico, chamamos de probabilidade linear (MPL). Pode ser interpretada como probabilidade condicional de que o evento ocorra dado <span class="math inline">\(X_i\)</span>, isto é, Pr <span class="math inline">\((Yi = 1 | Xi)\)</span>. Neste caso, é a probabilidade de você comprar um celular e cuja renda é dado por <span class="math inline">\(X_i\)</span>.</p>
+<p>Para entender este modelo, vamos supor <span class="math inline">\(E(\hat{\mu}_i)=0\)</span> para evitarmos estimadores tendenciosos (erros). Portanto:</p>
+<p><span class="math display" id="eq:regcond">\[\begin{equation}
+    E(Y_i|X_i)=\beta_0+\beta_1 X_i
+    \tag{6.15}
+\end{equation}\]</span></p>
+<p>Com <span class="math inline">\(P_i=\)</span>probabilidade de que <span class="math inline">\(Y_i=1\)</span>(ocorrência do evento) e <span class="math inline">\((1-P_i)\)</span>=probabilidade de <span class="math inline">\(Y_i=0\)</span>(não ocorrência do evento). <span class="math inline">\(Y_i\)</span> possui a seguinte <strong>distribuição de probabilidade de Bernoulli</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(Y_i\)</span></strong></th>
+<th align="center"><strong>Probabilidade</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(1-P_i\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(P_i\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Aplicando a esperança, obtemos:</p>
+<p><span class="math display" id="eq:esperbernoulli">\[\begin{equation}
+    E(Y_i)=0(1-P_i)+1(P_i)=P_i
+    \tag{6.16}
+\end{equation}\]</span></p>
+<p>Igualando <a href="Algoritmosaprendizagem.html#eq:esperbernoulli">(6.16)</a> com <a href="Algoritmosaprendizagem.html#eq:regcond">(6.15)</a>, obtemos:</p>
+<p><span class="math display" id="eq:regprob">\[\begin{equation}
+    E(Y_i|X_i)=\beta_0+\beta_1 X_i
+    \tag{6.17}
+\end{equation}\]</span></p>
+<p>Isso verifica que a esperança condicional do modelo de regressão <a href="Algoritmosaprendizagem.html#eq:frp">(6.6)</a> pode ser interpretada como a probabilidade
+condicional de <span class="math inline">\(Yi\)</span>. Note que, como explicado em <a href="intro.html#dicio">1.2</a> sobre <strong>Distribuição Bernoulli</strong> e <strong>Distribuição Binominal</strong>, caso haja <span class="math inline">\(n\)</span> observações independentes, cada um com uma probabilidade <span class="math inline">\(p\)</span> (sucesso) e probabilidade <span class="math inline">\((1 - p)\)</span> (fracasso) e <span class="math inline">\(X\)</span> dessas observações representarem o número de sucessos, <span class="math inline">\(X\)</span> então segue a distribuição binomial (com médi <span class="math inline">\(np\)</span> e variância <span class="math inline">\(np(1-p)\)</span>. Lembrando que a probabilidade <span class="math inline">\(P_i\)</span> situa-se entre 0 e 1 <span class="math inline">\(\rightarrow 0 \leq E(Y_i|X_i) \leq 1\)</span>.</p>
+<p>Alguns detalhes importantes:</p>
+<ul>
+<li><p>A hipótese de normalidade de <span class="math inline">\(\mu_i\)</span> não se verifica no caso dos modelos de probabilidade linear, pois os termos de erro assumem também apenas dois valores, seguindo a distribuição de Bernoulli. Se objetivo for a estimação pontual, a hipótese de normalidade deixa de ser necessária <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>)</span> e que conforme aumentamos o tamanho da amostra indefinidamente, os estimadores de MQO tendem geralmente a distribuir-se normalmente.</p></li>
+<li><p>Como sabe-se, a média e variância de uma distribuição Bernoulli possuem respectivamente <span class="math inline">\(p\)</span> e <span class="math inline">\(p(1-p)\)</span>. Logo a variância é heterocedástica <span class="math inline">\(var(\mu_i)=P_i(1-P_i)\)</span> e portanto os estimadores de MQO não são eficientes (não possuem variância mínima). Podemos fazer a transformação para que seja homocedástico:
+<span class="math display">\[\sqrt{E(Y_i|X_i)-[1-E(Y_i|X_i)]}=\sqrt{P_i(1-P_i)=\sqrt{w_i}}\]</span>
+<span class="math display" id="eq:probhomecedastico">\[\begin{equation}
+  \frac{Y_i}{\sqrt{w)i}} = \frac{\beta_0}{\sqrt{w)i}}+\frac{\beta_1 X_i}{\sqrt{w)i}}+\frac{\mu_i}{\sqrt{w)i}}
+  \tag{6.18}
+\end{equation}\]</span></p></li>
+</ul>
+<p>Com a transformação, pode-se calcular por MQO (ponderados).</p>
+<p><strong>Alternativas para o MPL:</strong></p>
+<ul>
+<li><p>Como mencionado, a probabilidade condicional situa-se entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>, porém por MQO não levarem em conta esta restrição. Pode-se verificar os valores que constam entre o intervalo, considerando os valores negativos como <span class="math inline">\(0\)</span> e maiores que <span class="math inline">\(1\)</span> como iguais a <span class="math inline">\(1\)</span> ou aplicar algum outro modelo para garanti-los dentro dos intervalos.</p></li>
+<li><p>O <span class="math inline">\(R^2\)</span> costuma-se situar muito abaixo de 1. Por ser limitado em caso de modelos binários, muitos pesquisadores buscam evitar seu uso.</p></li>
+</ul>
+<p>Os modelos mais comuns para ser utilizado como alternativa ao MPL são o <strong>logit</strong> e o <strong>probit</strong> para evitar estes problemas.</p>
+<div id="logit" class="section level4">
+<h4><span class="header-section-number">6.4.3.1</span> Logit</h4>
+<p>A fim de fazer com que <span class="math inline">\(P_i\)</span> varie entre 0 e 1 e relacione-se linearmente a <span class="math inline">\(X_i\)</span>, a <strong>função de distribuição logística</strong> pode ser expressa como:</p>
+<p><span class="math display" id="eq:logitpi">\[\begin{equation}
+    P_i=\frac{1}{1+e^{-Z_i}}=\frac{e^Z_i}{1+e^Z_i}
+    \tag{6.19}
+\end{equation}\]</span></p>
+<p>e <span class="math inline">\((1-P_i)\)</span> da probabilidade fracasso:</p>
+<p><span class="math display" id="eq:logitmenospi">\[\begin{equation}
+    1-P_i=\frac{1}{1+e^{Z_i}}\rightarrow e^{Z_i}
+    \tag{6.20}
+\end{equation}\]</span></p>
+<p>onde <span class="math inline">\(Z_i=\beta_0+\beta_1X_i\)</span>. Assim <span class="math inline">\(Z_i\)</span> varia de <span class="math inline">\(-\infty\)</span> a <span class="math inline">\(\infty\)</span> e portanto <span class="math inline">\(P_i\)</span> entre 0 e 1.</p>
+<p>Para estimarmos a MQO, precisamos linearizar a função:</p>
+<p><span class="math display" id="eq:logitlinear">\[\begin{equation}
+    L_i=ln(\frac{P_i}{1-P_i})=Z_i=\beta_0+\beta_1 X_i
+    \tag{6.21}
+\end{equation}\]</span></p>
+<p>O modelo <strong>logit</strong> faz com que:</p>
+<ul>
+<li><p>A probabilidade varie entre 0 e 1, enquanto <span class="math inline">\(Z\)</span> e <span class="math inline">\(L\)</span> possam variar de <span class="math inline">\(-\infty\)</span> a <span class="math inline">\(\infty\)</span>;</p></li>
+<li><p>Mesmo que as probabilides não sejam lineares, <span class="math inline">\(L\)</span> é linear em <span class="math inline">\(X\)</span>;</p></li>
+<li><p>Pode-se aplicar com mais regressores e com mesma interpretação angular medindo a variação de <span class="math inline">\(L\)</span> para uma unidade variação em <span class="math inline">\(X\)</span> e para o intercepto;</p></li>
+<li><p>Se <span class="math inline">\(L\)</span> torna-se maior e positivo quando as chances do evento de interesse ocorrer aumenta, do contrário (maior e negativo) de não ocorrer;</p></li>
+<li><p>Como em MPL, o modelo Logit é heterocedástico precisa-se ponderar <span class="citation">(Gujarati and Porter <a href="#ref-gujarati2011econometria">2011</a>; Cox <a href="#ref-cox1970analysis">1970</a>)</span>:
+<span class="math display" id="eq:mqplogit">\[\begin{equation}
+  \sqrt{w_i}L_i=\beta_0 \sqrt{w_i}+\beta_1\sqrt{w_i}X_i+\sqrt{w_i}\mu_i 
+  \tag{6.22}
+\end{equation}\]</span></p></li>
+</ul>
+<p>em que, com a variância <span class="math inline">\(\hat{\sigma}^2=\frac{1}{N_i\hat{P_i}(1-\hat{P_i})}\)</span>, <span class="math inline">\(W_i\)</span> é o peso <span class="math inline">\(N_i\hat{P_i}(1-\hat{P_i})\)</span>. Por fim, aplicar o mínimos quadrados ponderados (da mesma forma que MQO, porém com a nova transformação de dados) e estimarmos os parâmetros normalmente.</p>
+<p>Como o <span class="math inline">\(R^2\)</span> não é significativa nos modelos binários. É comum utilizar as <strong>pseudo $R^2</strong> [long1997regression] - existe uma variedade delas - ou o <strong>Count <span class="math inline">\(R^2\)</span></strong> que nada mais é que o número de previsões corretas com o número total de observações. Para a hiótese nula de que todos os coeficientes angulares são simultâneamente iguais a zero, utiliza-se a <strong>estatística da razão de verossimilhança</strong> que segue a distribuição <span class="math inline">\(\chi^2\)</span> que equivale ao teste F.</p>
+</div>
+<div id="probit" class="section level4">
+<h4><span class="header-section-number">6.4.3.2</span> Probit</h4>
+</div>
+<div id="tobit" class="section level4">
+<h4><span class="header-section-number">6.4.3.3</span> Tobit</h4>
+</div>
+</div>
+<div id="exemplos" class="section level3">
+<h3><span class="header-section-number">6.4.4</span> Exemplos</h3>
+</div>
+</div>
+<div id="gradiente-descendente-gd-gd" class="section level2">
+<h2><span class="header-section-number">6.5</span> Gradiente Descendente (GD) {GD}</h2>
+<p>Para a obtenção dos parâmetros de forma analítica, como regressões, muitas vezes é difícil obter os parâmetros que minimizam determinada função de interesse. Dificuldades em obter a solução do sistema na forma fechada (ou não existir) ou quando <span class="math inline">\(n\)</span> é muito grande, o cálculo da inversa (estimando os parâmetros matricialmente) pode ser muito caro computacionalmente.</p>
+<p>O <strong>Gradiente Descendente (GD)</strong> pode ser muito útil dependendo da situação, conhecido também como <strong>máximo declive</strong>, é um método númerico utilizado em otimização. Tem como finalidade identificar um mínimo local de uma função de modo iterativo, no qual a cada iteração toma-se a direção do gradiente. Muitas vezes serve como base para algoritmos de segunda ordem como Métodos de Newton, por exemplo.</p>
+<p>É uma função para casos gerais, por praticidade vamos supor que temos uma função denominada custo com apenas dois parâmetros <span class="math inline">\(J(\theta_0,\theta_1)\)</span> e queremos estimar seus parâmetros que minimizam seus erros. Inicialmente atribuímos quaisquer estimativas iniciais para valores de <span class="math inline">\(\theta_0\)</span> e <span class="math inline">\(\theta_1\)</span>, com o GD vamos alterandos os valores dos <span class="math inline">\(\theta&#39;s\)</span> para reduzirmos <span class="math inline">\(J(\theta_0,\theta_1)\)</span> até que se chegue a um valor mínimo local.</p>
+<p>Um exemplo que gosto muito, por <span class="citation">NG, Andrew Y. (<a href="#ref-andrewcoursera">2019</a>)</span>: observe a Figura <a href="Algoritmosaprendizagem.html#fig:gd">6.8</a> e imagine que você está em um campo, com dois montes. Mantenha sua imaginação de que está situado na cruz preta - ponto 0 - no primeiro monte vermelho. Com o GD vamos olhar 360 graus ao redor do ponto em que você está situado apenas para descobrir a resposta de que “se você fosse dar um pequeno passo em alguma direção ao seu redor com o objetivo de ir para o ponto mais baixo do campo o mais rápido possível, para qual direção você deve andar?”</p>
+<p>Supondo que após olhar para todos os lados, com análise de GD você descobriu que seu primeiro passo será no ponto 1 da Figura <a href="Algoritmosaprendizagem.html#fig:gd">6.8</a>. Após isso, você observa novamente para todos os lados e faz outra análise de GD para verificar aonde você vai se deslocar em seu segundo passo para chegar o mais rápido possível até concluir que será o ponto 2. Assim, sucessivamente, você vai se deslocando para os respectivos pontos 3, 4 e sucessivamente até convergir em seu objetivo Z, porém caso você iniciasse pelo ponto K, é bem possível que por meio do GD você descesse o monte por outro trajeto, encontrando outros pontos ótimos locais até chegar a outro ponto otimizado (descer por completo o monte). Esta é a ideia do Gradiente Descendente, por meio de iterações, o algoritmo vai identificando os pontos ótimos (estimadores mínimos) até convergir num ótimo local da função.</p>
+<p>Em caso de funções simples como regressão linear, não é necessário o uso de GD. Mas em casos com muitas variáveis e ordens, pode ser bem viável.</p>
+<div class="figure" style="text-align: center"><span id="fig:gd"></span>
+<img src="Figuras/gd.png" alt="Gráfico tridimensional a exemplo de Gradiente Descendente (NG, Andrew Y. 2019)." width="70%" />
+<p class="caption">
+Figura 6.8: Gráfico tridimensional a exemplo de Gradiente Descendente <span class="citation">(NG, Andrew Y. <a href="#ref-andrewcoursera">2019</a>)</span>.
+</p>
+</div>
+
+<p>O algoritmo pode ser expresso como:</p>
+<p><span class="math display" id="eq:GD">\[\begin{equation}
+    \theta_j := \theta_j - \alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1 
+    \tag{6.23}
+\end{equation}\]</span></p>
+<p>com <span class="math inline">\(j\)</span> referindo-se à quantidade de observações (parâmetros que pretendemos estimar) da amostra.</p>
+<p>O algoritmo é processado da seguinte forma: imagine na mesma Figura <a href="Algoritmosaprendizagem.html#fig:gd">6.8</a> que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em <span class="math inline">\(Z=10\)</span>. Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de <span class="math inline">\(Z\)</span> ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu <span class="math inline">\(\alpha\)</span> um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com <span class="math inline">\(\alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1)\)</span>. Caso fosse uma taxa pequena de <span class="math inline">\(\alpha\)</span>, seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de <span class="math inline">\(Z\)</span> (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.</p>
+<p>Com o primeiro passo dado (supor passo <span class="math inline">\(1 = 40\)</span>), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada <span class="math inline">\(\theta\)</span> <strong>simultâneamente</strong> (caso dois <span class="math inline">\(\theta\)</span>’s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto <span class="math inline">\(2=15\)</span>. Conforme vai se aproximando de <span class="math inline">\(Z\)</span>, seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de <span class="math inline">\(Z=10\)</span> que é o ponto ótimo da função.</p>
+<p>Assim o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (sim! Podemos encontrar os parâmetros dos exemplos de regressão com este algoritmo também!)</p>
+<p>Desta forma, atribuímos (“<span class="math inline">\(:=\)</span>”) para a própria observação de entrada da função receber ela mesma subtraída <span class="math inline">\(\alpha\)</span> que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). <strong><span class="math inline">\(\alpha\)</span>( learning rate - taxa de aprendizagem)</strong> é um valor fixo que controla o tamanho do passo em cada iteração: quando <span class="math inline">\(\alpha\)</span> for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). <span class="citation">Rendle and Schmidt-Thieme (<a href="#ref-rendle2008online">2008</a>)</span> divulgaram que a fatoração de matrizes para a predição de <em>ratings</em> nos dados do desafio <em>Netflix</em> precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.</p>
+<p>Para facilitar a compreensão do efeito da taxa de variação, observe a Figura <a href="Algoritmosaprendizagem.html#fig:gd1">6.9</a>. No primeiro gráfico você inicia seu algoritmo com o valor <span class="math inline">\(\theta\)</span> e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\geq 0\)</span>), portanto em <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor positivo}\)</span>, faz que com que esse novo <span class="math inline">\(\theta\)</span> (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\leq 0\)</span>), portanto <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor negativo}\)</span>, fará com que o novo <span class="math inline">\(\theta\)</span> seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.</p>
+<div class="figure" style="text-align: center"><span id="fig:gd1"></span>
+<img src="Figuras/gd1.png" alt="Efeito da taxa de variação no Gradiente Descendente." width="70%" />
+<p class="caption">
+Figura 6.9: Efeito da taxa de variação no Gradiente Descendente.
+</p>
+</div>
+
+<p>Como pode-se perceber, a taxa de aprendizagem e a taxa de variação são fundamentais e complementares para o algoritmo de GD, pois elas dizem o tamanho do passo e em que posição estamos em relação ao ponto ótimo da função.</p>
+<div id="exemplos-1" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Exemplos</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Uma variável:</strong>Vamos supor a seguinte função custo:</li>
+</ol>
+<p><span class="math display">\[j(\theta)=\theta^2\]</span></p>
+<p>Queremos minimizá-la <span class="math inline">\(min \ j(\theta)\)</span>. Portanto precisamos inicialmente colocar um número aleatório para nosso parâmetro - não ótimo - para que o algoritmo atualize a cada iteração. Vamos supor a taxa de aprendizagem (<em>learning rate</em>) <span class="math inline">\(\alpha=0,1\)</span> e <span class="math inline">\(\theta=4\)</span> para facilitar. Ou seja, <span class="math inline">\(j(\theta)=4^2=16\)</span>. Vamos atualizar os parâmetros:</p>
+<p><span class="math display">\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \\ 
+\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}
+\\ \theta:= \theta -\alpha.2\theta \\ \mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \\ \theta:=4-0,1 \ .\ 2\ .\ 4 \\
+\rightarrow \theta:=3,2
+\]</span>
+Na iteração obtemos <span class="math inline">\(\theta=3,2\)</span>. Se subsituirmos em <span class="math inline">\(j(\theta)\)</span> novamente, iremos obter <span class="math inline">\(j(\theta)=(3,2)^2=10,24\)</span>. Agora atualizando novamente para a próxima iteração:
+<span class="math display">\[\theta:= \theta -\alpha.2\theta \\ \theta:=3,2-0,1\ .\ 2\ .\ 3,2 \\
+\theta:= 2,56\]</span></p>
+<p>Portanto, <span class="math inline">\(j(\theta)=(2,56)^2=6,55\)</span>. Sucessivamente, vamos fazendo as iterações até convergir:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">3,2</td>
+<td align="center">10,24</td>
+</tr>
+<tr class="odd">
+<td align="center">2,56</td>
+<td align="center">6,55</td>
+</tr>
+<tr class="even">
+<td align="center">2,04</td>
+<td align="center">4,19</td>
+</tr>
+<tr class="odd">
+<td align="center">1,632</td>
+<td align="center">2,663</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Da mesma forma, se iniciarmos o algoritmo com -4:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-4</td>
+<td align="center">16</td>
+</tr>
+<tr class="even">
+<td align="center">-3,2</td>
+<td align="center">10,24</td>
+</tr>
+<tr class="odd">
+<td align="center">-2,56</td>
+<td align="center">6,55</td>
+</tr>
+<tr class="even">
+<td align="center">-2,04</td>
+<td align="center">4,19</td>
+</tr>
+<tr class="odd">
+<td align="center">-1,632</td>
+<td align="center">2,663</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Note que conforme <span class="math inline">\(\theta\)</span> diminui, o custo também. Conforme mais iterações são aplicadas, mais “ótimo” será. Graficamente para -4 em vermelho e +4 em azul:</p>
+<div class="figure" style="text-align: center"><span id="fig:gdx2"></span>
+<img src="Figuras/gdx2.png" alt="Função \(X^2\) com valores de entrada -4 e +4." width="70%" />
+<p class="caption">
+Figura 6.10: Função <span class="math inline">\(X^2\)</span> com valores de entrada -4 e +4.
+</p>
+</div>
+
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Duas variáveis:</strong> Vamos supor a seguinte função de custo com <span class="math inline">\(\alpha=0,1\)</span>, <span class="math inline">\(\theta_1=1\)</span> e <span class="math inline">\(\theta_2=2\)</span>:
+<span class="math display">\[j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2 \\ 
+j(\theta_1,\theta_2)=1^2+2^2=5\]</span>
+Queremos <span class="math inline">\(min \ j(\theta_1,\theta_2)\)</span>Como explicado, ao caso de haver mais de um parâmetro precisamos separar atualizar cada um simultâneamente e aplicar derivada parcial em sua função:</li>
+</ol>
+<p><span class="math display">\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2) \\
+\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\\
+\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
+\mbox{e}\ \ \frac{d}{d\theta_2}j(\theta_1,\theta_2)=2\theta_2\]</span></p>
+<p><span class="math display">\[\mbox{substituindo:} \\
+\theta_1:=\theta_1-\alpha.\ 2\theta_1 \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha .\ 2\theta_2 \\
+\mbox{inserindo os valores:}\\
+\theta_1:=1-0,1.\ 2.\ 1 \ \ \mbox{e}\ \ \theta_2:=2-0,1.\ 2.\ 2 \\
+\theta_1:=0,8 \ \mbox{e} \ \theta_2=1,6\]</span></p>
+<p>Portanto após a iteração, temos que <span class="math inline">\(j(\theta_1,\theta_2)=0,8^2+1,6^2=3,2\)</span>. Da mesma forma, para a próxima iteração temos:</p>
+<p><span class="math display">\[\theta_1:=0,8-0,1.\ 2.\ 0,8 \ \ \mbox{e}\ \ \theta_2:=1,6-0,1.\ 2.\ 1,6 \\
+\theta_1:=0,64 \ \mbox{e} \ \theta_2=1,28\]</span></p>
+<p>Portanto teremos <span class="math inline">\(j(\theta_1,\theta_2)=0,64^2+1,28^2=2,048\)</span>. Assim sucessivamente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><strong><span class="math inline">\(\theta_1\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(\theta_2\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(j(\theta_1,\theta_2)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">0,8</td>
+<td align="center">1,6</td>
+<td align="center">3,2</td>
+</tr>
+<tr class="odd">
+<td align="center">0,64</td>
+<td align="center">1,28</td>
+<td align="center">2,48</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="even">
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Erro quadrado médio (Regressão Linear Simples:)</strong> Observe a função de regressão linear:
+<span class="math display">\[f_\theta(X)=\theta_0+\theta_1*X\]</span></li>
+</ol>
+<p>A função de custo:
+<span class="math display">\[j(\theta)=\frac{1}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]</span></p>
+<p>Primeiramente vamos encontrar a derivada parcial de <span class="math inline">\(j(\theta_0,\theta_1)\)</span>:
+<span class="math display">\[\frac{d}{d\theta_0}j(\theta_0,\theta_1=\frac{d}{d\theta_0}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i) \\
+\frac{d}{d\theta_1}j(\theta_0,\theta_1=\frac{d}{d\theta_1}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)x^i\]</span>
+Pode-se também multiplicar a função de custo por <span class="math inline">\(\frac{1}{2}\)</span> para que quando faz-se a derivada, facilite no cálculo e multiplicar a função de custo por um escalar não irá afetar a localização do mínimo.
+<span class="math display">\[j(\theta)=\frac{1}{2m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]</span>
+Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> em seu modelo e de seus dois <span class="math inline">\(\theta&#39;s\)</span> de entrada. Repetindo as iterações para atualizar seus valores até a convergência e identificando os parâmetros que se aproximam.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-cox1970analysis">
+<p>Cox, DR. 1970. “Analysis of Binary Data London: Methuen &amp;Co.” Ltd.</p>
+</div>
+<div id="ref-gujarati2011econometria">
+<p>Gujarati, Damodar N, and Dawn C Porter. 2011. <em>Econometria Básica-5</em>. Amgh Editora.</p>
+</div>
+<div id="ref-hartley1928transmission">
+<p>Hartley, Ralph VL. 1928. “Transmission of Information 1.” <em>Bell System Technical Journal</em> 7 (3): 535–63.</p>
+</div>
+<div id="ref-theil1978">
+<p>Henri, Theil. 1978. <em>Introduction to Econometrics</em>. Englewood Cliffs, New Jersey: Prentice Hall.</p>
+</div>
+<div id="ref-kennedy1981ballentine">
+<p>Kennedy, Peter E. 1981. “The ‘Ballentine’: A Graphical Aid for Econometrics.” <em>Australian Economic Papers</em> 20 (37): 414–16.</p>
+</div>
+<div id="ref-lee2005seleccao">
+<p>Lee, Huei Diana. 2005. “Seleção de Atributos Importantes Para a Extração de Conhecimento de Bases de Dados.” PhD thesis, Universidade de São Paulo.</p>
+</div>
+<div id="ref-liu2012feature">
+<p>Liu, Huan, and Hiroshi Motoda. 2012. <em>Feature Selection for Knowledge Discovery and Data Mining</em>. Vol. 454. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-maroco2014analise">
+<p>Maroco, João. 2014. “Análise Estatı́stica Com O Spss.” <em>Statistics</em> 6.</p>
+</div>
+<div id="ref-montgomery2012introduction">
+<p>Montgomery, Douglas C, Elizabeth A Peck, and G Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. Vol. 821. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-moser2012student">
+<p>Moser, Stefan M, and Po-Ning Chen. 2012. <em>A Student’s Guide to Coding and Information Theory</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-andrewcoursera">
+<p>NG, Andrew Y. 2019. “Gradient Descent Algorithm.” In. <a href="https://www.coursera.org/lecture/machine-learning/gradient-descent-8SpIM">https://www.coursera.org/lecture/machine-learning/gradient-descent-8SpIM</a>.</p>
+</div>
+<div id="ref-nyquist1924certain">
+<p>Nyquist, Harry. 1924. “Certain Factors Affecting Telegraph Speed.” <em>Transactions of the American Institute of Electrical Engineers</em> 43: 412–22.</p>
+</div>
+<div id="ref-organica">
+<p>Orgânica Digital. 2019. “Algoritmo de Classificação Naive Bayes.” In. <a href="https://www.organicadigital.com/blog/algoritmo-de-classificacao-naive-bayes/">https://www.organicadigital.com/blog/algoritmo-de-classificacao-naive-bayes/</a>.</p>
+</div>
+<div id="ref-paviotti2019consideraccoes">
+<p>Paviotti, José Renato, and Carlos J Magossi. 2019. “Considerações Sobre O Conceito de Entropia Na Teoria Da Informação.”</p>
+</div>
+<div id="ref-rendle2008online">
+<p>Rendle, Steffen, and Lars Schmidt-Thieme. 2008. “Online-Updating Regularized Kernel Matrix Factorization Models for Large-Scale Recommender Systems.” In <em>Proceedings of the 2008 Acm Conference on Recommender Systems</em>, 251–58.</p>
+</div>
+<div id="ref-shannon1948mathematical">
+<p>Shannon, Claude E. 1948. “A Mathematical Theory of Communication.” <em>The Bell System Technical Journal</em> 27 (3): 379–423.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preprocesso.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="algoritmos-de-aprendizagem-parte-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-ModelosI.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
