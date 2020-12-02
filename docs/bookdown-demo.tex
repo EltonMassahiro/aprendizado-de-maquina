@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-11-27}
+\date{2020-11-30}
 
 \begin{document}
 \maketitle
@@ -183,6 +183,10 @@ Com intuito de explicar sobre Aprendizado de Máquina. Na seção \textbf{AQUI V
 \section{Dicionário}\label{dicio}}
 
 \begin{itemize}
+\item
+  \textbf{Escalares e Vetores:}
+\item
+  \textbf{Espaço Vetorial e Transformação Linear:}
 \item
   \textbf{Assimetria e Curtose:}
 \item
@@ -703,8 +707,8 @@ Para facilitar a compreensão, considere a série temporal \emph{AirPassengers} 
 
 Para o campo de transformação de dados e séries temporais, ao leitor que pretende ir mais a fundo nestes outros ``galhos'' de estudos. Recomendo buscar outras literaturas que tem como foco este temas. Em discretizações por exemplo, \citet{dougherty1995supervised} e \citet{garcia2012survey} abordam diversos métodos que podem agradá-lo.
 
-\hypertarget{normalizauxe7uxe3o-e-padronizauxe7uxe3o}{%
-\subsection{Normalização e padronização}\label{normalizauxe7uxe3o-e-padronizauxe7uxe3o}}
+\hypertarget{normpadro}{%
+\subsection{Normalização e padronização}\label{normpadro}}
 
 Muitos conjuntos de dados apresentam atributos contínuos que espalham-se em diferentes faixas de valores ou possuem distintas variações, devido às suas naturezas ou escalas em que foram medidas. Estas diferenças podem ser fundamentais e precisam ser levadas em conta \citep{carvalho2011inteligencia}. Em situações também para validarmos a análise variância precisa-se dos requisitos de atiditividade, independência, normalidade e homogeneidade de variâncias - será apresentada em ANOVA seção XXXXXXXX. Quando alguma das características mencionadas acontece ou não verifica seus requisitos o pesquisador, antes de fazer uma análise não-paramétrica (\ref{dicio}), pode-se transformar seus dados \citep{banzatto1992experimentaccao}.
 
@@ -830,7 +834,7 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 
 \emph{Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.}
 
-Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulos irei apresentar:
+Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulo serão apresentados:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -933,7 +937,7 @@ O ganho de informação portanto mede a redução da entropia (nesse caso) causa
   \label{eq:ganhodeinf}
 \end{equation}
 
-É muito utilizado em algoritmo de \textbf{Árvore de decisão} que será apresentado nesta mesma seção com um exemplo de seu uso.
+É muito utilizado em algoritmo de \textbf{Árvore de decisão} que será apresentado na seção \ref{ptII} mesma seção com um exemplo de seu uso.
 
 \hypertarget{medidas-de-distuxe2ncia}{%
 \subsection{Medidas de Distância}\label{medidas-de-distuxe2ncia}}
@@ -1325,11 +1329,11 @@ Como o \(R^2\) não é significativa nos modelos binários. É comum utilizar as
 \hypertarget{tobit}{%
 \subsubsection{Tobit}\label{tobit}}
 
-\hypertarget{exemplos}{%
-\subsection{Exemplos}\label{exemplos}}
+\hypertarget{exemplo1reg}{%
+\subsection{Exemplos}\label{exemplo1reg}}
 
-\hypertarget{gradiente-descendente-gd-gd}{%
-\section{Gradiente Descendente (GD) \{GD\}}\label{gradiente-descendente-gd-gd}}
+\hypertarget{GD}{%
+\section{Gradiente Descendente (GD)}\label{GD}}
 
 Para a obtenção dos parâmetros de forma analítica, como regressões, muitas vezes é difícil obter os parâmetros que minimizam determinada função de interesse. Dificuldades em obter a solução do sistema na forma fechada (ou não existir) ou quando \(n\) é muito grande, o cálculo da inversa (estimando os parâmetros matricialmente) pode ser muito caro computacionalmente.
 
@@ -1386,8 +1390,8 @@ Para facilitar a compreensão do efeito da taxa de variação, observe a Figura 
 
 Como pode-se perceber, a taxa de aprendizagem e a taxa de variação são fundamentais e complementares para o algoritmo de GD, pois elas dizem o tamanho do passo e em que posição estamos em relação ao ponto ótimo da função.
 
-\hypertarget{exemplos-1}{%
-\subsection{Exemplos}\label{exemplos-1}}
+\hypertarget{exemplos}{%
+\subsection{Exemplos}\label{exemplos}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1403,8 +1407,8 @@ Queremos minimizá-la \(min \ j(\theta)\). Portanto precisamos inicialmente colo
 \[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \\ 
 \mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}
 \\ \theta:= \theta -\alpha.2\theta \\ \mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \\ \theta:=4-0,1 \ .\ 2\ .\ 4 \\
-\rightarrow \theta:=3,2
-\]
+\rightarrow \theta:=3,2\]
+
 Na iteração obtemos \(\theta=3,2\). Se subsituirmos em \(j(\theta)\) novamente, iremos obter \(j(\theta)=(3,2)^2=10,24\). Agora atualizando novamente para a próxima iteração:
 \[\theta:= \theta -\alpha.2\theta \\ \theta:=3,2-0,1\ .\ 2\ .\ 3,2 \\
 \theta:= 2,56\]
@@ -1523,8 +1527,8 @@ Pode-se também multiplicar a função de custo por \(\frac{1}{2}\) para que qua
 \[j(\theta)=\frac{1}{2m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
 Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \(Y\) em seu modelo e de seus dois \(\theta's\) de entrada. Repetindo as iterações para atualizar seus valores até a convergência e identificando os parâmetros que se aproximam.
 
-\hypertarget{algoritmos-de-aprendizagem---parte-ii}{%
-\chapter{Algoritmos de Aprendizagem - Parte II}\label{algoritmos-de-aprendizagem---parte-ii}}
+\hypertarget{ptII}{%
+\chapter{Algoritmos de Aprendizagem - Parte II}\label{ptII}}
 
 \hypertarget{svm}{%
 \section{SVM}\label{svm}}
@@ -1541,8 +1545,75 @@ Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \
 \hypertarget{k-means}{%
 \section{K-means}\label{k-means}}
 
-\hypertarget{pca}{%
-\section{PCA}\label{pca}}
+\hypertarget{anuxe1lise-de-componentes-principais}{%
+\section{Análise de Componentes Principais}\label{anuxe1lise-de-componentes-principais}}
+
+A Análise de Componentens Principais, popularmente conhecida como ACP ou PCA (\emph{Principal Component Analysis}), em inglês, foi introduzida por \citet{pearson1901liii} e fundamentada no artigo de \citet{hotelling1933analysis}. É uma \textbf{análise multivariada} que tem como objetivo explicar a estrutura de variância e covariância de um vetor aleatório, composto por \(p\)-variáveis aleatórias, através da construção de combinações lineares das variáveis originais que são chamadas de componentes principais e não correlacionadas entre si \citep{mingoti2007analise}. É uma técnica bastante utilizada em diversas áreas do conhecimento, como a biologia, a agronomia, a zootécnica, a ecologia, a engenharia florestal, a medicina, a economia, entre outras áreas. Muitos sugerem o seu uso quando o volume de dados ou variáveis é grande possibilitando reduzir a dimensão da matriz de dados que compõem o conjunto de variáveis resposta com apenas poucos componentes, ou seja, \(p\) variáveis originais substituídas por \(k\) (sendo \(k < p\)) componentes principais não correlacionadas.
+
+Vamos supor um conjunto de dados em apenas duas dimensões \((x, y)\) e que pode ser plotado em um plano cartesiano. Podemos verificar pelo seu comportamento que possuem alta correlação positiva.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca1} 
+
+}
+
+\caption{Gráfico bidimensional \(x\) por \(y\).}\label{fig:pca1}
+\end{figure}
+
+
+
+Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor \((x, y)\). Os eixos não representam algo físico, mas representam combinações de \(x\) e \(y\) que denominamos \textbf{``componentes principais''}, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura \ref{fig:pca2} e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo \(y\), visto que a componente do eixo \(x\) explica 99,30\% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo \(x\), analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca2} 
+
+}
+
+\caption{Gráfico de \(x\) por \(y\) rotacionado.}\label{fig:pca2}
+\end{figure}
+
+
+
+Com mais dimensões, o ACP torna-se ainda mais útil pois possibilita observarmos o conjunto de dados num melhor ângulo.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca3} 
+
+}
+
+\caption{Gráfico tridimensional, em \citet{powellpca}.}\label{fig:pca3}
+\end{figure}
+
+
+
+Portanto, a ACP assume que os dados originais estão representados por características (variáveis) correlacionadas com o objetivo de transformar essas variáveis em novas (componentes principais) por meio de mudança de base do espaço vetorial que não sejam correlacionadas entre si e que estas novas variáveis (menores que as originais) retenha a maior parte da variação apresentada pelas originais, tornando possível a classificação.
+
+A suposição de normalidade não é requisito para sua técnica, mas ainda sim é conveniente padronizar (\ref{normpadro}) cada variável, permitindo que todas as variáveis tenham o mesmo peso para evitarmos viés de escala \citep{hongyu2016analise}. A padronização das variáveis do vetor pelas respectivas médias e desvios padrões, gera novas variáveis centradas em zero e com variâncias iguais a 1. Assim, as componentes principais são determinadas a partir da matriz de covariâncias das variáveis originais padronizadas \citep{mingoti2007analise}.
+
+Agora que sabemos o que é ACP, vamos apresentar alguns conceitos de Álgebra Linear e Estatísticas para compreendermos como é aplicado este método.
+
+\hypertarget{autovalores-e-autovetores}{%
+\subsection{Autovalores e Autovetores}\label{autovalores-e-autovetores}}
+
+Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em \ref{dicio} encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.
+
+Dado uma matriz \(A_{nxn}\) que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os \textbf{autovetores}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/autovetor} 
+
+}
+
+\caption{\(u\) é um autovetor de \(T\), porém \(v\) não.}\label{fig:autovetor}
+\end{figure}
+
+
+
+A qualidade de aproximação do modelo depende do número de componentes mantidas no sistema e pode ser medida com a \textbf{avaliação da proporção da variância total explicada}.
 
 \hypertarget{clusters}{%
 \section{Clusters}\label{clusters}}

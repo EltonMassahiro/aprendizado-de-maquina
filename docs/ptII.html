@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Algoritmos de Aprendizagem - Parte II | Machine Learning</title>
+  <meta name="description" content="Tutorial de Machine Learning." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Algoritmos de Aprendizagem - Parte II | Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tutorial de Machine Learning." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Algoritmos de Aprendizagem - Parte II | Machine Learning" />
+  
+  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  
+
+<meta name="author" content="Elton Massahiro Saito Loures" />
+
+
+<meta name="date" content="2020-12-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Algoritmosaprendizagem.html"/>
+<link rel="next" href="validação-de-um-modelo.html"/>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefácio</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#por-que-ler-esse-livro"><i class="fa fa-check"></i><b>0.1</b> Por que ler esse livro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i><b>0.2</b> Estrutura</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#informações-a-respeito-do-conteúdo"><i class="fa fa-check"></i><b>0.3</b> Informações a respeito do conteúdo</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#agradecimentos"><i class="fa fa-check"></i><b>0.4</b> Agradecimentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#dicas-de-estudo"><i class="fa fa-check"></i><b>1.1</b> Dicas de estudo</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#dicio"><i class="fa fa-check"></i><b>1.2</b> Dicionário</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="i-a.html"><a href="i-a.html"><i class="fa fa-check"></i><b>2</b> Inteligência Artificial (IA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="i-a.html"><a href="i-a.html#o-que-é-ia-de-onde-veio-esse-conceito"><i class="fa fa-check"></i><b>2.1</b> O que é IA? De onde veio esse conceito?</a></li>
+<li class="chapter" data-level="2.2" data-path="i-a.html"><a href="i-a.html#a-arte-de-uma-ia"><i class="fa fa-check"></i><b>2.2</b> A arte de uma IA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><a href="vertentes-de-uma-ia-e-fundamentação-filosófica.html"><i class="fa fa-check"></i><b>3</b> Vertentes de uma IA e fundamentação filosófica</a></li>
+<li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
+<li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>5</b> Pré-processamento</a><ul>
+<li class="chapter" data-level="5.1" data-path="preprocesso.html"><a href="preprocesso.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>5.1</b> Dados faltantes e a Limpeza de dados</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="preprocesso.html"><a href="preprocesso.html#tratamento-de-dados-faltantes"><i class="fa fa-check"></i><b>5.1.1</b> Tratamento de dados faltantes</a></li>
+<li class="chapter" data-level="5.1.2" data-path="preprocesso.html"><a href="preprocesso.html#outlier"><i class="fa fa-check"></i><b>5.1.2</b> <em>Outlier</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="preprocesso.html"><a href="preprocesso.html#transformação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Transformação de dados</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="preprocesso.html"><a href="preprocesso.html#tipos-de-datasets"><i class="fa fa-check"></i><b>5.2.1</b> Tipos de <em>datasets</em></a></li>
+<li class="chapter" data-level="5.2.2" data-path="preprocesso.html"><a href="preprocesso.html#normpadro"><i class="fa fa-check"></i><b>5.2.2</b> Normalização e padronização</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="preprocesso.html"><a href="preprocesso.html#features-selection---seleção-de-atributos-sa"><i class="fa fa-check"></i><b>5.3</b> Features Selection - Seleção de atributos (SA)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html"><i class="fa fa-check"></i><b>6</b> Algoritmos de Aprendizagem - Parte I</a><ul>
+<li class="chapter" data-level="6.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-importância"><i class="fa fa-check"></i><b>6.1</b> Medidas de Importância</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-informação"><i class="fa fa-check"></i><b>6.1.1</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="6.1.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-distância"><i class="fa fa-check"></i><b>6.1.2</b> Medidas de Distância</a></li>
+<li class="chapter" data-level="6.1.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidasdep"><i class="fa fa-check"></i><b>6.1.3</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="6.1.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-precisão"><i class="fa fa-check"></i><b>6.1.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="6.1.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#medidas-de-consistência"><i class="fa fa-check"></i><b>6.1.5</b> Medidas de consistência</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#teste-de-hipóteses-e-análise-de-variância"><i class="fa fa-check"></i><b>6.2</b> Teste de hipóteses e Análise de Variância</a></li>
+<li class="chapter" data-level="6.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#naive-bayes"><i class="fa fa-check"></i><b>6.3</b> Naive Bayes</a></li>
+<li class="chapter" data-level="6.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#reg"><i class="fa fa-check"></i><b>6.4</b> Regressão</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#reglin"><i class="fa fa-check"></i><b>6.4.1</b> Análise de Regressão Linear Simples</a></li>
+<li class="chapter" data-level="6.4.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#regmult"><i class="fa fa-check"></i><b>6.4.2</b> Regressão Linear Múltipla</a></li>
+<li class="chapter" data-level="6.4.3" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#mpl"><i class="fa fa-check"></i><b>6.4.3</b> Modelo de Probabilidade Linear (MPL)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exemplo1reg"><i class="fa fa-check"></i><b>6.4.4</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#GD"><i class="fa fa-check"></i><b>6.5</b> Gradiente Descendente (GD)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exemplos"><i class="fa fa-check"></i><b>6.5.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte II</a><ul>
+<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
+<li class="chapter" data-level="7.2" data-path="ptII.html"><a href="ptII.html#árvores-de-decisão"><i class="fa fa-check"></i><b>7.2</b> Árvores de Decisão</a></li>
+<li class="chapter" data-level="7.3" data-path="ptII.html"><a href="ptII.html#elastic-net"><i class="fa fa-check"></i><b>7.3</b> Elastic Net</a></li>
+<li class="chapter" data-level="7.4" data-path="ptII.html"><a href="ptII.html#knn"><i class="fa fa-check"></i><b>7.4</b> KNN</a></li>
+<li class="chapter" data-level="7.5" data-path="ptII.html"><a href="ptII.html#k-means"><i class="fa fa-check"></i><b>7.5</b> K-means</a></li>
+<li class="chapter" data-level="7.6" data-path="ptII.html"><a href="ptII.html#análise-de-componentes-principais"><i class="fa fa-check"></i><b>7.6</b> Análise de Componentes Principais</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="ptII.html"><a href="ptII.html#autovalores-e-autovetores"><i class="fa fa-check"></i><b>7.6.1</b> Autovalores e Autovetores</a></li>
+<li class="chapter" data-level="7.6.2" data-path="ptII.html"><a href="ptII.html#estatísticas"><i class="fa fa-check"></i><b>7.6.2</b> Estatísticas</a></li>
+<li class="chapter" data-level="7.6.3" data-path="ptII.html"><a href="ptII.html#a-acp"><i class="fa fa-check"></i><b>7.6.3</b> A ACP</a></li>
+<li class="chapter" data-level="7.6.4" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exemplos"><i class="fa fa-check"></i><b>7.6.4</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="ptII.html"><a href="ptII.html#clusters"><i class="fa fa-check"></i><b>7.7</b> Clusters</a></li>
+<li class="chapter" data-level="7.8" data-path="ptII.html"><a href="ptII.html#aoc-e-roc"><i class="fa fa-check"></i><b>7.8</b> AOC e ROC</a></li>
+<li class="chapter" data-level="7.9" data-path="ptII.html"><a href="ptII.html#modelos-nivel-iii"><i class="fa fa-check"></i><b>7.9</b> modelos nivel III</a></li>
+<li class="chapter" data-level="7.10" data-path="ptII.html"><a href="ptII.html#grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble"><i class="fa fa-check"></i><b>7.10</b> grad boosting -&gt; estudar boosting e bagging dentro de emseamble</a></li>
+<li class="chapter" data-level="7.11" data-path="ptII.html"><a href="ptII.html#redes-neurais"><i class="fa fa-check"></i><b>7.11</b> Redes Neurais</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html"><i class="fa fa-check"></i><b>8</b> Validação de um modelo</a><ul>
+<li class="chapter" data-level="8.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#overfitting-underfitting"><i class="fa fa-check"></i><b>8.1</b> <em>Overfitting, Underfitting</em></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>8.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#validação-cruzada"><i class="fa fa-check"></i><b>8.2</b> Validação Cruzada</a></li>
+<li class="chapter" data-level="8.3" data-path="validação-de-um-modelo.html"><a href="validação-de-um-modelo.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>8.3</b> Como escolher um bom modelo?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ptII" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> Algoritmos de Aprendizagem - Parte II</h1>
+<div id="svm" class="section level2">
+<h2><span class="header-section-number">7.1</span> SVM</h2>
+</div>
+<div id="árvores-de-decisão" class="section level2">
+<h2><span class="header-section-number">7.2</span> Árvores de Decisão</h2>
+</div>
+<div id="elastic-net" class="section level2">
+<h2><span class="header-section-number">7.3</span> Elastic Net</h2>
+</div>
+<div id="knn" class="section level2">
+<h2><span class="header-section-number">7.4</span> KNN</h2>
+</div>
+<div id="k-means" class="section level2">
+<h2><span class="header-section-number">7.5</span> K-means</h2>
+</div>
+<div id="análise-de-componentes-principais" class="section level2">
+<h2><span class="header-section-number">7.6</span> Análise de Componentes Principais</h2>
+<p>A Análise de Componentens Principais, popularmente conhecida como ACP ou PCA (<em>Principal Component Analysis</em>), em inglês, foi introduzida por <span class="citation">Pearson (<a href="#ref-pearson1901liii">1901</a>)</span> e fundamentada no artigo de <span class="citation">Hotelling (<a href="#ref-hotelling1933analysis">1933</a>)</span>. É uma <strong>análise multivariada</strong> que tem como objetivo explicar a estrutura de variância e covariância de um vetor aleatório, composto por <span class="math inline">\(p\)</span>-variáveis aleatórias, através da construção de combinações lineares das variáveis originais que são chamadas de componentes principais e não correlacionadas entre si <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>. É uma técnica bastante utilizada em diversas áreas do conhecimento, como a biologia, a agronomia, a zootécnica, a ecologia, a engenharia florestal, a medicina, a economia, entre outras áreas. Muitos sugerem o seu uso quando o volume de dados ou variáveis é grande possibilitando reduzir a dimensão da matriz de dados que compõem o conjunto de variáveis resposta com apenas poucos componentes, ou seja, <span class="math inline">\(p\)</span> variáveis originais substituídas por <span class="math inline">\(k\)</span> (sendo <span class="math inline">\(k &lt; p\)</span>) componentes principais não correlacionadas.</p>
+<p>Vamos supor um conjunto de dados em apenas duas dimensões <span class="math inline">\((x, y)\)</span> e que pode ser plotado em um plano cartesiano. Podemos verificar pelo seu comportamento que possuem alta correlação positiva.</p>
+<div class="figure" style="text-align: center"><span id="fig:pca1"></span>
+<img src="Figuras/pca1.png" alt="Gráfico bidimensional \(x\) por \(y\)." width="70%" />
+<p class="caption">
+Figura 7.1: Gráfico bidimensional <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span>.
+</p>
+</div>
+
+<p>Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor <span class="math inline">\((x, y)\)</span>. Os eixos não representam algo físico, mas representam combinações de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que denominamos <strong>“componentes principais”</strong>, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura <a href="ptII.html#fig:pca2">7.2</a> e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo <span class="math inline">\(y\)</span>, visto que a componente do eixo <span class="math inline">\(x\)</span> explica 99,30% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo <span class="math inline">\(x\)</span>, analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.</p>
+<div class="figure" style="text-align: center"><span id="fig:pca2"></span>
+<img src="Figuras/pca2.png" alt="Gráfico de \(x\) por \(y\) rotacionado." width="70%" />
+<p class="caption">
+Figura 7.2: Gráfico de <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> rotacionado.
+</p>
+</div>
+
+<p>Com mais dimensões, o ACP torna-se ainda mais útil pois possibilita observarmos o conjunto de dados num melhor ângulo.</p>
+<div class="figure" style="text-align: center"><span id="fig:pca3"></span>
+<img src="Figuras/pca3.PNG" alt="Gráfico tridimensional, em Powell, Victor and Lehe, Lewis (2014)." width="70%" />
+<p class="caption">
+Figura 7.3: Gráfico tridimensional, em <span class="citation">Powell, Victor and Lehe, Lewis (<a href="#ref-powellpca">2014</a>)</span>.
+</p>
+</div>
+
+<p>Portanto, a ACP assume que os dados originais estão representados por características (variáveis) correlacionadas com o objetivo de transformar essas variáveis em novas (componentes principais) por meio de mudança de base do espaço vetorial que não sejam correlacionadas entre si e que estas novas variáveis (menores que as originais) retenha a maior parte da variação apresentada pelas originais, tornando possível a classificação.</p>
+<p>A suposição de normalidade não é requisito para sua técnica, mas ainda sim é conveniente padronizar (<a href="preprocesso.html#normpadro">5.2.2</a>) cada variável, permitindo que todas as variáveis tenham o mesmo peso para evitarmos viés de escala <span class="citation">(Hongyu, Sandanielo, and Oliveira Junior <a href="#ref-hongyu2016analise">2016</a>)</span>. A padronização das variáveis do vetor pelas respectivas médias e desvios padrões, gera novas variáveis centradas em zero e com variâncias iguais a 1. Assim, as componentes principais são determinadas a partir da matriz de covariâncias das variáveis originais padronizadas <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
+<p>Agora que sabemos o que é ACP, vamos apresentar alguns conceitos de Álgebra Linear e Estatísticas para compreendermos como é aplicado este método.</p>
+<div id="autovalores-e-autovetores" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Autovalores e Autovetores</h3>
+<p>Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em <a href="intro.html#dicio">1.2</a> encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.</p>
+<p>Dado uma matriz <span class="math inline">\(A_{mxn}\)</span> que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os <strong>autovetores</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:autovetor"></span>
+<img src="Figuras/autovetor.png" alt="\(u\) é um autovetor de \(T\), porém \(v\) não." width="70%" />
+<p class="caption">
+Figura 7.4: <span class="math inline">\(u\)</span> é um autovetor de <span class="math inline">\(T\)</span>, porém <span class="math inline">\(v\)</span> não.
+</p>
+</div>
+
+<p>Um vetor é dito ser autovetor da matriz <span class="math inline">\(A_{mxn}\)</span> se a transformação linear deste vetor <span class="math inline">\(T(u)\)</span> é colinear a este vetor, ou seja, <span class="math inline">\(A_{mxn}\vec{u}=\lambda \vec{u}\)</span>. Sendo que <span class="math inline">\(\lambda\)</span> é um escalar e chamado de autovalor da matriz correspondente ao autovetor. Para encontrarmos o autovetor:</p>
+<p><span class="math display" id="eq:autovetor">\[\begin{equation}
+    A_{mxn}\vec{u}=\lambda \vec{u} \\
+A_{mxn}\vec{u}-\lambda \vec{u}=0 \\
+(A_{mxn}-\lambda l)\vec{u}=0
+    \tag{7.1}
+\end{equation}\]</span></p>
+<p>esta equação tem solução trivial, ou seja, diferentes da nula <span class="math inline">\((\vec{v}\neq 0 )\)</span> se e somente se, seu determinante é zero. Conhecido como <strong>Equação caracterísica</strong> e sua solução são os <strong>autovalores</strong>:
+<span class="math display" id="eq:eqcarac">\[\begin{equation}
+    \mbox{Eq. Característica}\ \  det(A_{mxn}-\lambda l)=0  
+    \tag{7.2}
+\end{equation}\]</span></p>
+<p>Note também que toda transformação linear (matriz) em um espaço
+vetorial complexo (números imaginários) tem, pelo menos, um autovetor (real ou complexo).</p>
+<div id="exautovetor" class="section level4">
+<h4><span class="header-section-number">7.6.1.1</span> Exemplo</h4>
+<ol style="list-style-type: decimal">
+<li>Vamos considerar um operador linear <strong><span class="math inline">\(T: R^2 \rightarrow R^2\)</span></strong>. Com <span class="math inline">\(T(x,y)=(4x+5y,2x+2y)\)</span>. Quais são os autovalores a matriz <span class="math inline">\(A=\begin{bmatrix} 4 &amp;5 \\ 2 &amp;2 \end{bmatrix}\)</span>?</li>
+</ol>
+<p>Vamos resolver a equação característica <span class="math inline">\(det(A_{mxn}-\lambda l)=0\)</span>.</p>
+<p><span class="math display">\[det(A_{mxn}-\lambda l)=\begin{bmatrix}
+4 &amp;5 \\ 
+2 &amp;2 
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 &amp;0 \\ 
+0 &amp;1 
+\end{bmatrix} = \begin{bmatrix}
+4-\lambda &amp;5 \\ 
+2 &amp;2-\lambda 
+\end{bmatrix}\]</span></p>
+<p>Com <span class="math inline">\(det(A_{mxn}-\lambda l)=0:\)</span>
+<span class="math display">\[(4-\lambda)(2-\lambda)-10=0 \\
+\lambda^2-6\lambda-2=0 \\ \mbox{resolvendo a equação: } \ 
+\lambda_1 \approx 6,32 \  \ \mbox{e} \ \ \lambda_2 \approx -0,32\]</span></p>
+</div>
+</div>
+<div id="estatísticas" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Estatísticas</h3>
+<p>Alguns conceitos de Estatísticas são fundamentais para que se entenda a ACP:</p>
+<ul>
+<li><strong>Covariância x Correlação:</strong> como apresentado em <a href="intro.html#dicio">1.2</a>, a covariância é semelhante à correlação (ver <a href="preprocesso.html#normpadro">5.2.2</a>) entre duas variáveis, no entanto, elas diferem que os coeficientes de correlação são padronizados. Isso faz com que um relacionamento linear varie entre <span class="math inline">\(-1 \leq \rho \leq 1\)</span>. A correlação mede tanto a força como a direção da relação linear entre duas variáveis. Ao caso da covariância os valores não são padronizados. Assim, a covariância pode variar de <span class="math inline">\(-\infty \leq Cov (x,y) \leq \infty\)</span> demonstrando quanto <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> mudam juntas. Portanto o valor para uma relação linear ideal depende muito dos dados. Como os dados não são padronizados, é difícil determinar a força da relação entre as variáveis. Note que o coeficiente de correlação é uma função da covariância:</li>
+</ul>
+<p><span class="math display">\[\rho_{x,y}=\frac{cov(x,y)}{\sigma_x \sigma_y}\]</span></p>
+<p>Uma covariância positiva sempre resulta em uma correlação positiva e uma covariância negativa sempre resulta em uma correlação negativa.</p>
+<p>Quando temos um vetor de <span class="math inline">\(n\)</span> variáveis em vez de apenas duas, iremos obter uma matriz de covariâncias ou correlação. Contendo em sua diagonal a variância <span class="math inline">\(\sigma^2\)</span>, pois <span class="math inline">\(cov(x_i,x_i)=\sigma^2(x_i)\)</span>, por exemplo:</p>
+<p><span class="math display">\[\begin{bmatrix}
+cov_{1,1} &amp;cov_{1,2=2,1}  &amp;cov_{1,3=3,1} \\ 
+cov_{1,1=2,1} &amp;cov_{2,2}  &amp;cov_{2,3=3,2} \\ 
+cov_{3,1=1,3} &amp;cov_{2,3=3,2} &amp; cov_{3,3}
+\end{bmatrix} = \begin{bmatrix}
+var_{1} &amp;cov_{1,2=2,1}  &amp;cov_{1,3=3,1} \\ 
+cov_{1,1=2,1} &amp;var_{2}  &amp;cov_{2,3=3,2} \\ 
+cov_{3,1=1,3} &amp;cov_{2,3=3,2} &amp; var_{3}
+\end{bmatrix}\]</span></p>
+</div>
+<div id="a-acp" class="section level3">
+<h3><span class="header-section-number">7.6.3</span> A ACP</h3>
+<p>Agora que compreendemos alguns conceitos importantes, podemos entender melhor a metodologia da ACP. Assumindo que os dados originais estão representados por variáveis correlacionadas (etapa de pré-processamento), ou seja, não independentes. Vamos ao objetivo de transformar essas <span class="math inline">\(p\)</span> variáveis em outras novas <span class="math inline">\(k\)</span> (com <span class="math inline">\(k&lt;p\)</span>) de ordem decrescesnte de variabilidade e que não sejam correlacionadas e que as primeiras novas variáveis retenham a maior parte da variação apresentadas pelas originais a fim de podermos classificá-los.</p>
+<p>Dado um vetor <span class="math inline">\(\vec{u}\)</span> aleatório com <span class="math inline">\(p\)</span> variáveis originais. O primeiro componente principal <span class="math inline">\(y_1\)</span>, como dito que deve ser ordem decrescente de variabilidade, será uma combinação linear do vetor <span class="math inline">\(\vec{u}\)</span> de forma que a variância <span class="math inline">\(var(y_1)=\sigma^2_{y_{1}}\)</span> seja a máxima (maior possível), ou melhor, precisamos encontrar um vetor <span class="math inline">\(\vec{\beta^1}\)</span> tal que <span class="math inline">\(y_1=(\vec{\beta^1})^T \vec{u}\)</span> e <span class="math inline">\(var(y_1=(\vec{\beta^1})^T \vec{u}\)</span> seja máxima. De mesmo modo para <span class="math inline">\(y_2\)</span> e um vetor <span class="math inline">\(\vec{\beta^2}\)</span> e assim sucessivamente para <span class="math inline">\(p\)</span> variáveis em seu banco de dados.</p>
+<p>Ao caso do Exemplo <a href="ptII.html#exautovetor">7.6.1.1</a> de Autovalores e Autovetores, foi definida a transformação linear <span class="math inline">\(T(x,y)=(4x+5y,2x+2y)\)</span> com as duas respectivas componentes <span class="math inline">\(4x+5y\)</span> e <span class="math inline">\(2x+2y\)</span>. 4 e 5 da primeira componente refere-se, por exemplo, como o vetor <span class="math inline">\(\vec{\beta^1}\)</span> que multiplicado pelos vetores originais <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, temos um novo componente desse novo espaço <span class="math inline">\(4x+5y\)</span>. Da mesma forma à segunda componente <span class="math inline">\(2x+2y\)</span> com um <span class="math inline">\(\vec{\beta^2}\)</span>.</p>
+<p>Para facilitar a compreensão, vamos utilizar um exemplo com duas variáveis (<span class="math inline">\(R^2\)</span>):
+AQUI VOU ARRUMAR E COLOCAR COMO TA EM MINGOTI!
+- Queremos encontrar a primeira componente principal <span class="math inline">\(y_1\)</span>, de modo que <span class="math inline">\(var(y_1)\)</span> seja máxima, ou seja, encontrar um vetor <span class="math inline">\(\vec{\beta^1}\)</span> tal que <span class="math inline">\(y_1=(\vec{\beta^1})^T \vec{u}\)</span> e <span class="math inline">\(var(y_1=(\vec{\beta^1})^T \vec{u}\)</span> seja máxima.</p>
+<p><span class="math display">\[var(y_1)=var((\vec{\beta^1})^T\vec{u})=var(\vec{\beta^1_1}\vec{u}_1+\vec{\beta^1_2}\vec{u}_2)\\
+= (\vec{\beta^1_1})^2var(\vec{u_1})+(\vec{\beta^1_2})^2var(\vec{u_2})+2\vec{\beta^1_1}\vec{\beta^1_2}Cov(\vec{u_1}\vec{u_2})\\
+= (\vec{\beta^1})^TK_{\vec{u}} \vec{\beta^1}\]</span></p>
+<p>Os maiores autovalores são os que orientam o sinal, os demais podem ser descartados. Porém quantos componentes principais devemos utilizar? Precisamos verificar a proporção da variação total dos dados originais que uma componente pode explicar, a partir disso selecionarmos. Lembrando que cada autovalor <span class="math inline">\(\lambda_i\)</span> refere-se a <span class="math inline">\(var(y_i)\)</span>.</p>
+<p>Para calcularmos a variação total, expressa-se pela somatória de todos os autovalores:
+<span class="math display" id="eq:vartot">\[\begin{equation}
+    \displaystyle \sum_j \lambda_j 
+    \tag{7.3}
+\end{equation}\]</span></p>
+<p>Portanto, para analisar cada <span class="math inline">\(i\)</span> componente, ou seja, cada autovalor (variação “explicada” por cada componente):
+<span class="math display" id="eq:varind">\[\begin{equation}
+    p_i=\frac{\lambda_j}{\displaystyle \sum_j \lambda_j} 
+    \tag{7.4}
+\end{equation}\]</span></p>
+<p>Sendo geralmente escolhido as componentes com seus respectivos autovalores que explicam entre 70%-90% segundo alguns pesquisadores. Outros como <span class="citation">Kaiser (<a href="#ref-kaiser1960application">1960</a>)</span>, propõe aceitar, observando diretamente, somente os autovalores iguais ou superiores à unidade.</p>
+<p><strong>Importante:</strong> sobre utilizar matriz de covariância ou de correlação depende muito das fundamentações teóricas e recomendaçõesdos pesquisadores. Em geral, utiliza-se a matriz de correlação (quando padronizamos e elaboramos a matriz) ao caso de padronizar escalas distintas que podem viesar, como por exemplo, medidas de distância e de peso.</p>
+<p>Caso esteja utilizando software para a análise, dependendo do software utilizado com seu determinado modelo de formulação de componentes principais, pode ocorrer essa troca de sinal que nada mais é do que uma reflexão em relação ao eixo, uma rotação em seu espaço vetorial n-dimensional em torno da origem, poderá ocasionar uma “rotação” em torno do eixo. Tratando de algebra linear e suas combinações lineares, a combinação poderá possuir soluções diferentes que diferem apenas o sinal.</p>
+</div>
+<div id="exemplos" class="section level3">
+<h3><span class="header-section-number">7.6.4</span> Exemplos</h3>
+<p>Tomando como base exemplos de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Matriz de covariância amostral</strong></p>
+<p>A Tabela apresenta dados relativos as 12 empresas no que se refere a 3 variáveis (medidas em unidades monetárias): ganho bruto (<span class="math inline">\(X1\)</span>), ganho líquido (<span class="math inline">\(X2\)</span>) e o patrimônio acumulado (<span class="math inline">\(X_3\)</span>):</p></li>
+</ol>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="30%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Empresas</strong></th>
+<th align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></th>
+<th align="center"><strong><span class="math inline">\(Ganho Líquido (\)</span>X_2<span class="math inline">\()** | **Patrimônio Líquido(\)</span>X_3$)</strong></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E1</td>
+<td align="center">9893</td>
+<td align="center">564</td>
+<td align="center">17689</td>
+</tr>
+<tr class="even">
+<td>E2</td>
+<td align="center">8776</td>
+<td align="center">389</td>
+<td align="center">17359</td>
+</tr>
+<tr class="odd">
+<td>E3</td>
+<td align="center">13572</td>
+<td align="center">1103</td>
+<td align="center">18597</td>
+</tr>
+<tr class="even">
+<td>E4</td>
+<td align="center">6455</td>
+<td align="center">743</td>
+<td align="center">8745</td>
+</tr>
+<tr class="odd">
+<td>E5</td>
+<td align="center">5129</td>
+<td align="center">203</td>
+<td align="center">14397</td>
+</tr>
+<tr class="even">
+<td>E6</td>
+<td align="center">5432</td>
+<td align="center">215</td>
+<td align="center">3467</td>
+</tr>
+<tr class="odd">
+<td>E7</td>
+<td align="center">3807</td>
+<td align="center">385</td>
+<td align="center">4679</td>
+</tr>
+<tr class="even">
+<td>E8</td>
+<td align="center">3423</td>
+<td align="center">187</td>
+<td align="center">6754</td>
+</tr>
+<tr class="odd">
+<td>E9</td>
+<td align="center">3708</td>
+<td align="center">127</td>
+<td align="center">2275</td>
+</tr>
+<tr class="even">
+<td>E10</td>
+<td align="center">3294</td>
+<td align="center">297</td>
+<td align="center">6754</td>
+</tr>
+<tr class="odd">
+<td>E11</td>
+<td align="center">5433</td>
+<td align="center">432</td>
+<td align="center">5589</td>
+</tr>
+<tr class="even">
+<td>E12</td>
+<td align="center">6287</td>
+<td align="center">451</td>
+<td align="center">8972</td>
+</tr>
+</tbody>
+</table>
+<p>Após calcularmos suas covariâncias (recomendo o leitor calcular e verificar e atentar que por ser exemplificação, passível de ocorrência de arrendondamento dos valores), obtemos a matriz de covariância amostral:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></th>
+<th align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></th>
+<th align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></td>
+<td align="center">9550608,6</td>
+<td align="center">706121,1</td>
+<td align="center">14978232,5</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></td>
+<td align="center">706121,1</td>
+<td align="center">76269,5</td>
+<td align="center">933915,1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></td>
+<td align="center">14978232,5</td>
+<td align="center">933915,1</td>
+<td align="center">34408113,0</td>
+</tr>
+</tbody>
+</table>
+<p>Para calcularmos os autovalores:</p>
+<p><span class="math display">\[det(A_{mxn}-\lambda l)=0: \\
+\begin{bmatrix}
+9550608,6 -\lambda &amp;706121,1 &amp;14978232,5\\ 
+706121,1 &amp;76269,5-\lambda &amp; 933915,1 \\
+14978232,5&amp;933915,1&amp;34408113,0-\lambda
+\end{bmatrix}=0\]</span></p>
+<p>Resolvendo o sistema, obtemos os seguintes autovalores das componentes principais:
+<span class="math display">\[\lambda_1=38018192,2 \ \ \lambda_2=2327881,5 \ \ \lambda_3=19334,8\]</span>
+Para encontrarmos a porcentagem da variância explicada por cada auto valor:
+<span class="math display">\[\%\lambda_1=\frac{38018192,2}{38018192,2+2327881,5+19334,8}.100\%=94,2\% \\ \%\lambda_2=\frac{2327881,5}{38018192,2+2327881,5+19334,8}.100\%=5,77\% \\ \%\lambda_3=\frac{19334,8}{38018192,2+2327881,5+19334,8}.100\%=0,048\%\]</span>
+Portanto, podemos descartar o segundo e o terceiro componente principal, pois o primeiro explica cerca de <span class="math inline">\(94,2\%\)</span>.</p>
+<p>Por fim os autovetores podem sem calculados:</p>
+<p><span class="math display">\[A_{mxn}\vec{u}=\lambda \vec{u}\]</span>
+Com <span class="math inline">\(A_{mxn}\)</span> a matriz de covariância amostral, <span class="math inline">\(\vec{u}\)</span> o autovetor e <span class="math inline">\(\lambda\)</span> os respectivos autovalores dos autovetores.</p>
+<p><span class="math display">\[\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}
+\begin{bmatrix}
+9550608,6  &amp;706121,1 &amp;14978232,5\\ 
+706121,1 &amp;76269,5 &amp; 933915,1 \\
+14978232,5&amp;933915,1&amp;34408113,0
+\end{bmatrix}  = \lambda_i \begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix} \]</span></p>
+<p><span class="math display">\[\mbox{substituindo os autovalores:}\\
+\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}
+\begin{bmatrix}
+9550608,6  &amp;706121,1 &amp;14978232,5\\ 
+706121,1 &amp;76269,5 &amp; 933915,1 \\
+14978232,5&amp;933915,1&amp;34408113,0
+\end{bmatrix}  = \begin{bmatrix}0,942&amp;0&amp;0 \\ 0&amp;0,0577&amp;0 \\0&amp;0&amp; 0,0048 \end{bmatrix}\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}\]</span></p>
+<p>Teremos os autovetores:
+| | <strong>Autovetor Ganho Bruto (<span class="math inline">\(\vec{u_1}\)</span>)</strong> | <strong>Autovetor Ganho Líquido (<span class="math inline">\(\vec{u_2}\)</span>)</strong> | <strong>Autovetor Patrimônio Líquido (<span class="math inline">\(\vec{u_3}\)</span>)</strong> |
+|:-:|:-:|:-:|:-:|
+| <strong>Autovetor Ganho Bruto (<span class="math inline">\(\vec{u_1}\)</span>)</strong> | 0,425 | 0,900 | -0,099 |
+| <strong>Autovetor Ganho Líquido (<span class="math inline">\(\vec{u_2}\)</span>)</strong> | 0,028 | 0,096 | 0,995 |
+| <strong>Autovetor Patrimônio Líquido (<span class="math inline">\(\vec{u_3}\)</span>)</strong> | 0,905 | -0,426 | 0,016 |</p>
+<p>Com os autovetores, podemos elaborar as três componentes principais:</p>
+<p><span class="math display">\[\hat{y_1}=0,425(Ganho Bruto)+0,028(GanhoLíquido)+0,905(PatrimônioLíquido)\\
+\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)
+\hat{y_3}=-0,099(Ganho Bruto)+0,995(GanhoLíquido)+0,016(PatrimônioLíquido)\]</span>
+por meio da observação de seus resultados podemos analisar que:</p>
+<ul>
+<li><p>A primeira componente possui alta correlação-positiva com todas as três variáveis, podemos analisar como um índice de desempenho global da empresa. Pelo autovetor, podemos ver que o patrimônio possui o maior peso e de menor o ganho líquido. Podemos verificar que quanto maior for os valores das variáveis, maior será dessa componente, ou melhor, maior será o desempenho global da empresa. Esta ocupa, observando pelos autovalores, 94,\20% de toda variação explicada, dependendo da pesquisa pode-se descartar as outras componentes.</p></li>
+<li><p>A segunda componente que ocupa 5,77% de toda variação explicada (autovalor), possui o ganho bruto e patrimônio de maior variância amostral (analisando o tabela de covariância amostra). Pelos autovetores, podemos verificar que o ganho bruto é a variável dominante com segunda maior variância amostral. Com a componente próximo a zero, entende-se que haverá um certo equilíbrio entre ganho bruto e patrimônio acumulado, o que na verdade o aumento do ganho bruto eleva-se esta componente e o patrimônio contrário. Note que há correlação bem menor entre elas.</p></li>
+<li><p>A terceira componente com pouca variância total explicada, referente ao ganho líquido de menor variância amostral, possui pouca importância. Apena o ganho líquido possui alta correlação, visto que às outras duas são próximas de zero.</p></li>
+</ul>
+<p>Determinada as componentes principais, podemos obter seus valores numéricos (<strong>escores</strong>) para cada elemento amostral. Basicamente substituímos os valores originais na funções encontradas de componentes principais (<span class="math inline">\(y_1,y_2 \ \mbox{e}\  y_3\)</span>):</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Empresas</strong></th>
+<th align="center"><strong><span class="math inline">\(CP_1\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(CP_2\)</span></strong></th>
+<th align="center"><strong><span class="math inline">\(CP_3\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E1</td>
+<td align="center">8857,59</td>
+<td align="center">-165,27</td>
+<td align="center">-90,18</td>
+</tr>
+<tr class="even">
+<td>E2</td>
+<td align="center">8079,36</td>
+<td align="center">-1046,65</td>
+<td align="center">-158,93</td>
+</tr>
+<tr class="odd">
+<td>E3</td>
+<td align="center">11257,93</td>
+<td align="center">2810,25</td>
+<td align="center">96,18</td>
+</tr>
+<tr class="even">
+<td>E4</td>
+<td align="center">-690,80</td>
+<td align="center">566,19</td>
+<td align="center">284,23</td>
+</tr>
+<tr class="odd">
+<td>E5</td>
+<td align="center">3844,09</td>
+<td align="center">-3084,94</td>
+<td align="center">-30,40</td>
+</tr>
+<tr class="even">
+<td>E6</td>
+<td align="center">-5915,42</td>
+<td align="center">1841,62</td>
+<td align="center">-224,93</td>
+</tr>
+<tr class="odd">
+<td>E7</td>
+<td align="center">-5504,97</td>
+<td align="center">-119,93</td>
+<td align="center">124,81</td>
+</tr>
+<tr class="even">
+<td>E8</td>
+<td align="center">-3796,38</td>
+<td align="center">-1367,83</td>
+<td align="center">-0,64</td>
+</tr>
+<tr class="odd">
+<td>E9</td>
+<td align="center">-7729,15</td>
+<td align="center">789,46</td>
+<td align="center">-160,88</td>
+</tr>
+<tr class="even">
+<td>E10</td>
+<td align="center">-3848,18</td>
+<td align="center">-1473,28</td>
+<td align="center">121,59</td>
+</tr>
+<tr class="odd">
+<td>E11</td>
+<td align="center">-3989,16</td>
+<td align="center">960,15</td>
+<td align="center">25,13</td>
+</tr>
+<tr class="even">
+<td>E12</td>
+<td align="center">-564,92</td>
+<td align="center">290,23</td>
+<td align="center">14,02</td>
+</tr>
+</tbody>
+</table>
+<p>Podemos observar que a empresa E9 possui o menor desempenho, e as E1, E2 e E3 os melhores. Entenda que não necessariamente o sinal de negativo é sempre ser um pior valor, isso depende da pesquisa e da interpretação do sinal ou como em caso de autovetores, indica a rotação. Para analisarmos por gráfico não é recomendável utilizar neste caso, devido que são valores bem grandes para serem inseridos. No caso de Matriz de correlação, que serão padronizados os dados, podemos visualizar melhor.</p>
+</div>
+</div>
+<div id="clusters" class="section level2">
+<h2><span class="header-section-number">7.7</span> Clusters</h2>
+</div>
+<div id="aoc-e-roc" class="section level2">
+<h2><span class="header-section-number">7.8</span> AOC e ROC</h2>
+</div>
+<div id="modelos-nivel-iii" class="section level2">
+<h2><span class="header-section-number">7.9</span> modelos nivel III</h2>
+</div>
+<div id="grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble" class="section level2">
+<h2><span class="header-section-number">7.10</span> grad boosting -&gt; estudar boosting e bagging dentro de emseamble</h2>
+</div>
+<div id="redes-neurais" class="section level2">
+<h2><span class="header-section-number">7.11</span> Redes Neurais</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-hongyu2016analise">
+<p>Hongyu, Kuang, Vera Lúcia Martins Sandanielo, and Gilmar Jorge de Oliveira Junior. 2016. “Análise de Componentes Principais: Resumo Teórico, Aplicação E Interpretação.” <em>E&amp;S Engineering and Science</em> 5 (1): 83–90.</p>
+</div>
+<div id="ref-hotelling1933analysis">
+<p>Hotelling, Harold. 1933. “Analysis of a Complex of Statistical Variables into Principal Components.” <em>Journal of Educational Psychology</em> 24 (6): 417.</p>
+</div>
+<div id="ref-kaiser1960application">
+<p>Kaiser, Henry F. 1960. “The Application of Electronic Computers to Factor Analysis.” <em>Educational and Psychological Measurement</em> 20 (1): 141–51.</p>
+</div>
+<div id="ref-mingoti2007analise">
+<p>Mingoti, Sueli Aparecida. 2007. “Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada.” In <em>Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada</em>, 295–95.</p>
+</div>
+<div id="ref-pearson1901liii">
+<p>Pearson, Karl. 1901. “LIII. On Lines and Planes of Closest Fit to Systems of Points in Space.” <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 2 (11): 559–72.</p>
+</div>
+<div id="ref-powellpca">
+<p>Powell, Victor and Lehe, Lewis. 2014. “Análise Do Componente Principal.” In. <a href="https://setosa.io/ev/principal-component-analysis/">https://setosa.io/ev/principal-component-analysis/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Algoritmosaprendizagem.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="validação-de-um-modelo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-ModelosII.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
