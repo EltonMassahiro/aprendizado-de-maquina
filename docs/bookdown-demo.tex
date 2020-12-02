@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-11-30}
+\date{2020-12-02}
 
 \begin{document}
 \maketitle
@@ -191,6 +191,9 @@ Com intuito de explicar sobre Aprendizado de Máquina. Na seção \textbf{AQUI V
   \textbf{Assimetria e Curtose:}
 \item
   \textbf{Variância e Desvio padrão (Erro padrão):}
+\item
+  \textbf{Covariância:} A covariância mede a relação linear entre duas variáveis.
+  É possível utilizar a covariância para compreender a direção da relação entre as variáveis. Valores de covariância positivos indicam que valores acima da média de uma variável estão associados a valores médios acima da outra variável e abaixo dos valores médios são igualmente associado. Valores de covariância negativos indicam que valores acima da média de uma variável estão associados com valores médios abaixo da outra variável.
 \item
   \textbf{Distribuição normal:}
 \item
@@ -1600,7 +1603,7 @@ Agora que sabemos o que é ACP, vamos apresentar alguns conceitos de Álgebra Li
 
 Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em \ref{dicio} encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.
 
-Dado uma matriz \(A_{nxn}\) que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os \textbf{autovetores}.
+Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os \textbf{autovetores}.
 
 \begin{figure}
 
@@ -1613,7 +1616,251 @@ Dado uma matriz \(A_{nxn}\) que define uma transformação linear (não muda sua
 
 
 
-A qualidade de aproximação do modelo depende do número de componentes mantidas no sistema e pode ser medida com a \textbf{avaliação da proporção da variância total explicada}.
+Um vetor é dito ser autovetor da matriz \(A_{mxn}\) se a transformação linear deste vetor \(T(u)\) é colinear a este vetor, ou seja, \(A_{mxn}\vec{u}=\lambda \vec{u}\). Sendo que \(\lambda\) é um escalar e chamado de autovalor da matriz correspondente ao autovetor. Para encontrarmos o autovetor:
+
+\begin{equation}
+    A_{mxn}\vec{u}=\lambda \vec{u} \\
+A_{mxn}\vec{u}-\lambda \vec{u}=0 \\
+(A_{mxn}-\lambda l)\vec{u}=0
+    \label{eq:autovetor}
+\end{equation}
+
+esta equação tem solução trivial, ou seja, diferentes da nula \((\vec{v}\neq 0 )\) se e somente se, seu determinante é zero. Conhecido como \textbf{Equação caracterísica} e sua solução são os \textbf{autovalores}:
+\begin{equation}
+    \mbox{Eq. Característica}\ \  det(A_{mxn}-\lambda l)=0  
+    \label{eq:eqcarac}
+\end{equation}
+
+Note também que toda transformação linear (matriz) em um espaço
+vetorial complexo (números imaginários) tem, pelo menos, um autovetor (real ou complexo).
+
+\hypertarget{exautovetor}{%
+\subsubsection{Exemplo}\label{exautovetor}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Vamos considerar um operador linear \textbf{\(T: R^2 \rightarrow R^2\)}. Com \(T(x,y)=(4x+5y,2x+2y)\). Quais são os autovalores a matriz \(A=\begin{bmatrix} 4 &5 \\ 2 &2 \end{bmatrix}\)?
+\end{enumerate}
+
+Vamos resolver a equação característica \(det(A_{mxn}-\lambda l)=0\).
+
+\[det(A_{mxn}-\lambda l)=\begin{bmatrix}
+4 &5 \\ 
+2 &2 
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 &0 \\ 
+0 &1 
+\end{bmatrix} = \begin{bmatrix}
+4-\lambda &5 \\ 
+2 &2-\lambda 
+\end{bmatrix}\]
+
+Com \(det(A_{mxn}-\lambda l)=0:\)
+\[(4-\lambda)(2-\lambda)-10=0 \\
+\lambda^2-6\lambda-2=0 \\ \mbox{resolvendo a equação: } \ 
+\lambda_1 \approx 6,32 \  \ \mbox{e} \ \ \lambda_2 \approx -0,32\]
+
+\hypertarget{estatuxedsticas}{%
+\subsection{Estatísticas}\label{estatuxedsticas}}
+
+Alguns conceitos de Estatísticas são fundamentais para que se entenda a ACP:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Covariância x Correlação:} como apresentado em \ref{dicio}, a covariância é semelhante à correlação (ver \ref{normpadro}) entre duas variáveis, no entanto, elas diferem que os coeficientes de correlação são padronizados. Isso faz com que um relacionamento linear varie entre \(-1 \leq \rho \leq 1\). A correlação mede tanto a força como a direção da relação linear entre duas variáveis. Ao caso da covariância os valores não são padronizados. Assim, a covariância pode variar de \(-\infty \leq Cov (x,y) \leq \infty\) demonstrando quanto \(x\) e \(y\) mudam juntas. Portanto o valor para uma relação linear ideal depende muito dos dados. Como os dados não são padronizados, é difícil determinar a força da relação entre as variáveis. Note que o coeficiente de correlação é uma função da covariância:
+\end{itemize}
+
+\[\rho_{x,y}=\frac{cov(x,y)}{\sigma_x \sigma_y}\]
+
+Uma covariância positiva sempre resulta em uma correlação positiva e uma covariância negativa sempre resulta em uma correlação negativa.
+
+Quando temos um vetor de \(n\) variáveis em vez de apenas duas, iremos obter uma matriz de covariâncias ou correlação. Contendo em sua diagonal a variância \(\sigma^2\), pois \(cov(x_i,x_i)=\sigma^2(x_i)\), por exemplo:
+
+\[\begin{bmatrix}
+cov_{1,1} &cov_{1,2=2,1}  &cov_{1,3=3,1} \\ 
+cov_{1,1=2,1} &cov_{2,2}  &cov_{2,3=3,2} \\ 
+cov_{3,1=1,3} &cov_{2,3=3,2} & cov_{3,3}
+\end{bmatrix} = \begin{bmatrix}
+var_{1} &cov_{1,2=2,1}  &cov_{1,3=3,1} \\ 
+cov_{1,1=2,1} &var_{2}  &cov_{2,3=3,2} \\ 
+cov_{3,1=1,3} &cov_{2,3=3,2} & var_{3}
+\end{bmatrix}\]
+
+\hypertarget{a-acp}{%
+\subsection{A ACP}\label{a-acp}}
+
+Agora que compreendemos alguns conceitos importantes, podemos entender melhor a metodologia da ACP. Assumindo que os dados originais estão representados por variáveis correlacionadas (etapa de pré-processamento), ou seja, não independentes. Vamos ao objetivo de transformar essas \(p\) variáveis em outras novas \(k\) (com \(k<p\)) de ordem decrescesnte de variabilidade e que não sejam correlacionadas e que as primeiras novas variáveis retenham a maior parte da variação apresentadas pelas originais a fim de podermos classificá-los.
+
+Dado um vetor \(\vec{u}\) aleatório com \(p\) variáveis originais. O primeiro componente principal \(y_1\), como dito que deve ser ordem decrescente de variabilidade, será uma combinação linear do vetor \(\vec{u}\) de forma que a variância \(var(y_1)=\sigma^2_{y_{1}}\) seja a máxima (maior possível), ou melhor, precisamos encontrar um vetor \(\vec{\beta^1}\) tal que \(y_1=(\vec{\beta^1})^T \vec{u}\) e \(var(y_1=(\vec{\beta^1})^T \vec{u}\) seja máxima. De mesmo modo para \(y_2\) e um vetor \(\vec{\beta^2}\) e assim sucessivamente para \(p\) variáveis em seu banco de dados.
+
+Ao caso do Exemplo \ref{exautovetor} de Autovalores e Autovetores, foi definida a transformação linear \(T(x,y)=(4x+5y,2x+2y)\) com as duas respectivas componentes \(4x+5y\) e \(2x+2y\). 4 e 5 da primeira componente refere-se, por exemplo, como o vetor \(\vec{\beta^1}\) que multiplicado pelos vetores originais \(x\) e \(y\), temos um novo componente desse novo espaço \(4x+5y\). Da mesma forma à segunda componente \(2x+2y\) com um \(\vec{\beta^2}\).
+
+Para facilitar a compreensão, vamos utilizar um exemplo com duas variáveis (\(R^2\)):
+AQUI VOU ARRUMAR E COLOCAR COMO TA EM MINGOTI!
+- Queremos encontrar a primeira componente principal \(y_1\), de modo que \(var(y_1)\) seja máxima, ou seja, encontrar um vetor \(\vec{\beta^1}\) tal que \(y_1=(\vec{\beta^1})^T \vec{u}\) e \(var(y_1=(\vec{\beta^1})^T \vec{u}\) seja máxima.
+
+\[var(y_1)=var((\vec{\beta^1})^T\vec{u})=var(\vec{\beta^1_1}\vec{u}_1+\vec{\beta^1_2}\vec{u}_2)\\
+= (\vec{\beta^1_1})^2var(\vec{u_1})+(\vec{\beta^1_2})^2var(\vec{u_2})+2\vec{\beta^1_1}\vec{\beta^1_2}Cov(\vec{u_1}\vec{u_2})\\
+= (\vec{\beta^1})^TK_{\vec{u}} \vec{\beta^1}\]
+
+Os maiores autovalores são os que orientam o sinal, os demais podem ser descartados. Porém quantos componentes principais devemos utilizar? Precisamos verificar a proporção da variação total dos dados originais que uma componente pode explicar, a partir disso selecionarmos. Lembrando que cada autovalor \(\lambda_i\) refere-se a \(var(y_i)\).
+
+Para calcularmos a variação total, expressa-se pela somatória de todos os autovalores:
+\begin{equation}
+    \displaystyle \sum_j \lambda_j 
+    \label{eq:vartot}
+\end{equation}
+
+Portanto, para analisar cada \(i\) componente, ou seja, cada autovalor (variação ``explicada'' por cada componente):
+\begin{equation}
+    p_i=\frac{\lambda_j}{\displaystyle \sum_j \lambda_j} 
+    \label{eq:varind}
+\end{equation}
+
+Sendo geralmente escolhido as componentes com seus respectivos autovalores que explicam entre 70\%-90\% segundo alguns pesquisadores. Outros como \citet{kaiser1960application}, propõe aceitar, observando diretamente, somente os autovalores iguais ou superiores à unidade.
+
+\textbf{Importante:} sobre utilizar matriz de covariância ou de correlação depende muito das fundamentações teóricas e recomendaçõesdos pesquisadores. Em geral, utiliza-se a matriz de correlação (quando padronizamos e elaboramos a matriz) ao caso de padronizar escalas distintas que podem viesar, como por exemplo, medidas de distância e de peso.
+
+Caso esteja utilizando software para a análise, dependendo do software utilizado com seu determinado modelo de formulação de componentes principais, pode ocorrer essa troca de sinal que nada mais é do que uma reflexão em relação ao eixo, uma rotação em seu espaço vetorial n-dimensional em torno da origem, poderá ocasionar uma ``rotação'' em torno do eixo. Tratando de algebra linear e suas combinações lineares, a combinação poderá possuir soluções diferentes que diferem apenas o sinal.
+
+\hypertarget{exemplos}{%
+\subsection{Exemplos}\label{exemplos}}
+
+Tomando como base exemplos de \citet{mingoti2007analise}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Matriz de covariância amostral}
+
+  A Tabela apresenta dados relativos as 12 empresas no que se refere a 3 variáveis (medidas em unidades monetárias): ganho bruto (\(X1\)), ganho líquido (\(X2\)) e o patrimônio acumulado (\(X_3\)):
+\end{enumerate}
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+\textbf{Empresas} & \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido(\(X_3\))}\tabularnewline
+\midrule
+\endhead
+E1 & 9893 & 564 & 17689\tabularnewline
+E2 & 8776 & 389 & 17359\tabularnewline
+E3 & 13572 & 1103 & 18597\tabularnewline
+E4 & 6455 & 743 & 8745\tabularnewline
+E5 & 5129 & 203 & 14397\tabularnewline
+E6 & 5432 & 215 & 3467\tabularnewline
+E7 & 3807 & 385 & 4679\tabularnewline
+E8 & 3423 & 187 & 6754\tabularnewline
+E9 & 3708 & 127 & 2275\tabularnewline
+E10 & 3294 & 297 & 6754\tabularnewline
+E11 & 5433 & 432 & 5589\tabularnewline
+E12 & 6287 & 451 & 8972\tabularnewline
+\bottomrule
+\end{longtable}
+
+Após calcularmos suas covariâncias (recomendo o leitor calcular e verificar e atentar que por ser exemplificação, passível de ocorrência de arrendondamento dos valores), obtemos a matriz de covariância amostral:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+& \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido (\(X_3\))}\tabularnewline
+\midrule
+\endhead
+\textbf{Ganho Bruto (\(X_1\))} & 9550608,6 & 706121,1 & 14978232,5\tabularnewline
+\textbf{Ganho Líquido (\(X_2\))} & 706121,1 & 76269,5 & 933915,1\tabularnewline
+\textbf{Patrimônio Líquido (\(X_3\))} & 14978232,5 & 933915,1 & 34408113,0\tabularnewline
+\bottomrule
+\end{longtable}
+
+Para calcularmos os autovalores:
+
+\[det(A_{mxn}-\lambda l)=0: \\
+\begin{bmatrix}
+9550608,6 -\lambda &706121,1 &14978232,5\\ 
+706121,1 &76269,5-\lambda & 933915,1 \\
+14978232,5&933915,1&34408113,0-\lambda
+\end{bmatrix}=0\]
+
+Resolvendo o sistema, obtemos os seguintes autovalores das componentes principais:
+\[\lambda_1=38018192,2 \ \ \lambda_2=2327881,5 \ \ \lambda_3=19334,8\]
+Para encontrarmos a porcentagem da variância explicada por cada auto valor:
+\[\%\lambda_1=\frac{38018192,2}{38018192,2+2327881,5+19334,8}.100\%=94,2\% \\ \%\lambda_2=\frac{2327881,5}{38018192,2+2327881,5+19334,8}.100\%=5,77\% \\ \%\lambda_3=\frac{19334,8}{38018192,2+2327881,5+19334,8}.100\%=0,048\%\]
+Portanto, podemos descartar o segundo e o terceiro componente principal, pois o primeiro explica cerca de \(94,2\%\).
+
+Por fim os autovetores podem sem calculados:
+
+\[A_{mxn}\vec{u}=\lambda \vec{u}\]
+Com \(A_{mxn}\) a matriz de covariância amostral, \(\vec{u}\) o autovetor e \(\lambda\) os respectivos autovalores dos autovetores.
+
+\[\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}
+\begin{bmatrix}
+9550608,6  &706121,1 &14978232,5\\ 
+706121,1 &76269,5 & 933915,1 \\
+14978232,5&933915,1&34408113,0
+\end{bmatrix}  = \lambda_i \begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix} \]
+
+\[\mbox{substituindo os autovalores:}\\
+\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}
+\begin{bmatrix}
+9550608,6  &706121,1 &14978232,5\\ 
+706121,1 &76269,5 & 933915,1 \\
+14978232,5&933915,1&34408113,0
+\end{bmatrix}  = \begin{bmatrix}0,942&0&0 \\ 0&0,0577&0 \\0&0& 0,0048 \end{bmatrix}\begin{bmatrix}
+\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+\end{bmatrix}\]
+
+Teremos os autovetores:
+\textbar{} \textbar{} \textbf{Autovetor Ganho Bruto (\(\vec{u_1}\))} \textbar{} \textbf{Autovetor Ganho Líquido (\(\vec{u_2}\))} \textbar{} \textbf{Autovetor Patrimônio Líquido (\(\vec{u_3}\))} \textbar{}
+\textbar{}:-:\textbar{}:-:\textbar{}:-:\textbar{}:-:\textbar{}
+\textbar{} \textbf{Autovetor Ganho Bruto (\(\vec{u_1}\))} \textbar{} 0,425 \textbar{} 0,900 \textbar{} -0,099 \textbar{}
+\textbar{} \textbf{Autovetor Ganho Líquido (\(\vec{u_2}\))} \textbar{} 0,028 \textbar{} 0,096 \textbar{} 0,995 \textbar{}
+\textbar{} \textbf{Autovetor Patrimônio Líquido (\(\vec{u_3}\))} \textbar{} 0,905 \textbar{} -0,426 \textbar{} 0,016 \textbar{}
+
+Com os autovetores, podemos elaborar as três componentes principais:
+
+\[\hat{y_1}=0,425(Ganho Bruto)+0,028(GanhoLíquido)+0,905(PatrimônioLíquido)\\
+\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)
+\hat{y_3}=-0,099(Ganho Bruto)+0,995(GanhoLíquido)+0,016(PatrimônioLíquido)\]
+por meio da observação de seus resultados podemos analisar que:
+
+\begin{itemize}
+\item
+  A primeira componente possui alta correlação-positiva com todas as três variáveis, podemos analisar como um índice de desempenho global da empresa. Pelo autovetor, podemos ver que o patrimônio possui o maior peso e de menor o ganho líquido. Podemos verificar que quanto maior for os valores das variáveis, maior será dessa componente, ou melhor, maior será o desempenho global da empresa. Esta ocupa, observando pelos autovalores, 94,\textbackslash{}20\% de toda variação explicada, dependendo da pesquisa pode-se descartar as outras componentes.
+\item
+  A segunda componente que ocupa 5,77\% de toda variação explicada (autovalor), possui o ganho bruto e patrimônio de maior variância amostral (analisando o tabela de covariância amostra). Pelos autovetores, podemos verificar que o ganho bruto é a variável dominante com segunda maior variância amostral. Com a componente próximo a zero, entende-se que haverá um certo equilíbrio entre ganho bruto e patrimônio acumulado, o que na verdade o aumento do ganho bruto eleva-se esta componente e o patrimônio contrário. Note que há correlação bem menor entre elas.
+\item
+  A terceira componente com pouca variância total explicada, referente ao ganho líquido de menor variância amostral, possui pouca importância. Apena o ganho líquido possui alta correlação, visto que às outras duas são próximas de zero.
+\end{itemize}
+
+Determinada as componentes principais, podemos obter seus valores numéricos (\textbf{escores}) para cada elemento amostral. Basicamente substituímos os valores originais na funções encontradas de componentes principais (\(y_1,y_2 \ \mbox{e}\  y_3\)):
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+\textbf{Empresas} & \textbf{\(CP_1\)} & \textbf{\(CP_2\)} & \textbf{\(CP_3\)}\tabularnewline
+\midrule
+\endhead
+E1 & 8857,59 & -165,27 & -90,18\tabularnewline
+E2 & 8079,36 & -1046,65 & -158,93\tabularnewline
+E3 & 11257,93 & 2810,25 & 96,18\tabularnewline
+E4 & -690,80 & 566,19 & 284,23\tabularnewline
+E5 & 3844,09 & -3084,94 & -30,40\tabularnewline
+E6 & -5915,42 & 1841,62 & -224,93\tabularnewline
+E7 & -5504,97 & -119,93 & 124,81\tabularnewline
+E8 & -3796,38 & -1367,83 & -0,64\tabularnewline
+E9 & -7729,15 & 789,46 & -160,88\tabularnewline
+E10 & -3848,18 & -1473,28 & 121,59\tabularnewline
+E11 & -3989,16 & 960,15 & 25,13\tabularnewline
+E12 & -564,92 & 290,23 & 14,02\tabularnewline
+\bottomrule
+\end{longtable}
+
+Podemos observar que a empresa E9 possui o menor desempenho, e as E1, E2 e E3 os melhores. Entenda que não necessariamente o sinal de negativo é sempre ser um pior valor, isso depende da pesquisa e da interpretação do sinal ou como em caso de autovetores, indica a rotação. Para analisarmos por gráfico não é recomendável utilizar neste caso, devido que são valores bem grandes para serem inseridos. No caso de Matriz de correlação, que serão padronizados os dados, podemos visualizar melhor.
 
 \hypertarget{clusters}{%
 \section{Clusters}\label{clusters}}
