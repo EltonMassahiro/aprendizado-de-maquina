@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-12-02}
+\date{2020-12-05}
 
 \begin{document}
 \maketitle
@@ -780,11 +780,11 @@ Uma vez transformados os dados em logaritmos, a soma de dados logarítmicos não
 \end{enumerate}
 
 \begin{equation}
-x_{ij}=\frac{x_{ij}-\overline{X}}{S_j}
+Z_{ij}=\frac{x_{ij}-\overline{X}}{\sigma_j}
 \label{eq:padronizacao}
 \end{equation}
 
-em que \(\overline{X_j}\) e \(S_j\) representam a média e o desvio padrão do atributo \(j\) respectivamente. Após a transformação todos os atributos terão a média zero e desvio-padrão unitário.
+em que \(\overline{X_j}\) e \(\sigma_j\) representam a média e o desvio padrão do atributo \(j\) respectivamente. Após a transformação todos os atributos terão a média zero e desvio-padrão unitário.
 
 Caso transformado seu banco de dados e seu banco de dados apresentarem uma distribuição contínua não-normal, ou não-homogênea ou não-aditiva, não há outra alternativa senão utilizar a estatística não-paramétrica.
 
@@ -865,7 +865,7 @@ Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulo serão apresen
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Teste de Hipóteses
+  Teste de Hipóteses e Análise de Variância
 \end{enumerate}
 
 \begin{itemize}
@@ -942,8 +942,8 @@ O ganho de informação portanto mede a redução da entropia (nesse caso) causa
 
 É muito utilizado em algoritmo de \textbf{Árvore de decisão} que será apresentado na seção \ref{ptII} mesma seção com um exemplo de seu uso.
 
-\hypertarget{medidas-de-distuxe2ncia}{%
-\subsection{Medidas de Distância}\label{medidas-de-distuxe2ncia}}
+\hypertarget{meddist}{%
+\subsection{Medidas de Distância}\label{meddist}}
 
 Também conhecidas com medidas de separabilidade, discriminação e divergência. Em caso de duas classes, um atributo \(X_i\) é preferido ao atributo \(X_j\) se fornece uma diferença maior que \(X_j\) entre as probabilidades condicionais das duas classes. Uma das mais utilizadas é a distância Euclidiana.
 
@@ -1545,11 +1545,8 @@ Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \
 \hypertarget{knn}{%
 \section{KNN}\label{knn}}
 
-\hypertarget{k-means}{%
-\section{K-means}\label{k-means}}
-
-\hypertarget{anuxe1lise-de-componentes-principais}{%
-\section{Análise de Componentes Principais}\label{anuxe1lise-de-componentes-principais}}
+\hypertarget{AC}{%
+\section{Análise de Componentes Principais}\label{AC}}
 
 A Análise de Componentens Principais, popularmente conhecida como ACP ou PCA (\emph{Principal Component Analysis}), em inglês, foi introduzida por \citet{pearson1901liii} e fundamentada no artigo de \citet{hotelling1933analysis}. É uma \textbf{análise multivariada} que tem como objetivo explicar a estrutura de variância e covariância de um vetor aleatório, composto por \(p\)-variáveis aleatórias, através da construção de combinações lineares das variáveis originais que são chamadas de componentes principais e não correlacionadas entre si \citep{mingoti2007analise}. É uma técnica bastante utilizada em diversas áreas do conhecimento, como a biologia, a agronomia, a zootécnica, a ecologia, a engenharia florestal, a medicina, a economia, entre outras áreas. Muitos sugerem o seu uso quando o volume de dados ou variáveis é grande possibilitando reduzir a dimensão da matriz de dados que compõem o conjunto de variáveis resposta com apenas poucos componentes, ou seja, \(p\) variáveis originais substituídas por \(k\) (sendo \(k < p\)) componentes principais não correlacionadas.
 
@@ -1603,7 +1600,7 @@ Agora que sabemos o que é ACP, vamos apresentar alguns conceitos de Álgebra Li
 
 Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em \ref{dicio} encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.
 
-Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os \textbf{autovetores}.
+Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os \textbf{autovetores}. Na Figura \ref{fig:autovetor}, \(u\) é um autovetor e \(V\) não.
 
 \begin{figure}
 
@@ -1611,12 +1608,12 @@ Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua
 
 }
 
-\caption{\(u\) é um autovetor de \(T\), porém \(v\) não.}\label{fig:autovetor}
+\caption{\(u\) é um autovetor de \(T\), porém \(V\) não.}\label{fig:autovetor}
 \end{figure}
 
 
 
-Um vetor é dito ser autovetor da matriz \(A_{mxn}\) se a transformação linear deste vetor \(T(u)\) é colinear a este vetor, ou seja, \(A_{mxn}\vec{u}=\lambda \vec{u}\). Sendo que \(\lambda\) é um escalar e chamado de autovalor da matriz correspondente ao autovetor. Para encontrarmos o autovetor:
+Um vetor é dito ser autovetor da matriz \(A_{mxn}\) se a transformação linear deste vetor \(T(u)\) é colinear a este vetor, ou seja, \(A_{mxn}\vec{u}=\lambda \vec{u}\). Sendo que \(\lambda\) é um escalar e chamado de \textbf{autovalor} da matriz correspondente ao autovetor. Para encontrarmos o autovetor:
 
 \begin{equation}
     A_{mxn}\vec{u}=\lambda \vec{u} \\
@@ -1634,8 +1631,8 @@ esta equação tem solução trivial, ou seja, diferentes da nula \((\vec{v}\neq
 Note também que toda transformação linear (matriz) em um espaço
 vetorial complexo (números imaginários) tem, pelo menos, um autovetor (real ou complexo).
 
-\hypertarget{exautovetor}{%
-\subsubsection{Exemplo}\label{exautovetor}}
+\hypertarget{exautovetor1}{%
+\subsubsection{Exemplo}\label{exautovetor1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1661,6 +1658,66 @@ Com \(det(A_{mxn}-\lambda l)=0:\)
 \[(4-\lambda)(2-\lambda)-10=0 \\
 \lambda^2-6\lambda-2=0 \\ \mbox{resolvendo a equação: } \ 
 \lambda_1 \approx 6,32 \  \ \mbox{e} \ \ \lambda_2 \approx -0,32\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Considere amatriz \(A=\begin{bmatrix} 1 &0 \\ 1 &-2 \end{bmatrix}\).
+\end{enumerate}
+
+Vamos resolver a equação característica \(det(A_{mxn}-\lambda l)=0\).
+
+\[det(A_{mxn}-\lambda l)=\begin{bmatrix}
+1 &0 \\ 
+1 &-2 
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 &0 \\ 
+0 &1 
+\end{bmatrix} = \begin{bmatrix}
+1-\lambda &0 \\ 
+1 &-2-\lambda 
+\end{bmatrix}\]
+
+Resovendo este sistema, obtemos os autovalores:
+\[\lambda_1=1 \ \ \lambda_2=-2\]
+Vamos encontrar agora seus respectivos autovetores, lembrando que \(A_{mxn}\vec{u}=\lambda \vec{u}\):
+\[ \mbox{Primeiro encontrar os autovetores de }\lambda_1=1: \\
+A_{mxn}\vec{u}=\lambda \vec{u} \\
+\begin{bmatrix}
+1 &0 \\ 
+1 &-2 
+\end{bmatrix}. \begin{bmatrix}
+x \\ 
+y  
+\end{bmatrix}=1.\begin{bmatrix}
+x \\ 
+y  
+\end{bmatrix} \\
+x=x \\
+x-2y=y \\ \mbox{logo: } x=3y\]
+
+Portanto em \(\lambda_1=1\) será \(X=\begin{bmatrix}3y\\y\end{bmatrix}\), com o autovetor de \(y=1\) e \(x=\begin{bmatrix}3\\1\end{bmatrix}\).
+
+Agora para o segundo autovalor \(\lambda_2=-2\):
+\[A_{mxn}\vec{u}=\lambda \vec{u} \\
+\begin{bmatrix}
+1 &0 \\ 
+1 &-2 
+\end{bmatrix}. \begin{bmatrix}
+x \\ 
+y  
+\end{bmatrix}=-2.\begin{bmatrix}
+x \\ 
+y  
+\end{bmatrix} \\
+x=-2x \\
+x-2y=-2y \\ \mbox{logo: } x=0\]
+
+Portanto em \(\lambda_2=-2\) será \(y=\begin{bmatrix}0\\1\end{bmatrix}\) e \(x=0\).
+
+Logo o primeiro autovetor será \(X=\begin{bmatrix}3\\1\end{bmatrix}\) e o segundo \(y=\begin{bmatrix}0\\1\end{bmatrix}\).
 
 \hypertarget{estatuxedsticas}{%
 \subsection{Estatísticas}\label{estatuxedsticas}}
@@ -1692,19 +1749,61 @@ cov_{3,1=1,3} &cov_{2,3=3,2} & var_{3}
 \hypertarget{a-acp}{%
 \subsection{A ACP}\label{a-acp}}
 
-Agora que compreendemos alguns conceitos importantes, podemos entender melhor a metodologia da ACP. Assumindo que os dados originais estão representados por variáveis correlacionadas (etapa de pré-processamento), ou seja, não independentes. Vamos ao objetivo de transformar essas \(p\) variáveis em outras novas \(k\) (com \(k<p\)) de ordem decrescesnte de variabilidade e que não sejam correlacionadas e que as primeiras novas variáveis retenham a maior parte da variação apresentadas pelas originais a fim de podermos classificá-los.
+Agora que compreendemos alguns conceitos importantes, podemos entender melhor a metodologia da ACP. Assumindo que os dados originais estão representados por variáveis correlacionadas (etapa de pré-processamento), ou seja, não independentes. Vamos ao objetivo de transformar essas \(p\) variáveis em outras novas \(k\) (com \(k<p\)) de ordem decrescente de variabilidade e que não sejam correlacionadas e que as primeiras novas variáveis retenham a maior parte da variação apresentadas pelas originais a fim de podermos classificá-los.
 
-Dado um vetor \(\vec{u}\) aleatório com \(p\) variáveis originais. O primeiro componente principal \(y_1\), como dito que deve ser ordem decrescente de variabilidade, será uma combinação linear do vetor \(\vec{u}\) de forma que a variância \(var(y_1)=\sigma^2_{y_{1}}\) seja a máxima (maior possível), ou melhor, precisamos encontrar um vetor \(\vec{\beta^1}\) tal que \(y_1=(\vec{\beta^1})^T \vec{u}\) e \(var(y_1=(\vec{\beta^1})^T \vec{u}\) seja máxima. De mesmo modo para \(y_2\) e um vetor \(\vec{\beta^2}\) e assim sucessivamente para \(p\) variáveis em seu banco de dados.
+Dado um vetor \(X=(X_1,X_2,..., X_p)'\) aleatório de \(p\) variáveis originais com vetor de médias \(\mu=(\mu_1,\mu_2,...,\mu_p)\) e matriz de covariâncias \(A_{mxn}\) e \(\lambda_1\geq\lambda_2\geq...\geq\lambda_p\) os autovalores da matriz de covariâncias, com seus respectivos autovetores normalizados \(e_i'=e_1,e_2,...,e_p\). O primeiro componente principal \(y_1\), como dito que deve ser ordem decrescente de variabilidade, será uma combinação linear do vetor aleatório \(X\) de forma que a variância \(var(y_1)=\sigma^2_{y_{1}}\) seja a máxima (maior possível), ou melhor, precisamos encontrar um vetor \(e_1\) tal que \(y_1=(e_1)^T X\) e \(var(y_1=(e_1)^T X\) seja máxima. De mesmo modo para \(y_2\) e um vetor \(e_2\) e assim sucessivamente para \(p\) variáveis em seu banco de dados.
 
-Ao caso do Exemplo \ref{exautovetor} de Autovalores e Autovetores, foi definida a transformação linear \(T(x,y)=(4x+5y,2x+2y)\) com as duas respectivas componentes \(4x+5y\) e \(2x+2y\). 4 e 5 da primeira componente refere-se, por exemplo, como o vetor \(\vec{\beta^1}\) que multiplicado pelos vetores originais \(x\) e \(y\), temos um novo componente desse novo espaço \(4x+5y\). Da mesma forma à segunda componente \(2x+2y\) com um \(\vec{\beta^2}\).
+Portanto a matriz dos autovetores normalizados da matriz de covariância \(A_{mxn}\) é:
 
-Para facilitar a compreensão, vamos utilizar um exemplo com duas variáveis (\(R^2\)):
-AQUI VOU ARRUMAR E COLOCAR COMO TA EM MINGOTI!
-- Queremos encontrar a primeira componente principal \(y_1\), de modo que \(var(y_1)\) seja máxima, ou seja, encontrar um vetor \(\vec{\beta^1}\) tal que \(y_1=(\vec{\beta^1})^T \vec{u}\) e \(var(y_1=(\vec{\beta^1})^T \vec{u}\) seja máxima.
+\begin{equation}
+    O_{mxn}= 
+\begin{bmatrix}
+e_{11} &e_{21}  &. &.  &. &e_{p1} \\ 
+e_{12} &e_{22}  &. &.  &. &e_{p2} \\ 
+.      &.       &. &.  &. &. \\ 
+.      &.       &. &.  &. &. \\ 
+.      &.       &. &.  &. &. \\ 
+e_{1p} &e_{2p}  &. &.  &. &e_{pp} 
+\end{bmatrix}
+=[e_1,e_2,...,e_p]
+\label{eq:autovetormatrix}
+\end{equation}
 
-\[var(y_1)=var((\vec{\beta^1})^T\vec{u})=var(\vec{\beta^1_1}\vec{u}_1+\vec{\beta^1_2}\vec{u}_2)\\
-= (\vec{\beta^1_1})^2var(\vec{u_1})+(\vec{\beta^1_2})^2var(\vec{u_2})+2\vec{\beta^1_1}\vec{\beta^1_2}Cov(\vec{u_1}\vec{u_2})\\
-= (\vec{\beta^1})^TK_{\vec{u}} \vec{\beta^1}\]
+E dos autovalores:
+\begin{equation}
+\Lambda_{mxn}=
+\begin{bmatrix}
+\lambda_1 & &0\\
+& \lambda_2 & \\
+0 & & \lambda_n
+\label{eq:autovalormatrix}
+\end{bmatrix}
+\end{equation}
+
+Portanto, as variáveis aleatórias que constituem o vetor \(Y\) não são correlacionadas entre si. Com isso, a ideia de utilizar combinações lineares em \(Y\) como forma de representar a estrutura de covariâncias do vetor \(X\) torna-se interessante, a fim de reduzir o espaço de variáveis de \(p\) para \(k<p\) dimensões. Os vetores \(X\) e \(Y\) terão a mesma variância total e generalizada, com \(Y\) de vantagem de não haver variáveis correlacionadas e facilitando na interpretação conjunta delas (análise multivariada). Portanto:
+
+\begin{equation}
+   Y_j=e_j'X=e_{j1}X_1+e_{j2}X_2+...+e_{jp}X_p
+   \label{eq:cp}
+\end{equation}
+
+A esperança e variância:
+\begin{equation}
+E[Y_j]=e_j'\mu=e_{j1}\mu_1+e_{j2}\mu_2+...+e_{jp}\mu_p
+\end{equation}
+
+\begin{equation}     
+Var[Y_j]=e_j' A_{mxn}e_j=\lambda_j
+\end{equation}
+
+Lembrando que \(Cov[Y_j,Y_k]=0, \ j\neq k\) e que cada autovalor \(\lambda_j\) representa a variância de uma componente principal \(Y_j\). A primeira componente terá a maior variabilidade e a última menor.
+
+Para calcularmos a correlação estimada entre a \(j\)-ésima componente principal e a variável aleatória \(X\), podemos expressar:
+\begin{equation}   
+r_{Y_j,X_i}=\frac{e_{ji}\sqrt{\lambda_j}}{\sqrt{\sigma}}
+\end{equation}
+
+De mesmo modo para tratarmos de amostras, são trabalhados com \(\hat{Y_j}\) e \(\hat{X_j}\) e seus respectivos, autovetores, autovalores, matriz de covariância amostral e correlação.
 
 Os maiores autovalores são os que orientam o sinal, os demais podem ser descartados. Porém quantos componentes principais devemos utilizar? Precisamos verificar a proporção da variação total dos dados originais que uma componente pode explicar, a partir disso selecionarmos. Lembrando que cada autovalor \(\lambda_i\) refere-se a \(var(y_i)\).
 
@@ -1726,8 +1825,22 @@ Sendo geralmente escolhido as componentes com seus respectivos autovalores que e
 
 Caso esteja utilizando software para a análise, dependendo do software utilizado com seu determinado modelo de formulação de componentes principais, pode ocorrer essa troca de sinal que nada mais é do que uma reflexão em relação ao eixo, uma rotação em seu espaço vetorial n-dimensional em torno da origem, poderá ocasionar uma ``rotação'' em torno do eixo. Tratando de algebra linear e suas combinações lineares, a combinação poderá possuir soluções diferentes que diferem apenas o sinal.
 
-\hypertarget{exemplos}{%
-\subsection{Exemplos}\label{exemplos}}
+\textbf{Resumo geral:} É comum o pesquisador trabalhar com um volume de dados muito grande e que estão muitas vezes correlacionadas. A Análise de Componentes principais busca explicar a estrutura de variância e covariância de um vetor aleatório com \(p\) variáveis, possibilitando por meio da combinação linear deste vetor aleatório novas componentes (denominada componente principal) com menos variáveis (\(k<p\)) que o conjunto de dados original e não correlacionadas de modo que estas componentes principais retenha a maior parte da variação apresentada pelas originais, possibilitando classificarmos o conjunto de dados e até mesmo descartar variáveis que podem ser redundantes ou não importantes. Utiliza-se de fundamentações teóricas de Autovetores e Autovalores para que se encontre um novo sistema de coordenadas com novos pontos a partir das originais, pode-se dizer que rotacionamos para que se visualize num ``novo ângulo'', para descobrir e avaliar em ordem decrescente a variação (matriz de covariância do vetor aleatório) deste conjunto de dados. Os passos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calcular a Matriz de Correlação amostral \(R_{mxn}\) ou Covariância amostral \(S_{mxn}\) do vetor aleatório de \(p\) variáveis.
+\item
+  Encontrar \(\lambda_i\) autovalores da matriz.
+\item
+  Encontrar seus respectivos \(e_i\) autovetores.
+\item
+  Aplicar outras análises caso necessite (como correlação da componente e a variável) , interpretar os dados e selecionar as novas variáveis.
+\end{enumerate}
+
+\hypertarget{exemplocp}{%
+\subsection{Exemplos}\label{exemplocp}}
 
 Tomando como base exemplos de \citet{mingoti2007analise}.
 
@@ -1741,7 +1854,7 @@ Tomando como base exemplos de \citet{mingoti2007analise}.
 
 \begin{longtable}[]{@{}lccc@{}}
 \toprule
-\textbf{Empresas} & \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido(\(X_3\))}\tabularnewline
+\textbf{Empresas} & \textbf{Ganho Bruto(\(X_1\))} & \textbf{Ganho Líquido(\(X_2\))} & \textbf{Patrimônio Líquido(\(X_3\))}\tabularnewline
 \midrule
 \endhead
 E1 & 9893 & 564 & 17689\tabularnewline
@@ -1790,7 +1903,7 @@ Portanto, podemos descartar o segundo e o terceiro componente principal, pois o 
 Por fim os autovetores podem sem calculados:
 
 \[A_{mxn}\vec{u}=\lambda \vec{u}\]
-Com \(A_{mxn}\) a matriz de covariância amostral, \(\vec{u}\) o autovetor e \(\lambda\) os respectivos autovalores dos autovetores.
+Com \(A_{mxn}\) a matriz de covariância amostral, \(u\) o autovetor e \(\lambda\) os respectivos autovalores dos autovetores.
 
 \[\begin{bmatrix}
 \vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
@@ -1800,45 +1913,73 @@ Com \(A_{mxn}\) a matriz de covariância amostral, \(\vec{u}\) o autovetor e \(\
 706121,1 &76269,5 & 933915,1 \\
 14978232,5&933915,1&34408113,0
 \end{bmatrix}  = \lambda_i \begin{bmatrix}
-\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+u_1\\ u_2 \\ u_3
 \end{bmatrix} \]
 
 \[\mbox{substituindo os autovalores:}\\
 \begin{bmatrix}
-\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+u_1\\ u_2 \\ u_3
 \end{bmatrix}
 \begin{bmatrix}
 9550608,6  &706121,1 &14978232,5\\ 
 706121,1 &76269,5 & 933915,1 \\
 14978232,5&933915,1&34408113,0
 \end{bmatrix}  = \begin{bmatrix}0,942&0&0 \\ 0&0,0577&0 \\0&0& 0,0048 \end{bmatrix}\begin{bmatrix}
-\vec{u_1}\\ \vec{u_2} \\ \vec{u_3}
+u_1\\ u_2 \\ u_3
 \end{bmatrix}\]
 
 Teremos os autovetores:
-\textbar{} \textbar{} \textbf{Autovetor Ganho Bruto (\(\vec{u_1}\))} \textbar{} \textbf{Autovetor Ganho Líquido (\(\vec{u_2}\))} \textbar{} \textbf{Autovetor Patrimônio Líquido (\(\vec{u_3}\))} \textbar{}
-\textbar{}:-:\textbar{}:-:\textbar{}:-:\textbar{}:-:\textbar{}
-\textbar{} \textbf{Autovetor Ganho Bruto (\(\vec{u_1}\))} \textbar{} 0,425 \textbar{} 0,900 \textbar{} -0,099 \textbar{}
-\textbar{} \textbf{Autovetor Ganho Líquido (\(\vec{u_2}\))} \textbar{} 0,028 \textbar{} 0,096 \textbar{} 0,995 \textbar{}
-\textbar{} \textbf{Autovetor Patrimônio Líquido (\(\vec{u_3}\))} \textbar{} 0,905 \textbar{} -0,426 \textbar{} 0,016 \textbar{}
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\centering
+\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Bruto (\(u_1\))}\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Líquido (\(u_2\))}\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Patrimônio Líquido (\(u_3\))}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Bruto (\(u_1\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,425\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,900\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+-0,099\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Líquido (\(u_2\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,028\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,096\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,995\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Patrimônio Líquido (\(u_3\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,905\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+-0,426\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,016\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 Com os autovetores, podemos elaborar as três componentes principais:
 
 \[\hat{y_1}=0,425(Ganho Bruto)+0,028(GanhoLíquido)+0,905(PatrimônioLíquido)\\
-\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)
+\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)\\
 \hat{y_3}=-0,099(Ganho Bruto)+0,995(GanhoLíquido)+0,016(PatrimônioLíquido)\]
-por meio da observação de seus resultados podemos analisar que:
 
-\begin{itemize}
-\item
-  A primeira componente possui alta correlação-positiva com todas as três variáveis, podemos analisar como um índice de desempenho global da empresa. Pelo autovetor, podemos ver que o patrimônio possui o maior peso e de menor o ganho líquido. Podemos verificar que quanto maior for os valores das variáveis, maior será dessa componente, ou melhor, maior será o desempenho global da empresa. Esta ocupa, observando pelos autovalores, 94,\textbackslash{}20\% de toda variação explicada, dependendo da pesquisa pode-se descartar as outras componentes.
-\item
-  A segunda componente que ocupa 5,77\% de toda variação explicada (autovalor), possui o ganho bruto e patrimônio de maior variância amostral (analisando o tabela de covariância amostra). Pelos autovetores, podemos verificar que o ganho bruto é a variável dominante com segunda maior variância amostral. Com a componente próximo a zero, entende-se que haverá um certo equilíbrio entre ganho bruto e patrimônio acumulado, o que na verdade o aumento do ganho bruto eleva-se esta componente e o patrimônio contrário. Note que há correlação bem menor entre elas.
-\item
-  A terceira componente com pouca variância total explicada, referente ao ganho líquido de menor variância amostral, possui pouca importância. Apena o ganho líquido possui alta correlação, visto que às outras duas são próximas de zero.
-\end{itemize}
-
-Determinada as componentes principais, podemos obter seus valores numéricos (\textbf{escores}) para cada elemento amostral. Basicamente substituímos os valores originais na funções encontradas de componentes principais (\(y_1,y_2 \ \mbox{e}\  y_3\)):
+Determinada as componentes principais, podemos obter seus valores numéricos (\textbf{escores}) para cada elemento amostral. Basicamente substituímos os valores originais nas funções encontradas de componentes principais (\(\hat{y_1},\hat{y_2} \ \mbox{e}\  \hat{y_3}\)):
 
 \begin{longtable}[]{@{}lccc@{}}
 \toprule
@@ -1862,8 +2003,543 @@ E12 & -564,92 & 290,23 & 14,02\tabularnewline
 
 Podemos observar que a empresa E9 possui o menor desempenho, e as E1, E2 e E3 os melhores. Entenda que não necessariamente o sinal de negativo é sempre ser um pior valor, isso depende da pesquisa e da interpretação do sinal ou como em caso de autovetores, indica a rotação. Para analisarmos por gráfico não é recomendável utilizar neste caso, devido que são valores bem grandes para serem inseridos. No caso de Matriz de correlação, que serão padronizados os dados, podemos visualizar melhor.
 
-\hypertarget{clusters}{%
-\section{Clusters}\label{clusters}}
+E a correlação entre as componentes principais e as variáives originais:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+& \textbf{CP 1} & \textbf{CP 2} & \textbf{CP 3}\tabularnewline
+\midrule
+\endhead
+\textbf{Ganho Bruto (\(X_1\))} & 0,8859 & 0,4639 & -0,0047\tabularnewline
+\textbf{Ganho Líquido (\(X_2\))} & 0,6450 & 0,5569 & 0,5232\tabularnewline
+\textbf{Patrimônio Líquido (\(X_3)\))} & 0,9933 & -0,1156 & 0,0004\tabularnewline
+\bottomrule
+\end{longtable}
+
+Por meio da observação de seus resultados podemos analisar que:
+
+\begin{itemize}
+\item
+  A primeira componente possui alta correlação-positiva com todas as três variáveis, podemos analisar como um índice de desempenho global da empresa. Pelo autovetor, podemos ver que o patrimônio possui o maior peso e de menor o ganho líquido. Podemos verificar que quanto maior for os valores das variáveis, maior será dessa componente, ou melhor, maior será o desempenho global da empresa. Esta ocupa, observando pelos autovalores, 94,\textbackslash{}20\% de toda variação explicada, dependendo da pesquisa pode-se descartar as outras componentes.
+\item
+  A segunda componente que ocupa 5,77\% de toda variação explicada (autovalor), possui o ganho bruto e patrimônio de maior variância amostral (analisando o tabela de covariância amostra). Pelos autovetores, podemos verificar que o ganho bruto é a variável dominante com segunda maior variância amostral. Com a componente próximo a zero, entende-se que haverá um certo equilíbrio entre ganho bruto e patrimônio acumulado, o que na verdade o aumento do ganho bruto eleva-se esta componente e o patrimônio contrário. Note que há correlação bem menor entre elas.
+\item
+  A terceira componente com pouca variância total explicada, referente ao ganho líquido de menor variância amostral, possui pouca importância. Apena o ganho líquido possui alta correlação, visto que às outras duas são próximas de zero.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Matriz de correlação}
+\end{enumerate}
+
+No exemplo anterior, vimos que as componentes principais foram obtidas a partir de matriz de covariâncias e que são influenciadas pelas variáives com maior variância. Porém em casos onde existe muita discrepância entre essas variâncias por motivos de unidades de medidas distintas entre as variáveis. Podemos amenizar essa discrepância por meio de transformação dos dados originais de modo a equilibrar as variâncias ou colocar todos os dados em mesma escala de medida. Uma muito usual é a padronização que gera novas variáveis centradas em zero e com variâncias iguais a 1. Em caso de dúvida, reveja em \ref{normpadro}. Tomando como base o mesm conjunto de dados do exercício anterior, padronizando e elaborando a matriz de correlação amostral, obtemos:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+& \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido (\(X_3\))}\tabularnewline
+\midrule
+\endhead
+\textbf{Ganho Bruto (\(X_1\))} & 1,00 & 0,827 & 0,826\tabularnewline
+\textbf{Ganho Líquido (\(X_2\))} & 0,827 & 1,00 & 0,576\tabularnewline
+\textbf{Patrimônio Líquido (\(X_3\))} & 0,826 & 0,576 & 1,00\tabularnewline
+\bottomrule
+\end{longtable}
+
+Com o mesmo procedimento do exemplo anterior ao caso de matriz de covariância, obtemos os respectivos autovalores e autovetores:
+
+\[\lambda_1=2,493 \ \ \lambda_2=0,423 \ \ \lambda_3=0,084 \\
+\%\lambda_1=83,084\% \ \ \%\lambda_2=14,117\% \ \ \%\lambda_3=2,799\%\]
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\centering
+\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Bruto (\(u_1\))}\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Líquido (\(u_2\))}\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\textbf{Autovetor Patrimônio Líquido (\(u_3\))}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Bruto (\(u_1\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,617\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+-0,001\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+-0,787\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Ganho Líquido (\(u_2\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,557\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+-0,706\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,437\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\centering
+\textbf{Autovetor Patrimônio Líquido (\(u_3\))}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,556\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,708\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+0,435\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Por meio dos autovalores, podemos verificar que a variância total explicada pela primeira componente é aproximadamente 83,1\%, pela segunda 14,1\% e pela terceira 2,8\%. As duas primeiras componentes explicam juntas 97,2\% aproximadamente da variância total do vetor original padronizado. Note que o processo de análise é da mesma forma que o exemplo anterior. A primeira componente é um índice de desempenho global padronizado da empresa. A segunda componente representa uma comparação entre ganho líquido e patrimônio padronizados (verifique pelo autovetor da segunda componente que o ganho bruto possui um valor de coeficiente muito pequeno em relação aos outros). Por fim, a terceira componente compara-se o ganho bruto com às outras duas variáveis.
+
+Suas componentes principais são:
+
+\[\hat{y_1}=0,617(Ganho Bruto)+0,557(GanhoLíquido)+0,556(PatrimônioLíquido)\\
+\hat{y_2}=-0,001(Ganho Bruto)-0,706(GanhoLíquido)+0,708(PatrimônioLíquido)\\
+\hat{y_3}=-0,787(Ganho Bruto)+0,437(GanhoLíquido)+0,435(PatrimônioLíquido)\]
+
+Note que em relação ao exemplo anterior, seus coeficientes de ponderação estão numericamente mais equilibrados que no caso de matriz de covariâncias amostral. Todas as variâncias iguais a um, sem dominância direta de nenhuma variável.
+
+Determinada as componentes principais, podemos obter seus valores numéricos (escores) para cada elemento amostral. Podendo ser obtidas com técnicas estatísticas usuais como análise de variância e análise de regressão, entre outras. Usando dados nas três componentes principais, obtemos:
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+\textbf{Empresas} & \textbf{\(CP_1\)} & \textbf{\(CP_2\)} & \textbf{\(CP_3\)}\tabularnewline
+\midrule
+\endhead
+E1 & 1,85 & 0,65 & -0,11\tabularnewline
+E2 & 1,22 & 1,07 & -0,13\tabularnewline
+E3 & 3,84 & -0,68 & -0,13\tabularnewline
+E4 & 0,62 & -0,96 & 0,41\tabularnewline
+E5 & -0,23 & 1,20 & 0,31\tabularnewline
+E6 & -1,22 & -0,21 & -0,60\tabularnewline
+E7 & -1,08 & -0,51 & 0,21\tabularnewline
+E8 & -1,38 & 0,28 & 0,14\tabularnewline
+E9 & -1,89 & -0,13 & -0,38\tabularnewline
+E10 & -1,17 & -0,02 & 0,36\tabularnewline
+E11 & -0,56 & -0,53 & 0,08\tabularnewline
+E12 & 0,00 & 0,15 & -0.01\tabularnewline
+\bottomrule
+\end{longtable}
+
+Da mesma forma que o exemplo anterior é importante reforçar novamente que pode haver troca de sinal de acordo com a formulação pelo software e a sua rotação em torno do eixo, visto que tratando de combinações lineares pode haver soluções com sinais diferentes. Pode resultar em valores numéricos diferentes e o pesquisador deve atentar em sua interpretação dos resultados obtidos. Pelos resultados nos leva a verificar que a empresa E9 possui o menor desempenho, e as E1, E2 e E3 os melhores.
+
+Note que se compararmos os Escores do primeiro exemplo com matriz de covariância amostral e os Escores do exemplo com matriz de correlação amostral, foram concordantes a indicação das três empresas com melhor desempenho global e na de pior desempenho. Porém, algumas discordaram em algumas posições. Houve 5 concordância em 12 classificações (41,7\%). Como as componentes principais foram obtidas pela decomposição espectral de matrizes diferentes, houve esta diferença. E que a matriz de correlação amostral leva em consideração a média do conjunto de 12 empresas de cada variável original, a matriz de covariância amostral não. Importante notar que neste caso, as primeiras componentes obtidas possuem a mesma interpretação, verificando consistência nas análises de ambos os métodos.
+
+Com valores padronizados, fica mais fácil a visualizaçãor e interpretação da ACP por um gráfico, que denominamos de biplot. Basicamente colocamos no eixo X a primeira componente e no eixo Y a segunda componente principal (as que mais explicam a variância total). No qual as observações em análise são os Escores das observações (no caso as empresas) e os respectivos vetores das variáveis (Ganho Bruto, Ganho Líquido e Patrimônio Líquido).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/biplotpadro} 
+
+}
+
+\caption{Gráfico de biplot, em X a primeira componente principal e Y a segunda componente.}\label{fig:biplotpadro}
+\end{figure}
+
+
+
+A primeira componente principal (Dim1), as variáveis que se referem ao patrimônio, ganho bruto e ganho líquido possuem cargas positivas (todas tendendo fortemente à direita), reafirmando a análise anterior de que a primeira componente refere-se ao desempenho global padronizado da empresa. Com E1, E2 e E3 os maiores em desempenho.
+Para a segunda componente principal (Dim2), note que Patrimônio e Ganho Líquido estão em sentidos opostos, o que reafirma nossa análise anterior de ser uma comparação entre elas.
+
+\hypertarget{anuxe1lise-de-agrupamentos---clusters}{%
+\section{Análise de Agrupamentos - Clusters}\label{anuxe1lise-de-agrupamentos---clusters}}
+
+A Análise de Agrupamentos, também conhecido como Análise de Conglomerados, classificação ou \emph{Clusters}, tem como propósito dividir os elementos de uma amostra (ou população) em grupos de modo que os elementos pertencentes a estes grupos tenham características similares entre si e heterôgenos com os outros grupos \citep{mingoti2007analise}. Esta classificação vai de acordo com a medida e o método de classificação. Este tipo de análise é muito comum seu uso em diversas áreas como segmentação de clientes de acordo com perfis de consumo \citep{punj1983cluster}, perfis de personalidade em psicologia \citep{speece1985classification}, classificação de cidades, etc. Para o agrupamento de \emph{clusters}, tomaremos como base a literatura de \citet{mingoti2007analise}.
+
+É muito importante o critério que o pesquisador utilizará para delimitar até que ponto os elementos podem ser considerados semelhantes em suas características ou não, por isso precisa-se de medidas apropriadas para classificar. Cada elemento amostral têm informações de \(p\) variáveis dentro de um vetor e por meio de medidas matemáticas, como as medidas de distância pode ser possível compararmos as observações dentro de seu banco de dados. Calculando a distância entre os vetores das observações da amostra e agrupando de acordo com suas distância (agrupar os de menores distâncias entre si). Aqui entramos com a aplicação de Medida de Distância, em \ref{meddist}. Quaquer medida de distância pode ser utilizada em variáveis quantitativas pode ser transformada num coeficiente de similaridade \citep{mingoti2007analise}.
+
+A Análise de Clusters são frequentemente classificadas em \textbf{Hierárquicas (aglomerativas e divisivas)} que comumente utilizada para identificar possíveis agrupamentos e um provável valor da quantitade de grupos \(g\) e \textbf{Não hierárquicas} que necessita um número de grupos pré-estabelecido pelo pesquisados que a aplica.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/hierarq} 
+
+}
+
+\caption{Esquema geral de procedimentos hierárquicos aglomerativos e divisivos \citep{mingoti2007analise}.}\label{fig:hierarq}
+\end{figure}
+
+
+
+\hypertarget{tuxe9cnicas-hieruxe1rquicas-aglomerativas}{%
+\subsection{Técnicas Hierárquicas Aglomerativas}\label{tuxe9cnicas-hieruxe1rquicas-aglomerativas}}
+
+Nesta técnica, inicia-se com \(n\) conglomerados como se cada elemento do banco e dados fosse um conglomerado isolado. No algoritmo, a cada passo os elementos amostrais vão sendo agrupados, formando novos conglomerados até que todos os elementos considerados estejam num único grupo. No início, tratando-se de variabilidade, tem-se a partição de menor dispersão interna ja que todos os conglomerados possui amenas um único elemento (variância \(\sigma^2\) zero). Ao final dos estágios, encontra-se a maior dispersão interna possível, pois todos os elementos amostrais estão num único \emph{cluster} \citep{mingoti2007analise}. Conforme \citet{mingoti2007analise}, os passos fundamentais são:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Cada elemento possui um \emph{cluster} de tamanho 1, logo \(n\) \emph{clusters};
+\item
+  Em cada estágio do algoritmo de agrupamento, os pares de conglomerados mais ``similares'' vão combinando-se passando a constituir um único conglomerado. Apenas um novo conglomerado pode ser formada a cada passo, ou seja, a cada iteração o número de conglomerados irá diminuir;
+\item
+  Como mostra-se na Figura \ref{fig:hierarq}, em cada estágio do algoritmo, cada novo conglomerado formado é um agrupamento de conglomerados de estágios anteriores. Se dois elementos amostrais aparecem juntos num mesmo \emph{cluster} em alguma etapa, estarão juntos em todos os outros;
+\item
+  Por estarmos trabalhando com conglomerados em hierarquia, podemos construir um gráfico denominado Dendograma que representa a história do agrupamento. É um gráfico em forma de árvore tal que a escala vertical indica o nível de similaridade (ou dissimilaridade) e na horizontal os elementos amostrais em ordem relacionada à história do agrupamento. Sua altura representa ao nível em que os elementos foram considerados semelhantes entre si (distância do agrupamento ou nível de similaridade).
+\end{enumerate}
+
+Existe alguns métodos para que se escolha o número final dos grupos \(g\), mas em geral é subjetivo com base em fundamentações empíricas. Vamos agora para os métodos mais comuns e utilizados em muitos \emph{softwares} estatísticos.
+
+\hypertarget{muxe9todo-de-ligauxe7ao-simples-simple-linkage}{%
+\subsubsection{\texorpdfstring{Método de Ligaçao Simples (\emph{Simple Linkage})}{Método de Ligaçao Simples (Simple Linkage)}}\label{muxe9todo-de-ligauxe7ao-simples-simple-linkage}}
+
+A similaridade entre dois conglomerados é definida pelos dois elementos mais parecidos entre si \citep{sneath1957application}. Por exemplo, num determinado momento do algoritmo, encontra-se dois grupos: \(C_1=\{X_1,X_3,X_7\}\) e \(C_2=\{X_2,X_6\}\). A distância entre esses dois grupos será definida por:
+
+\begin{equation}
+    d(C_1,C+2)=min\{d(X_l,X_k, l\neq k, l=1,3,7 \ \ \mbox{e} \ \ k=2,6\}
+    \label{eq:ligsimples}
+\end{equation}
+
+é a distância entre os vizinhos mais próximos (elementos mais parecidos com os conglomerados. Em cada estágio, os dois conglomerados que são mais similares com relação à distância são combinados em um únicos \emph{cluster}. Como ilustrado abaixo, a distância entre 6 e 1 caracteriza a distância entre os grupos, pelo método de ligação simples.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ligsimples} 
+
+}
+
+\caption{Método de ligação simples, adaptado de \citet{mingoti2007analise}.}\label{fig:ligsimples}
+\end{figure}
+
+
+
+Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{meddist}. A matriz de distância calculada entre os seis elementos amostrais é dada por:
+\[D_{6x6}=\begin{bmatrix}\\
+ &A&B&C&D&E&F \\
+ A&0&&&&&\\
+ B&3,23&0&&&&\\
+ C & 15,74& 12,53&0&&&\\
+ D& 13,19& 12,04& 16,29&0&&\\
+ E& 6,44& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Lembrando que permanece as distâncias mínimas dos elementos com o novo conglomerado \(\{A,B\}\) pois queremos os mais próximos.
+\[d(\{A,B\},\{C\})=min(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=12,53\\
+  d(\{A,B\},\{D\})=min(d\{A,D\},\{B,D\})=min(\{13,19\},\{12,04\})=12,04\\
+  d(\{A,B\},\{E\})=min(d\{A,E\},\{B,E\})=min(\{6,44\},\{7,50\})=6,44\\
+  d(\{A,B\},\{F\})=min(d\{A,F\},\{B,F\})=min(\{13,39\},\{10,19\})=10,19\]
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &\{A,B\}&C&D&E&F \\
+ \{A,B\}&0&&&&\\
+ C & 12,53&0&&&\\
+ D& 12,04& 16,29&0&&\\
+ E& 6,44& 17,06& 19,33&0&\\
+ F& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Nesta nova matriz, será a distância entre C e F (4,12), da mesma forma que anteriormente, fazendo com que fique quatro grupos:
+
+\[D_{4x4}=\begin{bmatrix}\\
+ &\{A,B\}& \{C,F\}&\{D\}&\{E\} \\
+ \{A,B\}&0&&\\
+ \{C,F\} & 10,19&0&&\\
+ \{D\}& 12,04& 12,18&0&\\
+ \{E\}& 6,44& 16,19& 19,33&0\\
+\end{bmatrix}\]
+
+Agora a menor distância encontra-se entre \(\{A,B\}\) e \(\{E\}\) com 6,44:
+\[D_{3x3}=\begin{bmatrix}\\
+ &\{A,B,E\}& \{C,F\}&\{D\} \\
+ \{A,B,E\}&0&\\
+ \{C,F\} & 10,19&0&\\
+ \{D\}& 12,04& 12,18&0\\
+\end{bmatrix}\]
+O próximo valor mínimo será 10,19 sobrando \(C_1=\{A,B,E,C,F\}\) e \(C_2=\{D\}\) e por fim reduz-se um único \emph{cluster} \(C_1=\{A,B,C,D,E,F\}\) com o nível de junção igual a 12,04.
+
+Portanto, o o histórico do agrupamento por meio da ligação simples e seu respectivo dendograma será:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endhead
+1 & 5 & \{A\} e \{B\} & 3,23\tabularnewline
+2 & 4 & \{C\} e \{F\} & 4,12\tabularnewline
+3 & 3 & \{A,B\} e \{E\} & 6,44\tabularnewline
+4 & 2 & \{A,B,E\} e \{C,F\} & 10,19\tabularnewline
+5 & 1 & \{A,B,E,C,F\} e \{D\} & 12,04\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendsimples} 
+
+}
+
+\caption{Dendograma do agrupamento. Método de ligação simples.}\label{fig:dendsimples}
+\end{figure}
+
+
+
+\hypertarget{muxe9todo-de-ligauxe7ao-completa-complete-linkage}{%
+\subsubsection{\texorpdfstring{Método de Ligaçao Completa (\emph{Complete Linkage})}{Método de Ligaçao Completa (Complete Linkage)}}\label{muxe9todo-de-ligauxe7ao-completa-complete-linkage}}
+
+A similaridade entre dois conglomerados é definida pelos elementos que são menos semelhantes entre si \citep{sneath1957application}. Por exemplo, vamos considerar os conjuntos \(C_1=\{X_1,X_3,X_7\}\) e \(C_2=\{X_2,X_6\}\). A distância entre eles então será:
+
+\begin{equation}
+d(C_1,C_2)=max \{d(X_l,X_k, l\neq k,l=1,3,7 \ \ \mbox{e} \ \ k=2,6\}
+ \label{eq:ligcompleta}
+\end{equation}
+
+Em cada estágio calcula-se para os pares de grupos, combinando num único aqueles que estiverem com o menor valor da distância. Segue abaixo uma ilustração.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ligcompleta} 
+
+}
+
+\caption{Método de ligação completa, adaptado de \citet{mingoti2007analise}.}\label{fig:ligcompleta}
+\end{figure}
+
+
+
+Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distância Euclidiana, em \ref{meddist}. A matriz de distância calculada entre os seis elementos amostrais é dada por:
+\[D_{6x6}=\begin{bmatrix}\\
+ &A&B&C&D&E&F \\
+ A&0&&&&&\\
+ B&3,23&0&&&&\\
+ C & 15,74& 12,53&0&&&\\
+ D& 13,19& 12,04& 16,29&0&&\\
+ E& 6,44& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Lembrando que permanece as distâncias máximas dos elementos com o novo conglomerado \(\{A,B\}\) pois queremos os mais afastados.
+\[d(\{A,B\},\{C\})=max(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=15,74\\
+  d(\{A,B\},\{D\})=max(d\{A,D\},\{B,D\})=max(\{13,19\},\{12,04\})=13,19\\
+  d(\{A,B\},\{E\})=max(d\{A,E\},\{B,E\})=max(\{6,44\},\{7,50\})=7,50\\
+  d(\{A,B\},\{F\})=max(d\{A,F\},\{B,F\})=max(\{13,39\},\{10,19\})=13,39\]
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &\{A,B\}&C&D&E&F \\
+ \{A,B\}&0&&&&\\
+ C & 15,74&0&&&\\
+ D& 13,19& 16,29&0&&\\
+ E& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Nesta nova matriz, será a distância entre C e F (4,12), da mesma forma que anteriormente, fazendo com que fique quatro grupos e analisando pela máxima:
+
+\[D_{4x4}=\begin{bmatrix}\\
+ &\{A,B\}& \{C,F\}&\{D\}&\{E\} \\
+ \{A,B\}&0&&\\
+ \{C,F\} & 15,74&0&&\\
+ \{D\}& 13,19& 16,29&0&\\
+ \{E\}& 7,50& 17,06& 19,33&0\\
+\end{bmatrix}\]
+
+Agora a menor distância encontra-se entre \(\{A,B\}\) e \(\{E\}\) com 7,50:
+\[D_{3x3}=\begin{bmatrix}\\
+ &\{A,B,E\}& \{C,F\}&\{D\} \\
+ \{A,B\}&0&\\
+ \{C,F\} & 17,06&0&\\
+ \{D\}& 19,33& 16,29&0\\
+\end{bmatrix}\]
+
+O próximo valor mínimo será 16,29, unindo os grupos \(\{C,F\}\) e \(\{D\}\), tornando os conglomerados \(C_1=\{A,B,E\}\) e \(C_2=\{C,F,D\}\) e por fim a distância máxima entre os dois grupos é 19,33.
+
+Portanto, o o histórico do agrupamento por meio da ligação completa e seu respectivo dendograma será:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endhead
+1 & 5 & \{A\} e \{B\} & 3,23\tabularnewline
+2 & 4 & \{C\} e \{F\} & 4,12\tabularnewline
+3 & 3 & \{A,B\} e \{E\} & 7,5\tabularnewline
+4 & 2 & \{C,F\} e \{D\} & 16,29\tabularnewline
+5 & 1 & \{A,B,E\} e \{C,F\} & 19,33\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendcomplete} 
+
+}
+
+\caption{Dendograma do agrupamento. Método de ligação completa.}\label{fig:dendcomplete}
+\end{figure}
+
+
+
+\hypertarget{muxe9todo-da-muxe9dia-das-distuxe2ncias-average-linkage}{%
+\subsubsection{\texorpdfstring{Método da Média das Distâncias (\emph{Average Linkage})}{Método da Média das Distâncias (Average Linkage)}}\label{muxe9todo-da-muxe9dia-das-distuxe2ncias-average-linkage}}
+
+Neste caso a distância entre os conglomerados é com base nas médias. Se \(C_1\) tem \(n_1\) elementos e \(C_2\) tem \(n_2\) elementos, a distância será expressa como:
+
+\begin{equation}
+d(C_1,C_2)=\displaystyle \sum_{l\epsilon C_1} \sum_{k\epsilon C_2} \frac{1}{n_1 n_2} d(X_l,X_k)
+ \label{eq:ligmedia}
+\end{equation}
+
+Portanto, a distância entre \(C_1=\{X_1,X_3,X_7\}\) e \(C_2=\{X_2,X_6\}\) será:
+
+\[d(C_1,C_2=\frac{1}{6}[d(X_1,X_2)+d(X_l,X_6)+d(X_3,X_2)+d(X_3,X_6)+d(X_7,X_2)+d(X_7,X_6)]\]
+Vamo considerar novamente a matriz inicial como exemplificação:
+
+\[D_{6x6}=\begin{bmatrix}\\
+ &A&B&C&D&E&F \\
+ A&0&&&&&\\
+ B&3,23&0&&&&\\
+ C & 15,74& 12,53&0&&&\\
+ D& 13,19& 12,04& 16,29&0&&\\
+ E& 6,44& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Dessa vez são calculados em relação às médias das distância dos conglomerados \(\{A,B\}\) com os outros.
+\[d(\{A,B\},\{C\})=[d\{A,C\}+\{B,C\}]/2=[\{15,74\}+\{12,53\}]/2=14,13\\
+  d(\{A,B\},\{D\})=[d\{A,D\}+\{B,D\}]/2=[\{13,19\}+\{12,04\}]/2=12,62\\
+  d(\{A,B\},\{E\})=[d\{A,E\}+\{B,E\}]/2=[\{6,44\}+\{7,50\}]/2=6,97\\
+  d(\{A,B\},\{F\})=[d\{A,F\}+\{B,F\}]/2=[\{13,39\}+\{10,19\}]/2=11,79\]
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &\{A,B\}&C&D&E&F \\
+ \{A,B\}&0&&&&\\
+ C & 14,13&0&&&\\
+ D& 16,62& 16,29&0&&\\
+ E& 6,97& 17,06& 19,33&0&\\
+ F& 11,79& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+A próxima distância será entre C e F (4,12) novamente, fazendo com que fique quatro grupos. Repetindo o processo pela média.:
+
+\[D_{4x4}=\begin{bmatrix}\\
+ &\{A,B\}& \{C,F\}&\{D\}&\{E\} \\
+ \{A,B\}&0&&\\
+ \{C,F\} & 12,96&0&&\\
+ \{D\}& 12,62& 14,24&0&\\
+ \{E\}& 6,97& 16,62& 16,19&0\\
+\end{bmatrix}\]
+
+Atente-se ao cálculo das distâncias médias, como por exemplo \(\{A,B\}\) e \(\{C,F\}\) foram quatros valores: \(d(\{A,B\},\{C,F\})=[d(A,C)+d(A,F)+d(B,C)+d(B,F)]/4\).
+
+Agora, teremos \(\{A,B\}\) e \(\{E\}\) com 6,97:
+
+\[D_{3x3}=\begin{bmatrix}\\
+ &\{A,B,E\}& \{D\}&\{C,F\} \\
+ \{A,B\}&0&\\
+ \{D\} & 14,85&0&\\
+ \{E\}& 14,18& 14,24&0\\
+\end{bmatrix}\]
+
+O próximo valor mínimo será 14,18, unindo os grupos \(\{A,B,E\}\) e \(\{C,F\}\), tornando os conglomerados \(C_1=\{A,B,C,E,F\}\) e \(C_2=\{D\}\) e por final será 14,61 a distância entre eles.
+
+Portanto, o o histórico do agrupamento por meio de ligação simples e seu respectivo dendograma será:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endhead
+1 & 5 & \{A\} e \{B\} & 3,23\tabularnewline
+2 & 4 & \{C\} e \{F\} & 4,12\tabularnewline
+3 & 3 & \{A,B\} e \{E\} & 6,97\tabularnewline
+4 & 2 & \{A,B,E\} e \{C,F\} & 14,19\tabularnewline
+5 & 1 & \{A,B,E,C,F\} e \{D\} & 14,61\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendaverage} 
+
+}
+
+\caption{Dendograma do agrupamento. Método da média das distâncias.}\label{fig:dendaverage}
+\end{figure}
+
+
+
+\hypertarget{muxe9todo-do-centruxf3ide-centroid-method}{%
+\subsubsection{\texorpdfstring{Método do Centróide (\emph{Centroid Method})}{Método do Centróide (Centroid Method)}}\label{muxe9todo-do-centruxf3ide-centroid-method}}
+
+A distância entre dois grupos é medida com a distância entre os vetores de médias, também denominado como centróides. Com \(C_1=\{X_1,X_3,X_7\}\) e \(C_2=\{X_2,X_6\}\), pode-se calcular:
+
+\[\mbox{vetor de médias de} C_1=\overline{X_1}=\frac{1}{3}[X_1+X_3+X_7] \\
+\mbox{vetor de médias de} C_2=\overline{X_2}=\frac{1}{2}[X_2+X_6]\]
+E a distância entre \(C_1\) e \(C_2\), é a distância Euclidiana ao quadrado entre os vetores de médias amostral (também pode ser usado com a usual entre os vetores):
+
+\begin{equation}
+d(C_1,C_2)= (\overline{X_1}-\overline{X_2})'(\overline{X_1}-\overline{X_2})
+ \label{eq:distcentroide}
+\end{equation}
+
+Para cada passo do algoritmo, os conglomerados que possuem o menor valor de distância são agrupados. Vamos manter a matriz euclidiana (podemos manter a usual ou utilizar calcular as distâncias euclidianas ao quadrado)
+
+\[D_{6x6}=\begin{bmatrix}\\
+ &A&B&C&D&E&F \\
+ A&0&&&&&\\
+ B&3,23&0&&&&\\
+ C & 15,74& 12,53&0&&&\\
+ D& 13,19& 12,04& 16,29&0&&\\
+ E& 6,44& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Lembrando que os valores originais das variáveis são:
+
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule
+\textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
+\midrule
+\endhead
+\textbf{Idade} & 28 & 31 & 42 & 38 & 25 & 41\tabularnewline
+\bottomrule
+\end{longtable}
+
+Temos o menor o valor de 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Lembrando que agora calcula-se a média entre os vetores, já que queremos o centróide. Em \(\{A,B\}\) obtemos:
+
+\[\{A,B\}=(\frac{9,6+8,4}{2});(\frac{28+31}{2})=(9;29,5)\]
+Portanto calculando a distância com a nova coordenada \(\{A,B\}\):
+
+\[d(\{A,B\},\{C\})=\sqrt{(9-2,4)^2+(29,5-42)^2}=14,135\\
+  d(\{A,B\},\{D\})=\sqrt{(9-18,2)^2+(29,5-38)^2}=12,525\\
+  d(\{A,B\},\{E\})=\sqrt{(9-3.9)^2+(29,5-25)^2}=6,800\\
+  d(\{A,B\},\{F\})=\sqrt{(9-6,4)^2+(29,5-41)^2}=11,700\]
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &\{A,B\}&C&D&E&F \\
+ \{A,B\}&0&&&&\\
+ C & 14,13&0&&&\\
+ D& 12,52& 16,29&0&&\\
+ E& 6,80& 17,06& 19,33&0&\\
+ F& 11,70& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+A próxima distância será entre C e F (4,12) novamente, fazendo com que fique quatro grupos. Repetindo o processo sucessivamente de retornar aos dados originais, recalcular identificar o novo menor valor (o que dependendo do banco de dados exige tempo computacional) chegaremos aos seguintes resultados:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endhead
+1 & 5 & \{A\} e \{B\} & 3,2\tabularnewline
+2 & 4 & \{C\} e \{F\} & 4,1\tabularnewline
+3 & 3 & \{A,B\} e \{E\} & 6,8\tabularnewline
+4 & 2 & \{A,B,E\} e \{C,F\} & 13,8\tabularnewline
+5 & 1 & \{A,B,E,C,F\} e \{D\} & 12,9\tabularnewline
+\bottomrule
+\end{longtable}
+
+Lembrando que dependendo do arredondamento, pode haver pequena variação e que é possível fazer com o quadrado da distância euclidiana. Note também que o nível de fusão no passo 5 foi menor que o do passo 4. É possível esta ocorrência no método de centróide pois em algum passo do algoritmo de agrupamento houver empates entre valores da matriz de distâncias, quanto maior for o número de elementos amostrais, menor será a chance dessa ocorrência \citep{mingoti2007analise}. A partição do dendograma será muito parecida com os anteriores, não será necessário apresentar.
+
+\hypertarget{tuxe9cnicas-nuxe3o-hieruxe1rquicas}{%
+\subsection{Técnicas Não Hierárquicas}\label{tuxe9cnicas-nuxe3o-hieruxe1rquicas}}
 
 \hypertarget{aoc-e-roc}{%
 \section{AOC e ROC}\label{aoc-e-roc}}
