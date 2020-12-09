@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-12-05}
+\date{2020-12-09}
 
 \begin{document}
 \maketitle
@@ -457,7 +457,7 @@ Durante o desenvolvimento destes modelos é comum se deparar com dados faltantes
 Existem diversas metodologias de tratamentos em dados faltantes. Quando os dados são faltantes em um conjunto de dados, existem cinco grandes categorias de tratamento de análise que um pesquisador deve escolher. Como mencionado anteriormente e ainda reforço, a escolha do tratamento de análise de dados faltantes tem implicações importantes para a acurácia e o viés das estimativas. A Tabela 1 resume as definições e os maiores problemas nos cinco tipos de análises \citep{tecnicasinput}.
 
 \begin{longtable}[]{@{}ccc@{}}
-\caption{\textbf{Tabela 1} : Metodologia de dados faltantes. Determinados termos estão na seção \ref{dicio} e alguns outros serão apresentados ao longo do livro.}\tabularnewline
+\caption{\label{tab:preprocess} Metodologia de dados faltantes. Determinados termos estão na seção \ref{dicio} e alguns outros serão apresentados ao longo do livro.}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.30\columnwidth}\centering
 \textbf{Técnicas de Análise para dados faltantes}\strut
@@ -904,8 +904,8 @@ Tradução de \citet{liu2012feature}.
 
 É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional \citep{liu2012feature}. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas \citep{lee2005seleccao}.
 
-\hypertarget{medidas-de-informauxe7uxe3o}{%
-\subsection{Medidas de Informação}\label{medidas-de-informauxe7uxe3o}}
+\hypertarget{medinfo}{%
+\subsection{Medidas de Informação}\label{medinfo}}
 
 As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a \emph{priori} e a incerteza a \emph{posteriori} considerando-se o atributo \(X_i\). \(X_i\) é preferido ao atributo \(X_j\) se seu ganho de informação for maior que de \(X_j\). Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.
 
@@ -967,16 +967,16 @@ Também conhecidas com medidas de separabilidade, discriminação e divergência
 \hypertarget{medidas-de-consistuxeancia}{%
 \subsection{Medidas de consistência}\label{medidas-de-consistuxeancia}}
 
-\hypertarget{teste-de-hipuxf3teses-e-anuxe1lise-de-variuxe2ncia}{%
-\section{Teste de hipóteses e Análise de Variância}\label{teste-de-hipuxf3teses-e-anuxe1lise-de-variuxe2ncia}}
+\hypertarget{testesanova}{%
+\section{Teste de hipóteses e Análise de Variância}\label{testesanova}}
 
 \hypertarget{naive-bayes}{%
 \section{Naive Bayes}\label{naive-bayes}}
 
 Antes de falarmos sobre este algoritmo, vamos para o conceito matemático. Em (\ref{dicio}) tratamos do Teorema de Bayes para \(n\) atributos. Colocando-o como probabilidade condicional:
-
+\[p(A|B_{1},...,B_{n}) = \]
 \begin{equation} 
-  p(A|B_{1},...,B_{n}) = \\ p(A)p(B_{1}|A)p(B_{2}|A,B_{1}),p(B_{3}|A,B_{1},B_{2})...p(B_{n}|A,B_{1},B_{2},...,B_{n−1})
+  p(A)p(B_{1}|A)p(B_{2}|A,B_{1}),p(B_{3}|A,B_{1},B_{2})...p(B_{n}|A,B_{1},B_{2},...,B_{n−1})
   \label{eq:bayescond}
 \end{equation}
 
@@ -998,7 +998,10 @@ Lembrando que para cada atributo, a sua distribuição de probabilidades é assu
 
 O Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma suposição de independência entre os preditores, ou seja, este classificador assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Por exemplo, uma fruta verde, redonda e com um tamanho de diâmetro X pode ser uma melancia, porém mesmo que estas variáveis dependam uns dos outros e de outras características, todas estas propriedades contribuem de forma independente para a probabilidade de que seja uma melancia. Este modelo é muito utilizado devido que é fácil de construir e particularmente útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa na prática e caso haja variáveis categóricas num conjunto de dados de teste que não forem treinadas, o modelo não irá estimar estas novas variáveis.
 
-\textbf{Exemplo:} para facilitar, podemos supor que estamos trabalhando no diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de \citet{organica}).
+\hypertarget{exbayes}{%
+\subsection{Exemplo}\label{exbayes}}
+
+No diagnóstico de uma nova doença e que foi feito testes em 100 pessoas aleatórias (exemplo de \citet{organica}).
 
 Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doença (20\%) e 80 pessoas estavam saudáveis (80\%), sendo que das pessoas que possuíam a doença, 90\% receberam o resultado positivo no teste da doença, e 30\% das pessoas que não possuíam a doença também receberam o teste positivo. Caso uma nova pessoa realizar o teste e receber um resultado positivo, qual a probabilidade de ela realmente possuir a doença?
 
@@ -1070,8 +1073,9 @@ em que:
 Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o \textbf{Método dos Mínimos Quadrados (MMQ)} atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores \(\beta_0\) e \(\beta_1\) que minimizam os erros.
 
 Como não podemos observar a função de regressão populacional (FRP), precisamos estimálo por meio da função de regressão amostral:
-\[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \\ Y_i=\hat{Y_i}+\hat{\mu_i}
-\\ \mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]
+\[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \]
+\[Y_i=\hat{Y_i}+\hat{\mu_i}\]
+\[\mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]
 
 Podemos ver que os erros \(\hat{\mu_i}\) (resíduos) são basicamente as diferenças entre os valores observados e estimados de \(Y\). Ao caso de dados com \(n\) pares de observações de \(Y\) e \(X\), queremos encontrar a FRA que se encontra o mais próximo possível do \(Y\) observado, ou seja, escolher a
 FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura \ref{fig:mmq}, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultari a possibilidade de minimizarmos.
@@ -1088,9 +1092,9 @@ FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) se
 
 
 Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que elevamos os resíduos ao quadrado. Fazendo isso, o método dá mais peso aos resíduos (não irão mais se anular), podendo visualizar melhor o ``tamanho'' do erro total e obter propriedades estatísticas mais desejáveis.
-
+\[\sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \]
 \begin{equation}
-    \sum \hat{\mu}^2_i=\sum(Y_i-\hat{Y_i})^2 \\ = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1})X_i^2 
+    = \sum (Y_i-\hat{\beta_0}-\hat{\beta_1})X_i^2 
     \label{eq:mmqeq}
 \end{equation}
 
@@ -1136,9 +1140,10 @@ Para entendermos melhor, vamos visualizar por Diagrama de Venn \citep{kennedy198
 
 Podemos chegar ao coeficiente de determinação apenas por manipulação algébrica:
 
-\[\mbox{sabemos que:} \ y_i=\hat{y}_i+\hat{\mu}_i \\
-\mbox{elevando ao quadrado e somando a amostra:} \ \sum y^2_i=\sum \hat{y}^2_i+\sum \hat{\mu}^2_i+2\sum \hat{y}_i \hat{\mu}_i \\
-\mbox{como} \ \sum \hat{\mu}_i=0, \ \mbox{temos que:}\ \sum y^2_i= \hat{y}^2_i+\sum \hat{\mu}^2_i \\ \sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i \]
+\[\mbox{sabemos que:} \ y_i=\hat{y}_i+\hat{\mu}_i\]
+\[\mbox{elevando ao quadrado e somando a amostra:} \ \sum y^2_i=\sum \hat{y}^2_i+\sum \hat{\mu}^2_i+2\sum \hat{y}_i \hat{\mu}_i \]
+\[\mbox{como} \ \sum \hat{\mu}_i=0, \ \mbox{temos que:}\ \sum y^2_i= \hat{y}^2_i+\sum \hat{\mu}^2_i \]
+\[\sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i \]
 
 \begin{equation}
     \mbox{podemos dizer} \ SQT=SQE+SQR
@@ -1147,7 +1152,9 @@ Podemos chegar ao coeficiente de determinação apenas por manipulação algébr
 
 sendo SQT a soma total dos quadrados, SQE a soma do quadrados explicados e SQR soma dos quadrados dos resíduos.
 
-\[\mbox{dividindo a equação anterior por SQT:}\\ 1=\frac{SQE}{SQT}+\frac{SQR}{SQT} \\ \mbox{definindo}\ r^2 \ \mbox{como:} \ \frac{SQE}{SQT} \]
+\[\mbox{dividindo a equação anterior por SQT:}\]
+\[1=\frac{SQE}{SQT}+\frac{SQR}{SQT} \]
+\[\mbox{definindo}\ r^2 \ \mbox{como:} \ \frac{SQE}{SQT} \]
 
 \begin{equation}
     \mbox{obtemos:} \ r^2=1-\frac{SQR}{SQT} \rightarrow 1 - \frac{\sum \hat{\mu}_i}{\sum (Y_i - \overline{Y}_i)^2}
@@ -1223,6 +1230,11 @@ Para entender este modelo, vamos supor \(E(\hat{\mu}_i)=0\) para evitarmos estim
 Com \(P_i=\)probabilidade de que \(Y_i=1\)(ocorrência do evento) e \((1-P_i)\)=probabilidade de \(Y_i=0\)(não ocorrência do evento). \(Y_i\) possui a seguinte \textbf{distribuição de probabilidade de Bernoulli}:
 
 \begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:bernoulireg}}\tabularnewline
+\toprule
+\textbf{\(Y_i\)} & \textbf{Probabilidade}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{\(Y_i\)} & \textbf{Probabilidade}\tabularnewline
 \midrule
@@ -1407,14 +1419,17 @@ Como pode-se perceber, a taxa de aprendizagem e a taxa de variação são fundam
 
 Queremos minimizá-la \(min \ j(\theta)\). Portanto precisamos inicialmente colocar um número aleatório para nosso parâmetro - não ótimo - para que o algoritmo atualize a cada iteração. Vamos supor a taxa de aprendizagem (\emph{learning rate}) \(\alpha=0,1\) e \(\theta=4\) para facilitar. Ou seja, \(j(\theta)=4^2=16\). Vamos atualizar os parâmetros:
 
-\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \\ 
-\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}
-\\ \theta:= \theta -\alpha.2\theta \\ \mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \\ \theta:=4-0,1 \ .\ 2\ .\ 4 \\
-\rightarrow \theta:=3,2\]
+\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \]
+\[\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}\]
+\[\theta:= \theta -\alpha.2\theta \]
+\[\mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \]
+\[\theta:=4-0,1 \ .\ 2\ .\ 4 \]
+\[\rightarrow \theta:=3,2\]
 
 Na iteração obtemos \(\theta=3,2\). Se subsituirmos em \(j(\theta)\) novamente, iremos obter \(j(\theta)=(3,2)^2=10,24\). Agora atualizando novamente para a próxima iteração:
-\[\theta:= \theta -\alpha.2\theta \\ \theta:=3,2-0,1\ .\ 2\ .\ 3,2 \\
-\theta:= 2,56\]
+\[\theta:= \theta -\alpha.2\theta \]
+\[\theta:=3,2-0,1\ .\ 2\ .\ 3,2\]
+\[\theta:= 2,56\]
 
 Portanto, \(j(\theta)=(2,56)^2=6,55\). Sucessivamente, vamos fazendo as iterações até convergir:
 
@@ -1473,26 +1488,26 @@ Note que conforme \(\theta\) diminui, o custo também. Conforme mais iterações
 \tightlist
 \item
   \textbf{Duas variáveis:} Vamos supor a seguinte função de custo com \(\alpha=0,1\), \(\theta_1=1\) e \(\theta_2=2\):
-  \[j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2 \\ 
-  j(\theta_1,\theta_2)=1^2+2^2=5\]
+  \[j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\]
+  \[j(\theta_1,\theta_2)=1^2+2^2=5\]
   Queremos \(min \ j(\theta_1,\theta_2)\)Como explicado, ao caso de haver mais de um parâmetro precisamos separar atualizar cada um simultâneamente e aplicar derivada parcial em sua função:
 \end{enumerate}
 
-\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2) \\
-\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\\
-\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
+\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2)\]
+\[\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\]
+\[\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
 \mbox{e}\ \ \frac{d}{d\theta_2}j(\theta_1,\theta_2)=2\theta_2\]
 
-\[\mbox{substituindo:} \\
-\theta_1:=\theta_1-\alpha.\ 2\theta_1 \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha .\ 2\theta_2 \\
-\mbox{inserindo os valores:}\\
-\theta_1:=1-0,1.\ 2.\ 1 \ \ \mbox{e}\ \ \theta_2:=2-0,1.\ 2.\ 2 \\
-\theta_1:=0,8 \ \mbox{e} \ \theta_2=1,6\]
+\[\mbox{substituindo:}\]
+\[\theta_1:=\theta_1-\alpha.\ 2\theta_1 \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha .\ 2\theta_2 \]
+\[\mbox{inserindo os valores:}\]
+\[\theta_1:=1-0,1.\ 2.\ 1 \ \ \mbox{e}\ \ \theta_2:=2-0,1.\ 2.\ 2\]
+\[\theta_1:=0,8 \ \mbox{e} \ \theta_2=1,6\]
 
 Portanto após a iteração, temos que \(j(\theta_1,\theta_2)=0,8^2+1,6^2=3,2\). Da mesma forma, para a próxima iteração temos:
 
-\[\theta_1:=0,8-0,1.\ 2.\ 0,8 \ \ \mbox{e}\ \ \theta_2:=1,6-0,1.\ 2.\ 1,6 \\
-\theta_1:=0,64 \ \mbox{e} \ \theta_2=1,28\]
+\[\theta_1:=0,8-0,1.\ 2.\ 0,8 \ \ \mbox{e}\ \ \theta_2:=1,6-0,1.\ 2.\ 1,6\]
+\[\theta_1:=0,64 \ \mbox{e} \ \theta_2=1,28\]
 
 Portanto teremos \(j(\theta_1,\theta_2)=0,64^2+1,28^2=2,048\). Assim sucessivamente:
 
@@ -1524,8 +1539,8 @@ A função de custo:
 \[j(\theta)=\frac{1}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
 
 Primeiramente vamos encontrar a derivada parcial de \(j(\theta_0,\theta_1)\):
-\[\frac{d}{d\theta_0}j(\theta_0,\theta_1=\frac{d}{d\theta_0}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i) \\
-\frac{d}{d\theta_1}j(\theta_0,\theta_1=\frac{d}{d\theta_1}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)x^i\]
+\[\frac{d}{d\theta_0}j(\theta_0,\theta_1=\frac{d}{d\theta_0}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i) \]
+\[\frac{d}{d\theta_1}j(\theta_0,\theta_1=\frac{d}{d\theta_1}(\frac{1}{m}\displaystyle \sum^m_{i=1}(f_{\theta}(x^i)-y^i)^2) \rightarrow \frac{2}{m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)x^i\]
 Pode-se também multiplicar a função de custo por \(\frac{1}{2}\) para que quando faz-se a derivada, facilite no cálculo e multiplicar a função de custo por um escalar não irá afetar a localização do mínimo.
 \[j(\theta)=\frac{1}{2m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
 Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \(Y\) em seu modelo e de seus dois \(\theta's\) de entrada. Repetindo as iterações para atualizar seus valores até a convergência e identificando os parâmetros que se aproximam.
@@ -1536,8 +1551,189 @@ Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \
 \hypertarget{svm}{%
 \section{SVM}\label{svm}}
 
-\hypertarget{uxe1rvores-de-decisuxe3o}{%
-\section{Árvores de Decisão}\label{uxe1rvores-de-decisuxe3o}}
+\hypertarget{decisiontree}{%
+\section{\texorpdfstring{Árvore de Decisão (\emph{Decision Tree})}{Árvore de Decisão (Decision Tree)}}\label{decisiontree}}
+
+A Árvore de Decisão - \emph{Decision Tree} - é muito utilizada em algoritmos para classificação de dados, tem como objetivo construir classificadores que predizem classes baseadas nos valores de atributos de um \emph{dataset} (análise supervisionada). Ela pode ser aplicada tanto em variáveis categóricas quanto contínuas de entrada e de saída. Na árvore de decisão, dividimos a população ou amostra em dois ou mais conjuntos homogêneos com base nos divisores mais significativos das variáveis de entrada. É um modelo fácil de compreensão, útil para explorar os dados e classificar os dados, sem restrição do tipo de seus dados e pode ser considerada como não paramétrica, porém precisa-se tomar cuidado em ocorrer um sobreajuste e a aplicação em variáveis contínuas pode perder informações.
+
+Há muitos algoritmos de classificação que constroem árvores de decisão. Cada um pode ter melhor desempenho em determinada situação e outro algoritmo pode ser mais eficiente em outros tipos de situações, não há como apontar qual o melhor método. Ela é composta por:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Nó Raiz/Nodos: Representa a população ou uma amostra, podendo ser ainda dividido em dois ou mais conjuntos homogêneos;
+\item
+  Divisão e Arcos: É o processo de dividir um nó em dois ou mais sub-nós, gerando arcos provenientes destes nodos que recebem os valores possíveis para estes atributos;
+\item
+  Nó de Decisão: Quando um sub-nó é dividido em sub-nós adicionais;
+\item
+  Folha/Nó de Término: Os nós não divididos são denominados de Folha ou Nó de Término, representam as diferentes classes de um conjunto de treinamento;
+\item
+  Poda: O processo de remover sub-nós de um nó de decisão é chamado poda. Existe técnicas para avaliar o bom momento de podar o galho (sub-nó) da árvore.
+\end{enumerate}
+
+Segue abaixo uma demonstração da ramificação da árvore:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decisiontree} 
+
+}
+
+\caption{Terminologia de Árvore de Decisão.}\label{fig:decisiontree}
+\end{figure}
+
+
+
+Um nó que é dividido em sub-nós é chamado de nó pai. Os sub-nós são os nós filhos do nó pai.
+
+Em geral são determinadas regras em seu algoritmo. As regras são escritas considerando o trajeto do nó raiz até uma folha da árvore. Por elas tenderem a crescer muito, de acordo com algumas aplicações, elas são muitas vezes substituídas pelas regras. Isto acontece em virtude das regras poderem ser facilmente modularizadas. Uma regra pode ser compreendida sem que haja a necessidade de se referenciar outras regras \citep{ingargiola1996building}.
+
+Sua função é de particionar recursivamente um conjunto de treinamento, até que cada subconjunto obtido deste particionamento contenha casos de uma única classe. Com esta finalidade, basicamente a árvore de decisão verifica e compara a distribuição de classes durante a construção da árvore. Após finalizar a árvore, sua saída são dados organizados de maneira compacta, que são utilizados para classificar novos casos \citep{holsheimer1994data}. De início não é utilizado nenhum modelo estatístico nela, apenas classifica os atributos de acordo com as amostras provenientes. Mas atualmente utilizam técnicas estatísticas para aperfeiçoar o modelo e avaliar seus resultados \citep{shiba2005classificaccao}.
+
+Geralmente utilizam-na para classificação (variáveis categóricas), mas também é possível para a Análise de Regressão (variáveis contínuas) que ja vimos. Para as árvores de regressão são utilizadas quando a variável dependente é contínua. O valor obtido pelos nós de término nos dados de treinamento é o valor médio das observações. Para classificação o obtido pelos nós de término nos dados de treinamento é a moda, ou seja, a observação mais recorrente no conjunto de dados. Ambos processos continuam o processo de divisão até atingir algum critério fornecido pelo pesquisador. Mas como fazemos esta divisão para podermos classificar?
+
+A decisão de como fazer estas divisões dos nós pode influenciar muito na precisão do algoritmo e portanto, seus resultados. Pode-se utilizar pelo qui-quadrado (ver \ref{testesanova}), por ganho de informação (ver \ref{medinfo}), Índice de Gini, redução de variância, entre diversos outros.
+
+Ao Índice de Gini, aplicado no sistema \emph{Classification and Regression Trees} (CART)\citep{breiman1984classification}, mede a impureza de uma partição de dados, ela basicamente nos mostra que se selecionarmos aleatoriamente dois atributos de uma população ou amostra, ambos devem ter a mesma classe e a soma da probabilidade será se esta amostra/população for pura.
+
+É utilizada portanto para variáveis categóricas como ``Sucesso'' e ``Fracasso'', ou seja, aplica-se em divisões binárias. Quanto maior for este índice, mais homogêneo será. Foi criado como uma medida de variância para dados categóricos \citep{light1971analysis}, é expresso como:
+\[G(p_1,p_2,...,p_j)=\displaystyle \sum_{j}p_j  \sum_{i\neq j}\]
+\[= \displaystyle \sum_j p_j(1-p_j) \]
+\begin{equation}
+= \displaystyle 1-\sum_j p^2_j
+\label{eq:indgini1}
+\end{equation}
+
+Para evitarmos problemas como \textbf{overfitting} por exemplo, que ocorre quando o seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados (será apresentado em \ref{fitt}). Existe diversos meios que variam de acordo com propostas de diferentes pesquisas. Pode-se definir um número mínimo de amostras que são necessárias em um nó para se fazer a divisão, ou delimitar amostras mínimas para o nó terminal e o máximo de nós terminais, determir a profundidade máxima da árvore (o quanto ela vai ramificar e expandir-se), atentar ao quanto de recurso será utilizado para treinarmos o modelo e quanto irão para serem testados (visto que não pode ser o mesmo conjunto de dados para ambos pois ela apenas iria decorar e replicar).
+
+A poda (pós-poda) de uma árvore é importante para que se verifique a melhor divisão e chegue até a condição de parada especificada. Um exemplo que gosto muito e creio que facilitará para a compreensão da poda \citep{analytics} : suponha que há duas pistas, você está em seu veículo verde na pista da direita com uma certa quantidade de carros em sua frente movendo a aproximados 80\(km/h\) cada. Na pista da esquerda encontra-se dois caminhões de entrega de encomendas à apenas 30\(km/h\) cada. Caso você vá pela esquerda irá alcançar o carro à frente, podendo passar até chegar atrás do caminhão e irá manter seu veículo a 30\(km/h\) procurando desesperadamente encontrar alguma oportunidade de voltar para a direita. Entretando todos os outros carros ultrapassam você.
+
+Seria uma ótima escolha caso você precisasse ultrapassá-los em poucos segundos. Mas a um prazo maior poderia ser uma escolha bem ruim. Esta é a diferença entre a árvore de decisão sem e com a poda. O algoritmo de árvore de decisão com restrições não irá visualizar os caminhões a frente e adotará o trajeto interessante naquele momento e iria optar pela esquerda. Porém quando utilizamos a poda, estamos observando alguns passos à frente antes de tomarmos decisões de que lado iríamos. Ao observar que para a esquerda é ruim, poda-se este galho.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/poda} 
+
+}
+
+\caption{Desenho de veículos em uma pista. Adaptado de \citep{analytics}.}\label{fig:poda}
+\end{figure}
+
+
+
+Para que se faça a poda, inicia-se o algoritmo de árvore de decisão até uma grande profundidade em sua ramificação; analisa-se a parte inferior da árvore (os filhos e seus resultados) removendo folhas que estão dando retornos negativos quando comparadas ao topo (comparando o erro de cada nó e a soma dos erros dos nós descendentes, ou algum outro método estatístico similar). Tem também algoritmos de pré-poda que buscar não particionar mais o conjunto de treinamento com algum determinado critério como não ultrapassar a uma determinada variação de ganho de informação, parar se todas as instâncias pertencem à mesma classe, valores de atributos iguais, significância estatística, redução de erro, etc. Os algoritmo de ``pós-poda'' são mais lentos e pode haver um custo bem maior que o de ``pré-poda'', mas são mais confiáveis.
+
+Um dos cálculos mais utilizados para a poda da árvore é a \textbf{taxa de erro} que representa a razão entre o número de casos com classificação errada (\(c_e\)) e o número de casos classificados corretamente (\(cc\)) pela partição, caso a taxa de erro aumente conforme a ramificação, irá podar:
+
+\begin{equation}
+E(T)=\frac{ce}{ce+cc}
+\label{eq:txerro}
+\end{equation}
+
+Na seção
+
+\hypertarget{extree}{%
+\subsection{Exemplos}\label{extree}}
+
+Aos exemplos de Árvore de Decisão, vamos tomar como base da literatura de \citep{analytics}.
+
+Vamos supor uma amostra com 30 alunos com duas características cada: Sexo (meninos e meninas), Classe (I e II). Temos como propósito elaborar um modelo de árvore de decisão para prevermos quais alunos iriam jogar tênis durante o intervalo. Portanto precisamos classificar estes alunos com base nestas duas características. Supondo valores pré-estabelecidos dos alunos, a árvore segregará os alunos com base nestas variáveis e identificará a variável que cria os melhores conjuntos homogêneos e heterogêneos entre si.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decision} 
+
+}
+
+\caption{Divisão de alunos que jogam tênis, traduzido de \citep{analytics}.}\label{fig:decision}
+\end{figure}
+
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Índice de Gini - Usando o Índice de Gini, vamos verificar qual divisão produz sub-nós mais impuros. Dentro de 10 meninas, apenas duas jogam tênis no intervalo, ou seja 20\%; aos 20 meninos, 13 que equivale a 65\%. Ressalta-se que os dados foram arredondados em duas casas para facilitar a exemplificação.
+\end{enumerate}
+
+\[\mbox{sub-nó Meninas}= 1 -(0,2^2+0,8^2)=0,320\]
+\[\mbox{sub-nó Meninos}= 1 -(0,65^2+0,35^2)=0,455\]
+
+A medição de impureza para as Meninas é 0,320. Como são duas possibilidades (Menina \emph{versus} Menino), podemos dividir por 0,5 para uma compreensão mais intuitiva, obteremos 0,64. Caso fosse \(0,5 / 0,5 = 1\), significaria que o agrupamento é o mais impuro possível, pois é muito distribuído e não apenas uma variável predominante no conjunto amostral. Ao caso dos Meninos (0,455), obtemos um valor de 0,91 (bem impuro) ao dividirmos por 0,5.
+
+Vamos analisar agora o valor de Gini dado que foi selecionado 10 meninas e 20 meninos de uma amostra de 30 alunos. Um valor ponderado:
+
+\[Gini=\frac{10}{30}.(0,20^2+0,80^2)+\frac{20}{30}.(0,65^2+0,35^2)=0,59\]
+\[\mbox{impureza: }1-0,59=0,41\]
+
+Da mesma forma, calculamos para a classe I e II:
+
+\[\mbox{sub-nó Classe I}= 1 -(0,43^2+0,57^2)=0,49\]
+\[\mbox{sub-nó Classe II}= 1 -(0,56^2+0,44^2)=0,49\]
+
+O valor ponderado:
+
+\[Gini=\frac{14}{30}.(0,43^2+0,57^2)+\frac{16}{30}.(0,56^2+0,44^2)=0,51\]
+\[\mbox{impureza: }1-0,51=0,49\]
+
+Como Sexo possui um Índice de Gini maior que da Classe, ou uma impureza menor, o algoritmo irá fazer com que a divisão do nó ocorra em gênero. Caso houvesse mais variáveis como Altura, iria comparar entre as três. O de maior valor de Índice seria a nova referência de ramificação (se tornando um nó de divisão) caso haja outras características para mais ramificações.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Ganho de Informação - Inicialmente precisamos calcular a entropia do nó pai e em seguida calcular a entropia de cada nó individual da divisão e a média ponderada de todos os sub-nós disponíveis na divisão. Sabemos que de 30 alunos, 15 irão jogar tênis e 15 não, logo:
+\end{enumerate}
+
+\[\mbox{Entropia para o nó pai: } H(A)=- \sum p(A)log_2(p(A))\]
+\[H(A)=-(\frac{15}{30}log_2(15/30)+\frac{15}{30}log_2(15/30))=1\]
+
+Portanto o nó é totalmente impuro, o que faz sentido, pois ele é exatamente 50\% dos dados distribuído em jogar tênis e outros 50\% de não jogar no intervalo (maior distribuição possível entre as duas possibilidades).
+
+Para o nó feminino, 2 que irão jogar e 8 que não irão jogar tênis num total de 10 meninas a entropia será \(- ((2/10) log_2 (2/10) + (8/10) log_2 (8/10)) = 0,72\) e para nó masculino com 13 que irão e 7 não no total de 20 meninos temos: \(- ((13/20) log_2 (13/20) + (7/20) log_2 (7/20)) = 0,93\).
+
+Portanto o Ganho de Informação será:
+
+\[\mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i)\]
+\[\mbox{Entropia}_{pai}(D)-\sum_{i=1}^k peso. Entropia_{filho}\]
+\[= 1-((10/30).0,72 + (20/30). 0,93) = 0,14\]
+
+Do mesmo modo, vamos calcular em Classe I, \(- ((6/14) log_2 (6/14) + (8/14) log_2 (8/14)) = 0,99\) e para nó Classe II, \(- ((9/16) log_2 (9/16) + (7/16) log_2 (7/16)) = 0,99\).
+
+E o Ganho de Informação:
+
+\[G.I = 1-((14/30) . 0,99 + (16/30) . 0,99) = 0,01\]
+Como o Ganho de Informação de Sexo é maior que o de Classe (menos impuro), a árvore irá iniciar sua ramificação a partir da característica Sexo. Caso houvesse mais variáveis como Altura, iria comparar entre as três o G.I e a de maior G.I seria considerado a nova ``Pai'' para que se possa recalcular caso haja outras características para mais ramificações.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Exemplo numérico - Adilson tem uma lanchonete e recebe cerca de 300 clientes por mês. Cada cliente gasta em média R\$100,00. Uma concorrente vai abrir uma nova unidade próximo de seu estabelecimento, o que reduzirá seu número de clientes a não ser que Adilson amplie seu comércio. Considerando que está apertado financeiramente, está na dúvida se vale este investimento contabilizando num prazo de 5 meses. A análise foi: caso ele investisse R\$40.000,00, as chances de ele obter 330 clientes por mês é de 30\% e de obter 380 é 70\%. Se Adilson não optar expandir, não irá gastar nada porém com a concorrente, irá ter uma probabilidade de 60\% de atender 250 clientes por mês e de 40\% de atender 290. Qual seria sua decisão, tomando como base o algoritmo de Árvore de Decisão?
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decisionlanche} 
+
+}
+
+\caption{Árvore de Decisão sobre o lucro da lanchonete.}\label{fig:decisionlanche}
+\end{figure}
+
+
+
+Pode-se calcular pelo Valor Esperado (Média). Para a primeira situação, gastando R\$40.000,00, em 5 meses seu valor esperado será:
+\[V.E=(0,3\ .\ 125.000,00)+(0,7\ . \ 150.000,00)= 142.500,00\]
+
+Ao segundo caso, em que Adilson não irá optar o investimento em seu estalecimento:
+\[V.E=(0,6\ .\ 125.000,00)+(0,4\ . \ 145.000,00)= 133.000,00\]
+
+Portanto Adilson tem uma probabilidade maior de escolher investir os R\$40.000,00 para ampliar sua lanchonete. Lembrando que foi utilizado o critério de médias, podendo haver diversos outros.
 
 \hypertarget{elastic-net}{%
 \section{Elastic Net}\label{elastic-net}}
@@ -1614,10 +1810,9 @@ Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua
 
 
 Um vetor é dito ser autovetor da matriz \(A_{mxn}\) se a transformação linear deste vetor \(T(u)\) é colinear a este vetor, ou seja, \(A_{mxn}\vec{u}=\lambda \vec{u}\). Sendo que \(\lambda\) é um escalar e chamado de \textbf{autovalor} da matriz correspondente ao autovetor. Para encontrarmos o autovetor:
-
+\[A_{mxn}\vec{u}=\lambda \vec{u} \]
+\[A_{mxn}\vec{u}-\lambda \vec{u}=0 \]
 \begin{equation}
-    A_{mxn}\vec{u}=\lambda \vec{u} \\
-A_{mxn}\vec{u}-\lambda \vec{u}=0 \\
 (A_{mxn}-\lambda l)\vec{u}=0
     \label{eq:autovetor}
 \end{equation}
@@ -1655,8 +1850,8 @@ Vamos resolver a equação característica \(det(A_{mxn}-\lambda l)=0\).
 \end{bmatrix}\]
 
 Com \(det(A_{mxn}-\lambda l)=0:\)
-\[(4-\lambda)(2-\lambda)-10=0 \\
-\lambda^2-6\lambda-2=0 \\ \mbox{resolvendo a equação: } \ 
+\[(4-\lambda)(2-\lambda)-10=0 \]
+\[\lambda^2-6\lambda-2=0 \\ \mbox{resolvendo a equação: } \ 
 \lambda_1 \approx 6,32 \  \ \mbox{e} \ \ \lambda_2 \approx -0,32\]
 
 \begin{enumerate}
@@ -1683,9 +1878,9 @@ Vamos resolver a equação característica \(det(A_{mxn}-\lambda l)=0\).
 Resovendo este sistema, obtemos os autovalores:
 \[\lambda_1=1 \ \ \lambda_2=-2\]
 Vamos encontrar agora seus respectivos autovetores, lembrando que \(A_{mxn}\vec{u}=\lambda \vec{u}\):
-\[ \mbox{Primeiro encontrar os autovetores de }\lambda_1=1: \\
-A_{mxn}\vec{u}=\lambda \vec{u} \\
-\begin{bmatrix}
+\[ \mbox{Primeiro encontrar os autovetores de }\lambda_1=1:\]
+\[A_{mxn}\vec{u}=\lambda \vec{u}\]
+\[\begin{bmatrix}
 1 &0 \\ 
 1 &-2 
 \end{bmatrix}. \begin{bmatrix}
@@ -1694,15 +1889,16 @@ y
 \end{bmatrix}=1.\begin{bmatrix}
 x \\ 
 y  
-\end{bmatrix} \\
-x=x \\
-x-2y=y \\ \mbox{logo: } x=3y\]
+\end{bmatrix} \]
+\[x=x \]
+\[x-2y=y \]
+\[\mbox{logo: } x=3y\]
 
 Portanto em \(\lambda_1=1\) será \(X=\begin{bmatrix}3y\\y\end{bmatrix}\), com o autovetor de \(y=1\) e \(x=\begin{bmatrix}3\\1\end{bmatrix}\).
 
 Agora para o segundo autovalor \(\lambda_2=-2\):
-\[A_{mxn}\vec{u}=\lambda \vec{u} \\
-\begin{bmatrix}
+\[A_{mxn}\vec{u}=\lambda \vec{u} \]
+\[\begin{bmatrix}
 1 &0 \\ 
 1 &-2 
 \end{bmatrix}. \begin{bmatrix}
@@ -1711,9 +1907,10 @@ y
 \end{bmatrix}=-2.\begin{bmatrix}
 x \\ 
 y  
-\end{bmatrix} \\
-x=-2x \\
-x-2y=-2y \\ \mbox{logo: } x=0\]
+\end{bmatrix} \]
+\[x=-2x\]
+\[x-2y=-2y \]
+\[ \mbox{logo: } x=0\]
 
 Portanto em \(\lambda_2=-2\) será \(y=\begin{bmatrix}0\\1\end{bmatrix}\) e \(x=0\).
 
@@ -1887,8 +2084,8 @@ Após calcularmos suas covariâncias (recomendo o leitor calcular e verificar e 
 
 Para calcularmos os autovalores:
 
-\[det(A_{mxn}-\lambda l)=0: \\
-\begin{bmatrix}
+\[det(A_{mxn}-\lambda l)=0\]
+\[\begin{bmatrix}
 9550608,6 -\lambda &706121,1 &14978232,5\\ 
 706121,1 &76269,5-\lambda & 933915,1 \\
 14978232,5&933915,1&34408113,0-\lambda
@@ -1897,7 +2094,7 @@ Para calcularmos os autovalores:
 Resolvendo o sistema, obtemos os seguintes autovalores das componentes principais:
 \[\lambda_1=38018192,2 \ \ \lambda_2=2327881,5 \ \ \lambda_3=19334,8\]
 Para encontrarmos a porcentagem da variância explicada por cada auto valor:
-\[\%\lambda_1=\frac{38018192,2}{38018192,2+2327881,5+19334,8}.100\%=94,2\% \\ \%\lambda_2=\frac{2327881,5}{38018192,2+2327881,5+19334,8}.100\%=5,77\% \\ \%\lambda_3=\frac{19334,8}{38018192,2+2327881,5+19334,8}.100\%=0,048\%\]
+\[\%\lambda_1=\frac{38018192,2}{38018192,2+2327881,5+19334,8}.100\%=94,2\% \] \[\%\lambda_2=\frac{2327881,5}{38018192,2+2327881,5+19334,8}.100\%=5,77\% \] \[\%\lambda_3=\frac{19334,8}{38018192,2+2327881,5+19334,8}.100\%=0,048\%\]
 Portanto, podemos descartar o segundo e o terceiro componente principal, pois o primeiro explica cerca de \(94,2\%\).
 
 Por fim os autovetores podem sem calculados:
@@ -1916,8 +2113,8 @@ Com \(A_{mxn}\) a matriz de covariância amostral, \(u\) o autovetor e \(\lambda
 u_1\\ u_2 \\ u_3
 \end{bmatrix} \]
 
-\[\mbox{substituindo os autovalores:}\\
-\begin{bmatrix}
+\[\mbox{substituindo os autovalores:}\]
+\[\begin{bmatrix}
 u_1\\ u_2 \\ u_3
 \end{bmatrix}
 \begin{bmatrix}
@@ -1975,9 +2172,9 @@ Teremos os autovetores:
 
 Com os autovetores, podemos elaborar as três componentes principais:
 
-\[\hat{y_1}=0,425(Ganho Bruto)+0,028(GanhoLíquido)+0,905(PatrimônioLíquido)\\
-\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)\\
-\hat{y_3}=-0,099(Ganho Bruto)+0,995(GanhoLíquido)+0,016(PatrimônioLíquido)\]
+\[\hat{y_1}=0,425(Ganho Bruto)+0,028(GanhoLíquido)+0,905(PatrimônioLíquido)\]
+\[\hat{y_2}=0,900(Ganho Bruto)+0,096(GanhoLíquido)-0,429(PatrimônioLíquido)\]
+\[\hat{y_3}=-0,099(Ganho Bruto)+0,995(GanhoLíquido)+0,016(PatrimônioLíquido)\]
 
 Determinada as componentes principais, podemos obter seus valores numéricos (\textbf{escores}) para cada elemento amostral. Basicamente substituímos os valores originais nas funções encontradas de componentes principais (\(\hat{y_1},\hat{y_2} \ \mbox{e}\  \hat{y_3}\)):
 
@@ -2050,8 +2247,8 @@ No exemplo anterior, vimos que as componentes principais foram obtidas a partir 
 
 Com o mesmo procedimento do exemplo anterior ao caso de matriz de covariância, obtemos os respectivos autovalores e autovetores:
 
-\[\lambda_1=2,493 \ \ \lambda_2=0,423 \ \ \lambda_3=0,084 \\
-\%\lambda_1=83,084\% \ \ \%\lambda_2=14,117\% \ \ \%\lambda_3=2,799\%\]
+\[\lambda_1=2,493 \ \ \lambda_2=0,423 \ \ \lambda_3=0,084 \]
+\[\%\lambda_1=83,084\% \ \ \%\lambda_2=14,117\% \ \ \%\lambda_3=2,799\%\]
 
 \begin{longtable}[]{@{}cccc@{}}
 \toprule
@@ -2100,9 +2297,9 @@ Por meio dos autovalores, podemos verificar que a variância total explicada pel
 
 Suas componentes principais são:
 
-\[\hat{y_1}=0,617(Ganho Bruto)+0,557(GanhoLíquido)+0,556(PatrimônioLíquido)\\
-\hat{y_2}=-0,001(Ganho Bruto)-0,706(GanhoLíquido)+0,708(PatrimônioLíquido)\\
-\hat{y_3}=-0,787(Ganho Bruto)+0,437(GanhoLíquido)+0,435(PatrimônioLíquido)\]
+\[\hat{y_1}=0,617(Ganho Bruto)+0,557(GanhoLíquido)+0,556(PatrimônioLíquido)\]
+\[\hat{y_2}=-0,001(Ganho Bruto)-0,706(GanhoLíquido)+0,708(PatrimônioLíquido)\]
+\[\hat{y_3}=-0,787(Ganho Bruto)+0,437(GanhoLíquido)+0,435(PatrimônioLíquido)\]
 
 Note que em relação ao exemplo anterior, seus coeficientes de ponderação estão numericamente mais equilibrados que no caso de matriz de covariâncias amostral. Todas as variâncias iguais a um, sem dominância direta de nenhuma variável.
 
@@ -2178,11 +2375,11 @@ Nesta técnica, inicia-se com \(n\) conglomerados como se cada elemento do banco
 \item
   Cada elemento possui um \emph{cluster} de tamanho 1, logo \(n\) \emph{clusters};
 \item
-  Em cada estágio do algoritmo de agrupamento, os pares de conglomerados mais ``similares'' vão combinando-se passando a constituir um único conglomerado. Apenas um novo conglomerado pode ser formada a cada passo, ou seja, a cada iteração o número de conglomerados irá diminuir;
+  Em cada estágio do algoritmo de agrupamento, os pares de conglomerados mais ``similares'' vão combinando-se passando a constituir um único conglomerado. Apenas um novo conglomerado pode ser formada a cada passo, ou seja, a cada etapa o número de conglomerados irá diminuir;
 \item
   Como mostra-se na Figura \ref{fig:hierarq}, em cada estágio do algoritmo, cada novo conglomerado formado é um agrupamento de conglomerados de estágios anteriores. Se dois elementos amostrais aparecem juntos num mesmo \emph{cluster} em alguma etapa, estarão juntos em todos os outros;
 \item
-  Por estarmos trabalhando com conglomerados em hierarquia, podemos construir um gráfico denominado Dendograma que representa a história do agrupamento. É um gráfico em forma de árvore tal que a escala vertical indica o nível de similaridade (ou dissimilaridade) e na horizontal os elementos amostrais em ordem relacionada à história do agrupamento. Sua altura representa ao nível em que os elementos foram considerados semelhantes entre si (distância do agrupamento ou nível de similaridade).
+  Por estarmos trabalhando com conglomerados em hierarquia, podemos construir um gráfico denominado Dendograma, ou Dendrograma, que representa a história do agrupamento. É um gráfico em forma de árvore tal que a escala vertical indica o nível de similaridade (ou dissimilaridade) e na horizontal os elementos amostrais em ordem relacionada à história do agrupamento. Sua altura representa ao nível em que os elementos foram considerados semelhantes entre si (distância do agrupamento ou nível de similaridade).
 \end{enumerate}
 
 Existe alguns métodos para que se escolha o número final dos grupos \(g\), mas em geral é subjetivo com base em fundamentações empíricas. Vamos agora para os métodos mais comuns e utilizados em muitos \emph{softwares} estatísticos.
@@ -2210,7 +2407,23 @@ A similaridade entre dois conglomerados é definida pelos dois elementos mais pa
 
 
 
-Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{meddist}. A matriz de distância calculada entre os seis elementos amostrais é dada por:
+Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{meddist}. Com o seguinte banco de dados:
+
+\begin{longtable}[]{@{}ccccccc@{}}
+\caption{\label{tab:dadossrenda} Renda e Idade de 6 indíviduos, abordado em \ref{meddist} sobre distância Euclidiana \citep{mingoti2007analise}}\tabularnewline
+\toprule
+\textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
+\midrule
+\endhead
+\textbf{Idade} & 28 & 31 & 42 & 38 & 25 & 41\tabularnewline
+\bottomrule
+\end{longtable}
+
+A matriz de distância calculada entre os seis elementos amostrais é dada por:
 \[D_{6x6}=\begin{bmatrix}\\
  &A&B&C&D&E&F \\
  A&0&&&&&\\
@@ -2222,10 +2435,10 @@ Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{medd
 \end{bmatrix}\]
 
 Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Lembrando que permanece as distâncias mínimas dos elementos com o novo conglomerado \(\{A,B\}\) pois queremos os mais próximos.
-\[d(\{A,B\},\{C\})=min(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=12,53\\
-  d(\{A,B\},\{D\})=min(d\{A,D\},\{B,D\})=min(\{13,19\},\{12,04\})=12,04\\
-  d(\{A,B\},\{E\})=min(d\{A,E\},\{B,E\})=min(\{6,44\},\{7,50\})=6,44\\
-  d(\{A,B\},\{F\})=min(d\{A,F\},\{B,F\})=min(\{13,39\},\{10,19\})=10,19\]
+\[d(\{A,B\},\{C\})=min(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=12,53\]
+\[d(\{A,B\},\{D\})=min(d\{A,D\},\{B,D\})=min(\{13,19\},\{12,04\})=12,04\]
+\[d(\{A,B\},\{E\})=min(d\{A,E\},\{B,E\})=min(\{6,44\},\{7,50\})=6,44\]
+\[d(\{A,B\},\{F\})=min(d\{A,F\},\{B,F\})=min(\{13,39\},\{10,19\})=10,19\]
 
 \[D_{5x5}=\begin{bmatrix}\\
  &\{A,B\}&C&D&E&F \\
@@ -2255,9 +2468,14 @@ Agora a menor distância encontra-se entre \(\{A,B\}\) e \(\{E\}\) com 6,44:
 \end{bmatrix}\]
 O próximo valor mínimo será 10,19 sobrando \(C_1=\{A,B,E,C,F\}\) e \(C_2=\{D\}\) e por fim reduz-se um único \emph{cluster} \(C_1=\{A,B,C,D,E,F\}\) com o nível de junção igual a 12,04.
 
-Portanto, o o histórico do agrupamento por meio da ligação simples e seu respectivo dendograma será:
+Portanto, o o histórico do agrupamento e seu respectivo dendograma será:
 
 \begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:ligsimple} Histórico do agrupamento por meio da Ligação Simples.}\tabularnewline
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
 \midrule
@@ -2316,10 +2534,10 @@ Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distân
 \end{bmatrix}\]
 
 Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Lembrando que permanece as distâncias máximas dos elementos com o novo conglomerado \(\{A,B\}\) pois queremos os mais afastados.
-\[d(\{A,B\},\{C\})=max(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=15,74\\
-  d(\{A,B\},\{D\})=max(d\{A,D\},\{B,D\})=max(\{13,19\},\{12,04\})=13,19\\
-  d(\{A,B\},\{E\})=max(d\{A,E\},\{B,E\})=max(\{6,44\},\{7,50\})=7,50\\
-  d(\{A,B\},\{F\})=max(d\{A,F\},\{B,F\})=max(\{13,39\},\{10,19\})=13,39\]
+\[d(\{A,B\},\{C\})=max(d\{A,C\},\{B,C\})=min(\{15,74\},\{12,53\})=15,74\]
+\[d(\{A,B\},\{D\})=max(d\{A,D\},\{B,D\})=max(\{13,19\},\{12,04\})=13,19\]
+\[d(\{A,B\},\{E\})=max(d\{A,E\},\{B,E\})=max(\{6,44\},\{7,50\})=7,50\]
+\[d(\{A,B\},\{F\})=max(d\{A,F\},\{B,F\})=max(\{13,39\},\{10,19\})=13,39\]
 
 \[D_{5x5}=\begin{bmatrix}\\
  &\{A,B\}&C&D&E&F \\
@@ -2350,9 +2568,14 @@ Agora a menor distância encontra-se entre \(\{A,B\}\) e \(\{E\}\) com 7,50:
 
 O próximo valor mínimo será 16,29, unindo os grupos \(\{C,F\}\) e \(\{D\}\), tornando os conglomerados \(C_1=\{A,B,E\}\) e \(C_2=\{C,F,D\}\) e por fim a distância máxima entre os dois grupos é 19,33.
 
-Portanto, o o histórico do agrupamento por meio da ligação completa e seu respectivo dendograma será:
+Portanto, o o histórico do agrupamento por meio da Ligação Completa e seu respectivo dendograma será:
 
 \begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:ligcomplet} Histórico do agrupamento por meio da Ligação Completa.}\tabularnewline
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
 \midrule
@@ -2402,10 +2625,10 @@ Vamo considerar novamente a matriz inicial como exemplificação:
 \end{bmatrix}\]
 
 Sabemos que o menor valor observado na Matriz é 3,23 (distância entre os elementos A e B) nas duas variáveis medidas. Portanto este dois indivíduos são aglomerados fazendo com que a amostra de seis elementos passe a ser cinco. Dessa vez são calculados em relação às médias das distância dos conglomerados \(\{A,B\}\) com os outros.
-\[d(\{A,B\},\{C\})=[d\{A,C\}+\{B,C\}]/2=[\{15,74\}+\{12,53\}]/2=14,13\\
-  d(\{A,B\},\{D\})=[d\{A,D\}+\{B,D\}]/2=[\{13,19\}+\{12,04\}]/2=12,62\\
-  d(\{A,B\},\{E\})=[d\{A,E\}+\{B,E\}]/2=[\{6,44\}+\{7,50\}]/2=6,97\\
-  d(\{A,B\},\{F\})=[d\{A,F\}+\{B,F\}]/2=[\{13,39\}+\{10,19\}]/2=11,79\]
+\[d(\{A,B\},\{C\})=[d\{A,C\}+\{B,C\}]/2=[\{15,74\}+\{12,53\}]/2=14,13\]
+\[d(\{A,B\},\{D\})=[d\{A,D\}+\{B,D\}]/2=[\{13,19\}+\{12,04\}]/2=12,62\]
+\[d(\{A,B\},\{E\})=[d\{A,E\}+\{B,E\}]/2=[\{6,44\}+\{7,50\}]/2=6,97\]
+\[d(\{A,B\},\{F\})=[d\{A,F\}+\{B,F\}]/2=[\{13,39\}+\{10,19\}]/2=11,79\]
 
 \[D_{5x5}=\begin{bmatrix}\\
  &\{A,B\}&C&D&E&F \\
@@ -2439,9 +2662,14 @@ Agora, teremos \(\{A,B\}\) e \(\{E\}\) com 6,97:
 
 O próximo valor mínimo será 14,18, unindo os grupos \(\{A,B,E\}\) e \(\{C,F\}\), tornando os conglomerados \(C_1=\{A,B,C,E,F\}\) e \(C_2=\{D\}\) e por final será 14,61 a distância entre eles.
 
-Portanto, o o histórico do agrupamento por meio de ligação simples e seu respectivo dendograma será:
+Portanto, o o histórico do agrupamento e seu respectivo dendograma será:
 
 \begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:ligmedia} Histórico do agrupamento por meio da Ligação Média.}\tabularnewline
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
 \midrule
@@ -2470,8 +2698,8 @@ Portanto, o o histórico do agrupamento por meio de ligação simples e seu resp
 
 A distância entre dois grupos é medida com a distância entre os vetores de médias, também denominado como centróides. Com \(C_1=\{X_1,X_3,X_7\}\) e \(C_2=\{X_2,X_6\}\), pode-se calcular:
 
-\[\mbox{vetor de médias de} C_1=\overline{X_1}=\frac{1}{3}[X_1+X_3+X_7] \\
-\mbox{vetor de médias de} C_2=\overline{X_2}=\frac{1}{2}[X_2+X_6]\]
+\[\mbox{vetor de médias de} C_1=\overline{X_1}=\frac{1}{3}[X_1+X_3+X_7] \]
+\[\mbox{vetor de médias de} C_2=\overline{X_2}=\frac{1}{2}[X_2+X_6]\]
 E a distância entre \(C_1\) e \(C_2\), é a distância Euclidiana ao quadrado entre os vetores de médias amostral (também pode ser usado com a usual entre os vetores):
 
 \begin{equation}
@@ -2494,6 +2722,11 @@ Para cada passo do algoritmo, os conglomerados que possuem o menor valor de dist
 Lembrando que os valores originais das variáveis são:
 
 \begin{longtable}[]{@{}ccccccc@{}}
+\caption{\label{tab:dadosrenda} Renda e Idade de 6 indíviduos, abordado em \ref{meddist} sobre distância Euclidiana \citep{mingoti2007analise}.}\tabularnewline
+\toprule
+\textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
 \midrule
@@ -2507,10 +2740,10 @@ Temos o menor o valor de 3,23 (distância entre os elementos A e B) nas duas var
 \[\{A,B\}=(\frac{9,6+8,4}{2});(\frac{28+31}{2})=(9;29,5)\]
 Portanto calculando a distância com a nova coordenada \(\{A,B\}\):
 
-\[d(\{A,B\},\{C\})=\sqrt{(9-2,4)^2+(29,5-42)^2}=14,135\\
-  d(\{A,B\},\{D\})=\sqrt{(9-18,2)^2+(29,5-38)^2}=12,525\\
-  d(\{A,B\},\{E\})=\sqrt{(9-3.9)^2+(29,5-25)^2}=6,800\\
-  d(\{A,B\},\{F\})=\sqrt{(9-6,4)^2+(29,5-41)^2}=11,700\]
+\[d(\{A,B\},\{C\})=\sqrt{(9-2,4)^2+(29,5-42)^2}=14,135\]
+\[d(\{A,B\},\{D\})=\sqrt{(9-18,2)^2+(29,5-38)^2}=12,525\]
+\[d(\{A,B\},\{E\})=\sqrt{(9-3.9)^2+(29,5-25)^2}=6,800\]
+\[d(\{A,B\},\{F\})=\sqrt{(9-6,4)^2+(29,5-41)^2}=11,700\]
 
 \[D_{5x5}=\begin{bmatrix}\\
  &\{A,B\}&C&D&E&F \\
@@ -2524,6 +2757,11 @@ Portanto calculando a distância com a nova coordenada \(\{A,B\}\):
 A próxima distância será entre C e F (4,12) novamente, fazendo com que fique quatro grupos. Repetindo o processo sucessivamente de retornar aos dados originais, recalcular identificar o novo menor valor (o que dependendo do banco de dados exige tempo computacional) chegaremos aos seguintes resultados:
 
 \begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:ligcent} Histórico do agrupamento pelo Método de Centróide.}\tabularnewline
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 \textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
 \midrule
@@ -2538,11 +2776,471 @@ A próxima distância será entre C e F (4,12) novamente, fazendo com que fique 
 
 Lembrando que dependendo do arredondamento, pode haver pequena variação e que é possível fazer com o quadrado da distância euclidiana. Note também que o nível de fusão no passo 5 foi menor que o do passo 4. É possível esta ocorrência no método de centróide pois em algum passo do algoritmo de agrupamento houver empates entre valores da matriz de distâncias, quanto maior for o número de elementos amostrais, menor será a chance dessa ocorrência \citep{mingoti2007analise}. A partição do dendograma será muito parecida com os anteriores, não será necessário apresentar.
 
+\hypertarget{muxe9todo-de-ward-wards-method}{%
+\subsubsection{\texorpdfstring{Método de Ward (\emph{Ward's Method})}{Método de Ward (Ward's Method)}}\label{muxe9todo-de-ward-wards-method}}
+
+Vimos nos métodos anteriores que ao aumentarmos o estágio \(k\) para \(k+1\), a qualidade a partição decresce (com excessão de centróide) pois o nivel de fusão e portanto o nível de similaridade também. Então percebe-se que a variação entre grupos diminui e a variação dentro dos grupos aumenta. \citet{ward1963hierarchical} propôs um método fundamental na mudança de variação entre os grupos em formação e entre cada passo do processo de agrupamento. É também conhecido como ``mínima variância'' por ter como objetivo a minimização da soma de quadrados dentro dos grupos.
+
+Inicialmente cada elemento é considerado como um único elemento conglomerado e em cada passo do algoritmo de agrupamento é calculada a soma de quadrados dentro de cada conglomerado. Portanto, o agrupamento é feito a partir das somas de quadrados dos desvios entre acessos ou do quadrado da distância Euclidiana.
+
+\begin{equation}
+ SS_i=\displaystyle \sum^{n_i}_{j=1} (X_{ij}-\overline{X_i})'(X_{ij}-\overline{X_i})
+ \label{eq:sumquadraeuclid}
+\end{equation}
+
+em que \(n_i\) é o número de elementos no conglomerado \(C_i\), quando se está no passo \(k\); \(X_i\) é o vetor de observações do \(j\)-ésimo elemento amostral e pertence ao \(i\)-ésimo conglomerado; \(\overline{X_i}\), o centróide do conglomerado; e \(SS_i\), a soma de quadrados correspondente do conglomerado \(C_i\). No passo \(k\) então, a soma de quadrados total é expressa como:
+
+\begin{equation}
+ SS_i=\displaystyle \sum^{g_k}_{i=1}SS_i
+ \label{eq:sumquadrak}
+\end{equation}
+
+onde \(g_k\) é o valor de grupos existentes quando se está no passo \(k\).
+A Distância entre os conglomerados \(C_l\) e \(C_i\) é definida pela soma dos quadrados entre os \emph{clusters} \(C_l\) e \(C_i\):
+
+\begin{equation}
+ d(C_l,C_i)=[\frac{n_l n_i}{n_l+n_i}] (X_{l}-\overline{X_i})'(X_{l}-\overline{X_i})
+ \label{eq:distward}
+\end{equation}
+
+em que cada passo do algoritmo de agrupamento, os dois conglomerados que minimizam a distância são combinados.
+
+Note que é muito semelhante com o método de centróide, porém o método de Ward leva em consideração a diferença dos tamanhos dos conglomerados que estão sendo comparados, ele possui como fator de ponderação \([\frac{n_l n_i}{n_l+n_i}]\) que quanto maior forem os valores de \(n_l\) e \(n_i\) e a discrepância entre eles, maior será o fator e portanto, a distância entre os centróides dos conglomerados comparados \citep{mingoti2007analise}.
+
+O processo de calcular é bem simples, semelhante ao método anterior, porém para as distâncias entre os conglomerados utiliza-se a equação \eqref{eq:distward} e acaba que sendo bem trabalhosa e consumindo muito tempo do pesquisador, por isso temos atualmente diversos \emph{softwares} que possam auxiliar neste processo. Com o mesmo conjunto de dados de Renda e Idade do exemplos anteriores podemos chegar no seguinte histórico de agrupamento:
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:ligward} Histórico do agrupamento pelo Método de Ward.}\tabularnewline
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Passo} & \textbf{Número de Grupos} & \textbf{Fusão} & \textbf{Distância}\tabularnewline
+\midrule
+\endhead
+1 & 5 & \{A\} e \{B\} & 10,44\tabularnewline
+2 & 4 & \{C\} e \{F\} & 17,00\tabularnewline
+3 & 3 & \{A,B\} e \{E\} & 61,68\tabularnewline
+4 & 2 & \{A,B,E\} e \{C,F\} & 270,25\tabularnewline
+5 & 1 & \{A,B,E,C,F\} e \{D\} & 465,00\tabularnewline
+\bottomrule
+\end{longtable}
+
+Importante lembrar que de mesmo modo em outras literaturas, os métodos descritos fazem o agrupamento de elementos amostrais com base em algum critério pré-estabelecido, então nem sempre segue a divisão dos dados amostrais de ordem ``natural'' entre os \(n\) elementos amostrais ou populacional. Pode variar um pouco dependente do \emph{Software} e sua simulação.
+
+Atente-se pois com os exemplos utilizados, deram resultados bem próximos. Dependendo do tamanho do conjunto de dados pode nem sempre ocorrer assim, mas claro, esperamos uma consistência entre os diferentes métodos.
+
+\hypertarget{nuxfamero-final-de-grupos}{%
+\subsection{Número final de grupos}\label{nuxfamero-final-de-grupos}}
+
+Como escolher o número final de grupos \(g\)? Em qual passo \(k\)? Isso varia muito com sua pesquisa, sua fundamentação teórica e até mesmo a experiência. Existe alguns critérios que pesquisadores utilizam para avaliar e tomar a decisão, as principais são:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Análise do comportamento do nível de fusão:} sabemos que a medida que o passo aumenta, a similaridade entre os conglomerados vai decrescendo. Portanto muitos elaboram um gráfico de passo pelo nível de distância. Se há ``pontos de salto'' grandes em relações aos outros pontos de distância, pode indicar parar. Ao caso do exemplo Método de Ligação Simples ficaria:
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/steps} 
+
+}
+
+\caption{Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos \emph{versus} Distância.}\label{fig:steps}
+\end{figure}
+
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Análise do Comportamento do nível de similaridade:} em vez de observarmos o comportamento da distância em cada estágio, como no critério anterior. utiliza-se o seguinte cálculo para \(C_i\) e \(C_l\) unidos em certa etapa:
+\end{enumerate}
+
+\begin{equation}
+S_{il}=(1-\frac{d_{il}}{max\{d_{jk},j,k-1,2,...,n\}}).100
+ \label{eq:critsimi}
+\end{equation}
+
+sendo \(d_{il}\{max\{d_{jk},j,k-1,2,...,n\}\}\) a maior distância entre os \(n\) elementos amostrais na matriz do primeiro estágio. Tem como objetivo encontrar pontos onde há decrescimento acentuado na similaridade dos conglomerados unidos (ao encontrar, finaliza o algoritmo). Segundo \citet{felix2004}, geralmente valores acima de 90\% resulta em quantidade de grupos muito elevado.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Análise da soma de quadrados entre grupos, o coeficiente \(R^2\):} Em cada \(k\) passo, podemos calcular a soma de quadrados entre os grupos e dentro dos grupos.
+\end{enumerate}
+
+Para \(X_{ij}\) vetor de medidas observadas para o \(j\)-ésimo elemento amostral do \(i\)-ésimo grupo \(\overline{X}\) e partição dos dados amostrais em \(g\) grupos. A Soma de Quadrados Total corrigida para a média global em cada variável:
+
+\begin{equation}
+SST_c=\displaystyle \sum^{g}_{i=1} \sum^{n_i}_{i=1} (X_{ij}-\overline{X})'(X_{ij}-\overline{X})
+ \label{eq:sstc}
+\end{equation}
+
+A Soma dos Quadrados Total dentro dos grupos da partição, que equivale ao residual:
+
+\begin{equation}
+SSR=\displaystyle \sum^{g}_{i=1} \sum^{n_i}_{i=1} = \sum^{g}_{i=1}SS_i
+ \label{eq:ssrc}
+\end{equation}
+
+E a Soma de Quadrados Total entre os \(g\) grupos da partição:
+
+\begin{equation}
+SSB=\displaystyle \sum^{g}_{i=1} n_i (\overline{X_{i}}-\overline{X})'((\overline{X_{i}}-\overline{X})
+ \label{eq:ssbc}
+\end{equation}
+
+Por fim, o coeficiente \(R^2\) é expresso por:
+
+\begin{equation}
+R^2=\frac{SSB}{SST_c}
+ \label{eq:rsquarec}
+\end{equation}
+
+Quanto maior for seu valor, maior será a soma de quadrados SSB e menor o residual SSR. Elaborando um gráfico com os passos do agrupamento e o \(R^2\). E parar o algoritmo no ``ponto de salto'' grande em relação aos demais.
+
+\textbf{Observação:} Há diversos critérios para o leitor se aprofundar, como \textbf{Estatística Pseudo F}, \textbf{Estatística Pseudo T}, \textbf{Correlação Semiparcial} que pode-se aplicar em método de Ward, \textbf{Estatísica \emph{Cubic Clustering Criterium}}, etc. Cabe o leitor interessado se aprofundar em seus estudos de acordo com sua pretensão. Os métodos hierárquicos são muito utilizados nas pesquisas atuais e ainda estão em constante desenvolvimento e combinações com outros modelos para aperfeiçoar suas pesquisas. Muitos usam o método hierárquico também, da mesma forma que Análise de Componentes Principais e pré-processamento, para selecionar variáveis que possar ser utilizadas em sua pesquisa.
+
 \hypertarget{tuxe9cnicas-nuxe3o-hieruxe1rquicas}{%
 \subsection{Técnicas Não Hierárquicas}\label{tuxe9cnicas-nuxe3o-hieruxe1rquicas}}
 
-\hypertarget{aoc-e-roc}{%
-\section{AOC e ROC}\label{aoc-e-roc}}
+As Técnicas Não Hierárquicas são técnicas que têm como propósito identificar diretamente uma partição de \(n\) elementos em \(k\) \emph{clusters}, de modo que a partição satisfaça: coesão/semelhança interna e isolamento/separação dos \emph{clusters} formados. Há muitas partições possíveis de ordem \(k\) e não é plausível criar todas possíveis (provávelmente nem será possível). Portanto deve-se utilizar alguns meios que possam investigar algumas partições viáveis e próxima da ótima.
+
+Diferentemente do Hierárquico, esta técnica necessita que o pesquisador específique previamente o número de \emph{clusters} desejado. Em cada passo do agrupamento, os novos grupos podem ser formados através da divisão ou junção de grupos formados em etapas anteriores, ou seja, não necessariamente os mesmos elementos num mesmo conglomerado estarão juntos no final. Então, não será possível o uso de dendogramas e geralmente são processos iterativos com maior capacidade de dados. Vamos observar alguns métodos utilizados.
+
+\hypertarget{muxe9todo-da-k-muxe9dias-k-means}{%
+\subsubsection{\texorpdfstring{Método da K-Médias (\emph{K-Means})}{Método da K-Médias (K-Means)}}\label{muxe9todo-da-k-muxe9dias-k-means}}
+
+Por \citet{hartigan1979algorithm}, o método k-Médias é um dos mais conhecidos e utilizados em Ánalise de \emph{Clusters}. Nele, cada elemento amostral é alocado ao \emph{cluster} mp qual o centróide (vetor de médias amostral) é o mais próximo de valores observados para o respectivo elemento. É composto pelos passos \citep{mingoti2007analise}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Selecione \(k\) centróides (conhecido como sementes ou protótipos), para iniciar a etapa de partição. Para selecionar varia também pelo método aplicado: pode-se selecionar de forma aleatória simples sem reposição; utilizar técnicas hierárquicas aglomerativas para se obter os grupos iniciais e calcular o vetor de médias; escolher a partir de uma variável aleatória de maior variância; selecionar por análise estatística elementos discrepantes no conjunto de dados; escolhar prefixada ou os primeiros valores do \emph{dataset}, etc;
+\item
+  Cada elemento do conjunto de dados é comparado com cada centróide inicial, por meio de alguma medida de distância (geralmente Euclidiana). O de menor distância é alocado ao grupo;
+\item
+  Após aplicar em cada \(n\) elemento amostral, recalcula-se os valores dos centróides para cada novo grupo formado e repte-se a etapa 2, considerando os centróides desse novo grupo;
+\item
+  Os passos 2 e 3 serão repetidos até que nenhuma realocação de elementos seja necessária e o pesquisador verificar e analisar de acordo com sua demanda.
+\end{enumerate}
+
+Não é recomendável para o experimento quando \(k\) primeiros elementos amostrais são similares entre si.
+
+Vamos a um exemplo:
+
+\begin{longtable}[]{@{}ccccc@{}}
+\caption{\label{tab:desenv} Valores dos índices de desenvolvimento de países.}\tabularnewline
+\toprule
+Países & Expectativa de Vida & Educação & PIB & Estabilidade Política\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Países & Expectativa de Vida & Educação & PIB & Estabilidade Política\tabularnewline
+\midrule
+\endhead
+Reino Unido & 0,88 & 0,99 & 0,91 & 1,10\tabularnewline
+Austrália & 0,90 & 0,99 & 0,93 & 1,26\tabularnewline
+Canadá & 0,90 & 0,98 & 0,94 & 1,24\tabularnewline
+Estados Unidos & 0,87 & 0,98 & 0,97 & 1,18\tabularnewline
+Japão & 0,93 & 0,93 & 0,93 & 1,20\tabularnewline
+França & 0,89 & 0,97 & 0,92 & 1,04\tabularnewline
+Cingapura & 0,88 & 0,87 & 0,91 & 1,41\tabularnewline
+Argentina & 0,81 & 0,92 & 0,80 & 0,55\tabularnewline
+Uruguai & 0,82 & 0,92 & 0,75 & 1,05\tabularnewline
+Cuba & 0,85 & 0,90 & 0,64 & 0,07\tabularnewline
+Colômbia & 0,77 & 0,85 & 0,69 & -1,36\tabularnewline
+Brasil & 0,71 & 0,83 & 0,72 & 0,47\tabularnewline
+Paraguai & 0,75 & 0,83 & 0,63 & -0,87\tabularnewline
+Egito & 0,70 & 0,62 & 0,60 & 0,21\tabularnewline
+Nigéria & 0,44 & 0,58 & 0,37 & -1,36\tabularnewline
+Senegal & 0,47 & 0,37 & 0,45 & -0,68\tabularnewline
+Serra Leoa & 0,23 & 0,33 & 0,27 & -1,26\tabularnewline
+Angola & 0,34 & 0,36 & 0,51 & -1,98\tabularnewline
+Etiópia & 0,31 & 0,35 & 0,32 & -0,55\tabularnewline
+Moçambique & 0,24 & 0,37 & 0,36 & 0,20\tabularnewline
+China & 0,76 & 0,80 & 0,61 & 0,39\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Fonte:} ONU, 2002, site: www.undp.org/hdro. Relatório de Desenvolvimento Humano.
+
+Como dito, este método é muito dispendioso ao pesquisador calcular manualmente, portanto recomendo-o utilizar algum \emph{software} estatístico para o seu cálculo e verificar o algoritmo do mesmo. Particularmente, utilizo para a escolha das sementes iniciais a seleção aleatória ou alguma técnica Hierárquica, pois ela evita com que há influências pessoais na seleção.
+
+Após aplicarmos o método \emph{k-Médias} com a escolha aleatória das sementes iniciais obtemos:
+
+\begin{longtable}[]{@{}lllclll@{}}
+\caption{\label{tab:exkmeans} Resultado descritivo dos \emph{clusters} formados.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Grupos}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{SQ}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Países}\strut
+\end{minipage} & \begin{minipage}[b]{0.27\columnwidth}\centering
+\textbf{Média Expectativa de Vida}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média Educação}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média PIB}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média Estabilidade Política}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Grupos}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{SQ}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Países}\strut
+\end{minipage} & \begin{minipage}[b]{0.27\columnwidth}\centering
+\textbf{Média Expectativa de Vida}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média Educação}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média PIB}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+\textbf{Média Estabilidade Política}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(n_1=3\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,0257\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+Reino Unido, França, Uruguai\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\centering
+0,8633\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,960\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,860\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+1,063\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(n_2=7\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+2,187\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+Colômbia, Paraguai, Nigéria, Senegal, Serra Leoa, Angola, Etiópia\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\centering
+0,473\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,524\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,463\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+-1,154\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(n_3=6\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,748\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+Argentina, Cuba, Brasil, Egito, Moçambique, China\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\centering
+0,678\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,740\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,622\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,315\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+\(n_4=5\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,047\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+Austrália, Canadá, Estados Unidos, Japão, Cingapura\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\centering
+0,896\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,950\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+0,936\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+1,258\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:exkmeans3} Análise da qualidade dos grupos formados.}\tabularnewline
+\toprule
+\textbf{SSR (Soma de Quadrados Residual, soma dos grupos)} & 3,008\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{SSR (Soma de Quadrados Residual, soma dos grupos)} & 3,008\tabularnewline
+\midrule
+\endhead
+\textbf{SSB (Soma de Quadrados entre os \(g\) grupos)} & 22,757\tabularnewline
+\textbf{SST (Soma de Quadrados Total)} & 25,765\tabularnewline
+\textbf{\(R^2=SSB/SST\)} & 88,3\%\tabularnewline
+\bottomrule
+\end{longtable}
+
+Podemos avaliar um bom modelo pelo seu \(R^2\), vale lembrar que o algoritmo foi aplicado para a escolha aleatória de centróides. O que pode variar o resultado de acordo com o processo. Por isso muitas vezes, os pesquisadores utilizam mais de um método para classificações para que se possa comparar e ter consistência em sua pesquisa. Caso o pesquisador verifique e valide estas classificações, pode-se aplicar novos estudos por exemplo, para cada conjunto de países, desde análise de regressão à diversos outros métodos.
+
+\hypertarget{muxe9todo-de-fuzzy-c-muxe9dias-c-means}{%
+\subsubsection{\texorpdfstring{Método de Fuzzy C-Médias (\emph{C-Means})}{Método de Fuzzy C-Médias (C-Means)}}\label{muxe9todo-de-fuzzy-c-muxe9dias-c-means}}
+
+O método de Fuzzy \citep{bezdek1981objective} também é um método iterativo que requer do pesquisador pré-estabelecer do número de grupos, como \emph{K-means}. Este método procura a partição que minimiza a função objetivo, expressa por:
+
+\begin{equation}
+J=\displaystyle \sum^c_{i=l} \sum^n_{j=l} (u_{ij}^m d(X_j,V_i))
+ \label{eq:cmeansobjetivo}
+\end{equation}
+
+em que \(V_i\) é a semente (protótipo ou centróide ponderado) do conglomerado \(i=1,2,...,c\), \(m>1\) é o parâmetro Fuzzy, quanto mais alto for, mais difuso será o cluster no final (geralmente usam-se \(m=2\)); \(u_{ij}\) é a probabilidade de que o elemento \(X_j\) pertença ao congomerado com a semente \(V_i\) e \(d\) é a distância (método escolhido pelo pesquisador, geralmente Euclidiana).
+
+A função \(J\) \eqref{eq:cmeansobjetivo} é minimizada quando as probabilidades \(u_{ij}\) e a semente \(V_i\) são definidas como:
+
+\begin{equation}
+u_{ij}=\Big[\displaystyle \sum^c_{k=1}\Big(\frac{d(X_j,V_i)}{d(X_j,V_k)}\Big)^{2/(m-1)}\Big]^{-1}
+ \label{eq:cmeansprob}
+\end{equation}
+
+\begin{equation}
+V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m} 
+\label{eq:cmeanssemente}
+\end{equation}
+
+em que \(i=1,2...,c\) e \(j=1,2,...n\). Com \(u_{ij}\) seguindo uma distribuição entre 0 e 1 e os protótipos vão se modificando a cada iteração. O algoritmo é interrompido quando a distância entre os protótipos de uma iteração em relação à anterior é menor ou igual a um erro \(\mu\) estabelicido pelo pesquisador, ou seja, os vetores \(V_t\) e \(V_{t+1}\) da iterações \(t\) e \(t+1\) que guardam as sementes precisam que: \(d(V_t,V_{t+1})<\mu\).
+
+Para cada elemento amostral, este método estima uma probabilidade de que o este elemento pertença a cada um dos \emph{clusters} \(c\) da partição. Podemos então encontrar elementos amostrais que se assemelham a mais de um dos \(c\) grupos. Alguns pesquisadores utilizam como critério de seleção para qual \emph{cluster} irá pertencer de acordo com o que tenha a maior probabilidade.
+
+Utilizando o mesmo conjunto de dados utilizado no método K-Médias e aplicarmos o método de Fuzzy C-Médias, supondo \(m=2\) e com \emph{cluster} pré-estabelecido, obtemos seus resultados e alocando-os com base no critério de maior probabildade.
+
+\begin{longtable}[]{@{}llllll@{}}
+\caption{\label{tab:excmeans} Resultado obtido pelo método de C-Médias. Utilizando como critério de alocar ao grupo pela maior probabilidade.}\tabularnewline
+\toprule
+Países & Prob. \(C_1\) & Prob. \(C_2\) & Prob. \(C_3\) & Prob. \(C_4\) & Prob. \(C_5\)\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Países & Prob. \(C_1\) & Prob. \(C_2\) & Prob. \(C_3\) & Prob. \(C_4\) & Prob. \(C_5\)\tabularnewline
+\midrule
+\endhead
+Reino Unido & 0,864 & 0,026 & 0,063 & 0,027 & 0,020\tabularnewline
+Austrália & 0,776 & 0,044 & 0,098 & 0,046 & 0,035\tabularnewline
+Canadá & 0,802 & 0,039 & 0,087 & 0,041 & 0,031\tabularnewline
+EstadosUnidos & 0,842 & 0,031 & 0,071 & 0,032 & 0,024\tabularnewline
+Japão & 0,836 & 0,032 & 0,073 & 0,033 & 0,025\tabularnewline
+França & 0,767 & 0,043 & 0,110 & 0,046 & 0,034\tabularnewline
+Cingapura & 0,625 & 0,076 & 0,158 & 0,080 & 0,061\tabularnewline
+Argentina & 0,228 & 0,098 & 0,500 & 0,103 & 0,071\tabularnewline
+Uruguai & 0,636 & 0,066 & 0,177 & 0,070 & 0,051\tabularnewline
+Cuba & 0,135 & 0,158 & 0,447 & 0,160 & 0,100\tabularnewline
+Colômbia & 0,071 & 0,310 & 0,103 & 0,184 & 0,332\tabularnewline
+Brasil & 0,123 & 0,068 & 0,685 & 0,075 & 0,049\tabularnewline
+Paraguai & 0,048 & 0,557 & 0,080 & 0,162 & 0,152\tabularnewline
+Egito & 0,120 & 0,121 & 0,533 & 0,144 & 0,082\tabularnewline
+Nigéria & 0,024 & 0,103 & 0,035 & 0,081 & 0,757\tabularnewline
+Senegal & 0,035 & 0,165 & 0,060 & 0,631 & 0,108\tabularnewline
+Serra Leoa & 0,057 & 0,196 & 0,083 & 0,207 & 0,457\tabularnewline
+Angola & 0,084 & 0,221 & 0,113 & 0,196 & 0,386\tabularnewline
+Etiópia & 0,054 & 0,172 & 0,093 & 0,547 & 0,134\tabularnewline
+Moçambique & 0,149 & 0,177 & 0,285 & 0,253 & 0,136\tabularnewline
+China & 0,061 & 0,041 & 0,823 & 0,046 & 0,029\tabularnewline
+\bottomrule
+\end{longtable}
+
+Portanto ficará:
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:excmeans2} Quantidade de Países por grupo e Soma de Quadrados por grupo.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{Grupos}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{Países}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{SQ}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{Grupos}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{Países}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+\textbf{SQ}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+\(n_1=8\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+Reino Unido, Austrália, Canadá, Estados Unidos, Japão, França, Cingapura, Uruguai\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+0,157\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+\(n_2=1\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+Paraguai\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+0,000\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+\(n_3=6\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+Argentina,Cuba, Brasil, Egito, Moçambique, China\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+0,748\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+\(n_4=2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+Senegal, Etiópia\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+0,030\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+\(n_5=4\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+Colômbia, Nigéria, Serra Leoa, Angola\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+0,763\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:exkmeans2} Análise da qualidade dos grupos formados.}\tabularnewline
+\toprule
+\textbf{SSR (Soma de Quadrados Residual, soma dos grupos)} & 1,698\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{SSR (Soma de Quadrados Residual, soma dos grupos)} & 1,698\tabularnewline
+\midrule
+\endhead
+\textbf{SSB (Soma de Quadrados entre os \(g\) grupos)} & 20,983\tabularnewline
+\textbf{SST (Soma de Quadrados Total)} & 22,681\tabularnewline
+\textbf{\(R^2=SSB/SST\)} & 0,925\%\tabularnewline
+\bottomrule
+\end{longtable}
+
+Tivemos um resultado interessante com um bom valor de \(R^2\) e próximo ao do exemplo anterior, entretanto seria importante dar uma atenção maior em alguns países, visto que suas probabilidades para a seleção de \emph{cluster} são bem semelhantes para Colômbia em \(n_2 (0,310)\) e \(n_5 (0,332)\) e Moçambique \(n_3=0,285\) e \(n_4=0,253\). Poderíamos testar com novas estratégias, novas quantidades de \emph{clusters} ou alguns métodos de avaliação para que se avalie e torne mais consistente a análise. Em caso de variáveis com alta probabilidade não teremos dúvidas sobre sua alocação. O início da seleção de centróides foi formulado de forma aleatória para este exemplo. Recomendo-o o leitor retornar ao exemplo de K-médias e comparar a este ou até mesmo com Análise de Componentes Principais. Entenda que são metodologias diferentes com combinações de estratégias diferentes (desde medidas de distância como Euclidiana, método de análise multivariada, tipo de seleção de centróides, etc), podemos combinar e comparar todas estas técnicas para termos consistências em nossas pesquisas.
+
+Em \ref{valid} serão apresentados outros métodos para medir o desempenho e validar seu modelo.
 
 \hypertarget{modelos-nivel-iii}{%
 \section{modelos nivel III}\label{modelos-nivel-iii}}
@@ -2553,11 +3251,11 @@ Lembrando que dependendo do arredondamento, pode haver pequena variação e que 
 \hypertarget{redes-neurais}{%
 \section{Redes Neurais}\label{redes-neurais}}
 
-\hypertarget{validauxe7uxe3o-de-um-modelo}{%
-\chapter{Validação de um modelo}\label{validauxe7uxe3o-de-um-modelo}}
+\hypertarget{valid}{%
+\chapter{Validação de um modelo}\label{valid}}
 
-\hypertarget{overfitting-underfitting}{%
-\section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{overfitting-underfitting}}
+\hypertarget{fitt}{%
+\section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{fitt}}
 
 Sendo \textbf{muito importantes} nesta área, o Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}.
 
@@ -2616,6 +3314,9 @@ Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjun
 
 \hypertarget{como-escolher-um-bom-modelo}{%
 \section{Como escolher um bom modelo?}\label{como-escolher-um-bom-modelo}}
+
+\hypertarget{aocroc}{%
+\section{AOC e ROC}\label{aocroc}}
 
   \bibliography{book.bib,packages.bib}
 

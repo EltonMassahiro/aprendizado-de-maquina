@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Machine Learning</title>
+  <title>Capítulo 8 Validação de um modelo | Machine Learning</title>
   <meta name="description" content="Tutorial de Machine Learning." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Machine Learning" />
+  <meta property="og:title" content="Capítulo 8 Validação de um modelo | Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 8 Validação de um modelo | Machine Learning" />
   
   <meta name="twitter:description" content="Tutorial de Machine Learning." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="ptII.html"/>
+<link rel="next" href="references.html"/>
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -233,30 +233,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Machine Learning</h1>
-<p class="author"><em>Elton Massahiro Saito Loures</em></p>
-<p class="date"><em>2020-12-09</em></p>
+<div id="valid" class="section level1">
+<h1><span class="header-section-number">Capítulo 8</span> Validação de um modelo</h1>
+<div id="fitt" class="section level2">
+<h2><span class="header-section-number">8.1</span> <em>Overfitting, Underfitting</em></h2>
+<p>Sendo <strong>muito importantes</strong> nesta área, o Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles <span class="citation">(Silver <a href="#ref-silver2013sinal">2013</a>)</span>.</p>
+<ul>
+<li><p><strong>Overfitting</strong>: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.</p>
+<p>As principais causas e soluções de um Overfitting são:</p>
+<ol style="list-style-type: decimal">
+<li><p>Algoritmo muito complexo para os dados: caso for possível, pode-se simplificar o modelo utilizado por um algoritmo mais simples, com menos parâmetros. Permitindo reduzir as chances do modelo sofrer overfitting.</p></li>
+<li><p>Poucos dados para treinar: dependendo da quantidade de dados utilizados para treinar, pode ser que seja uma amostra pequena, com isso recomenda-se aumentar seu tamanho coletando mais dados.</p></li>
+<li><p>Ruídos nos dados de treinamento: é comum dentro do banco de dados existir algum tipo de ruído, isto é, <em>outlier</em> (valores extremos ou até mesmo valores incorretos nos dados). Esses ruídos podem fazer com que o modelo aprenda sobre ele, levando ao overfitting. Seria recomendado pré-processamento adequado para tratar essa interferência.</p></li>
+</ol></li>
+</ul>
+<div id="underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo." class="section level3">
+<h3><span class="header-section-number">8.1.1</span> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</h3>
+<p>As principais causas e soluções de um Underfitting são:</p>
+<ol style="list-style-type: decimal">
+<li><p>Algoritmo inadequado: bem provável que o modelo estatístico proposto pelo pesquisa pode não ter sido adequado ao comportamento dos dados. Por exemplo aplicar um algoritmo para funções de primeiro grau (linear) em um conjunto de dados com comportamento exponencial (função de segundo grau). Recomendável o pesquisador substituir o algoritmo escolhendo outro com outros parâmetros para solucionar o underfitting.</p></li>
+<li><p>Características não representativas: há possibilidade de que as características que estamos utilizando para treinar o modelo não sejam representativas, ou seja, não possuem relação entre si ou não sejam importantes para o modelo aplicado.</p></li>
+<li><p>Modelo com muitos parâmetros de restrição: o modelo torna-se inflexível, restrito, e não consegue se ajustar de forma adequada aos dados.</p></li>
+</ol>
+<p>Segue abaixo a Figura <a href="valid.html#fig:graficofit">8.1</a> demonstrando os dois casos anteriores e um modelo adequado.</p>
+<div class="figure" style="text-align: center"><span id="fig:graficofit"></span>
+<img src="Figuras/graficofit.png" alt="“Gráfico representando um Underfitting, um Modelo bem ajustado e um Overfitting respectivamente.”" width="70%" />
+<p class="caption">
+Figura 8.1: “Gráfico representando um <em>Underfitting</em>, um Modelo bem ajustado e um <em>Overfitting</em> respectivamente.”
+</p>
 </div>
-<div id="prefácio" class="section level1 unnumbered">
-<h1>Prefácio</h1>
-<div id="por-que-ler-esse-livro" class="section level2">
-<h2><span class="header-section-number">0.1</span> Por que ler esse livro?</h2>
-</div>
-<div id="estrutura" class="section level2">
-<h2><span class="header-section-number">0.2</span> Estrutura</h2>
-</div>
-<div id="informações-a-respeito-do-conteúdo" class="section level2">
-<h2><span class="header-section-number">0.3</span> Informações a respeito do conteúdo</h2>
-</div>
-<div id="agradecimentos" class="section level2">
-<h2><span class="header-section-number">0.4</span> Agradecimentos</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># or the development version</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></a></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
 
+</div>
+</div>
+<div id="validação-cruzada" class="section level2">
+<h2><span class="header-section-number">8.2</span> Validação Cruzada</h2>
+<p>A fim de que não haja previsões desastrosas geradas pelo modelo, para medirmos o desempenho real do modelo criado, é necessário que realizemos testes com ele, utilizando dados diferentes dos que foram apresentados no início. Portanto uma das técnicas mais utilizadas é a <strong>Cross-validation (Validação Cruzada)</strong>.</p>
+<p>Após a realização do pré-processamento (analisar), iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
+Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com</p>
+</div>
+<div id="como-escolher-um-bom-modelo" class="section level2">
+<h2><span class="header-section-number">8.3</span> Como escolher um bom modelo?</h2>
+</div>
+<div id="aocroc" class="section level2">
+<h2><span class="header-section-number">8.4</span> AOC e ROC</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-silver2013sinal">
+<p>Silver, Nate. 2013. <em>O Sinal E O Ruı́do</em>. Editora Intrinseca.</p>
 </div>
 </div>
             </section>
@@ -264,8 +290,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ptII.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -296,7 +322,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-Validacaodomodelo.Rmd",
 "text": "Edit"
 },
 "history": {
