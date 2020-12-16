@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2020-12-09" />
+<meta name="date" content="2020-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,7 +183,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte II</a><ul>
-<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
+<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.1</b> Classificação de Padrões Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ptII.html"><a href="ptII.html#margmax"><i class="fa fa-check"></i><b>7.1.2</b> Hiperplano de Separação Ótima / Margem Máxima</a></li>
+<li class="chapter" data-level="7.1.3" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-não-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.3</b> Classificação de Padrões Não-Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.4" data-path="ptII.html"><a href="ptII.html#exemplosvm"><i class="fa fa-check"></i><b>7.1.4</b> Exemplos</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="ptII.html"><a href="ptII.html#decisiontree"><i class="fa fa-check"></i><b>7.2</b> Árvore de Decisão (<em>Decision Tree</em>)</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="ptII.html"><a href="ptII.html#extree"><i class="fa fa-check"></i><b>7.2.1</b> Exemplos</a></li>
 </ul></li>
@@ -241,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É importante entender o conceito de inteligência, pois nem tudo que o ser humano faz pode ser classificado como inteligente. Aprender somar para calcular a soma de <span class="math inline">\(2+2\)</span> é uma ação inteligente, mas copiar o resultado e colocar em sua folha de resultados que é 4 pode não ser tanto assim. Da mesma forma uma calculadora que executa um código passado por um humano, contendo dentro todos os passos a serem executados (algoritmos) para resolver esse cálculo, não é considerada.</p>
 <p>Quando tratamos da inteligência artificial não é fácil definir o que ela é. O seu próprio conceito vem sendo discutido e moldado ao longo do tempo. A idéia de construir uma máquina pensante ou um ser artificial que se assemelhasse aos humanos é muito antigo. O mito do Golem, por exemplo, um dos primeiros seres artificiais criados pelo homem. Dizia a lenda que o mito do Golem surgiu no século XIII quando uma matéria informe tornou-se num homúnculo a partir da invocação mágica de Elijah de Chelm que escreveu em sua fronta <em>“Shemhamforash”</em> - nome secreto de Deus <span class="citation">(MOSER <a href="#ref-moser2006golem">2006</a>)</span>. Na literatura foi publicado o famoso romance <em>Frankensteins</em> <span class="citation">(Shelley <a href="#ref-shelley1818frankenstein">1818</a>)</span> que relata a história de um estudante que constrói um monstro em seu laboratório. Mas como ela realmente surgiu?</p>
 <p>O primeiro trabalho a ser reconhecido como IA foi elaborado por <span class="citation">McCulloch and Pitts (<a href="#ref-mcculloch1943logical">1943</a>)</span> que tinha como propósito estudar como os neurônios podiam funcionar, modelando uma rede neural simples com circuitos elétricos. Os mesmos autores sugeriram que as redes neurais definidas em conformidade poderiam ser capazes de aprender. Por seguinte, <span class="citation">Hebb (<a href="#ref-hebb1949organization">1949</a>)</span> escreveu <em>The Organization of Behavior</em> que fortalecia as teorias de que o condicionamento psicológico estava presente em qualquer parte dos animais. Teve como a premissa de que dois neurônios participantes de uma sinapse, têm ativação simultânea, então a força da conexão entre eles deve ser seletivamente aumentada, ou seja, os caminhos neurais são fortalecidos cada vez que são utilizados.</p>
-<p>Em 1950, o matemático Claude E. Shannon publicou um artigo sobre como “ensinar” seu computador a jogar xadrez <span class="citation">(Shannon <a href="#ref-shannon1950xxii">1950</a>)</span>; no mesmo ano Alan Turing, em “Computing Machinery and Intelligence” <span class="citation">(TURING <a href="#ref-turing1950computing">1950</a>)</span>,
+<p>Em 1950, o matemático Claude E. Shannon publicou um artigo sobre como “ensinar” seu computador a jogar xadrez <span class="citation">(Shannon <a href="#ref-shannon1950xxii">1950</a>)</span>; no mesmo ano Alan Turing, em “<em>Computing Machinery and Intelligence</em>” <span class="citation">(TURING <a href="#ref-turing1950computing">1950</a>)</span>,
 sugeriu que, ao invés de perguntarmos se as máquinas podem pensar, devemos perguntar se as máquinas podem passar por um teste de inteligência comportamental, o teste de Turing. Uma forma de avaliar se uma máquina consegue se passar por um humano em uma conversa por escrito com um avaliador passando no teste caso o avaliador não conseguisse identificar se estava conversado com um computador ou com outro ser humano. No ano seguinte, os estudantes Marvin Minsky e Dean Edmonds construíram o SNARC, o primeiro computador de rede neural que simulava uma rede de 40 neurônios.</p>
 <p>Em 1956 houve a conferência de verão em Dartmouth College (Hanover, New Hamphire), foi oficializada o nascimento da IA. John McCarthy, Minsky, Claude Shannon e Nathaniel Rochester elaboram uma proposta a fim de reunir pesquisadores dos Estados Unidos interessados em teoria de redes neurais, autômatos e estudo da inteligência:</p>
 <blockquote>
@@ -252,7 +257,7 @@ de problemas hoje reservados aos seres humanos e se aperfeiçoarem. Achamos que 
 </blockquote>
 <p>Entre diversas ideias e apresentações, Allen Newell e Herbert Simon apresentaram o programa logic theorist, capaz de provar diversos teoremas e segundo Simon, capaz de pensar não numericamente. Apesar de muitos editores não se agradarem, esta importante proposta trouxe nos próximos anos, uma dominação nesse campo <span class="citation">(Russel and NORVIG <a href="#ref-russel2004inteligencia">2004</a>)</span>:</p>
 <ul>
-<li><p>General Problem Solver (GPS), projetado por <span class="citation">Newell and Shaw (<a href="#ref-newell1959variety">1959</a>)</span>, é um sistema que buscava imitar o homem na forma de resolver problemas. Concluíram de que a forma em como dividia um objetivo em sub objetivos e possíveis ações era similar à forma em como o homem fazia. Esta pesquisa ajudou a estabelecer os fundamentos teóricos dos sistemas de símbolos e forneceram à área da IA uma série de técnicas de programação voltadas à manipulação simbólica, por exemplo, as técnicas de busca heurística;</p></li>
+<li><p><em>General Problem Solver</em> (GPS), projetado por <span class="citation">Newell and Shaw (<a href="#ref-newell1959variety">1959</a>)</span>, é um sistema que buscava imitar o homem na forma de resolver problemas. Concluíram de que a forma em como dividia um objetivo em sub objetivos e possíveis ações era similar à forma em como o homem fazia. Esta pesquisa ajudou a estabelecer os fundamentos teóricos dos sistemas de símbolos e forneceram à área da IA uma série de técnicas de programação voltadas à manipulação simbólica, por exemplo, as técnicas de busca heurística;</p></li>
 <li><p>a IBM produz alguns dos primeiros programas de IA, entre os quais, em 1959 o
 Geometry Theorem Prover;</p></li>
 <li><p>Arthur Samuel desenvolveu um programa capaz de jogar damas ao nível de um
@@ -276,15 +281,15 @@ ser visto como o primeiro sistema completo da IA;</p></li>
 <h2><span class="header-section-number">2.2</span> A arte de uma IA</h2>
 <p>Atualmente, existem muitas atividades, pesquisas e aplicações em diversos temas que muitas vezes nem perbemos:</p>
 <ul>
-<li><p>Recomendações de mídia: com base em seu perfil de uso, o algoritmo compara filmes, músicas, clips, etc com base em vários usuários que possuem os gostos similares ao nosso. Recomedando aquilo que provavelmente irá nos agradar. Por exemplo Spotify, YouTube e Netflix.</p></li>
+<li><p>Recomendações de mídia: com base em seu perfil de uso, o algoritmo compara filmes, músicas, clips, etc com base em vários usuários que possuem os gostos similares ao nosso. Recomedando aquilo que provavelmente irá nos agradar. Por exemplo <em>Spotify</em>, <em>YouTube</em> e <em>Netflix</em>.</p></li>
 <li><p>Reconhecimento de fala e assistentes virtuais: já refletiu sobre como funciona sua Google Assistente? Com ondas sonoras emitidas pela voz, o algoritmo reconhece palavras, frases e até mesmo o timbre, fornecendo respostas de acordo com o que recebe.</p></li>
-<li><p>Jogos: a inteligência artificial desenvolvida pela OpenAi conseguiu derrotar uma das melhores equipes do Dota 2 do mundo.</p></li>
+<li><p>Jogos: a inteligência artificial desenvolvida pela <em>OpenAi</em> conseguiu derrotar uma das melhores equipes do <em>Dota 2</em> do mundo.</p></li>
 <li><p>Logística: a crise de 1991, por exemplo, no Golfo Pérsico. Foi utilizada a DART <span class="citation">(Cross and Walker <a href="#ref-cross1994dart">1994</a>)</span>, uma ferramenta que envolveu até 50.000 veículos, transporte de carga aérea e pessoa simultâneamente com o objetivo de realizar um planejamento logístico automatizado levando em conta rotas, pontos de partida e resolução de conflitos.</p></li>
 <li><p>Reconhecimento de imagens: identificação de objetos, pessoas, animais e qualquer figura com base em exemplos prévios, como por exemplo identificador de pessoas em uma foto do Facebook.</p></li>
-<li><p>Verificação de compras: detecção de comportamentos suspeitos a partir do histórico e perfil do usuário, como a e-commerce.</p></li>
+<li><p>Verificação de compras: detecção de comportamentos suspeitos a partir do histórico e perfil do usuário, como a <em>e-commerce</em>.</p></li>
 <li><p>Automóveis autônomos: por meio do algoritmo, visualiza a estrada, as placas, condição climática, outros veículos e diversos outros obstáculos para tomar decisões de seu trajeto sem a necessidade de uma pessoa.</p></li>
 </ul>
-<p>Poderíamos falar desde exemplos de inteligência artificial aplicados casos jurídicos, diagnósticos na área da saúde, identificadores de <em>fake news</em> (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (Artificial General Intelligence), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.</p>
+<p>Poderíamos falar desde exemplos de inteligência artificial aplicados em casos jurídicos, diagnósticos na área da saúde, identificadores de <em>fake news</em> (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (<em>Artificial General Intelligence</em>), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.</p>
 
 </div>
 </div>

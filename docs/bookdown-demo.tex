@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-12-09}
+\date{2020-12-11}
 
 \begin{document}
 \maketitle
@@ -277,11 +277,17 @@ Para facilitar a compreensão, considere a observação de que você esteja ouvi
 \item
   \textbf{Parâmetros:} podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.
 \item
-  \textbf{Paramétrico:}
+  \textbf{Paramétrico x Não Paramétrico:}
 \item
   \textbf{Correlação:}
 \item
   \textbf{Supervisionada x Não supervisionada:}
+\item
+  \textbf{Produto Interno:}
+\item
+  \textbf{Multiplicadores de Lagrange:}*
+\item
+  \textbf{Karush-Kuhn-Tucker (KKT):}
 \end{itemize}
 
 \hypertarget{i-a}{%
@@ -298,7 +304,7 @@ Quando tratamos da inteligência artificial não é fácil definir o que ela é.
 
 O primeiro trabalho a ser reconhecido como IA foi elaborado por \citet{mcculloch1943logical} que tinha como propósito estudar como os neurônios podiam funcionar, modelando uma rede neural simples com circuitos elétricos. Os mesmos autores sugeriram que as redes neurais definidas em conformidade poderiam ser capazes de aprender. Por seguinte, \citet{hebb1949organization} escreveu \emph{The Organization of Behavior} que fortalecia as teorias de que o condicionamento psicológico estava presente em qualquer parte dos animais. Teve como a premissa de que dois neurônios participantes de uma sinapse, têm ativação simultânea, então a força da conexão entre eles deve ser seletivamente aumentada, ou seja, os caminhos neurais são fortalecidos cada vez que são utilizados.
 
-Em 1950, o matemático Claude E. Shannon publicou um artigo sobre como ``ensinar'' seu computador a jogar xadrez \citep{shannon1950xxii}; no mesmo ano Alan Turing, em ``Computing Machinery and Intelligence'' \citep{turing1950computing},
+Em 1950, o matemático Claude E. Shannon publicou um artigo sobre como ``ensinar'' seu computador a jogar xadrez \citep{shannon1950xxii}; no mesmo ano Alan Turing, em ``\emph{Computing Machinery and Intelligence}'' \citep{turing1950computing},
 sugeriu que, ao invés de perguntarmos se as máquinas podem pensar, devemos perguntar se as máquinas podem passar por um teste de inteligência comportamental, o teste de Turing. Uma forma de avaliar se uma máquina consegue se passar por um humano em uma conversa por escrito com um avaliador passando no teste caso o avaliador não conseguisse identificar se estava conversado com um computador ou com outro ser humano. No ano seguinte, os estudantes Marvin Minsky e Dean Edmonds construíram o SNARC, o primeiro computador de rede neural que simulava uma rede de 40 neurônios.
 
 Em 1956 houve a conferência de verão em Dartmouth College (Hanover, New Hamphire), foi oficializada o nascimento da IA. John McCarthy, Minsky, Claude Shannon e Nathaniel Rochester elaboram uma proposta a fim de reunir pesquisadores dos Estados Unidos interessados em teoria de redes neurais, autômatos e estudo da inteligência:
@@ -315,7 +321,7 @@ Entre diversas ideias e apresentações, Allen Newell e Herbert Simon apresentar
 
 \begin{itemize}
 \item
-  General Problem Solver (GPS), projetado por \citet{newell1959variety}, é um sistema que buscava imitar o homem na forma de resolver problemas. Concluíram de que a forma em como dividia um objetivo em sub objetivos e possíveis ações era similar à forma em como o homem fazia. Esta pesquisa ajudou a estabelecer os fundamentos teóricos dos sistemas de símbolos e forneceram à área da IA uma série de técnicas de programação voltadas à manipulação simbólica, por exemplo, as técnicas de busca heurística;
+  \emph{General Problem Solver} (GPS), projetado por \citet{newell1959variety}, é um sistema que buscava imitar o homem na forma de resolver problemas. Concluíram de que a forma em como dividia um objetivo em sub objetivos e possíveis ações era similar à forma em como o homem fazia. Esta pesquisa ajudou a estabelecer os fundamentos teóricos dos sistemas de símbolos e forneceram à área da IA uma série de técnicas de programação voltadas à manipulação simbólica, por exemplo, as técnicas de busca heurística;
 \item
   a IBM produz alguns dos primeiros programas de IA, entre os quais, em 1959 o
   Geometry Theorem Prover;
@@ -353,22 +359,22 @@ Atualmente, existem muitas atividades, pesquisas e aplicações em diversos tema
 
 \begin{itemize}
 \item
-  Recomendações de mídia: com base em seu perfil de uso, o algoritmo compara filmes, músicas, clips, etc com base em vários usuários que possuem os gostos similares ao nosso. Recomedando aquilo que provavelmente irá nos agradar. Por exemplo Spotify, YouTube e Netflix.
+  Recomendações de mídia: com base em seu perfil de uso, o algoritmo compara filmes, músicas, clips, etc com base em vários usuários que possuem os gostos similares ao nosso. Recomedando aquilo que provavelmente irá nos agradar. Por exemplo \emph{Spotify}, \emph{YouTube} e \emph{Netflix}.
 \item
   Reconhecimento de fala e assistentes virtuais: já refletiu sobre como funciona sua Google Assistente? Com ondas sonoras emitidas pela voz, o algoritmo reconhece palavras, frases e até mesmo o timbre, fornecendo respostas de acordo com o que recebe.
 \item
-  Jogos: a inteligência artificial desenvolvida pela OpenAi conseguiu derrotar uma das melhores equipes do Dota 2 do mundo.
+  Jogos: a inteligência artificial desenvolvida pela \emph{OpenAi} conseguiu derrotar uma das melhores equipes do \emph{Dota 2} do mundo.
 \item
   Logística: a crise de 1991, por exemplo, no Golfo Pérsico. Foi utilizada a DART \citep{cross1994dart}, uma ferramenta que envolveu até 50.000 veículos, transporte de carga aérea e pessoa simultâneamente com o objetivo de realizar um planejamento logístico automatizado levando em conta rotas, pontos de partida e resolução de conflitos.
 \item
   Reconhecimento de imagens: identificação de objetos, pessoas, animais e qualquer figura com base em exemplos prévios, como por exemplo identificador de pessoas em uma foto do Facebook.
 \item
-  Verificação de compras: detecção de comportamentos suspeitos a partir do histórico e perfil do usuário, como a e-commerce.
+  Verificação de compras: detecção de comportamentos suspeitos a partir do histórico e perfil do usuário, como a \emph{e-commerce}.
 \item
   Automóveis autônomos: por meio do algoritmo, visualiza a estrada, as placas, condição climática, outros veículos e diversos outros obstáculos para tomar decisões de seu trajeto sem a necessidade de uma pessoa.
 \end{itemize}
 
-Poderíamos falar desde exemplos de inteligência artificial aplicados casos jurídicos, diagnósticos na área da saúde, identificadores de \emph{fake news} (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (Artificial General Intelligence), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.
+Poderíamos falar desde exemplos de inteligência artificial aplicados em casos jurídicos, diagnósticos na área da saúde, identificadores de \emph{fake news} (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (\emph{Artificial General Intelligence}), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.
 
 \hypertarget{vertentes-de-uma-ia-e-fundamentauxe7uxe3o-filosuxf3fica}{%
 \chapter{Vertentes de uma IA e fundamentação filosófica}\label{vertentes-de-uma-ia-e-fundamentauxe7uxe3o-filosuxf3fica}}
@@ -417,7 +423,7 @@ Um aprendizado de máquina \textbf{não} é o mesmo que uma lista de instruçõe
 \hypertarget{como-a-muxe1quina-aprende}{%
 \section{Como a máquina aprende?}\label{como-a-muxe1quina-aprende}}
 
-Para facilitar a compressão, imagine que você é um vendedor e está interessado em clientes ``bons pagadores'' e ``maus pagadores''. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clientes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.
+Você é um vendedor e está interessado em clientes ``bons pagadores'' e ``maus pagadores''. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clientes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.
 
 Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos que passaram por toda uma análise se havia dados faltantes, redundantes, etc e já classificados entre cliente bom pagador e mau pagador e suas respectivas características para treiná-lo. Com estes dados o algoritmo irá aprender por meio de com quais condições são necessárias para o cliente ser classificado como bom pagador ou mau pagador. Importante ressaltar que existem diferentes algoritmos de Aprendizado de Máquina que poderiam resolver esse problema, de acordo com modelos estatísticos e comandos computacionais que atendam a certos pressupostos.
 
@@ -430,7 +436,7 @@ Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos 
 \hypertarget{preprocesso}{%
 \chapter{Pré-processamento}\label{preprocesso}}
 
-Para o profissional que trabalha com Aprendizado de Máquina ou outras áreas, embora exigindo boa parte do tempo nesta etapa, é uma das mais importantes. O pré-processamento é um conjunto de atividades que buscar preparar, organizar e estruturar o banco de dados (\emph{dataset}) para que possa trabalhar com os dados. Ela torna a informação de seus dados mais consistentes, com organização rígida e geralmente classificados de acordo com o seu formato (caracteres, binários, númericos, etc). Podemos dizer que ele é um conjunto de técnicas do campo de \textbf{Mineração de dados (\emph{Data mining})}, uma outra área além de Inteligência Artificial (que engloba Aprendiza de Máquina) -- que já é grande por si só - , que trat-se de uma outra dimensão de estudos e metodologias, isso sem falarmos de outros campos além destes dois. Neste tópico, vamos abordar algumas delas que são muito utilizadas nesta área. Note que em todos os procedimentos de Aprendizado de Máquina existe inúmeras metodologias para serem aplicadas em cada etapa e, de acordo com o interesse do pesquisador, pode ser utilizado diferentes estratégias com diferentes combinações. Não há uma receita de bolo, sabemos que precisamos extrair dados, pré-processalos (aplicar uma(s) estratégia para analisar, classificar os atributos, eliminar os redundantes, preencher ou eliminar os faltantes), desenvolver seus modelos de Aprendizado de Máquina, treiná-los e por fim, avaliar todo o seu modelo. É\ldots{} Não é fácil, mas todo esse procedimento é fundamental para que se obtenha um modelo adequado. Portanto nesta seção busquei separar em alguns tópicos para facilitar a compreensão, porém entenda que \textbf{TODAS} as metodologias e estratégias podem ser combinadas e estão entrelaçadas. É como vários conjuntos em um \emph{Diagrama de Venn} que estão dentro do Pré-processamento que está dentro de Mineração de dados e que está interseccionada com Aprendizado de Máquina (dentro de IA).
+Para o profissional que trabalha com Aprendizado de Máquina ou outras áreas, embora exigindo boa parte do tempo nesta etapa, é uma das mais importantes. O pré-processamento é um conjunto de atividades que buscar preparar, organizar e estruturar o banco de dados (\emph{dataset}) para que possa trabalhar com os dados. Ela torna a informação de seus dados mais consistentes, com organização rígida e geralmente classificados de acordo com o seu formato (caracteres, binários, númericos, etc). Podemos dizer que ele é um conjunto de técnicas do campo de \textbf{Mineração de dados (\emph{Data mining})}, uma outra área além de Inteligência Artificial (que engloba Aprendiza de Máquina) -- que já é grande por si só - , que trata-se de uma outra dimensão de estudos e metodologias, isso sem falarmos de outros campos além destes dois. Neste tópico, vamos abordar algumas delas que são muito utilizadas nesta área. Note que em todos os procedimentos de Aprendizado de Máquina existe inúmeras metodologias para serem aplicadas em cada etapa e, de acordo com o interesse do pesquisador, pode ser utilizado diferentes estratégias com diferentes combinações. Não há uma só receita de bolo: sabemos que precisamos extrair dados, pré-processalos (aplicar uma(s) estratégia para analisar, classificar os atributos, eliminar os redundantes, preencher ou eliminar os faltantes), desenvolver seus modelos de Aprendizado de Máquina, treiná-los e por fim, avaliar todo o seu modelo e cada etapa se encontra com diversos métodos. É\ldots{} Não é fácil, mas todo esse procedimento é fundamental para que se obtenha um modelo adequado. Portanto nesta seção busquei separar em alguns tópicos para facilitar a compreensão, porém entenda que \textbf{TODAS} as metodologias e estratégias podem ser combinadas e estão entrelaçadas. É como vários conjuntos em um \emph{Diagrama de Venn} que estão dentro do Pré-processamento que está dentro de Mineração de dados e que está interseccionada com Aprendizado de Máquina (dentro de IA).
 
 \textbf{Não se assuste:} No último capítulo deste livro estará um diagrama e uma explicação mais ``cronológica'' de todo esse cosmos, com suas ``gálaxias'' e sistemas ``solares'' de conteúdo.
 
@@ -454,10 +460,10 @@ Durante o desenvolvimento destes modelos é comum se deparar com dados faltantes
 \hypertarget{tratamento-de-dados-faltantes}{%
 \subsection{Tratamento de dados faltantes}\label{tratamento-de-dados-faltantes}}
 
-Existem diversas metodologias de tratamentos em dados faltantes. Quando os dados são faltantes em um conjunto de dados, existem cinco grandes categorias de tratamento de análise que um pesquisador deve escolher. Como mencionado anteriormente e ainda reforço, a escolha do tratamento de análise de dados faltantes tem implicações importantes para a acurácia e o viés das estimativas. A Tabela 1 resume as definições e os maiores problemas nos cinco tipos de análises \citep{tecnicasinput}.
+Existem diversas metodologias de tratamentos em dados faltantes. Quando os dados são faltantes em um conjunto de dados, existem cinco grandes categorias de tratamento de análise que um pesquisador deve escolher. Como mencionado anteriormente e ainda reforço, a escolha do tratamento de análise de dados faltantes tem implicações importantes para a acurácia e o viés das estimativas.
 
 \begin{longtable}[]{@{}ccc@{}}
-\caption{\label{tab:preprocess} Metodologia de dados faltantes. Determinados termos estão na seção \ref{dicio} e alguns outros serão apresentados ao longo do livro.}\tabularnewline
+\caption{\label{tab:preprocess} Metodologia de dados faltantes \citep{tecnicasinput}. Determinados termos estão na seção \ref{dicio} e alguns outros serão apresentados ao longo do livro .}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.30\columnwidth}\centering
 \textbf{Técnicas de Análise para dados faltantes}\strut
@@ -814,7 +820,7 @@ Além dos sentidos de busca, existem diversas abordagens que avaliam subconjunto
 Com a finalidade de filtrar atributos não importantes, essa abordagem é feita antes da construção dos modelos. A ideia é simplesmente receber como entrada o
 conjunto de exemplos descrito utilizando somente o subconjunto de atributos importantes identificados. Ela ocorre antes do aprendizado de máquina \citep{john1994irrelevant} e utiliza-se métodos estatísticos diversos para esta seleção, como por exemplo árvores de decisão ou as ``medidas de importância'' que são apresentadas na próxima seção.
 
-• \textbf{\emph{Wrapper}- Empacotar:} ocorre também externamente ao algoritmo de aprendizado. Este método gera um subconjuto candidato de atributos, executa o algoritmo de aprendizado considerado somente esse subcojunto selecionado de treinamento e avalia a precisão desse classificador. Repete-se esse processo para cada subconjunto de atributos até buscar um bom modelo. Como exemplo temos a análise por arvores de decisão e florestas aleatórias (serão apresentadas mais a frente). Tem como desvantagem o custo operacional desta abordagem. Exemplo de aplicações: \emph{Naive Bayes} e Máquina de vetores de suporte para classificação.
+• \textbf{\emph{Wrapper} - Empacotar:} ocorre também externamente ao algoritmo de aprendizado. Este método gera um subconjuto candidato de atributos, executa o algoritmo de aprendizado considerado somente esse subcojunto selecionado de treinamento e avalia a precisão desse classificador. Repete-se esse processo para cada subconjunto de atributos até buscar um bom modelo. Como exemplo temos a análise por arvores de decisão e florestas aleatórias (serão apresentadas mais a frente). Tem como desvantagem o custo operacional desta abordagem. Exemplo de aplicações: \emph{Naive Bayes} e Máquina de vetores de suporte para classificação.
 
 • \textbf{\emph{Embedded} - Embutida:} é realizada internamente pelo próprio algoritmo de extração de padrões. Esta estratégia seleciona o subconjunto de atributos no processo de construção do modelo de classificação, durante a fase de treinamento, e geralmente são específicos para um dado algoritmo de aprendizado. A principal diferença dos métodos do tipo \emph{embedded} e \emph{wrapper},
 é que em \emph{embedded} depende em relação a um modelo preditivo específico, assim não permite a sua implementação em combinação com outros modelos \citep{souza2014computational}.
@@ -1549,7 +1555,255 @@ Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \
 \chapter{Algoritmos de Aprendizagem - Parte II}\label{ptII}}
 
 \hypertarget{svm}{%
-\section{SVM}\label{svm}}
+\section{\texorpdfstring{Máquina de Vetores Suporte - \emph{Support Vectors Machine}}{Máquina de Vetores Suporte - Support Vectors Machine}}\label{svm}}
+
+A Máquina de Vetores de Suporte (SVMs, do inglês \emph{Support Vectors Machine}), são embasadas pela teoria de aprendizado estatística, desenvolvida por \citet{vapnik2013nature} com o propósito de resolver problemas de classificação de padrões, foi originalmente desenvolvida para classificação binária, construindo um hiperplano como superfície de decisão que separa classes linearmente separáveis (ao caso de não-linearmente separáveis utiliza-se função de mapeamento). Muitos a comparam com redes neurais pelo fato de ser eficiente em trabalhar com dados de alta dimensionalidade \citep{sung2003identifying, ding2001multi}. É utilizada atualmente tanto para regressão quanto para qualissificação e é uma análise supervisionada.
+
+Vamos supor um gráfico com características \(X_1\) e \(X_2\) e já classificados na amostra os indivíduos que estão e não estão doentes, quanto maior o valor de ambos maior a probabilidade do indivíduo ser classificado como doente.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm1} 
+
+}
+
+\caption{Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes.}\label{fig:svm1}
+\end{figure}
+
+
+
+Um exemplo como esse é simples observar que podemos separar os dados traçando uma linha reta. Classificando os doentes para a direita e acima do gráfico e não doentes a esquerda e abaixo. Esta linha é o que chamamos de \textbf{hiperplano de separação}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm2} 
+
+}
+
+\caption{Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes por meio de um hiperplano.}\label{fig:svm2}
+\end{figure}
+
+
+
+Lembrando que hiperplano é uma generalização de um plano: uma dimensão é um ponto, duas dimensões é uma linha e três é um plano. Quando tratamos de mais dimensões é o que denominamos hiperplano. O SVM pode trabalhar com qualquer dimensão.
+
+Podemos encontrar em uma amostra vários hiperplanos de separação e válidos para a classficação de um \emph{dataset}. Mas não necessariamente este é o melhor. Até mesmo pode ser que classifique alguns errados.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm3} 
+
+}
+
+\caption{Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes por mais de um hiperplano de separação.}\label{fig:svm3}
+\end{figure}
+
+
+
+O objetivo do algoritmo de SVM é identificar um hiperplano ``ideal'' que busca classificar o conjunto de dados da melhor maneira possível (menor erro). Ao verificar as distâncias perpendiculares entre as observações e o hiperplano de separação, obtemos uma \textbf{Margem}. Os pontos menos distantes do hiperplano são os que a definem. Estes pontos são os \textbf{Vetores de Suporte (VS)}, que têm este nome pois eles dão suporte ao hiperplano. Caso forem movidos, a margem acompanhará o movimento.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm4} 
+
+}
+
+\caption{Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes pelo hiperplano e sua margem.}\label{fig:svm4}
+\end{figure}
+
+
+
+\hypertarget{classificauxe7uxe3o-de-padruxf5es-linearmente-separuxe1veis}{%
+\subsection{Classificação de Padrões Linearmente Separáveis}\label{classificauxe7uxe3o-de-padruxf5es-linearmente-separuxe1veis}}
+
+Uma classificação linear consiste em determinar uma função \(f: X \subseteq \mathbb{R}^N \rightarrow \mathbb{R}^N\) que atribuirá um valor de \(+1\) se \(f(x)\geq 0\) e \(-1\) se \(f(x)<0\). Sendo assim pelo produto interno (ver Produto Interno em \ref{dicio}):
+
+\begin{equation}
+f(x)= \langle\vec{w}.\vec{x}\rangle+b
+\label{eq:classlin}
+\end{equation}
+
+\begin{equation}
+= \displaystyle \sum^n_{i=1} \vec{w_i} \vec{x}_i+b
+\label{eq:classlin2}
+\end{equation}
+
+em que \(\vec{w}\) e \(b\) são popularmente conhecido como \textbf{vetor peso} e \textbf{\emph{bias}} e parâmetros responsáveis em controlar a função e a regra da decisão \citep{lima2002maquinas}. Os valores destes parâmetros são obtidos pelo processo de aprendizagem a partir dos dados de entrada \citep{gonccalves2015maquina}. Sendo o vetor peso \(\vec{w}\) que define uma direção perpendicular ao hiperplano e com a variação de \(b\) o hiperplano é movido paralelamente a ele mesmo.
+
+Portanto um SVM linear procura encontrar um hiperplano ótimo que separe da melhor maneira possível os dados de cada classe (margem máxima).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm5} 
+
+}
+
+\caption{Interpretação geométrica de \(\vec{w}\) e \(b\) sobre um hiperplano \citep{lima2002maquinas, gonccalves2015maquina}.}\label{fig:svm5}
+\end{figure}
+
+
+
+\hypertarget{margmax}{%
+\subsection{Hiperplano de Separação Ótima / Margem Máxima}\label{margmax}}
+
+Um hiperplano é considerado de margem máxima se separa um conjunto de vetores sem erros e a distância entre os vetores de classes diferentes mais próximos do hiperplano é a máxima possível.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/margmax} 
+
+}
+
+\caption{(a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima \citep{da2009classificaccao}.}\label{fig:margmax}
+\end{figure}
+
+
+
+Assumindo que o conjunto de dados é linearmente separável, o hiperplano ótimo é que possuir a maior margem:
+
+\begin{equation}
+\langle\vec{w}.\vec{x}\rangle+b=0
+\label{eq:maiormarg}
+\end{equation}
+
+em que \(\vec{w}\) e \(b\), o vetor peso e \emph{bias} respectivamente.
+
+Assumindo a restrição:
+
+\[\langle\vec{w}.\vec{x}_i\rangle+b\geq + 1 \ , \ \mbox{para} \ y_i=+1\]
+\begin{equation}
+\langle\vec{w}.\vec{x}_i\rangle+b\leq - 1 \ , \ \mbox{para} \ y_i=-1
+\label{eq:restricaoclassif}
+\end{equation}
+
+Os classificadores lineares que separam o conjunto de dados em treinamento possuem margem positiva. Esta restrição nos mostra que não há dados entre 0 e \(\pm1\), tendo como a margem sempre maior que a distância entre os hiperplanos \(\langle\vec{w}.\vec{x}_i\rangle+b=0\) e \(|\langle\vec{w}.\vec{x}_i\rangle+b= 1|\). Fazendo com que as SVMs sejam chamadas de \textbf{Margens Rígidas}, do inglês \emph{Hard Margin}. Com isso, ao combinar ambas equações restrições:
+
+\begin{equation}
+y_i(\langle\vec{w}.\vec{x}_i\rangle+b)\geq  1 \ ,  \ i=\{1,2,...,n\}
+\label{eq:restricaoclassifcomb}
+\end{equation}
+
+Aplicando a distância Euclidiana (\(d_+\) e \(d_-\)) entre os vetores de suporte positivos/negativos e o hiperplano, definido a margem \(\rho\) de um hiperplano de separação como sendo a maior geométrica entre todos os hiperplano, é possível representar \(\rho(d_+ + d_-)\) \citep{gonccalves2015maquina}.
+
+\begin{equation}
+d_i(\vec{w},b;\vec{x}_i)=\frac{|\langle\vec{w}.\vec{x}_i\rangle+b|}{||\vec{w}||}=\frac{y_i(|\langle\vec{w}.\vec{x}_i\rangle+b)}{||\vec{w}||}
+\label{eq:distanciahip}
+\end{equation}
+
+em que \(d_(\vec{w},b;\vec{x}_i)\) é a distância de um dado \(\vec{x}_i\) ao hiperplano \((\vec{w},b)\) \citep{lima2002maquinas}. Ao levarmos em consideração a restrição de \eqref{eq:restricaoclassifcomb}, podemos expressar:
+
+\begin{equation}
+d_(\vec{w},b;\vec{x}_i)=\geq \frac{1}{||\vec{w}\\}
+\label{eq:distcrestri}
+\end{equation}
+
+Identificando \(\frac{1}{||\vec{w}||}\) como o limite inferior da distância entre os vetores de suporte \(\vec{x}_i\) e o hiperplano \((\vec{w},b)\). Logo, as distância serão:
+
+\begin{equation}
+d_+=d_-=\frac{1}{||\vec{w}||}
+\label{eq:distanciamarg}
+\end{equation}
+
+A margem é sempre maior que a última instância, a minimização de \(||\vec{w}||\) nos traz a maximização da margem. Podemos definir a margem \(\rho\) como \citep{gonccalves2015maquina}:
+
+\begin{equation}
+\rho=(d_+=d_-)=\frac{2}{||\vec{w}||}
+\label{eq:margemsvm}
+\end{equation}
+
+Assim teremos a distância entre hiperplanos e os vetores de suporte:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm6} 
+
+}
+
+\caption{Distância entre hiperplanos e vetores de suporte \citep{gonccalves2015maquina}.}\label{fig:svm6}
+\end{figure}
+
+
+
+Para minimizarmos \(||\vec{w}||\) (maximizarmos esta margem), podemos utilizar a teoria dos multiplicadores de Lagrange (ver Multiplicadores de Lagrange em \ref{dicio}):
+
+\begin{equation}
+L(\vec{w},b,\alpha)=\frac{1}{2}||\vec{w}||^2-\displaystyle \sum^n_{i=1}\alpha_i(y_i(\langle\vec{w}.\vec{x}_i\rangle+b)-1)
+\label{eq:lagrangemargem}
+\end{equation}
+
+em que \(\alpha_i\) são os multiplicadores de Lagrange. Então agora visamos minimizar \(L(\vec{w},b,\alpha)\), em relação a \(\vec{w}\) e \(b\) e a maximização dos \(\alpha_i\) (encontrar os pontos ótimos pelas derivadas parciais iguals a zero). Portanto:
+
+\[\frac{\partial L}{\partial b}=0\]
+\[\frac{\partial L}{\partial \vec{w}}=\bigg(\frac{\partial L}{\partial w_1},\frac{\partial L}{\partial w_2},...,\frac{\partial L}{\partial w_n}\bigg)=0\]
+Obtemos por meio delas:
+
+\begin{equation}
+\displaystyle \sum^n_{i=1}\alpha_i y_i=0
+\label{eq:lagrangemarge1}
+\end{equation}
+
+\begin{equation}
+\vec{w}=\displaystyle \sum^n_{i=1}\alpha_i y_i \vec{w}_i
+\label{eq:lagrangemarge2}
+\end{equation}
+
+Substituindo as equações \eqref{eq:lagrangemarge1} e \eqref{eq:lagrangemarge2} em \eqref{eq:lagrangemargem}, chegamos em:
+
+\begin{equation}
+\displaystyle^n_{i=1}\alpha_i=\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle\vec{x}_i.x_j\rangle
+\label{eq:lagrangemarge3}
+\end{equation}
+
+com \(\alpha_i\geq0,i\{1,2,...,n\}\). Serão representados os valores ótimos de \((\vec{w},b)\) por \((\vec{w}^*,b^*)\). E \(\alpha^*_i\) assume valores positivos para os exemplos de treinamento que estão a uma distância do hiperplano ótimo igual a largura da margem, os vetores de suporte \citep{gonccalves2015maquina}. Podemos perceber que o hiperplano de separação ótimo é obtido pelos vetores de suporte e não de todo o conjunto \citep{lorena2003introduccaoas}.
+
+Com um vetor suporte dado \(\vec{x}_j\), obtemos valor de \(b^*\) pela condição de KKT (ver Karush-Kuhn-Tucker em \ref{dicio}):
+
+\begin{equation}
+b^* =y_j-\langle\vec{w}^*.\vec{x}_j.
+\label{eq:kktsvm}
+\end{equation}
+
+Com todos os valores dos parâmetros calculados podemos, por fim, ter um novo padrão \(z\) calculando:
+
+\begin{equation}
+sgn(\langle \vec{w}^* . \vec{z}\rangle+b^*)
+\label{eq:sgn}
+\end{equation}
+
+sendo \(sgn\) a função sinal que fornece o valor 1 se o número for positivo, valor 0 se o número for zero e -1 se for negativo.
+
+Pode-se também utilizar as \textbf{Margens Flexíveis}, que busca não garantir todas as observações no lado certo, tolerando algumas violações. Basicamente atribui-se um erro para cada observação que viola o hiperplano proporcional o quanto passou a margem e o violou. Acrescentando na função este erro para compensar. Nos algoritmos dos \emph{softwares} estatísticos, é comum o uso de uma constante \textbf{C} que controla a severidade do modelo, dando limite do tanto do erro que pode haver no algoritmo. Seu valor depende muito da pesquisa e de sua fundamentação teórica, pois pode ser que aumente a quantidade de vetores de suporte e até mesmo podendo causando problemas de \textbf{overfitting} (\ref{fitt}).
+
+\hypertarget{classificauxe7uxe3o-de-padruxf5es-nuxe3o-linearmente-separuxe1veis}{%
+\subsection{Classificação de Padrões Não-Linearmente Separáveis}\label{classificauxe7uxe3o-de-padruxf5es-nuxe3o-linearmente-separuxe1veis}}
+
+Nas situações reais a maioria dos padrões são mais complexos e não-lineares. O conjunto de dados é classificado como não-linearmente separável ao caso de não ser possível separar os dados com um hiperplano:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm7} 
+
+}
+
+\caption{Padrões linearmente e não-linearmente separável respectivamente \citep{gonccalves2015maquina}.}\label{fig:svm7}
+\end{figure}
+
+
+
+Segundo \citet{smola2000introduction}, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções \emph{Kernel} para tratarmos de uma problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).
+
+Um conjunto de entrada \(X\) com pares \(\{(x_1,y_1);(x_2,y_2),...,(x_n,y_n)\}\) de uma amostra de treinamento (não-linearmente separável), são mapeados por meio de uma função \(\phi\) a fim de obter um novo conjunto de dados \(X'\) linearmente separável em um espaço de maior dimensionalidade, representado por \(\{(\phi(x_1),y_1),...,(\phi(x_n),y_n)\}\).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm8} 
+
+}
+
+\caption{Mapeamento de um conjunto de entrada \(X\) para o espaço caracerística. Um novo conjunto \(X'\).}\label{fig:svm8}
+\end{figure}
+
+
 
 \hypertarget{decisiontree}{%
 \section{\texorpdfstring{Árvore de Decisão (\emph{Decision Tree})}{Árvore de Decisão (Decision Tree)}}\label{decisiontree}}

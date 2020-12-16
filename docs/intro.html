@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2020-12-09" />
+<meta name="date" content="2020-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,7 +183,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte II</a><ul>
-<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
+<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.1</b> Classificação de Padrões Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ptII.html"><a href="ptII.html#margmax"><i class="fa fa-check"></i><b>7.1.2</b> Hiperplano de Separação Ótima / Margem Máxima</a></li>
+<li class="chapter" data-level="7.1.3" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-não-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.3</b> Classificação de Padrões Não-Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.4" data-path="ptII.html"><a href="ptII.html#exemplosvm"><i class="fa fa-check"></i><b>7.1.4</b> Exemplos</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="ptII.html"><a href="ptII.html#decisiontree"><i class="fa fa-check"></i><b>7.2</b> Árvore de Decisão (<em>Decision Tree</em>)</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="ptII.html"><a href="ptII.html#extree"><i class="fa fa-check"></i><b>7.2.1</b> Exemplos</a></li>
 </ul></li>
@@ -301,9 +306,14 @@ de altura, respectivamente, sendo que 60% dos trabalhadores são mulheres. Um tr
 <p>Para facilitar a compreensão, considere a observação de que você esteja ouvindo barulho em sua sala de estar num dia de natal (observação <span class="math inline">\(x\)</span>), você parte da hipótese inicial que poderia ser o “Papai Noel” lhe entregando presentes (hipótese <span class="math inline">\(\theta\)</span>). A probabilidade de ser Noel lhe entregando presente apenas porque ouviu o barulho, isto é, <span class="math inline">\(P(\theta|x)\)</span> é baixa. No entanto o contrário, você com a afirmação de que é o Noel lhe entregando presentes, a probabilidade de haver barulho em sua sala de estar é bem alta, logo a verossimilhança <span class="math inline">\(L(\theta|x)=P(x|\theta)\)</span>.</p>
 <ul>
 <li><p><strong>Parâmetros:</strong> podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.</p></li>
-<li><p><strong>Paramétrico:</strong></p></li>
+<li><p><strong>Paramétrico x Não Paramétrico:</strong></p></li>
 <li><p><strong>Correlação:</strong></p></li>
 <li><p><strong>Supervisionada x Não supervisionada:</strong></p></li>
+<li><p><strong>Produto Interno:</strong></p></li>
+<li><p><strong>Multiplicadores de Lagrange:</strong>*</p></li>
+<li><p><strong>Karush-Kuhn-Tucker (KKT):</strong></p></li>
+<li><p><strong>Bias:</strong>
+<a href="https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/" class="uri">https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/</a></p></li>
 </ul>
 
 </div>

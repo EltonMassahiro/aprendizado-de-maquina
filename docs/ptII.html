@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2020-12-09" />
+<meta name="date" content="2020-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,7 +183,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem - Parte II</a><ul>
-<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> SVM</a></li>
+<li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></a><ul>
+<li class="chapter" data-level="7.1.1" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.1</b> Classificação de Padrões Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ptII.html"><a href="ptII.html#margmax"><i class="fa fa-check"></i><b>7.1.2</b> Hiperplano de Separação Ótima / Margem Máxima</a></li>
+<li class="chapter" data-level="7.1.3" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-não-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.3</b> Classificação de Padrões Não-Linearmente Separáveis</a></li>
+<li class="chapter" data-level="7.1.4" data-path="ptII.html"><a href="ptII.html#exemplosvm"><i class="fa fa-check"></i><b>7.1.4</b> Exemplos</a></li>
+</ul></li>
 <li class="chapter" data-level="7.2" data-path="ptII.html"><a href="ptII.html#decisiontree"><i class="fa fa-check"></i><b>7.2</b> Árvore de Decisão (<em>Decision Tree</em>)</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="ptII.html"><a href="ptII.html#extree"><i class="fa fa-check"></i><b>7.2.1</b> Exemplos</a></li>
 </ul></li>
@@ -236,7 +241,326 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ptII" class="section level1">
 <h1><span class="header-section-number">Capítulo 7</span> Algoritmos de Aprendizagem - Parte II</h1>
 <div id="svm" class="section level2">
-<h2><span class="header-section-number">7.1</span> SVM</h2>
+<h2><span class="header-section-number">7.1</span> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></h2>
+<p>A Máquina de Vetores de Suporte (SVMs, do inglês <em>Support Vectors Machine</em>), são embasadas pela teoria de aprendizado estatística, desenvolvida por <span class="citation">Vapnik (<a href="#ref-vapnik2013nature">2013</a>)</span> com o propósito de resolver problemas de classificação de padrões, foi originalmente desenvolvida para classificação binária, construindo um hiperplano como superfície de decisão que separa classes linearmente separáveis (ao caso de não-linearmente separáveis utiliza-se função de mapeamento). Muitos a comparam com redes neurais pelo fato de ser eficiente em trabalhar com dados de alta dimensionalidade <span class="citation">(Sung and Mukkamala <a href="#ref-sung2003identifying">2003</a>; Ding and Dubchak <a href="#ref-ding2001multi">2001</a>)</span>. É utilizada atualmente tanto para regressão quanto para qualissificação e é uma análise supervisionada.</p>
+<p>Vamos supor um gráfico com características <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> e já classificados na amostra os indivíduos que estão e não estão doentes, quanto maior o valor de ambos maior a probabilidade do indivíduo ser classificado como doente.</p>
+<div class="figure" style="text-align: center"><span id="fig:svm1"></span>
+<img src="Figuras/svm1.png" alt="Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes." width="70%" />
+<p class="caption">
+Figura 7.1: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> classificado em doentes e não doentes.
+</p>
+</div>
+
+<p>Um exemplo como esse é simples observar que podemos separar os dados traçando uma linha reta. Classificando os doentes para a direita e acima do gráfico e não doentes a esquerda e abaixo. Esta linha é o que chamamos de <strong>hiperplano de separação</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:svm2"></span>
+<img src="Figuras/svm2.png" alt="Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes por meio de um hiperplano." width="70%" />
+<p class="caption">
+Figura 7.2: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> classificado em doentes e não doentes por meio de um hiperplano.
+</p>
+</div>
+
+<p>Lembrando que hiperplano é uma generalização de um plano: uma dimensão é um ponto, duas dimensões é uma linha e três é um plano. Quando tratamos de mais dimensões é o que denominamos hiperplano. O SVM pode trabalhar com qualquer dimensão.</p>
+<p>Podemos encontrar em uma amostra vários hiperplanos de separação e válidos para a classficação de um <em>dataset</em>. Mas não necessariamente este é o melhor. Até mesmo pode ser que classifique alguns errados.</p>
+<div class="figure" style="text-align: center"><span id="fig:svm3"></span>
+<img src="Figuras/svm3.png" alt="Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes por mais de um hiperplano de separação." width="70%" />
+<p class="caption">
+Figura 7.3: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> com a classificação de doentes e não doentes por mais de um hiperplano de separação.
+</p>
+</div>
+
+<p>O objetivo do algoritmo de SVM é identificar um hiperplano “ideal” que busca classificar o conjunto de dados da melhor maneira possível (menor erro). Ao verificar as distâncias perpendiculares entre as observações e o hiperplano de separação, obtemos uma <strong>Margem</strong>. Os pontos menos distantes do hiperplano são os que a definem. Estes pontos são os <strong>Vetores de Suporte (VS)</strong>, que têm este nome pois eles dão suporte ao hiperplano. Caso forem movidos, a margem acompanhará o movimento.</p>
+<div class="figure" style="text-align: center"><span id="fig:svm4"></span>
+<img src="Figuras/svm4.png" alt="Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes pelo hiperplano e sua margem." width="70%" />
+<p class="caption">
+Figura 7.4: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> com a classificação de doentes e não doentes pelo hiperplano e sua margem.
+</p>
+</div>
+
+<div id="classificação-de-padrões-linearmente-separáveis" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Classificação de Padrões Linearmente Separáveis</h3>
+<p>Uma classificação linear consiste em determinar uma função <span class="math inline">\(f: X \subseteq \mathbb{R}^N \rightarrow \mathbb{R}^N\)</span> que atribuirá um valor de <span class="math inline">\(+1\)</span> se <span class="math inline">\(f(x)\geq 0\)</span> e <span class="math inline">\(-1\)</span> se <span class="math inline">\(f(x)&lt;0\)</span>. Sendo assim pelo produto interno (ver Produto Interno em <a href="intro.html#dicio">1.2</a>):</p>
+<p><span class="math display" id="eq:classlin">\[\begin{equation}
+f(x)= \langle\vec{w}.\vec{x}\rangle+b
+\tag{7.1}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:classlin2">\[\begin{equation}
+= \displaystyle \sum^n_{i=1} \vec{w_i} \vec{x}_i+b
+\tag{7.2}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\vec{w}\)</span> e <span class="math inline">\(b\)</span> são popularmente conhecido como <strong>vetor peso</strong> e <strong><em>bias</em></strong> e parâmetros responsáveis em controlar a função e a regra da decisão <span class="citation">(Lima <a href="#ref-lima2002maquinas">2002</a>)</span>. Os valores destes parâmetros são obtidos pelo processo de aprendizagem a partir dos dados de entrada <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>. Sendo o vetor peso <span class="math inline">\(\vec{w}\)</span> que define uma direção perpendicular ao hiperplano e com a variação de <span class="math inline">\(b\)</span> o hiperplano é movido paralelamente a ele mesmo.</p>
+<p>Portanto um SVM linear procura encontrar um hiperplano ótimo que separe da melhor maneira possível os dados de cada classe (margem máxima).</p>
+<div class="figure" style="text-align: center"><span id="fig:svm5"></span>
+<img src="Figuras/svm5.PNG" alt="Interpretação geométrica de \(\vec{w}\) e \(b\) sobre um hiperplano (Lima 2002; Gonçalves 2008)." width="70%" />
+<p class="caption">
+Figura 7.5: Interpretação geométrica de <span class="math inline">\(\vec{w}\)</span> e <span class="math inline">\(b\)</span> sobre um hiperplano <span class="citation">(Lima <a href="#ref-lima2002maquinas">2002</a>; Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.
+</p>
+</div>
+
+</div>
+<div id="margmax" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Hiperplano de Separação Ótima / Margem Máxima</h3>
+<p>Um hiperplano é considerado de margem máxima se separa um conjunto de vetores sem erros e a distância entre os vetores de classes diferentes mais próximos do hiperplano é a máxima possível.</p>
+<div class="figure" style="text-align: center"><span id="fig:margmax"></span>
+<img src="Figuras/margmax.PNG" alt="(a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima (Silva Meloni 2009)." width="70%" />
+<p class="caption">
+Figura 7.6: (a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima <span class="citation">(Silva Meloni <a href="#ref-da2009classificaccao">2009</a>)</span>.
+</p>
+</div>
+
+<p>Assumindo que o conjunto de dados é linearmente separável, o hiperplano ótimo é que possuir a maior margem:</p>
+<p><span class="math display" id="eq:maiormarg">\[\begin{equation}
+\langle\vec{w}.\vec{x}\rangle+b=0
+\tag{7.3}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\vec{w}\)</span> e <span class="math inline">\(b\)</span>, o vetor peso e <em>bias</em> respectivamente.</p>
+<p>Assumindo a restrição:</p>
+<p><span class="math display">\[\langle\vec{w}.\vec{x}_i\rangle+b\geq + 1 \ , \ \mbox{para} \ y_i=+1\]</span>
+<span class="math display" id="eq:restricaoclassif">\[\begin{equation}
+\langle\vec{w}.\vec{x}_i\rangle+b\leq - 1 \ , \ \mbox{para} \ y_i=-1
+\tag{7.4}
+\end{equation}\]</span></p>
+<p>Os classificadores lineares que separam o conjunto de dados em treinamento possuem margem positiva. Esta restrição nos mostra que não há dados entre 0 e <span class="math inline">\(\pm1\)</span>, tendo como a margem sempre maior que a distância entre os hiperplanos <span class="math inline">\(\langle\vec{w}.\vec{x}_i\rangle+b=0\)</span> e <span class="math inline">\(|\langle\vec{w}.\vec{x}_i\rangle+b= 1|\)</span>. Fazendo com que as SVMs sejam chamadas de <strong>Margens Rígidas</strong>, do inglês <em>Hard Margin</em>. Com isso, ao combinar ambas equações restrições:</p>
+<p><span class="math display" id="eq:restricaoclassifcomb">\[\begin{equation}
+y_i(\langle\vec{w}.\vec{x}_i\rangle+b)\geq  1 \ ,  \ i=\{1,2,...,n\}
+\tag{7.5}
+\end{equation}\]</span></p>
+<p>Aplicando a distância Euclidiana (<span class="math inline">\(d_+\)</span> e <span class="math inline">\(d_-\)</span>) entre os vetores de suporte positivos/negativos e o hiperplano, definido a margem <span class="math inline">\(\rho\)</span> de um hiperplano de separação como sendo a maior geométrica entre todos os hiperplano, é possível representar <span class="math inline">\(\rho(d_+ + d_-)\)</span> <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.</p>
+<p><span class="math display" id="eq:distanciahip">\[\begin{equation}
+d_i(\vec{w},b;\vec{x}_i)=\frac{|\langle\vec{w}.\vec{x}_i\rangle+b|}{||\vec{w}||}=\frac{y_i(|\langle\vec{w}.\vec{x}_i\rangle+b)}{||\vec{w}||}
+\tag{7.6}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(d_(\vec{w},b;\vec{x}_i)\)</span> é a distância de um dado <span class="math inline">\(\vec{x}_i\)</span> ao hiperplano <span class="math inline">\((\vec{w},b)\)</span> <span class="citation">(Lima <a href="#ref-lima2002maquinas">2002</a>)</span>. Ao levarmos em consideração a restrição de <a href="ptII.html#eq:restricaoclassifcomb">(7.5)</a>, podemos expressar:</p>
+<p><span class="math display" id="eq:distcrestri">\[\begin{equation}
+d_(\vec{w},b;\vec{x}_i)=\geq \frac{1}{||\vec{w}\\}
+\tag{7.7}
+\end{equation}\]</span></p>
+<p>Identificando <span class="math inline">\(\frac{1}{||\vec{w}||}\)</span> como o limite inferior da distância entre os vetores de suporte <span class="math inline">\(\vec{x}_i\)</span> e o hiperplano <span class="math inline">\((\vec{w},b)\)</span>. Logo, as distância serão:</p>
+<p><span class="math display" id="eq:distanciamarg">\[\begin{equation}
+d_+=d_-=\frac{1}{||\vec{w}||}
+\tag{7.8}
+\end{equation}\]</span></p>
+<p>A margem é sempre maior que a última instância, a minimização de <span class="math inline">\(||\vec{w}||\)</span> nos traz a maximização da margem. Podemos definir a margem <span class="math inline">\(\rho\)</span> como <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>:</p>
+<p><span class="math display" id="eq:margemsvm">\[\begin{equation}
+\rho=(d_+=d_-)=\frac{2}{||\vec{w}||}
+\tag{7.9}
+\end{equation}\]</span></p>
+<p>Assim teremos a distância entre hiperplanos e os vetores de suporte:</p>
+<div class="figure" style="text-align: center"><span id="fig:svm6"></span>
+<img src="Figuras/svm6.PNG" alt="Distância entre hiperplanos e vetores de suporte (Gonçalves 2008)." width="70%" />
+<p class="caption">
+Figura 7.7: Distância entre hiperplanos e vetores de suporte <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.
+</p>
+</div>
+
+<p>Para minimizarmos <span class="math inline">\(||\vec{w}||\)</span> (maximizarmos esta margem), podemos utilizar a teoria dos multiplicadores de Lagrange (ver Multiplicadores de Lagrange em <a href="intro.html#dicio">1.2</a>):</p>
+<p><span class="math display" id="eq:lagrangemargem">\[\begin{equation}
+L(\vec{w},b,\alpha)=\frac{1}{2}||\vec{w}||^2-\displaystyle \sum^n_{i=1}\alpha_i(y_i(\langle\vec{w}.\vec{x}_i\rangle+b)-1)
+\tag{7.10}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\alpha_i\)</span> são os multiplicadores de Lagrange. Então agora visamos minimizar <span class="math inline">\(L(\vec{w},b,\alpha)\)</span>, em relação a <span class="math inline">\(\vec{w}\)</span> e <span class="math inline">\(b\)</span> e a maximização dos <span class="math inline">\(\alpha_i\)</span> (encontrar os pontos ótimos pelas derivadas parciais iguals a zero). Portanto:</p>
+<p><span class="math display">\[\frac{\partial L}{\partial b}=0\]</span>
+<span class="math display">\[\frac{\partial L}{\partial \vec{w}}=\bigg(\frac{\partial L}{\partial w_1},\frac{\partial L}{\partial w_2},...,\frac{\partial L}{\partial w_n}\bigg)=0\]</span>
+Obtemos por meio delas:</p>
+<p><span class="math display" id="eq:lagrangemarge1">\[\begin{equation}
+\displaystyle \sum^n_{i=1}\alpha_i y_i=0
+\tag{7.11}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:lagrangemarge2">\[\begin{equation}
+\vec{w}=\displaystyle \sum^n_{i=1}\alpha_i y_i \vec{w}_i
+\tag{7.12}
+\end{equation}\]</span></p>
+<p>Substituindo as equações <a href="ptII.html#eq:lagrangemarge1">(7.11)</a> e <a href="ptII.html#eq:lagrangemarge2">(7.12)</a> em <a href="ptII.html#eq:lagrangemargem">(7.10)</a>, chegamos em:</p>
+<p><span class="math display" id="eq:lagrangemarge3">\[\begin{equation}
+L =\displaystyle \sum^n_{i=1}\alpha_i-\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle x_i.x_j\rangle
+\tag{7.13}
+\end{equation}\]</span></p>
+<p>com <span class="math inline">\(\alpha_i\geq0,i\{1,2,...,n\}\)</span>. Serão representados os valores ótimos de <span class="math inline">\((\vec{w},b)\)</span> por <span class="math inline">\((\vec{w}^*,b^*)\)</span>. E <span class="math inline">\(\alpha^*_i\)</span> assume valores positivos para os exemplos de treinamento que estão a uma distância do hiperplano ótimo igual a largura da margem, os vetores de suporte <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>. Podemos perceber que o hiperplano de separação ótimo é obtido pelos vetores de suporte e não de todo o conjunto <span class="citation">(Lorena and Carvalho <a href="#ref-lorena2003introduccaoas">2003</a>)</span>.</p>
+<p>Com um vetor suporte dado <span class="math inline">\(\vec{x}_j\)</span>, obtemos valor de <span class="math inline">\(b^*\)</span> pela condição de KKT (ver Karush-Kuhn-Tucker em <a href="intro.html#dicio">1.2</a>):</p>
+<p><span class="math display" id="eq:kktsvm">\[\begin{equation}
+b^* =y_j-\langle\vec{w}^*.\vec{x}_j.
+\tag{7.14}
+\end{equation}\]</span></p>
+<p>Com todos os valores dos parâmetros calculados podemos, por fim, ter um novo padrão <span class="math inline">\(z\)</span> calculando:</p>
+<p><span class="math display" id="eq:sgn">\[\begin{equation}
+sgn(\langle \vec{w}^* . \vec{z}\rangle+b^*)
+\tag{7.15}
+\end{equation}\]</span></p>
+<p>sendo <span class="math inline">\(sgn\)</span> a função sinal que fornece o valor 1 se o número for positivo, valor 0 se o número for zero e -1 se for negativo.</p>
+<p>Pode-se também utilizar as <strong>Margens Flexíveis</strong>, que busca não garantir todas as observações no lado certo, tolerando algumas violações. Basicamente atribui-se um erro para cada observação que viola o hiperplano proporcional o quanto passou a margem e o violou. Acrescentando na função este erro para compensar. Nos algoritmos dos <em>softwares</em> estatísticos, é comum o uso de uma constante <strong>C</strong> que controla a severidade do modelo, dando limite do tanto do erro que pode haver no algoritmo. Seu valor depende muito da pesquisa e de sua fundamentação teórica, pois pode ser que aumente a quantidade de vetores de suporte e até mesmo podendo causando problemas de <strong>overfitting</strong> (<a href="valid.html#fitt">8.1</a>).</p>
+</div>
+<div id="classificação-de-padrões-não-linearmente-separáveis" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Classificação de Padrões Não-Linearmente Separáveis</h3>
+<p>Nas situações reais a maioria dos padrões são mais complexos e não-lineares. O conjunto de dados é classificado como não-linearmente separável ao caso de não ser possível separar os dados com um hiperplano:</p>
+<div class="figure" style="text-align: center"><span id="fig:svm7"></span>
+<img src="Figuras/svm7.PNG" alt="Padrões linearmente e não-linearmente separável respectivamente (Gonçalves 2008)." width="70%" />
+<p class="caption">
+Figura 7.8: Padrões linearmente e não-linearmente separável respectivamente <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.
+</p>
+</div>
+
+<p>Segundo <span class="citation">(<span class="citeproc-not-found" data-reference-id="smola2000introduction"><strong>???</strong></span>)</span>, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções <em>Kernel</em> para tratarmos de uma problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).</p>
+<p>Um conjunto de entrada <span class="math inline">\(X\)</span> com pares <span class="math inline">\(\{(x_1,y_1);(x_2,y_2),...,(x_n,y_n)\}\)</span> de uma amostra de treinamento (não-linearmente separável), são mapeados por meio de uma função <span class="math inline">\(\phi\)</span> a fim de obter um novo conjunto de dados <span class="math inline">\(X&#39;\)</span> linearmente separável em um espaço de maior dimensionalidade, representado por <span class="math inline">\(\{(\phi(x_1),y_1),...,(\phi(x_n),y_n)\}\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:svm8"></span>
+<img src="Figuras/svm8.png" alt="Mapeamento de um conjunto de entrada \(X\) para o espaço caracerística. Um novo conjunto \(X&#39;\)." width="70%" />
+<p class="caption">
+Figura 7.9: Mapeamento de um conjunto de entrada <span class="math inline">\(X\)</span> para o espaço caracerística. Um novo conjunto <span class="math inline">\(X&#39;\)</span>.
+</p>
+</div>
+
+<p>Com os dados de treinamento mapeados para o espaço de características, utiliza-se os valores mapeados <span class="math inline">\(\phi(x)\)</span> ao invés de <span class="math inline">\(x\)</span>, sendo assim o problema consiste em:</p>
+<p><span class="math display" id="eq:svnphi">\[\begin{equation} 
+L =\displaystyle \sum^n_{i=1}\alpha_i-\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle \phi(x_i).\phi(x_j)\rangle
+\tag{7.16}
+\end{equation}\]</span></p>
+<p>em que <span class="math inline">\(\alpha_i \geq 0\)</span>. Para classificação não-linear as mesmas considerações de KKT descrito no linear. O hiperplano fica expresso como:
+<span class="math display" id="eq:hipotimophi">\[\begin{equation}
+(\vec{w}\phi \ . \ (\vec{x}))+b=0
+\tag{7.17}
+\end{equation}\]</span></p>
+<p>Ao problema de classificação não-linear de um novo padrão <strong>z</strong>:
+<span class="math display" id="eq:naolinzphi">\[\begin{equation}
+sgn(\langle \vec{w}^* \ . \ \phi(z)\rangle+b^*)
+\tag{7.18}
+\end{equation}\]</span></p>
+<p>Uma função <em>Kernel</em>, pertencente a um domínio que permita calcular o produto interno para calculá-lo, recebe dois dados de entrada <span class="math inline">\(x_i\)</span> e <span class="math inline">\(x_j\)</span> destes dados no espaço de características.
+<span class="math display" id="eq:kernel">\[\begin{equation}
+\kappa=(x_i,x_j)=\langle \phi(x_i) \ . \ \phi(x_j)\rangle
+\tag{7.19}
+\end{equation}\]</span></p>
+<p>A função precisa satisfazer as condições do <strong>Teorema de Mercer</strong>, portanto a matriz <span class="math inline">\(K\)</span> é positivamente definida (autovalores maiores que zero). <span class="math inline">\(K\)</span> é obtida por:</p>
+<p><span class="math display" id="eq:mercer">\[\begin{equation}
+K=K_{ij}=\kappa(x_i,x_j)
+\tag{7.20}
+\end{equation}\]</span></p>
+<p>As funções <em>Kernel</em> mais utilizadas são:</p>
+<table>
+<caption><span id="tab:kernel">Tabela 7.1: </span> <em>Kernels</em> mais populares <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.</caption>
+<thead>
+<tr class="header">
+<th><strong>Tipo de Kernel</strong></th>
+<th><strong>Função <span class="math inline">\(\kappa(x_i,x_j)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polinomial</td>
+<td><span class="math inline">\((\langle x_i.x_j\rangle +1)^p\)</span></td>
+</tr>
+<tr class="even">
+<td>Gaussiano</td>
+<td><span class="math inline">\(e^{(-\frac{\|\|x_i-x_j\|\|^2}{2\sigma^2})}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Sigmoidal</td>
+<td><span class="math inline">\(tanh(\beta_0 \langle x_i.x_j\rangle )+\beta_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Lembrando que o pesquisador precisa escolher alguns parâmetros, bem como a definição de qual algoritmo utilizar no SVM <span class="citation">(Lorena and Carvalho <a href="#ref-lorena2003introduccaoas">2003</a>)</span>.</p>
+</div>
+<div id="exemplosvm" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> Exemplos</h3>
+<ol style="list-style-type: decimal">
+<li>Vamos supor o seguinte conjunto de dados:
+<span class="math display">\[\{ (4,1), (4,-1), (5,1), (5,-1), (0,-1), (0,2), (0,1), (1,2) \}\]</span></li>
+</ol>
+<p>Ao observamos no gráfico, podemos observar que os vetores de suporte são:
+<span class="math display">\[\{s_1=(1,2),s_2=(4,1),s_3=(4,-1)\}\]</span></p>
+<p>Agora, vamos inserir o valor 1 de entrada do <em>Bias</em>:</p>
+<p><span class="math display">\[\{\hat{s_1}=(1,2,1),\hat{s_2}=(4,1,1),\hat{s_3}=(4,-1,1)\}\]</span>
+Precisamos agora encontrar o valor de <span class="math inline">\(\alpha_i\)</span>:</p>
+<p><span class="math display">\[\alpha_1 \phi(s_1).\phi(s_1)+\alpha_2 \phi(s_2).\phi(s_1)+\alpha_3 \phi (s_3).\phi (s_1)=-1\]</span>
+<span class="math display">\[\alpha_1 \phi(s_1).\phi(s_2)+\alpha_2 \phi(s_2).\phi(s_2)+\alpha_3 \phi (s_3).\phi (s_2)=+1\]</span>
+<span class="math display">\[\alpha_1 \phi(s_1).\phi(s_3)+\alpha_2 \phi(s_2).\phi(s_3)+\alpha_3 \phi (s_3).\phi (s_3)=+1\]</span></p>
+<p>E portanto:
+<span class="math display">\[\alpha_1 \hat{s_1}.\hat{s_1}+\alpha_2 \hat{s_2}.\hat{s_1}+\alpha_3 \hat{s_3}.\hat{s_1}=-1\]</span>
+<span class="math display">\[\alpha_1 \hat{s_1}.\hat{s_2}+\alpha_2 \hat{s_2}.\hat{s_2}+\alpha_3 \hat{s_3}.\hat{s_2}=+1\]</span>
+<span class="math display">\[\alpha_1 \hat{s_1}.\hat{s_3}+\alpha_2 \hat{s_2}.\hat{s_3}+\alpha_3 \hat{s_3}.\hat{s_3}=+1\]</span></p>
+<p><span class="math display">\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\right\}=-1\]</span></p>
+<p><span class="math display">\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\right\}=+1\]</span></p>
+<p><span class="math display">\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\right\}=+1\]</span></p>
+<p>Resolvendo as matrizes, temos:
+<span class="math display">\[\alpha_1(1+4+1)+\alpha_2(4+2+1)+\alpha_3(4-2+1)=-1\]</span>
+<span class="math display">\[\alpha_1(4+2+1)+\alpha_2(16+1+1)+\alpha_3(16-1+1)=+1\]</span>
+<span class="math display">\[\alpha_1(4-2+1)+\alpha_2(16-1+1)+\alpha_3(16+1+1)=+1\]</span>
+E portanto:
+<span class="math display">\[6\alpha_1+7\alpha_2+3\alpha_3=-1\]</span>
+<span class="math display">\[7\alpha_1+18\alpha_2+16\alpha_3=+1\]</span>
+<span class="math display">\[3\alpha_1+16\alpha_2+18\alpha_3=-1\]</span>
+Logo <span class="math inline">\(\alpha_1=2,44\)</span>,<span class="math inline">\(\alpha_2=2,83\)</span> e <span class="math inline">\(\alpha_3=-2,06\)</span>. Encontrando <span class="math inline">\(\vec{w}=\displaystyle \sum^n_{i=1}\alpha_i \hat{s_i}\)</span>:</p>
+<p><span class="math display">\[\vec{w}=2,44\begin{pmatrix} 1\\2\\1\end{pmatrix}+
+2,83\begin{pmatrix} 4\\1\\1\end{pmatrix}+
+-2,06\begin{pmatrix} 4\\-1\\1\end{pmatrix}\]</span>
+<span class="math display">\[\begin{pmatrix}5,52\\9,77\\3,21\end{pmatrix}\]</span></p>
+<p>Portanto temos que <span class="math inline">\(w=\begin{pmatrix} 2,44\\2,83\end{pmatrix}\)</span> e <span class="math inline">\(b=-2,06\)</span>. Com a equação <span class="math inline">\(y=wx+b\)</span> e todos os dados, podemos plotar o hiperplano.</p>
+
+</div>
 </div>
 <div id="decisiontree" class="section level2">
 <h2><span class="header-section-number">7.2</span> Árvore de Decisão (<em>Decision Tree</em>)</h2>
@@ -253,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:decisiontree"></span>
 <img src="Figuras/decisiontree.png" alt="Terminologia de Árvore de Decisão." width="70%" />
 <p class="caption">
-Figura 7.1: Terminologia de Árvore de Decisão.
+Figura 7.10: Terminologia de Árvore de Decisão.
 </p>
 </div>
 
@@ -268,7 +592,7 @@ Figura 7.1: Terminologia de Árvore de Decisão.
 <span class="math display">\[= \displaystyle \sum_j p_j(1-p_j) \]</span>
 <span class="math display" id="eq:indgini1">\[\begin{equation}
 = \displaystyle 1-\sum_j p^2_j
-\tag{7.1}
+\tag{7.21}
 \end{equation}\]</span></p>
 <p>Para evitarmos problemas como <strong>overfitting</strong> por exemplo, que ocorre quando o seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados (será apresentado em <a href="valid.html#fitt">8.1</a>). Existe diversos meios que variam de acordo com propostas de diferentes pesquisas. Pode-se definir um número mínimo de amostras que são necessárias em um nó para se fazer a divisão, ou delimitar amostras mínimas para o nó terminal e o máximo de nós terminais, determir a profundidade máxima da árvore (o quanto ela vai ramificar e expandir-se), atentar ao quanto de recurso será utilizado para treinarmos o modelo e quanto irão para serem testados (visto que não pode ser o mesmo conjunto de dados para ambos pois ela apenas iria decorar e replicar).</p>
 <p>A poda (pós-poda) de uma árvore é importante para que se verifique a melhor divisão e chegue até a condição de parada especificada. Um exemplo que gosto muito e creio que facilitará para a compreensão da poda <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span> : suponha que há duas pistas, você está em seu veículo verde na pista da direita com uma certa quantidade de carros em sua frente movendo a aproximados 80<span class="math inline">\(km/h\)</span> cada. Na pista da esquerda encontra-se dois caminhões de entrega de encomendas à apenas 30<span class="math inline">\(km/h\)</span> cada. Caso você vá pela esquerda irá alcançar o carro à frente, podendo passar até chegar atrás do caminhão e irá manter seu veículo a 30<span class="math inline">\(km/h\)</span> procurando desesperadamente encontrar alguma oportunidade de voltar para a direita. Entretando todos os outros carros ultrapassam você.</p>
@@ -276,7 +600,7 @@ Figura 7.1: Terminologia de Árvore de Decisão.
 <div class="figure" style="text-align: center"><span id="fig:poda"></span>
 <img src="Figuras/poda.png" alt="Desenho de veículos em uma pista. Adaptado de (ANALYTICS VIDHYA 2016)." width="70%" />
 <p class="caption">
-Figura 7.2: Desenho de veículos em uma pista. Adaptado de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
+Figura 7.11: Desenho de veículos em uma pista. Adaptado de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
 </p>
 </div>
 
@@ -284,7 +608,7 @@ Figura 7.2: Desenho de veículos em uma pista. Adaptado de <span class="citation
 <p>Um dos cálculos mais utilizados para a poda da árvore é a <strong>taxa de erro</strong> que representa a razão entre o número de casos com classificação errada (<span class="math inline">\(c_e\)</span>) e o número de casos classificados corretamente (<span class="math inline">\(cc\)</span>) pela partição, caso a taxa de erro aumente conforme a ramificação, irá podar:</p>
 <p><span class="math display" id="eq:txerro">\[\begin{equation}
 E(T)=\frac{ce}{ce+cc}
-\tag{7.2}
+\tag{7.22}
 \end{equation}\]</span></p>
 <p>Na seção</p>
 <div id="extree" class="section level3">
@@ -294,7 +618,7 @@ E(T)=\frac{ce}{ce+cc}
 <div class="figure" style="text-align: center"><span id="fig:decision"></span>
 <img src="Figuras/decision.jpg" alt="Divisão de alunos que jogam tênis, traduzido de (ANALYTICS VIDHYA 2016)." width="70%" />
 <p class="caption">
-Figura 7.3: Divisão de alunos que jogam tênis, traduzido de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
+Figura 7.12: Divisão de alunos que jogam tênis, traduzido de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
 </p>
 </div>
 
@@ -335,7 +659,7 @@ Como o Ganho de Informação de Sexo é maior que o de Classe (menos impuro), a 
 <div class="figure" style="text-align: center"><span id="fig:decisionlanche"></span>
 <img src="Figuras/decisionlanche.png" alt="Árvore de Decisão sobre o lucro da lanchonete." width="70%" />
 <p class="caption">
-Figura 7.4: Árvore de Decisão sobre o lucro da lanchonete.
+Figura 7.13: Árvore de Decisão sobre o lucro da lanchonete.
 </p>
 </div>
 
@@ -344,7 +668,6 @@ Figura 7.4: Árvore de Decisão sobre o lucro da lanchonete.
 <p>Ao segundo caso, em que Adilson não irá optar o investimento em seu estalecimento:
 <span class="math display">\[V.E=(0,6\ .\ 125.000,00)+(0,4\ . \ 145.000,00)= 133.000,00\]</span></p>
 <p>Portanto Adilson tem uma probabilidade maior de escolher investir os R$40.000,00 para ampliar sua lanchonete. Lembrando que foi utilizado o critério de médias, podendo haver diversos outros.</p>
-
 </div>
 </div>
 <div id="elastic-net" class="section level2">
@@ -361,15 +684,15 @@ Figura 7.4: Árvore de Decisão sobre o lucro da lanchonete.
 <div class="figure" style="text-align: center"><span id="fig:pca1"></span>
 <img src="Figuras/pca1.png" alt="Gráfico bidimensional \(x\) por \(y\)." width="70%" />
 <p class="caption">
-Figura 7.5: Gráfico bidimensional <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span>.
+Figura 7.14: Gráfico bidimensional <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span>.
 </p>
 </div>
 
-<p>Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor <span class="math inline">\((x, y)\)</span>. Os eixos não representam algo físico, mas representam combinações de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que denominamos <strong>“componentes principais”</strong>, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura <a href="ptII.html#fig:pca2">7.6</a> e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo <span class="math inline">\(y\)</span>, visto que a componente do eixo <span class="math inline">\(x\)</span> explica 99,30% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo <span class="math inline">\(x\)</span>, analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.</p>
+<p>Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor <span class="math inline">\((x, y)\)</span>. Os eixos não representam algo físico, mas representam combinações de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que denominamos <strong>“componentes principais”</strong>, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura <a href="ptII.html#fig:pca2">7.15</a> e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo <span class="math inline">\(y\)</span>, visto que a componente do eixo <span class="math inline">\(x\)</span> explica 99,30% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo <span class="math inline">\(x\)</span>, analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.</p>
 <div class="figure" style="text-align: center"><span id="fig:pca2"></span>
 <img src="Figuras/pca2.png" alt="Gráfico de \(x\) por \(y\) rotacionado." width="70%" />
 <p class="caption">
-Figura 7.6: Gráfico de <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> rotacionado.
+Figura 7.15: Gráfico de <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> rotacionado.
 </p>
 </div>
 
@@ -377,7 +700,7 @@ Figura 7.6: Gráfico de <span class="math inline">\(x\)</span> por <span class="
 <div class="figure" style="text-align: center"><span id="fig:pca3"></span>
 <img src="Figuras/pca3.PNG" alt="Gráfico tridimensional, em Powell, Victor and Lehe, Lewis (2014)." width="70%" />
 <p class="caption">
-Figura 7.7: Gráfico tridimensional, em <span class="citation">Powell, Victor and Lehe, Lewis (<a href="#ref-powellpca">2014</a>)</span>.
+Figura 7.16: Gráfico tridimensional, em <span class="citation">Powell, Victor and Lehe, Lewis (<a href="#ref-powellpca">2014</a>)</span>.
 </p>
 </div>
 
@@ -387,11 +710,11 @@ Figura 7.7: Gráfico tridimensional, em <span class="citation">Powell, Victor an
 <div id="autovalores-e-autovetores" class="section level3">
 <h3><span class="header-section-number">7.5.1</span> Autovalores e Autovetores</h3>
 <p>Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em <a href="intro.html#dicio">1.2</a> encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.</p>
-<p>Dado uma matriz <span class="math inline">\(A_{mxn}\)</span> que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os <strong>autovetores</strong>. Na Figura <a href="ptII.html#fig:autovetor">7.8</a>, <span class="math inline">\(u\)</span> é um autovetor e <span class="math inline">\(V\)</span> não.</p>
+<p>Dado uma matriz <span class="math inline">\(A_{mxn}\)</span> que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os <strong>autovetores</strong>. Na Figura <a href="ptII.html#fig:autovetor">7.17</a>, <span class="math inline">\(u\)</span> é um autovetor e <span class="math inline">\(V\)</span> não.</p>
 <div class="figure" style="text-align: center"><span id="fig:autovetor"></span>
 <img src="Figuras/autovetor.png" alt="\(u\) é um autovetor de \(T\), porém \(V\) não." width="70%" />
 <p class="caption">
-Figura 7.8: <span class="math inline">\(u\)</span> é um autovetor de <span class="math inline">\(T\)</span>, porém <span class="math inline">\(V\)</span> não.
+Figura 7.17: <span class="math inline">\(u\)</span> é um autovetor de <span class="math inline">\(T\)</span>, porém <span class="math inline">\(V\)</span> não.
 </p>
 </div>
 
@@ -400,12 +723,12 @@ Figura 7.8: <span class="math inline">\(u\)</span> é um autovetor de <span clas
 <span class="math display">\[A_{mxn}\vec{u}-\lambda \vec{u}=0 \]</span>
 <span class="math display" id="eq:autovetor">\[\begin{equation}
 (A_{mxn}-\lambda l)\vec{u}=0
-    \tag{7.3}
+    \tag{7.23}
 \end{equation}\]</span></p>
 <p>esta equação tem solução trivial, ou seja, diferentes da nula <span class="math inline">\((\vec{v}\neq 0 )\)</span> se e somente se, seu determinante é zero. Conhecido como <strong>Equação caracterísica</strong> e sua solução são os <strong>autovalores</strong>:
 <span class="math display" id="eq:eqcarac">\[\begin{equation}
     \mbox{Eq. Característica}\ \  det(A_{mxn}-\lambda l)=0  
-    \tag{7.4}
+    \tag{7.24}
 \end{equation}\]</span></p>
 <p>Note também que toda transformação linear (matriz) em um espaço
 vetorial complexo (números imaginários) tem, pelo menos, um autovetor (real ou complexo).</p>
@@ -516,7 +839,7 @@ e_{12} &amp;e_{22}  &amp;. &amp;.  &amp;. &amp;e_{p2} \\
 e_{1p} &amp;e_{2p}  &amp;. &amp;.  &amp;. &amp;e_{pp} 
 \end{bmatrix}
 =[e_1,e_2,...,e_p]
-\tag{7.5}
+\tag{7.25}
 \end{equation}\]</span></p>
 <p>E dos autovalores:
 <span class="math display" id="eq:autovalormatrix">\[\begin{equation}
@@ -525,13 +848,13 @@ e_{1p} &amp;e_{2p}  &amp;. &amp;.  &amp;. &amp;e_{pp}
 \lambda_1 &amp; &amp;0\\
 &amp; \lambda_2 &amp; \\
 0 &amp; &amp; \lambda_n
-\tag{7.6}
+\tag{7.26}
 \end{bmatrix}
 \end{equation}\]</span></p>
 <p>Portanto, as variáveis aleatórias que constituem o vetor <span class="math inline">\(Y\)</span> não são correlacionadas entre si. Com isso, a ideia de utilizar combinações lineares em <span class="math inline">\(Y\)</span> como forma de representar a estrutura de covariâncias do vetor <span class="math inline">\(X\)</span> torna-se interessante, a fim de reduzir o espaço de variáveis de <span class="math inline">\(p\)</span> para <span class="math inline">\(k&lt;p\)</span> dimensões. Os vetores <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> terão a mesma variância total e generalizada, com <span class="math inline">\(Y\)</span> de vantagem de não haver variáveis correlacionadas e facilitando na interpretação conjunta delas (análise multivariada). Portanto:</p>
 <p><span class="math display" id="eq:cp">\[\begin{equation}
    Y_j=e_j&#39;X=e_{j1}X_1+e_{j2}X_2+...+e_{jp}X_p
-   \tag{7.7}
+   \tag{7.27}
 \end{equation}\]</span></p>
 <p>A esperança e variância:
 <span class="math display">\[\begin{equation}
@@ -550,12 +873,12 @@ r_{Y_j,X_i}=\frac{e_{ji}\sqrt{\lambda_j}}{\sqrt{\sigma}}
 <p>Para calcularmos a variação total, expressa-se pela somatória de todos os autovalores:
 <span class="math display" id="eq:vartot">\[\begin{equation}
     \displaystyle \sum_j \lambda_j 
-    \tag{7.8}
+    \tag{7.28}
 \end{equation}\]</span></p>
 <p>Portanto, para analisar cada <span class="math inline">\(i\)</span> componente, ou seja, cada autovalor (variação “explicada” por cada componente):
 <span class="math display" id="eq:varind">\[\begin{equation}
     p_i=\frac{\lambda_j}{\displaystyle \sum_j \lambda_j} 
-    \tag{7.9}
+    \tag{7.29}
 \end{equation}\]</span></p>
 <p>Sendo geralmente escolhido as componentes com seus respectivos autovalores que explicam entre 70%-90% segundo alguns pesquisadores. Outros como <span class="citation">Kaiser (<a href="#ref-kaiser1960application">1960</a>)</span>, propõe aceitar, observando diretamente, somente os autovalores iguais ou superiores à unidade.</p>
 <p><strong>Importante:</strong> sobre utilizar matriz de covariância ou de correlação depende muito das fundamentações teóricas e recomendaçõesdos pesquisadores. Em geral, utiliza-se a matriz de correlação (quando padronizamos e elaboramos a matriz) ao caso de padronizar escalas distintas que podem viesar, como por exemplo, medidas de distância e de peso.</p>
@@ -1060,7 +1383,7 @@ u_1\\ u_2 \\ u_3
 <div class="figure" style="text-align: center"><span id="fig:biplotpadro"></span>
 <img src="Figuras/biplotpadro.png" alt="Gráfico de biplot, em X a primeira componente principal e Y a segunda componente." width="70%" />
 <p class="caption">
-Figura 7.9: Gráfico de biplot, em X a primeira componente principal e Y a segunda componente.
+Figura 7.18: Gráfico de biplot, em X a primeira componente principal e Y a segunda componente.
 </p>
 </div>
 
@@ -1077,7 +1400,7 @@ Para a segunda componente principal (Dim2), note que Patrimônio e Ganho Líquid
 <div class="figure" style="text-align: center"><span id="fig:hierarq"></span>
 <img src="Figuras/hierarq.PNG" alt="Esquema geral de procedimentos hierárquicos aglomerativos e divisivos (Mingoti 2007)." width="70%" />
 <p class="caption">
-Figura 7.10: Esquema geral de procedimentos hierárquicos aglomerativos e divisivos <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.
+Figura 7.19: Esquema geral de procedimentos hierárquicos aglomerativos e divisivos <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.
 </p>
 </div>
 
@@ -1087,7 +1410,7 @@ Figura 7.10: Esquema geral de procedimentos hierárquicos aglomerativos e divisi
 <ol style="list-style-type: decimal">
 <li><p>Cada elemento possui um <em>cluster</em> de tamanho 1, logo <span class="math inline">\(n\)</span> <em>clusters</em>;</p></li>
 <li><p>Em cada estágio do algoritmo de agrupamento, os pares de conglomerados mais “similares” vão combinando-se passando a constituir um único conglomerado. Apenas um novo conglomerado pode ser formada a cada passo, ou seja, a cada etapa o número de conglomerados irá diminuir;</p></li>
-<li><p>Como mostra-se na Figura <a href="ptII.html#fig:hierarq">7.10</a>, em cada estágio do algoritmo, cada novo conglomerado formado é um agrupamento de conglomerados de estágios anteriores. Se dois elementos amostrais aparecem juntos num mesmo <em>cluster</em> em alguma etapa, estarão juntos em todos os outros;</p></li>
+<li><p>Como mostra-se na Figura <a href="ptII.html#fig:hierarq">7.19</a>, em cada estágio do algoritmo, cada novo conglomerado formado é um agrupamento de conglomerados de estágios anteriores. Se dois elementos amostrais aparecem juntos num mesmo <em>cluster</em> em alguma etapa, estarão juntos em todos os outros;</p></li>
 <li><p>Por estarmos trabalhando com conglomerados em hierarquia, podemos construir um gráfico denominado Dendograma, ou Dendrograma, que representa a história do agrupamento. É um gráfico em forma de árvore tal que a escala vertical indica o nível de similaridade (ou dissimilaridade) e na horizontal os elementos amostrais em ordem relacionada à história do agrupamento. Sua altura representa ao nível em que os elementos foram considerados semelhantes entre si (distância do agrupamento ou nível de similaridade).</p></li>
 </ol>
 <p>Existe alguns métodos para que se escolha o número final dos grupos <span class="math inline">\(g\)</span>, mas em geral é subjetivo com base em fundamentações empíricas. Vamos agora para os métodos mais comuns e utilizados em muitos <em>softwares</em> estatísticos.</p>
@@ -1096,19 +1419,19 @@ Figura 7.10: Esquema geral de procedimentos hierárquicos aglomerativos e divisi
 <p>A similaridade entre dois conglomerados é definida pelos dois elementos mais parecidos entre si <span class="citation">(Sneath <a href="#ref-sneath1957application">1957</a>)</span>. Por exemplo, num determinado momento do algoritmo, encontra-se dois grupos: <span class="math inline">\(C_1=\{X_1,X_3,X_7\}\)</span> e <span class="math inline">\(C_2=\{X_2,X_6\}\)</span>. A distância entre esses dois grupos será definida por:</p>
 <p><span class="math display" id="eq:ligsimples">\[\begin{equation}
     d(C_1,C+2)=min\{d(X_l,X_k, l\neq k, l=1,3,7 \ \ \mbox{e} \ \ k=2,6\}
-    \tag{7.10}
+    \tag{7.30}
 \end{equation}\]</span></p>
 <p>é a distância entre os vizinhos mais próximos (elementos mais parecidos com os conglomerados. Em cada estágio, os dois conglomerados que são mais similares com relação à distância são combinados em um únicos <em>cluster</em>. Como ilustrado abaixo, a distância entre 6 e 1 caracteriza a distância entre os grupos, pelo método de ligação simples.</p>
 <div class="figure" style="text-align: center"><span id="fig:ligsimples"></span>
 <img src="Figuras/ligsimples.png" alt="Método de ligação simples, adaptado de Mingoti (2007)." width="70%" />
 <p class="caption">
-Figura 7.11: Método de ligação simples, adaptado de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.
+Figura 7.20: Método de ligação simples, adaptado de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.
 </p>
 </div>
 
 <p>Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em <a href="Algoritmosaprendizagem.html#meddist">6.1.2</a>. Com o seguinte banco de dados:</p>
 <table>
-<caption><span id="tab:dadossrenda">Tabela 7.1: </span> Renda e Idade de 6 indíviduos, abordado em <a href="Algoritmosaprendizagem.html#meddist">6.1.2</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span></caption>
+<caption><span id="tab:dadossrenda">Tabela 7.2: </span> Renda e Idade de 6 indíviduos, abordado em <a href="Algoritmosaprendizagem.html#meddist">6.1.2</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span></caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Renda</strong></th>
@@ -1173,7 +1496,7 @@ Figura 7.11: Método de ligação simples, adaptado de <span class="citation">Mi
 O próximo valor mínimo será 10,19 sobrando <span class="math inline">\(C_1=\{A,B,E,C,F\}\)</span> e <span class="math inline">\(C_2=\{D\}\)</span> e por fim reduz-se um único <em>cluster</em> <span class="math inline">\(C_1=\{A,B,C,D,E,F\}\)</span> com o nível de junção igual a 12,04.</p>
 <p>Portanto, o o histórico do agrupamento e seu respectivo dendograma será:</p>
 <table>
-<caption><span id="tab:ligsimple">Tabela 7.2: </span> Histórico do agrupamento por meio da Ligação Simples.</caption>
+<caption><span id="tab:ligsimple">Tabela 7.3: </span> Histórico do agrupamento por meio da Ligação Simples.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Passo</strong></th>
@@ -1218,7 +1541,7 @@ O próximo valor mínimo será 10,19 sobrando <span class="math inline">\(C_1=\{
 <div class="figure" style="text-align: center"><span id="fig:dendsimples"></span>
 <img src="Figuras/dendsimples.png" alt="Dendograma do agrupamento. Método de ligação simples." width="70%" />
 <p class="caption">
-Figura 7.12: Dendograma do agrupamento. Método de ligação simples.
+Figura 7.21: Dendograma do agrupamento. Método de ligação simples.
 </p>
 </div>
 
@@ -1228,13 +1551,13 @@ Figura 7.12: Dendograma do agrupamento. Método de ligação simples.
 <p>A similaridade entre dois conglomerados é definida pelos elementos que são menos semelhantes entre si <span class="citation">(Sneath <a href="#ref-sneath1957application">1957</a>)</span>. Por exemplo, vamos considerar os conjuntos <span class="math inline">\(C_1=\{X_1,X_3,X_7\}\)</span> e <span class="math inline">\(C_2=\{X_2,X_6\}\)</span>. A distância entre eles então será:</p>
 <p><span class="math display" id="eq:ligcompleta">\[\begin{equation}
 d(C_1,C_2)=max \{d(X_l,X_k, l\neq k,l=1,3,7 \ \ \mbox{e} \ \ k=2,6\}
- \tag{7.11}
+ \tag{7.31}
 \end{equation}\]</span></p>
 <p>Em cada estágio calcula-se para os pares de grupos, combinando num único aqueles que estiverem com o menor valor da distância. Segue abaixo uma ilustração.</p>
 <div class="figure" style="text-align: center"><span id="fig:ligcompleta"></span>
 <img src="Figuras/ligcompleta.png" alt="Método de ligação completa, adaptado de Mingoti (2007)." width="70%" />
 <p class="caption">
-Figura 7.13: Método de ligação completa, adaptado de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.
+Figura 7.22: Método de ligação completa, adaptado de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.
 </p>
 </div>
 
@@ -1279,7 +1602,7 @@ Figura 7.13: Método de ligação completa, adaptado de <span class="citation">M
 <p>O próximo valor mínimo será 16,29, unindo os grupos <span class="math inline">\(\{C,F\}\)</span> e <span class="math inline">\(\{D\}\)</span>, tornando os conglomerados <span class="math inline">\(C_1=\{A,B,E\}\)</span> e <span class="math inline">\(C_2=\{C,F,D\}\)</span> e por fim a distância máxima entre os dois grupos é 19,33.</p>
 <p>Portanto, o o histórico do agrupamento por meio da Ligação Completa e seu respectivo dendograma será:</p>
 <table>
-<caption><span id="tab:ligcomplet">Tabela 7.3: </span> Histórico do agrupamento por meio da Ligação Completa.</caption>
+<caption><span id="tab:ligcomplet">Tabela 7.4: </span> Histórico do agrupamento por meio da Ligação Completa.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Passo</strong></th>
@@ -1324,7 +1647,7 @@ Figura 7.13: Método de ligação completa, adaptado de <span class="citation">M
 <div class="figure" style="text-align: center"><span id="fig:dendcomplete"></span>
 <img src="Figuras/dendcomplete.png" alt="Dendograma do agrupamento. Método de ligação completa." width="70%" />
 <p class="caption">
-Figura 7.14: Dendograma do agrupamento. Método de ligação completa.
+Figura 7.23: Dendograma do agrupamento. Método de ligação completa.
 </p>
 </div>
 
@@ -1334,7 +1657,7 @@ Figura 7.14: Dendograma do agrupamento. Método de ligação completa.
 <p>Neste caso a distância entre os conglomerados é com base nas médias. Se <span class="math inline">\(C_1\)</span> tem <span class="math inline">\(n_1\)</span> elementos e <span class="math inline">\(C_2\)</span> tem <span class="math inline">\(n_2\)</span> elementos, a distância será expressa como:</p>
 <p><span class="math display" id="eq:ligmedia">\[\begin{equation}
 d(C_1,C_2)=\displaystyle \sum_{l\epsilon C_1} \sum_{k\epsilon C_2} \frac{1}{n_1 n_2} d(X_l,X_k)
- \tag{7.12}
+ \tag{7.32}
 \end{equation}\]</span></p>
 <p>Portanto, a distância entre <span class="math inline">\(C_1=\{X_1,X_3,X_7\}\)</span> e <span class="math inline">\(C_2=\{X_2,X_6\}\)</span> será:</p>
 <p><span class="math display">\[d(C_1,C_2=\frac{1}{6}[d(X_1,X_2)+d(X_l,X_6)+d(X_3,X_2)+d(X_3,X_6)+d(X_7,X_2)+d(X_7,X_6)]\]</span>
@@ -1380,7 +1703,7 @@ Vamo considerar novamente a matriz inicial como exemplificação:</p>
 <p>O próximo valor mínimo será 14,18, unindo os grupos <span class="math inline">\(\{A,B,E\}\)</span> e <span class="math inline">\(\{C,F\}\)</span>, tornando os conglomerados <span class="math inline">\(C_1=\{A,B,C,E,F\}\)</span> e <span class="math inline">\(C_2=\{D\}\)</span> e por final será 14,61 a distância entre eles.</p>
 <p>Portanto, o o histórico do agrupamento e seu respectivo dendograma será:</p>
 <table>
-<caption><span id="tab:ligmedia">Tabela 7.4: </span> Histórico do agrupamento por meio da Ligação Média.</caption>
+<caption><span id="tab:ligmedia">Tabela 7.5: </span> Histórico do agrupamento por meio da Ligação Média.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Passo</strong></th>
@@ -1425,7 +1748,7 @@ Vamo considerar novamente a matriz inicial como exemplificação:</p>
 <div class="figure" style="text-align: center"><span id="fig:dendaverage"></span>
 <img src="Figuras/dendaverage.png" alt="Dendograma do agrupamento. Método da média das distâncias." width="70%" />
 <p class="caption">
-Figura 7.15: Dendograma do agrupamento. Método da média das distâncias.
+Figura 7.24: Dendograma do agrupamento. Método da média das distâncias.
 </p>
 </div>
 
@@ -1438,7 +1761,7 @@ Figura 7.15: Dendograma do agrupamento. Método da média das distâncias.
 E a distância entre <span class="math inline">\(C_1\)</span> e <span class="math inline">\(C_2\)</span>, é a distância Euclidiana ao quadrado entre os vetores de médias amostral (também pode ser usado com a usual entre os vetores):</p>
 <p><span class="math display" id="eq:distcentroide">\[\begin{equation}
 d(C_1,C_2)= (\overline{X_1}-\overline{X_2})&#39;(\overline{X_1}-\overline{X_2})
- \tag{7.13}
+ \tag{7.33}
 \end{equation}\]</span></p>
 <p>Para cada passo do algoritmo, os conglomerados que possuem o menor valor de distância são agrupados. Vamos manter a matriz euclidiana (podemos manter a usual ou utilizar calcular as distâncias euclidianas ao quadrado)</p>
 <p><span class="math display">\[D_{6x6}=\begin{bmatrix}\\
@@ -1452,7 +1775,7 @@ d(C_1,C_2)= (\overline{X_1}-\overline{X_2})&#39;(\overline{X_1}-\overline{X_2})
 \end{bmatrix}\]</span></p>
 <p>Lembrando que os valores originais das variáveis são:</p>
 <table>
-<caption><span id="tab:dadosrenda">Tabela 7.5: </span> Renda e Idade de 6 indíviduos, abordado em <a href="Algoritmosaprendizagem.html#meddist">6.1.2</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</caption>
+<caption><span id="tab:dadosrenda">Tabela 7.6: </span> Renda e Idade de 6 indíviduos, abordado em <a href="Algoritmosaprendizagem.html#meddist">6.1.2</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Renda</strong></th>
@@ -1493,7 +1816,7 @@ Portanto calculando a distância com a nova coordenada <span class="math inline"
 \end{bmatrix}\]</span></p>
 <p>A próxima distância será entre C e F (4,12) novamente, fazendo com que fique quatro grupos. Repetindo o processo sucessivamente de retornar aos dados originais, recalcular identificar o novo menor valor (o que dependendo do banco de dados exige tempo computacional) chegaremos aos seguintes resultados:</p>
 <table>
-<caption><span id="tab:ligcent">Tabela 7.6: </span> Histórico do agrupamento pelo Método de Centróide.</caption>
+<caption><span id="tab:ligcent">Tabela 7.7: </span> Histórico do agrupamento pelo Método de Centróide.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Passo</strong></th>
@@ -1543,24 +1866,24 @@ Portanto calculando a distância com a nova coordenada <span class="math inline"
 <p>Inicialmente cada elemento é considerado como um único elemento conglomerado e em cada passo do algoritmo de agrupamento é calculada a soma de quadrados dentro de cada conglomerado. Portanto, o agrupamento é feito a partir das somas de quadrados dos desvios entre acessos ou do quadrado da distância Euclidiana.</p>
 <p><span class="math display" id="eq:sumquadraeuclid">\[\begin{equation}
  SS_i=\displaystyle \sum^{n_i}_{j=1} (X_{ij}-\overline{X_i})&#39;(X_{ij}-\overline{X_i})
- \tag{7.14}
+ \tag{7.34}
 \end{equation}\]</span></p>
 <p>em que <span class="math inline">\(n_i\)</span> é o número de elementos no conglomerado <span class="math inline">\(C_i\)</span>, quando se está no passo <span class="math inline">\(k\)</span>; <span class="math inline">\(X_i\)</span> é o vetor de observações do <span class="math inline">\(j\)</span>-ésimo elemento amostral e pertence ao <span class="math inline">\(i\)</span>-ésimo conglomerado; <span class="math inline">\(\overline{X_i}\)</span>, o centróide do conglomerado; e <span class="math inline">\(SS_i\)</span>, a soma de quadrados correspondente do conglomerado <span class="math inline">\(C_i\)</span>. No passo <span class="math inline">\(k\)</span> então, a soma de quadrados total é expressa como:</p>
 <p><span class="math display" id="eq:sumquadrak">\[\begin{equation}
  SS_i=\displaystyle \sum^{g_k}_{i=1}SS_i
- \tag{7.15}
+ \tag{7.35}
 \end{equation}\]</span></p>
 <p>onde <span class="math inline">\(g_k\)</span> é o valor de grupos existentes quando se está no passo <span class="math inline">\(k\)</span>.
 A Distância entre os conglomerados <span class="math inline">\(C_l\)</span> e <span class="math inline">\(C_i\)</span> é definida pela soma dos quadrados entre os <em>clusters</em> <span class="math inline">\(C_l\)</span> e <span class="math inline">\(C_i\)</span>:</p>
 <p><span class="math display" id="eq:distward">\[\begin{equation}
  d(C_l,C_i)=[\frac{n_l n_i}{n_l+n_i}] (X_{l}-\overline{X_i})&#39;(X_{l}-\overline{X_i})
- \tag{7.16}
+ \tag{7.36}
 \end{equation}\]</span></p>
 <p>em que cada passo do algoritmo de agrupamento, os dois conglomerados que minimizam a distância são combinados.</p>
 <p>Note que é muito semelhante com o método de centróide, porém o método de Ward leva em consideração a diferença dos tamanhos dos conglomerados que estão sendo comparados, ele possui como fator de ponderação <span class="math inline">\([\frac{n_l n_i}{n_l+n_i}]\)</span> que quanto maior forem os valores de <span class="math inline">\(n_l\)</span> e <span class="math inline">\(n_i\)</span> e a discrepância entre eles, maior será o fator e portanto, a distância entre os centróides dos conglomerados comparados <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
-<p>O processo de calcular é bem simples, semelhante ao método anterior, porém para as distâncias entre os conglomerados utiliza-se a equação <a href="ptII.html#eq:distward">(7.16)</a> e acaba que sendo bem trabalhosa e consumindo muito tempo do pesquisador, por isso temos atualmente diversos <em>softwares</em> que possam auxiliar neste processo. Com o mesmo conjunto de dados de Renda e Idade do exemplos anteriores podemos chegar no seguinte histórico de agrupamento:</p>
+<p>O processo de calcular é bem simples, semelhante ao método anterior, porém para as distâncias entre os conglomerados utiliza-se a equação <a href="ptII.html#eq:distward">(7.36)</a> e acaba que sendo bem trabalhosa e consumindo muito tempo do pesquisador, por isso temos atualmente diversos <em>softwares</em> que possam auxiliar neste processo. Com o mesmo conjunto de dados de Renda e Idade do exemplos anteriores podemos chegar no seguinte histórico de agrupamento:</p>
 <table>
-<caption><span id="tab:ligward">Tabela 7.7: </span> Histórico do agrupamento pelo Método de Ward.</caption>
+<caption><span id="tab:ligward">Tabela 7.8: </span> Histórico do agrupamento pelo Método de Ward.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Passo</strong></th>
@@ -1615,7 +1938,7 @@ A Distância entre os conglomerados <span class="math inline">\(C_l\)</span> e <
 <div class="figure" style="text-align: center"><span id="fig:steps"></span>
 <img src="Figuras/steps.png" alt="Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos versus Distância." width="70%" />
 <p class="caption">
-Figura 7.16: Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos <em>versus</em> Distância.
+Figura 7.25: Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos <em>versus</em> Distância.
 </p>
 </div>
 
@@ -1624,7 +1947,7 @@ Figura 7.16: Gráfico de Passo a partir do exemplo de Método de Ligação Simpl
 </ol>
 <p><span class="math display" id="eq:critsimi">\[\begin{equation}
 S_{il}=(1-\frac{d_{il}}{max\{d_{jk},j,k-1,2,...,n\}}).100
- \tag{7.17}
+ \tag{7.37}
 \end{equation}\]</span></p>
 <p>sendo <span class="math inline">\(d_{il}\{max\{d_{jk},j,k-1,2,...,n\}\}\)</span> a maior distância entre os <span class="math inline">\(n\)</span> elementos amostrais na matriz do primeiro estágio. Tem como objetivo encontrar pontos onde há decrescimento acentuado na similaridade dos conglomerados unidos (ao encontrar, finaliza o algoritmo). Segundo <span class="citation">Felix (<a href="#ref-felix2004">2004</a>)</span>, geralmente valores acima de 90% resulta em quantidade de grupos muito elevado.</p>
 <ol start="3" style="list-style-type: decimal">
@@ -1633,22 +1956,22 @@ S_{il}=(1-\frac{d_{il}}{max\{d_{jk},j,k-1,2,...,n\}}).100
 <p>Para <span class="math inline">\(X_{ij}\)</span> vetor de medidas observadas para o <span class="math inline">\(j\)</span>-ésimo elemento amostral do <span class="math inline">\(i\)</span>-ésimo grupo <span class="math inline">\(\overline{X}\)</span> e partição dos dados amostrais em <span class="math inline">\(g\)</span> grupos. A Soma de Quadrados Total corrigida para a média global em cada variável:</p>
 <p><span class="math display" id="eq:sstc">\[\begin{equation}
 SST_c=\displaystyle \sum^{g}_{i=1} \sum^{n_i}_{i=1} (X_{ij}-\overline{X})&#39;(X_{ij}-\overline{X})
- \tag{7.18}
+ \tag{7.38}
 \end{equation}\]</span></p>
 <p>A Soma dos Quadrados Total dentro dos grupos da partição, que equivale ao residual:</p>
 <p><span class="math display" id="eq:ssrc">\[\begin{equation}
 SSR=\displaystyle \sum^{g}_{i=1} \sum^{n_i}_{i=1} = \sum^{g}_{i=1}SS_i
- \tag{7.19}
+ \tag{7.39}
 \end{equation}\]</span></p>
 <p>E a Soma de Quadrados Total entre os <span class="math inline">\(g\)</span> grupos da partição:</p>
 <p><span class="math display" id="eq:ssbc">\[\begin{equation}
 SSB=\displaystyle \sum^{g}_{i=1} n_i (\overline{X_{i}}-\overline{X})&#39;((\overline{X_{i}}-\overline{X})
- \tag{7.20}
+ \tag{7.40}
 \end{equation}\]</span></p>
 <p>Por fim, o coeficiente <span class="math inline">\(R^2\)</span> é expresso por:</p>
 <p><span class="math display" id="eq:rsquarec">\[\begin{equation}
 R^2=\frac{SSB}{SST_c}
- \tag{7.21}
+ \tag{7.41}
 \end{equation}\]</span></p>
 <p>Quanto maior for seu valor, maior será a soma de quadrados SSB e menor o residual SSR. Elaborando um gráfico com os passos do agrupamento e o <span class="math inline">\(R^2\)</span>. E parar o algoritmo no “ponto de salto” grande em relação aos demais.</p>
 <p><strong>Observação:</strong> Há diversos critérios para o leitor se aprofundar, como <strong>Estatística Pseudo F</strong>, <strong>Estatística Pseudo T</strong>, <strong>Correlação Semiparcial</strong> que pode-se aplicar em método de Ward, <strong>Estatísica <em>Cubic Clustering Criterium</em></strong>, etc. Cabe o leitor interessado se aprofundar em seus estudos de acordo com sua pretensão. Os métodos hierárquicos são muito utilizados nas pesquisas atuais e ainda estão em constante desenvolvimento e combinações com outros modelos para aperfeiçoar suas pesquisas. Muitos usam o método hierárquico também, da mesma forma que Análise de Componentes Principais e pré-processamento, para selecionar variáveis que possar ser utilizadas em sua pesquisa.</p>
@@ -1669,7 +1992,7 @@ R^2=\frac{SSB}{SST_c}
 <p>Não é recomendável para o experimento quando <span class="math inline">\(k\)</span> primeiros elementos amostrais são similares entre si.</p>
 <p>Vamos a um exemplo:</p>
 <table>
-<caption><span id="tab:desenv">Tabela 7.8: </span> Valores dos índices de desenvolvimento de países.</caption>
+<caption><span id="tab:desenv">Tabela 7.9: </span> Valores dos índices de desenvolvimento de países.</caption>
 <thead>
 <tr class="header">
 <th align="center">Países</th>
@@ -1833,7 +2156,7 @@ R^2=\frac{SSB}{SST_c}
 <p>Como dito, este método é muito dispendioso ao pesquisador calcular manualmente, portanto recomendo-o utilizar algum <em>software</em> estatístico para o seu cálculo e verificar o algoritmo do mesmo. Particularmente, utilizo para a escolha das sementes iniciais a seleção aleatória ou alguma técnica Hierárquica, pois ela evita com que há influências pessoais na seleção.</p>
 <p>Após aplicarmos o método <em>k-Médias</em> com a escolha aleatória das sementes iniciais obtemos:</p>
 <table>
-<caption><span id="tab:exkmeans">Tabela 7.9: </span> Resultado descritivo dos <em>clusters</em> formados.</caption>
+<caption><span id="tab:exkmeans">Tabela 7.10: </span> Resultado descritivo dos <em>clusters</em> formados.</caption>
 <colgroup>
 <col width="11%" />
 <col width="11%" />
@@ -1894,7 +2217,7 @@ R^2=\frac{SSB}{SST_c}
 </tbody>
 </table>
 <table>
-<caption><span id="tab:exkmeans3">Tabela 7.10: </span> Análise da qualidade dos grupos formados.</caption>
+<caption><span id="tab:exkmeans3">Tabela 7.11: </span> Análise da qualidade dos grupos formados.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>SSR (Soma de Quadrados Residual, soma dos grupos)</strong></th>
@@ -1923,23 +2246,23 @@ R^2=\frac{SSB}{SST_c}
 <p>O método de Fuzzy <span class="citation">(Bezdek <a href="#ref-bezdek1981objective">1981</a>)</span> também é um método iterativo que requer do pesquisador pré-estabelecer do número de grupos, como <em>K-means</em>. Este método procura a partição que minimiza a função objetivo, expressa por:</p>
 <p><span class="math display" id="eq:cmeansobjetivo">\[\begin{equation}
 J=\displaystyle \sum^c_{i=l} \sum^n_{j=l} (u_{ij}^m d(X_j,V_i))
- \tag{7.22}
+ \tag{7.42}
 \end{equation}\]</span></p>
 <p>em que <span class="math inline">\(V_i\)</span> é a semente (protótipo ou centróide ponderado) do conglomerado <span class="math inline">\(i=1,2,...,c\)</span>, <span class="math inline">\(m&gt;1\)</span> é o parâmetro Fuzzy, quanto mais alto for, mais difuso será o cluster no final (geralmente usam-se <span class="math inline">\(m=2\)</span>); <span class="math inline">\(u_{ij}\)</span> é a probabilidade de que o elemento <span class="math inline">\(X_j\)</span> pertença ao congomerado com a semente <span class="math inline">\(V_i\)</span> e <span class="math inline">\(d\)</span> é a distância (método escolhido pelo pesquisador, geralmente Euclidiana).</p>
-<p>A função <span class="math inline">\(J\)</span> <a href="ptII.html#eq:cmeansobjetivo">(7.22)</a> é minimizada quando as probabilidades <span class="math inline">\(u_{ij}\)</span> e a semente <span class="math inline">\(V_i\)</span> são definidas como:</p>
+<p>A função <span class="math inline">\(J\)</span> <a href="ptII.html#eq:cmeansobjetivo">(7.42)</a> é minimizada quando as probabilidades <span class="math inline">\(u_{ij}\)</span> e a semente <span class="math inline">\(V_i\)</span> são definidas como:</p>
 <p><span class="math display" id="eq:cmeansprob">\[\begin{equation}
 u_{ij}=\Big[\displaystyle \sum^c_{k=1}\Big(\frac{d(X_j,V_i)}{d(X_j,V_k)}\Big)^{2/(m-1)}\Big]^{-1}
- \tag{7.23}
+ \tag{7.43}
 \end{equation}\]</span></p>
 <p><span class="math display" id="eq:cmeanssemente">\[\begin{equation}
 V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m} 
-\tag{7.24}
+\tag{7.44}
 \end{equation}\]</span></p>
 <p>em que <span class="math inline">\(i=1,2...,c\)</span> e <span class="math inline">\(j=1,2,...n\)</span>. Com <span class="math inline">\(u_{ij}\)</span> seguindo uma distribuição entre 0 e 1 e os protótipos vão se modificando a cada iteração. O algoritmo é interrompido quando a distância entre os protótipos de uma iteração em relação à anterior é menor ou igual a um erro <span class="math inline">\(\mu\)</span> estabelicido pelo pesquisador, ou seja, os vetores <span class="math inline">\(V_t\)</span> e <span class="math inline">\(V_{t+1}\)</span> da iterações <span class="math inline">\(t\)</span> e <span class="math inline">\(t+1\)</span> que guardam as sementes precisam que: <span class="math inline">\(d(V_t,V_{t+1})&lt;\mu\)</span>.</p>
 <p>Para cada elemento amostral, este método estima uma probabilidade de que o este elemento pertença a cada um dos <em>clusters</em> <span class="math inline">\(c\)</span> da partição. Podemos então encontrar elementos amostrais que se assemelham a mais de um dos <span class="math inline">\(c\)</span> grupos. Alguns pesquisadores utilizam como critério de seleção para qual <em>cluster</em> irá pertencer de acordo com o que tenha a maior probabilidade.</p>
 <p>Utilizando o mesmo conjunto de dados utilizado no método K-Médias e aplicarmos o método de Fuzzy C-Médias, supondo <span class="math inline">\(m=2\)</span> e com <em>cluster</em> pré-estabelecido, obtemos seus resultados e alocando-os com base no critério de maior probabildade.</p>
 <table>
-<caption><span id="tab:excmeans">Tabela 7.11: </span> Resultado obtido pelo método de C-Médias. Utilizando como critério de alocar ao grupo pela maior probabilidade.</caption>
+<caption><span id="tab:excmeans">Tabela 7.12: </span> Resultado obtido pelo método de C-Médias. Utilizando como critério de alocar ao grupo pela maior probabilidade.</caption>
 <thead>
 <tr class="header">
 <th>Países</th>
@@ -2123,7 +2446,7 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 </table>
 <p>Portanto ficará:</p>
 <table>
-<caption><span id="tab:excmeans2">Tabela 7.12: </span> Quantidade de Países por grupo e Soma de Quadrados por grupo.</caption>
+<caption><span id="tab:excmeans2">Tabela 7.13: </span> Quantidade de Países por grupo e Soma de Quadrados por grupo.</caption>
 <colgroup>
 <col width="33%" />
 <col width="33%" />
@@ -2165,7 +2488,7 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 </tbody>
 </table>
 <table>
-<caption><span id="tab:exkmeans2">Tabela 7.13: </span> Análise da qualidade dos grupos formados.</caption>
+<caption><span id="tab:exkmeans2">Tabela 7.14: </span> Análise da qualidade dos grupos formados.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>SSR (Soma de Quadrados Residual, soma dos grupos)</strong></th>
@@ -2214,8 +2537,14 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 <div id="ref-breiman1984classification">
 <p>Breiman, Leo, Jerome Friedman, Charles J Stone, and Richard A Olshen. 1984. <em>Classification and Regression Trees</em>. CRC press.</p>
 </div>
+<div id="ref-ding2001multi">
+<p>Ding, Chris HQ, and Inna Dubchak. 2001. “Multi-Class Protein Fold Recognition Using Support Vector Machines and Neural Networks.” <em>Bioinformatics</em> 17 (4): 349–58.</p>
+</div>
 <div id="ref-felix2004">
 <p>Felix, F. N. 2004. “Aplicando Bootstrap Para Determinação de Intervalos de Confiança Para O Número de Grupos No Procedimento Hierárquico Aglomerativo de Ward.” <em>Dissertação-Mestrado</em>.</p>
+</div>
+<div id="ref-gonccalves2015maquina">
+<p>Gonçalves, André Ricardo. 2008. “Máquina de Vetores Suporte.” <em>Universidade Estadual de Londrina</em> 21.</p>
 </div>
 <div id="ref-hartigan1979algorithm">
 <p>Hartigan, John A, and Manchek A Wong. 1979. “Algorithm as 136: A K-Means Clustering Algorithm.” <em>Journal of the Royal Statistical Society. Series c (Applied Statistics)</em> 28 (1): 100–108.</p>
@@ -2238,6 +2567,12 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 <div id="ref-light1971analysis">
 <p>Light, Richard J, and Barry H Margolin. 1971. “An Analysis of Variance for Categorical Data.” <em>Journal of the American Statistical Association</em> 66 (335): 534–44.</p>
 </div>
+<div id="ref-lima2002maquinas">
+<p>Lima, Allan Reffson Granja. 2002. “Máquinas de Vetores Suporte Na Classificaçao de Impressoes Digitais.” <em>Universidade Federal Do Ceará, Departamento de Computação, Fortaleza-Ceará</em>.</p>
+</div>
+<div id="ref-lorena2003introduccaoas">
+<p>Lorena, Ana Carolina, and André CPLF de Carvalho. 2003. “Introduçaoas Máquinas de Vetores Suporte.” <em>Relatório Técnico Do Instituto de Ciências Matemáticas E de Computaçao (USP/Sao Carlos)</em> 192: 11.</p>
+</div>
 <div id="ref-mingoti2007analise">
 <p>Mingoti, Sueli Aparecida. 2007. “Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada.” In <em>Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada</em>, 295–95.</p>
 </div>
@@ -2253,11 +2588,20 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 <div id="ref-shiba2005classificaccao">
 <p>Shiba, Marcelo Hiroshi, Rosangela Leal Santos, José Alberto Quintanilha, and Hae Yong Kim. 2005. “Classificação de Imagens de Sensoriamento Remoto Pela Aprendizagem Por árvore de Decisão: Uma Avaliação de Desempenho.” <em>Simpósio Brasileiro de Sensoriamento Remoto</em> 12: 4319–26.</p>
 </div>
+<div id="ref-da2009classificaccao">
+<p>Silva Meloni, Raphael Belo da. 2009. “Classificação de Imagens de Sensoriamento Remoto Usando Svm.” PhD thesis, PUC-Rio.</p>
+</div>
 <div id="ref-sneath1957application">
 <p>Sneath, Peter HA. 1957. “The Application of Computers to Taxonomy.” <em>Microbiology</em> 17 (1): 201–26.</p>
 </div>
 <div id="ref-speece1985classification">
 <p>Speece, Deborah L, James D McKinney, and Mark I Appelbaum. 1985. “Classification and Validation of Behavioral Subtypes of Learning-Disabled Children.” <em>Journal of Educational Psychology</em> 77 (1): 67.</p>
+</div>
+<div id="ref-sung2003identifying">
+<p>Sung, Andrew H, and Srinivas Mukkamala. 2003. “Identifying Important Features for Intrusion Detection Using Support Vector Machines and Neural Networks.” In <em>2003 Symposium on Applications and the Internet, 2003. Proceedings.</em>, 209–16. IEEE.</p>
+</div>
+<div id="ref-vapnik2013nature">
+<p>Vapnik, Vladimir. 2013. <em>The Nature of Statistical Learning Theory</em>. Springer science &amp; business media.</p>
 </div>
 <div id="ref-ward1963hierarchical">
 <p>Ward Jr, Joe H. 1963. “Hierarchical Grouping to Optimize an Objective Function.” <em>Journal of the American Statistical Association</em> 58 (301): 236–44.</p>
