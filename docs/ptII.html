@@ -149,15 +149,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="machinelearning.html"><a href="machinelearning.html"><i class="fa fa-check"></i><b>4</b> O Aprendizado de Máquina</a><ul>
 <li class="chapter" data-level="4.1" data-path="machinelearning.html"><a href="machinelearning.html#como-a-máquina-aprende"><i class="fa fa-check"></i><b>4.1</b> Como a máquina aprende?</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="fundamentamos.html"><a href="fundamentamos.html"><i class="fa fa-check"></i><b>5</b> Fundamentamos</a><ul>
-<li class="chapter" data-level="5.1" data-path="fundamentamos.html"><a href="fundamentamos.html#medidasimport"><i class="fa fa-check"></i><b>5.1</b> Medidas de Importância</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="fundamentamos.html"><a href="fundamentamos.html#medinfo"><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Informação</a></li>
-<li class="chapter" data-level="5.1.2" data-path="fundamentamos.html"><a href="fundamentamos.html#meddist"><i class="fa fa-check"></i><b>5.1.2</b> Medidas de Similaridade e Dissimilaridade</a></li>
-<li class="chapter" data-level="5.1.3" data-path="fundamentamos.html"><a href="fundamentamos.html#medidasdep"><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dependência</a></li>
-<li class="chapter" data-level="5.1.4" data-path="fundamentamos.html"><a href="fundamentamos.html#medidas-de-precisão"><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Precisão</a></li>
-<li class="chapter" data-level="5.1.5" data-path="fundamentamos.html"><a href="fundamentamos.html#medidas-de-consistência"><i class="fa fa-check"></i><b>5.1.5</b> Medidas de consistência</a></li>
+<li class="chapter" data-level="5" data-path="fundamentos.html"><a href="fundamentos.html"><i class="fa fa-check"></i><b>5</b> Fundamentos</a><ul>
+<li class="chapter" data-level="5.1" data-path="fundamentos.html"><a href="fundamentos.html#medidasimport"><i class="fa fa-check"></i><b>5.1</b> Medidas de Importância</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="fundamentos.html"><a href="fundamentos.html#medidasdep"><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="5.1.2" data-path="fundamentos.html"><a href="fundamentos.html#medinfo"><i class="fa fa-check"></i><b>5.1.2</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="5.1.3" data-path="fundamentos.html"><a href="fundamentos.html#meddist"><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Similaridade e Dissimilaridade</a></li>
+<li class="chapter" data-level="5.1.4" data-path="fundamentos.html"><a href="fundamentos.html#medidas-de-precisão"><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="5.1.5" data-path="fundamentos.html"><a href="fundamentos.html#medidas-de-consistência"><i class="fa fa-check"></i><b>5.1.5</b> Medidas de consistência</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="fundamentamos.html"><a href="fundamentamos.html#testesanova"><i class="fa fa-check"></i><b>5.2</b> Teste de hipóteses e Análise de Variância</a></li>
+<li class="chapter" data-level="5.2" data-path="fundamentos.html"><a href="fundamentos.html#testesanova"><i class="fa fa-check"></i><b>5.2</b> Teste de hipóteses e Análise de Variância</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>6</b> Pré-processamento</a><ul>
 <li class="chapter" data-level="6.1" data-path="preprocesso.html"><a href="preprocesso.html#dados-faltantes-e-a-limpeza-de-dados"><i class="fa fa-check"></i><b>6.1</b> Dados faltantes e a Limpeza de dados</a><ul>
@@ -592,7 +592,7 @@ Figura 8.10: Terminologia de Árvore de Decisão.
 <p>Em geral são determinadas regras em seu algoritmo. As regras são escritas considerando o trajeto do nó raiz até uma folha da árvore. Por elas tenderem a crescer muito, de acordo com algumas aplicações, elas são muitas vezes substituídas pelas regras. Isto acontece em virtude das regras poderem ser facilmente modularizadas. Uma regra pode ser compreendida sem que haja a necessidade de se referenciar outras regras <span class="citation">(Ingargiola <a href="#ref-ingargiola1996building">1996</a>)</span>.</p>
 <p>Sua função é de particionar recursivamente um conjunto de treinamento, até que cada subconjunto obtido deste particionamento contenha casos de uma única classe. Com esta finalidade, basicamente a árvore de decisão verifica e compara a distribuição de classes durante a construção da árvore. Após finalizar a árvore, sua saída são dados organizados de maneira compacta, que são utilizados para classificar novos casos <span class="citation">(Holsheimer and Siebes <a href="#ref-holsheimer1994data">1994</a>)</span>. De início não é utilizado nenhum modelo estatístico nela, apenas classifica os atributos de acordo com as amostras provenientes. Mas atualmente utilizam técnicas estatísticas para aperfeiçoar o modelo e avaliar seus resultados <span class="citation">(Shiba et al. <a href="#ref-shiba2005classificaccao">2005</a>)</span>.</p>
 <p>Geralmente utilizam-na para classificação (variáveis categóricas), mas também é possível para a Análise de Regressão (variáveis contínuas) que ja vimos. Para as árvores de regressão são utilizadas quando a variável dependente é contínua. O valor obtido pelos nós de término nos dados de treinamento é o valor médio das observações. Para classificação o obtido pelos nós de término nos dados de treinamento é a moda, ou seja, a observação mais recorrente no conjunto de dados. Ambos processos continuam o processo de divisão até atingir algum critério fornecido pelo pesquisador. Mas como fazemos esta divisão para podermos classificar?</p>
-<p>A decisão de como fazer estas divisões dos nós pode influenciar muito na precisão do algoritmo e portanto, seus resultados. Pode-se utilizar pelo qui-quadrado (ver <a href="fundamentamos.html#testesanova">5.2</a>), por ganho de informação (ver <a href="fundamentamos.html#medinfo">5.1.1</a>), Índice de Gini, redução de variância, entre diversos outros.</p>
+<p>A decisão de como fazer estas divisões dos nós pode influenciar muito na precisão do algoritmo e portanto, seus resultados. Pode-se utilizar pelo qui-quadrado (ver <a href="fundamentos.html#testesanova">5.2</a>), por ganho de informação (ver <a href="fundamentos.html#medinfo">5.1.2</a>), Índice de Gini, redução de variância, entre diversos outros.</p>
 <p>Ao Índice de Gini, aplicado no sistema <em>Classification and Regression Trees</em> (CART)<span class="citation">(Breiman et al. <a href="#ref-breiman1984classification">1984</a>)</span>, mede a impureza de uma partição de dados, ela basicamente nos mostra que se selecionarmos aleatoriamente dois atributos de uma população ou amostra, ambos devem ter a mesma classe e a soma da probabilidade será se esta amostra/população for pura.</p>
 <p>É utilizada portanto para variáveis categóricas como “Sucesso” e “Fracasso”, ou seja, aplica-se em divisões binárias. Quanto maior for este índice, mais homogêneo será. Foi criado como uma medida de variância para dados categóricos <span class="citation">(Light and Margolin <a href="#ref-light1971analysis">1971</a>)</span>, é expresso como:
 <span class="math display">\[G(p_1,p_2,...,p_j)=\displaystyle \sum_{j}p_j  \sum_{i\neq j}\]</span>
@@ -1402,7 +1402,7 @@ Para a segunda componente principal (Dim2), note que Patrimônio e Ganho Líquid
 <div id="análise-de-agrupamentos---clusters" class="section level2">
 <h2><span class="header-section-number">8.6</span> Análise de Agrupamentos - Clusters</h2>
 <p>A Análise de Agrupamentos, também conhecido como Análise de Conglomerados, classificação ou <em>Clusters</em>, tem como propósito dividir os elementos de uma amostra (ou população) em grupos de modo que os elementos pertencentes a estes grupos tenham características similares entre si e heterôgenos com os outros grupos <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>. Esta classificação vai de acordo com a medida e o método de classificação. Este tipo de análise é muito comum seu uso em diversas áreas como segmentação de clientes de acordo com perfis de consumo <span class="citation">(Punj and Stewart <a href="#ref-punj1983cluster">1983</a>)</span>, perfis de personalidade em psicologia <span class="citation">(Speece, McKinney, and Appelbaum <a href="#ref-speece1985classification">1985</a>)</span>, classificação de cidades, etc. Para o agrupamento de <em>clusters</em>, tomaremos como base a literatura de <span class="citation">Mingoti (<a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
-<p>É muito importante o critério que o pesquisador utilizará para delimitar até que ponto os elementos podem ser considerados semelhantes em suas características ou não, por isso precisa-se de medidas apropriadas para classificar. Cada elemento amostral têm informações de <span class="math inline">\(p\)</span> variáveis dentro de um vetor e por meio de medidas matemáticas, como as medidas de distância pode ser possível compararmos as observações dentro de seu banco de dados. Calculando a distância entre os vetores das observações da amostra e agrupando de acordo com suas distância (agrupar os de menores distâncias entre si). Aqui entramos com a aplicação de Medida de Distância, em <a href="fundamentamos.html#meddist">5.1.2</a>. Quaquer medida de distância pode ser utilizada em variáveis quantitativas pode ser transformada num coeficiente de similaridade <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
+<p>É muito importante o critério que o pesquisador utilizará para delimitar até que ponto os elementos podem ser considerados semelhantes em suas características ou não, por isso precisa-se de medidas apropriadas para classificar. Cada elemento amostral têm informações de <span class="math inline">\(p\)</span> variáveis dentro de um vetor e por meio de medidas matemáticas, como as medidas de distância pode ser possível compararmos as observações dentro de seu banco de dados. Calculando a distância entre os vetores das observações da amostra e agrupando de acordo com suas distância (agrupar os de menores distâncias entre si). Aqui entramos com a aplicação de Medida de Distância, em <a href="fundamentos.html#meddist">5.1.3</a>. Quaquer medida de distância pode ser utilizada em variáveis quantitativas pode ser transformada num coeficiente de similaridade <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
 <p>A Análise de Clusters são frequentemente classificadas em <strong>Hierárquicas (aglomerativas e divisivas)</strong> que comumente utilizada para identificar possíveis agrupamentos e um provável valor da quantitade de grupos <span class="math inline">\(g\)</span> e <strong>Não hierárquicas</strong> que necessita um número de grupos pré-estabelecido pelo pesquisados que a aplica.</p>
 <div class="figure" style="text-align: center"><span id="fig:hierarq"></span>
 <img src="Figuras/hierarq.PNG" alt="Esquema geral de procedimentos hierárquicos aglomerativos e divisivos (Mingoti 2007)." width="70%" />
@@ -1436,9 +1436,9 @@ Figura 8.20: Método de ligação simples, adaptado de <span class="citation">Mi
 </p>
 </div>
 
-<p>Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em <a href="fundamentamos.html#disteuclidana">5.1.2.1</a>. Com o seguinte banco de dados:</p>
+<p>Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em <a href="fundamentos.html#disteuclidana">5.1.3.1</a>. Com o seguinte banco de dados:</p>
 <table>
-<caption><span id="tab:dadossrenda">Tabela 8.2: </span> Renda e Idade de 6 indíviduos, abordado em <a href="fundamentamos.html#disteuclidana">5.1.2.1</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span></caption>
+<caption><span id="tab:dadossrenda">Tabela 8.2: </span> Renda e Idade de 6 indíviduos, abordado em <a href="fundamentos.html#disteuclidana">5.1.3.1</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span></caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Renda</strong></th>
@@ -1568,7 +1568,7 @@ Figura 8.22: Método de ligação completa, adaptado de <span class="citation">M
 </p>
 </div>
 
-<p>Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distância Euclidiana, em <a href="fundamentamos.html#disteuclidana">5.1.2.1</a>. A matriz de distância calculada entre os seis elementos amostrais é dada por:
+<p>Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distância Euclidiana, em <a href="fundamentos.html#disteuclidana">5.1.3.1</a>. A matriz de distância calculada entre os seis elementos amostrais é dada por:
 <span class="math display">\[D_{6x6}=\begin{bmatrix}\\
  &amp;A&amp;B&amp;C&amp;D&amp;E&amp;F \\
  A&amp;0&amp;&amp;&amp;&amp;&amp;\\
@@ -1782,7 +1782,7 @@ d(C_1,C_2)= (\overline{X_1}-\overline{X_2})&#39;(\overline{X_1}-\overline{X_2})
 \end{bmatrix}\]</span></p>
 <p>Lembrando que os valores originais das variáveis são:</p>
 <table>
-<caption><span id="tab:dadosrenda">Tabela 8.6: </span> Renda e Idade de 6 indíviduos, abordado em <a href="fundamentamos.html#disteuclidana">5.1.2.1</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</caption>
+<caption><span id="tab:dadosrenda">Tabela 8.6: </span> Renda e Idade de 6 indíviduos, abordado em <a href="fundamentos.html#disteuclidana">5.1.3.1</a> sobre distância Euclidiana <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Renda</strong></th>

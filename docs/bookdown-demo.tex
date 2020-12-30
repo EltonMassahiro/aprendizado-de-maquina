@@ -452,6 +452,20 @@ Tradução de \citet{liu2012feature}.
 
 É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional \citep{liu2012feature}. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas \citep{lee2005seleccao}.
 
+\hypertarget{medidasdep}{%
+\subsection{Medidas de Dependência}\label{medidasdep}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
+
+}
+
+\caption{Padrões de correlação. Elaborado por \citet{gujarati2011econometria} e adaptado \citet{theil1978}.}\label{fig:correlacao}
+\end{figure}
+
+
+
 \hypertarget{medinfo}{%
 \subsection{Medidas de Informação}\label{medinfo}}
 
@@ -551,21 +565,26 @@ Também conhecido como \textbf{distância generalzada}, esta metologia tem como 
   \label{eq:distpond}
 \end{equation}
 
-Continuando com dados da @tab:dadossrendaa
+Continuando com dados da @tab:dadossrendaa e tomando como exemplo de ponderada pelo método de Mahalanobis. Ao calcular a matriz de covariância e sua respectiva inversa, obtemos:
 
-\hypertarget{medidasdep}{%
-\subsection{Medidas de Dependência}\label{medidasdep}}
+\[S=
+\begin{bmatrix}
+31.471& 2.15000 \\
+2.150& 50.96667 
+\end{bmatrix}\]
+\[S^{-1}=
+\begin{bmatrix}
+0,0032& -0,0013 \\
+-0,0013& 0,019 
+\end{bmatrix}\]
 
-\begin{figure}
+Portanto pelo cálculo da distância Ponderada por Mahalanobis:
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
+\[d(X_A,X_B)=\bigg[(1,2 \ \ -3) S^{-1} \begin{pmatrix} 1,2 \\ -3  \end{pmatrix} \bigg]^{1/2}=0,46\]
+E sucessivamente calcula-se para às outras observações.
 
-}
-
-\caption{Padrões de correlação. Elaborado por \citet{gujarati2011econometria} e adaptado \citet{theil1978}.}\label{fig:correlacao}
-\end{figure}
-
-
+\hypertarget{distminkowsky}{%
+\subsubsection{Distância de Minkowsky}\label{distminkowsky}}
 
 \hypertarget{medidas-de-precisuxe3o}{%
 \subsection{Medidas de Precisão}\label{medidas-de-precisuxe3o}}
