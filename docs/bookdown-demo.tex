@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-12-11}
+\date{2020-12-29}
 
 \begin{document}
 \maketitle
@@ -288,6 +288,9 @@ Para facilitar a compreensão, considere a observação de que você esteja ouvi
   \textbf{Multiplicadores de Lagrange:}*
 \item
   \textbf{Karush-Kuhn-Tucker (KKT):}
+\item
+  \textbf{Bias:}
+  \url{https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/}
 \end{itemize}
 
 \hypertarget{i-a}{%
@@ -432,6 +435,146 @@ Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos 
 \item
   \textbf{Como verificarmos se os dados já estão bons para aplicar o algoritmo? Quais modelos podemos aplicar? Como sabemos que essas previsões são confiáveis? Como evitar problemas de um modelo ruim?}
 \end{itemize}
+
+Agora que temos todo o contexto histórico podemos ir adiante do conteúdo aplicado. A tópico a seguir trataremos um pouco de alguns conceitos muito importantes que são utilizados em muitos algoritmos de Aprendizado de Máquina para que possamos gradualmente responder estes questionamentos.
+
+\hypertarget{fundamentos}{%
+\chapter{Fundamentos}\label{fundamentos}}
+
+\hypertarget{medidasimport}{%
+\section{Medidas de Importância}\label{medidasimport}}
+
+\begin{quote}
+Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência
+
+Tradução de \citet{liu2012feature}.
+\end{quote}
+
+É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional \citep{liu2012feature}. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas \citep{lee2005seleccao}.
+
+\hypertarget{medinfo}{%
+\subsection{Medidas de Informação}\label{medinfo}}
+
+As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a \emph{priori} e a incerteza a \emph{posteriori} considerando-se o atributo \(X_i\). \(X_i\) é preferido ao atributo \(X_j\) se seu ganho de informação for maior que de \(X_j\). Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.
+
+\citet{shannon1948mathematical}, tomou como ``ponto de partida'' encontrar uma forma matemática de medir o quanto de informação existe na transmissão de uma mensagem de um ponto a outro, denominando-a entropia. Sua proposta baseava-se na ideia de que o aumento da probabilidade do próximo símbolo diminuiria o tamanho da informação. Com isso, a entropia pode ser definida como a quantidade de incerteza que há em uma mensagem e que diminui à medida que os símbolos são transmitidos (vai se conhecendo a mensagem), tendo-se então a informação, que pode ser vista como redução da incerteza \citep{shannon1948mathematical, paviotti2019consideraccoes}. Por exemplo: ao utilizarmos como idioma a nossa língua portuguesa e ao transmitir como símbolo a letra ``q'', a probabilidade do próximo símbolo ser a letra ``u'' é maior que a de ser qualquer outro símbolo, enquanto que a probabilidade de ser novamente a letra ``q'' é praticamente nula \citep{paviotti2019consideraccoes}.
+
+Shannon define que a entropia pode ser calculada por meio da soma das probabilidades de ocorrência de cada símbolo pela expressão \(∑ p_i = 1 = 100\%\), em que \(p_i\) representa a probabilidade do i-ésimo símbolo que compõe a mensagem. Segundo ele, estes símbolos devem ser representados através de sequências binárias, utilizando das propostas de \citet{nyquist1924certain} e \citet{hartley1928transmission}. Sua proposta consistia em representar símbolos de um alfabeto através de um logaritmo de acordo com suas respectivas unidades de informação. A entropia proposta por ele é obtida pela média das medidas de Hartley \citep{moser2012student}.
+
+Se A é discreto com distribuição de probabilidade \(p(A)\), a entropia será:
+
+\begin{equation} 
+  H(A)=- \sum p(A)log_2(p(A)) 
+  \label{eq:entropia}
+\end{equation}
+
+Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre ``sim'' e ``não'': quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero ``sim''/``não'' ou de ser 1 (100\%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/entropia} 
+
+}
+
+\caption{Gráfico de Probabilidade x Entropia.}\label{fig:entropia}
+\end{figure}
+
+
+
+O ganho de informação portanto mede a redução da entropia (nesse caso) causada pela partição dos exemplos de acordo com os valores do atributo.
+
+\begin{equation} 
+  \mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i) 
+  \label{eq:ganhodeinf}
+\end{equation}
+
+É muito utilizado em algoritmo de \textbf{Árvore de decisão} que será apresentado na seção \ref{ptII} com um exemplo de seu uso.
+
+\hypertarget{meddist}{%
+\subsection{Medidas de Similaridade e Dissimilaridade}\label{meddist}}
+
+É provável que já tenha ouvido falar em algo como medidas de distância, separabilidade, discriminação, divergência, similaridade ou dissimilaridade. É uma questão importante decidir até que ponto dois elementos de um conjunto de dados podem ser considerados com caractéristicas semelhantes ou não.
+
+Supondo que possuímos um conjunto de dados constituído por \(n\) elementos amostrais. O objetivo é agrupar esses elementos em \(g\) grupos de acordo com um vetor \(X_j=[X_{1j}X_{2j}...X_{pj}]', j=1,2,...,n\) que representa o valor observado da variável \(i\) medida no elemento \(j\). Lembrando que existem diversas medidas diferentes e que produzem um determinado tipo de agrupamento de acordo com sua metodologia. A seguir será apresentado algumas comuns no ramo.
+
+\hypertarget{disteuclidana}{%
+\subsubsection{Distância Euclidiana}\label{disteuclidana}}
+
+A distância Euclidiana entre dois elementos \(X_l\) e \(X_k\), com \(l \neq k\), é definida por:
+
+\begin{equation} 
+  d(X_l,X_k)=[(X_l-X_k)'(X_l - X_k)]^{1/2}=[\displaystyle \sum^p_{i=1}(X_{il}-X_{ik})^2]^{1/2}
+  \label{eq:euclidiana}
+\end{equation}
+
+sendo comparado os dois elementos amostrais em cada variável pertencente ao vetor. Por exemplo, a tabela a seguir apresenta a renda mensal (em salários mínimos) e a idade de seis indivíduos de uma localidade \citep{mingoti2007analise}.
+
+\begin{longtable}[]{@{}ccccccccc@{}}
+\caption{\label{tab:dadossrendaa} Renda e Idade de 6 indíviduos \citep{mingoti2007analise}.}\tabularnewline
+\toprule
+\textbf{Indivíduo} & A & B & C & D & E & F & Média & Desvio Padrão\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Indivíduo} & A & B & C & D & E & F & Média & Desvio Padrão\tabularnewline
+\midrule
+\endhead
+\textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4 & 8,15 & 5,61\tabularnewline
+\textbf{Idade} & 28 & 31 & 42 & 38 & 25 & 41 & 34,17 & 7,14\tabularnewline
+\bottomrule
+\end{longtable}
+
+A distância Euclidiana entre os indíviduos A e B nas variáveis Renda e Idade será:
+
+\[d(X_A,X_B)=[(9,60-8,40)^2+(28-31)^2]^{1/2}=3,23\]
+Assim sucessivamente para cada uma das observações, obtemos a matriz:
+
+\[D_{6x6}=\begin{bmatrix}\\
+ &A&B&C&D&E&F \\
+ A&0&&&&&\\
+ B&3,23&0&&&&\\
+ C & 15,74& 12,53&0&&&\\
+ D& 13,19& 12,04& 16,29&0&&\\
+ E& 6,44& 7,50& 17,06& 19,33&0&\\
+ F& 13,39& 10,19& 4,12& 12,18& 16,19&0 \\
+\end{bmatrix}\]
+
+Podendo agora analisar quais observações estão mais próximas entre si ou mais distantes de acordo com as características da Renda e da Idade.
+
+\hypertarget{distponderada}{%
+\subsubsection{Distância Ponderada}\label{distponderada}}
+
+Também conhecido como \textbf{distância generalzada}, esta metologia tem como base uma matriz \(A_{pxp}\) de ponderação. Quando \(A_{pxp}\) for uma matriz identidade, esta distância generalizada será a \textbf{distância Euclidiana}; se \(A_{pxp}\) for a matriz inversa da matriz de covariâncias amostrais \(S^{-1}_{pxp}\), será a \textbf{distância de \citet{mahalanobis1936generalized}} e se \(A_{pxp}=diag(\frac{1}{p})\), teremos a distância \textbf{Euclidiana Média}. A escolha dessa matriz \(A_{pxp}\) reflete o tipo de informação que o pesquisador pretende utilizar na ponderação das diferenças das coordernadas dos vetores em estudo \citep{mingoti2007analise}, a distância de Mahalanobis, por exemplo, leva em consideração as possíveis diferenças de variâncias e as relações lineares entre as variáveis, em termos de variância, na ponderação.
+
+\begin{equation} 
+  d(X_l,X_k)=[(X_l-X_k)'A_{pxp}(X_l - X_k)]^{1/2}
+  \label{eq:distpond}
+\end{equation}
+
+Continuando com dados da @tab:dadossrendaa
+
+\hypertarget{medidasdep}{%
+\subsection{Medidas de Dependência}\label{medidasdep}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
+
+}
+
+\caption{Padrões de correlação. Elaborado por \citet{gujarati2011econometria} e adaptado \citet{theil1978}.}\label{fig:correlacao}
+\end{figure}
+
+
+
+\hypertarget{medidas-de-precisuxe3o}{%
+\subsection{Medidas de Precisão}\label{medidas-de-precisuxe3o}}
+
+\hypertarget{medidas-de-consistuxeancia}{%
+\subsection{Medidas de consistência}\label{medidas-de-consistuxeancia}}
+
+\hypertarget{testesanova}{%
+\section{Teste de hipóteses e Análise de Variância}\label{testesanova}}
 
 \hypertarget{preprocesso}{%
 \chapter{Pré-processamento}\label{preprocesso}}
@@ -842,139 +985,6 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 \chapter{Algoritmos de Aprendizagem - Parte I}\label{Algoritmosaprendizagem}}
 
 \emph{Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.}
-
-Aqui vai a Parte I de Algoritmos de Aprendizagem, neste capítulo serão apresentados:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Medidas de Importância:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Medidas de Informação
-\item
-  Medidas de Distância
-\item
-  Medidas de Dependência
-\item
-  Medidas de Precisão
-\item
-  Medidas de Consistência
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Teste de Hipóteses e Análise de Variância
-\end{enumerate}
-
-\begin{itemize}
-\item
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\item
-  Naive Bayes
-\item
-  Regressão
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Regressão Linear Simples
-\item
-  Regressão Múltipla
-\item
-  Modelo de Probabilidade Linear
-\item
-  Gradiente Descendente
-\end{itemize}
-
-\hypertarget{medidas-de-importuxe2ncia}{%
-\section{Medidas de Importância}\label{medidas-de-importuxe2ncia}}
-
-\begin{quote}
-Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência
-
-Tradução de \citet{liu2012feature}.
-\end{quote}
-
-É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional \citep{liu2012feature}. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas \citep{lee2005seleccao}.
-
-\hypertarget{medinfo}{%
-\subsection{Medidas de Informação}\label{medinfo}}
-
-As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a \emph{priori} e a incerteza a \emph{posteriori} considerando-se o atributo \(X_i\). \(X_i\) é preferido ao atributo \(X_j\) se seu ganho de informação for maior que de \(X_j\). Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.
-
-\citet{shannon1948mathematical}, tomou como ``ponto de partida'' encontrar uma forma matemática de medir o quanto de informação existe na transmissão de uma mensagem de um ponto a outro, denominando-a entropia. Sua proposta baseava-se na ideia de que o aumento da probabilidade do próximo símbolo diminuiria o tamanho da informação. Com isso, a entropia pode ser definida como a quantidade de incerteza que há em uma mensagem e que diminui à medida que os símbolos são transmitidos (vai se conhecendo a mensagem), tendo-se então a informação, que pode ser vista como redução da incerteza \citep{shannon1948mathematical, paviotti2019consideraccoes}. Por exemplo: ao utilizarmos como idioma a nossa língua portuguesa e ao transmitir como símbolo a letra ``q'', a probabilidade do próximo símbolo ser a letra ``u'' é maior que a de ser qualquer outro símbolo, enquanto que a probabilidade de ser novamente a letra ``q'' é praticamente nula \citep{paviotti2019consideraccoes}.
-
-Shannon define que a entropia pode ser calculada por meio da soma das probabilidades de ocorrência de cada símbolo pela expressão \(∑ p_i = 1 = 100\%\), em que \(p_i\) representa a probabilidade do i-ésimo símbolo que compõe a mensagem. Segundo ele, estes símbolos devem ser representados através de sequências binárias, utilizando das propostas de \citet{nyquist1924certain} e \citet{hartley1928transmission}. Sua proposta consistia em representar símbolos de um alfabeto através de um logaritmo de acordo com suas respectivas unidades de informação. A entropia proposta por ele é obtida pela média das medidas de Hartley \citep{moser2012student}.
-
-Se A é discreto com distribuição de probabilidade \(p(A)\), a entropia será:
-
-\begin{equation} 
-  H(A)=- \sum p(A)log_2(p(A)) 
-  \label{eq:entropia}
-\end{equation}
-
-Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre ``sim'' e ``não'': quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero ``sim''/``não'' ou de ser 1 (100\%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/entropia} 
-
-}
-
-\caption{Gráfico de Probabilidade x Entropia.}\label{fig:entropia}
-\end{figure}
-
-
-
-O ganho de informação portanto mede a redução da entropia (nesse caso) causada pela partição dos exemplos de acordo com os valores do atributo.
-
-\begin{equation} 
-  \mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i) 
-  \label{eq:ganhodeinf}
-\end{equation}
-
-É muito utilizado em algoritmo de \textbf{Árvore de decisão} que será apresentado na seção \ref{ptII} mesma seção com um exemplo de seu uso.
-
-\hypertarget{meddist}{%
-\subsection{Medidas de Distância}\label{meddist}}
-
-Também conhecidas com medidas de separabilidade, discriminação e divergência. Em caso de duas classes, um atributo \(X_i\) é preferido ao atributo \(X_j\) se fornece uma diferença maior que \(X_j\) entre as probabilidades condicionais das duas classes. Uma das mais utilizadas é a distância Euclidiana.
-
-\hypertarget{medidasdep}{%
-\subsection{Medidas de Dependência}\label{medidasdep}}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
-
-}
-
-\caption{Padrões de correlação. Elaborado por \citet{gujarati2011econometria} e adaptado \citet{theil1978}.}\label{fig:correlacao}
-\end{figure}
-
-
-
-\hypertarget{medidas-de-precisuxe3o}{%
-\subsection{Medidas de Precisão}\label{medidas-de-precisuxe3o}}
-
-\hypertarget{medidas-de-consistuxeancia}{%
-\subsection{Medidas de consistência}\label{medidas-de-consistuxeancia}}
-
-\hypertarget{testesanova}{%
-\section{Teste de hipóteses e Análise de Variância}\label{testesanova}}
 
 \hypertarget{naive-bayes}{%
 \section{Naive Bayes}\label{naive-bayes}}
@@ -1680,6 +1690,12 @@ Os classificadores lineares que separam o conjunto de dados em treinamento possu
 
 \begin{equation}
 y_i(\langle\vec{w}.\vec{x}_i\rangle+b)\geq  1 \ ,  \ i=\{1,2,...,n\}
+\label{eq:restricaoclassifcom}
+\end{equation}
+
+Ou:
+\begin{equation}
+y_i(w^T.\vec{x}_i+b)\geq  1 \ ,  \ i=\{1,2,...,n\}
 \label{eq:restricaoclassifcomb}
 \end{equation}
 
@@ -1693,7 +1709,7 @@ d_i(\vec{w},b;\vec{x}_i)=\frac{|\langle\vec{w}.\vec{x}_i\rangle+b|}{||\vec{w}||}
 em que \(d_(\vec{w},b;\vec{x}_i)\) é a distância de um dado \(\vec{x}_i\) ao hiperplano \((\vec{w},b)\) \citep{lima2002maquinas}. Ao levarmos em consideração a restrição de \eqref{eq:restricaoclassifcomb}, podemos expressar:
 
 \begin{equation}
-d_(\vec{w},b;\vec{x}_i)=\geq \frac{1}{||\vec{w}\\}
+d(\vec{w},b;\vec{x}_i)\geq \frac{1}{||\vec{w}||}
 \label{eq:distcrestri}
 \end{equation}
 
@@ -1750,7 +1766,7 @@ Obtemos por meio delas:
 Substituindo as equações \eqref{eq:lagrangemarge1} e \eqref{eq:lagrangemarge2} em \eqref{eq:lagrangemargem}, chegamos em:
 
 \begin{equation}
-\displaystyle^n_{i=1}\alpha_i=\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle\vec{x}_i.x_j\rangle
+L =\displaystyle \sum^n_{i=1}\alpha_i-\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle x_i.x_j\rangle
 \label{eq:lagrangemarge3}
 \end{equation}
 
@@ -1759,7 +1775,7 @@ com \(\alpha_i\geq0,i\{1,2,...,n\}\). Serão representados os valores ótimos de
 Com um vetor suporte dado \(\vec{x}_j\), obtemos valor de \(b^*\) pela condição de KKT (ver Karush-Kuhn-Tucker em \ref{dicio}):
 
 \begin{equation}
-b^* =y_j-\langle\vec{w}^*.\vec{x}_j.
+b^* =y_j-\langle\vec{w}^*.\vec{x}_j \rangle.
 \label{eq:kktsvm}
 \end{equation}
 
@@ -1804,6 +1820,175 @@ Um conjunto de entrada \(X\) com pares \(\{(x_1,y_1);(x_2,y_2),...,(x_n,y_n)\}\)
 \end{figure}
 
 
+
+Com os dados de treinamento mapeados para o espaço de características, utiliza-se os valores mapeados \(\phi(x)\) ao invés de \(x\), sendo assim o problema consiste em:
+
+\begin{equation} 
+L =\displaystyle \sum^n_{i=1}\alpha_i-\frac{1}{2} \displaystyle \sum^n_{i=1}\sum^n_{j=1}\alpha_i\alpha_j y_i y_j \langle \phi(x_i).\phi(x_j)\rangle
+\label{eq:svnphi}
+\end{equation}
+
+em que \(\alpha_i \geq 0\). Para classificação não-linear as mesmas considerações de KKT descrito no linear. O hiperplano fica expresso como:
+\begin{equation}
+(\vec{w}\phi \ . \ (\vec{x}))+b=0
+\label{eq:hipotimophi}
+\end{equation}
+
+Ao problema de classificação não-linear de um novo padrão \textbf{z}:
+\begin{equation}
+sgn(\langle \vec{w}^* \ . \ \phi(z)\rangle+b^*)
+\label{eq:naolinzphi}
+\end{equation}
+
+Uma função \emph{Kernel}, pertencente a um domínio que permita calcular o produto interno para calculá-lo, recebe dois dados de entrada \(x_i\) e \(x_j\) destes dados no espaço de características.
+\begin{equation}
+\kappa=(x_i,x_j)=\langle \phi(x_i) \ . \ \phi(x_j)\rangle
+\label{eq:kernel}
+\end{equation}
+
+A função precisa satisfazer as condições do \textbf{Teorema de Mercer}, portanto a matriz \(K\) é positivamente definida (autovalores maiores que zero). \(K\) é obtida por:
+
+\begin{equation}
+K=K_{ij}=\kappa(x_i,x_j)
+\label{eq:mercer}
+\end{equation}
+
+As funções \emph{Kernel} mais utilizadas são:
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{\label{tab:kernel} \emph{Kernels} mais populares \citep{gonccalves2015maquina}.}\tabularnewline
+\toprule
+\textbf{Tipo de Kernel} & \textbf{Função \(\kappa(x_i,x_j)\)}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Tipo de Kernel} & \textbf{Função \(\kappa(x_i,x_j)\)}\tabularnewline
+\midrule
+\endhead
+Polinomial & \((\langle x_i.x_j\rangle +1)^p\)\tabularnewline
+Gaussiano & \(e^{(-\frac{\|\|x_i-x_j\|\|^2}{2\sigma^2})}\)\tabularnewline
+Sigmoidal & \(tanh(\beta_0 \langle x_i.x_j\rangle )+\beta_1\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Lembrando que o pesquisador precisa escolher alguns parâmetros, bem como a definição de qual algoritmo utilizar no SVM \citep{lorena2003introduccaoas}.
+
+\hypertarget{exemplosvm}{%
+\subsection{Exemplos}\label{exemplosvm}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Vamos supor o seguinte conjunto de dados:
+  \[\{ (4,1), (4,-1), (5,1), (5,-1), (0,-1), (0,2), (0,1), (1,2) \}\]
+\end{enumerate}
+
+Ao observamos no gráfico, podemos observar que os vetores de suporte são:
+\[\{s_1=(1,2),s_2=(4,1),s_3=(4,-1)\}\]
+
+Agora, vamos inserir o valor 1 de entrada do \emph{Bias}:
+
+\[\{\hat{s_1}=(1,2,1),\hat{s_2}=(4,1,1),\hat{s_3}=(4,-1,1)\}\]
+Precisamos agora encontrar o valor de \(\alpha_i\):
+
+\[\alpha_1 \phi(s_1).\phi(s_1)+\alpha_2 \phi(s_2).\phi(s_1)+\alpha_3 \phi (s_3).\phi (s_1)=-1\]
+\[\alpha_1 \phi(s_1).\phi(s_2)+\alpha_2 \phi(s_2).\phi(s_2)+\alpha_3 \phi (s_3).\phi (s_2)=+1\]
+\[\alpha_1 \phi(s_1).\phi(s_3)+\alpha_2 \phi(s_2).\phi(s_3)+\alpha_3 \phi (s_3).\phi (s_3)=+1\]
+
+E portanto:
+\[\alpha_1 \hat{s_1}.\hat{s_1}+\alpha_2 \hat{s_2}.\hat{s_1}+\alpha_3 \hat{s_3}.\hat{s_1}=-1\]
+\[\alpha_1 \hat{s_1}.\hat{s_2}+\alpha_2 \hat{s_2}.\hat{s_2}+\alpha_3 \hat{s_3}.\hat{s_2}=+1\]
+\[\alpha_1 \hat{s_1}.\hat{s_3}+\alpha_2 \hat{s_2}.\hat{s_3}+\alpha_3 \hat{s_3}.\hat{s_3}=+1\]
+
+\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\right\}=-1\]
+
+\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\right\}=+1\]
+
+\[\left\{
+\alpha_1
+\begin{pmatrix}
+1\\2\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix} +
+\alpha_2
+\begin{pmatrix}
+4\\1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}+
+\alpha_3
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\begin{pmatrix}
+4\\-1\\1
+\end{pmatrix}
+\right\}=+1\]
+
+Resolvendo as matrizes, temos:
+\[\alpha_1(1+4+1)+\alpha_2(4+2+1)+\alpha_3(4-2+1)=-1\]
+\[\alpha_1(4+2+1)+\alpha_2(16+1+1)+\alpha_3(16-1+1)=+1\]
+\[\alpha_1(4-2+1)+\alpha_2(16-1+1)+\alpha_3(16+1+1)=+1\]
+E portanto:
+\[6\alpha_1+7\alpha_2+3\alpha_3=-1\]
+\[7\alpha_1+18\alpha_2+16\alpha_3=+1\]
+\[3\alpha_1+16\alpha_2+18\alpha_3=-1\]
+Logo \(\alpha_1=2,44\),\(\alpha_2=2,83\) e \(\alpha_3=-2,06\). Encontrando \(\vec{w}=\displaystyle \sum^n_{i=1}\alpha_i \hat{s_i}\):
+
+\[\vec{w}=2,44\begin{pmatrix} 1\\2\\1\end{pmatrix}+
+2,83\begin{pmatrix} 4\\1\\1\end{pmatrix}+
+-2,06\begin{pmatrix} 4\\-1\\1\end{pmatrix}\]
+\[\begin{pmatrix}5,52\\9,77\\3,21\end{pmatrix}\]
+
+Portanto temos que \(w=\begin{pmatrix} 2,44\\2,83\end{pmatrix}\) e \(b=-2,06\). Com a equação \(y=wx+b\) e todos os dados, podemos plotar o hiperplano.
 
 \hypertarget{decisiontree}{%
 \section{\texorpdfstring{Árvore de Decisão (\emph{Decision Tree})}{Árvore de Decisão (Decision Tree)}}\label{decisiontree}}
@@ -2661,10 +2846,10 @@ A similaridade entre dois conglomerados é definida pelos dois elementos mais pa
 
 
 
-Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{meddist}. Com o seguinte banco de dados:
+Vamos aproveitar o exemplo que utilizamos de distância Euclidiana, em \ref{disteuclidana}. Com o seguinte banco de dados:
 
 \begin{longtable}[]{@{}ccccccc@{}}
-\caption{\label{tab:dadossrenda} Renda e Idade de 6 indíviduos, abordado em \ref{meddist} sobre distância Euclidiana \citep{mingoti2007analise}}\tabularnewline
+\caption{\label{tab:dadossrenda} Renda e Idade de 6 indíviduos, abordado em \ref{disteuclidana} sobre distância Euclidiana \citep{mingoti2007analise}}\tabularnewline
 \toprule
 \textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
 \midrule
@@ -2776,7 +2961,7 @@ Em cada estágio calcula-se para os pares de grupos, combinando num único aquel
 
 
 
-Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distância Euclidiana, em \ref{meddist}. A matriz de distância calculada entre os seis elementos amostrais é dada por:
+Aproveitando o mesmo exemplo que utilizamos no método anterior, sobre a distância Euclidiana, em \ref{disteuclidana}. A matriz de distância calculada entre os seis elementos amostrais é dada por:
 \[D_{6x6}=\begin{bmatrix}\\
  &A&B&C&D&E&F \\
  A&0&&&&&\\
@@ -2976,7 +3161,7 @@ Para cada passo do algoritmo, os conglomerados que possuem o menor valor de dist
 Lembrando que os valores originais das variáveis são:
 
 \begin{longtable}[]{@{}ccccccc@{}}
-\caption{\label{tab:dadosrenda} Renda e Idade de 6 indíviduos, abordado em \ref{meddist} sobre distância Euclidiana \citep{mingoti2007analise}.}\tabularnewline
+\caption{\label{tab:dadosrenda} Renda e Idade de 6 indíviduos, abordado em \ref{disteuclidana} sobre distância Euclidiana \citep{mingoti2007analise}.}\tabularnewline
 \toprule
 \textbf{Renda} & 9,6 & 8,4 & 2,4 & 18,2 & 3,9 & 6,4\tabularnewline
 \midrule

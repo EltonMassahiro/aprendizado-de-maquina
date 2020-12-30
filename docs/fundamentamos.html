@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning</title>
+  <title>Capítulo 5 Fundamentamos | Machine Learning</title>
   <meta name="description" content="Tutorial de Machine Learning." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning" />
+  <meta property="og:title" content="Capítulo 5 Fundamentamos | Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Vertentes de uma IA e fundamentação filosófica | Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 5 Fundamentamos | Machine Learning" />
   
   <meta name="twitter:description" content="Tutorial de Machine Learning." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="i-a.html"/>
-<link rel="next" href="machinelearning.html"/>
+<link rel="prev" href="machinelearning.html"/>
+<link rel="next" href="preprocesso.html"/>
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -240,49 +240,172 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="vertentes-de-uma-ia-e-fundamentação-filosófica" class="section level1">
-<h1><span class="header-section-number">Capítulo 3</span> Vertentes de uma IA e fundamentação filosófica</h1>
+<div id="fundamentamos" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Fundamentamos</h1>
+<div id="medidasimport" class="section level2">
+<h2><span class="header-section-number">5.1</span> Medidas de Importância</h2>
 <blockquote>
-<p>Os filósofos têm estado por aí há muito mais tempo que os computadores e vêm tentando resolver algumas questões que se relacionam à IA: como a mente funciona? É possível que as máquinas ajam com inteligência, de modo semelhante às pessoas, e, se isso acontecer, elas realmente terão mentes conscientes? Quais são as implicações éticas de máquinas inteligentes?</p>
-<p>“Inteligência Artificial”, <span class="citation">RUSSEL and Norvig (<a href="#ref-russel2013inteligencia">2013</a>)</span>.</p>
+<p>Um atributo é dito importante se quando removido a medida de importância considerada em relação aos atributos restantes é deteriorada , seja a precisão da medida, consistência, informação, distância ou dependência</p>
+<p>Tradução de <span class="citation">Liu and Motoda (<a href="#ref-liu2012feature">2012</a>)</span>.</p>
 </blockquote>
-<p>Com todo o desenvolvimento da IA, os algoritmos podem funcionar em níveis
-humanos em tarefas que aparentemente envolvem julgamento humano ou, como Turing acrescentou,
-“aprender a partir da experiência” e a capacidade de “distinguir o certo do errado”<span class="citation">(RUSSEL and Norvig <a href="#ref-russel2013inteligencia">2013</a>)</span>. Paul Meehl <span class="citation">(Meehl <a href="#ref-meehl1954clinical">1954</a>)</span> analisou os processos de tomada de decisão de especialistas treinados em tarefas subjetivas como prever o sucesso de um aluno em um programa de
-treinamento ou a reincidência de um criminoso e descobriu que algoritmos simples de aprendizado estatístico fizeram previsões melhores que os especialistas.</p>
-<p>A reflexão sobre “máquinas inteligentes e pensantes” é recente em nossa história e passa por longas discussões sobre o alcance dessa inteligência. Desde a classificação elaborada pelo filósofo John Searle em 1980, tomou-se na doutrina em geral a divisão do uso da inteligência
-artificial em <strong>“fraca”</strong> e <strong>“forte”</strong> <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span>.</p>
-<p>A inteligência artificial <strong>fraca</strong> “nos permite formular e testar hipóteses de forma mais rigorosa e precisa”, no entanto, ela é dependente da inserção do conhecimento fornecido pelo ser humano que a programa. A máquina não é capaz de produzir raciocínios próprios, autônomos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>; Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>. Seartle também explica que a máquina adequadamente preparada é realmente uma
-mente, no sentido de que os computadores que recebem os programas certos poderiam estar, literalmente, preparados para compreender eter outros estados cognitivos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span>.</p>
-<p><span class="citation">Searle (<a href="#ref-searle1980minds">1980</a>)</span> em seu <em>naturalismo biológico</em>, critica a inteligência artificial forte pois, segundo ele, as máquinas não possuem a complexidade de sistema nervoso, neurônios com axonios e dendritos e tudo mais. Para corroborar sua crítica, Searle descreve uma situação hipótetica simulando um programa que passa pelo teste de turing e que “não entende nada de suas entradas e saídas”, não havendo os requisitos para ser considerada uma mente.</p>
-<p>O sistema foi nomeado como <strong>“quarto chinês”</strong>. Ele se usa como exemplo com a situação de que não tem conhecimento da língua chinesa, estaria trancada e isolado num quarto recebendo uma folha de papel com ideogramas em chinês escritos. Por não conhecer a língua, não possui ideia alguma do que se trata. Em seguida, ele recebe uma seguda folha com ideiogramas chineses acompanhados de um conjunto de regras em inglês (língua nativa) que permitem a correlação da segunda folha com a primeira. Por fim, recebe uma terceira folha com ideogramas chineses, com regras em inglês que orientam a dar em respostas específicos ideogramas chineses associados a outros ideogramas da terceira folha, correlacionando os elementos da atual com as duas anteriores. As pessoas externas do quarto denominam a terceira folha como o “script”, a segunda folha de “história” e a primeira folha de “questões”. Essas pessoas consideram que os símbolos que Searle entregou em resposta à terceira folha são as “respostas às questões” e todo o conjunto de regras que lhe foi entrega são o “programa” <span class="citation">(Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>.</p>
-<p>Com o tempo Searle se torna melhor em dar respostas de acordo com as regras que permitem manipular os ideogramas chieses e de maneira similar ocorre com os programadores externos do quarto, que ficam bos em escrever os programas do ponto de vista externo. Qualquer pessoa que observa as resposta de Searle não contestaria de que Searle não fala chinês. Da mesma forma se o mesmo experimento fosse feito com textos em inglês, sua língua nativa, ele daria respostas em patamares semelhantes <span class="citation">(Guimarães <a href="#ref-guimaraes2019inteligencia">2019</a>)</span>.</p>
-<p>Searle conclui que no caso em chinês ele opera como um computador, respondendo corretamente mas sem a menor ideia do que está respondendo. Ao caso em inglês, ele irá responder como um ser humano e com consciência de suas respostas. O quarto se refere ao computador, o ser humano ao <em>software</em> de IA. Com isso ele assume que só seria possível produzir artificialmente uma máquina com sistema suficientemente semelhante a nós se poder duplicar exatamente as causas e seus efeitos, assim de fato seria possível produzir consciência, intencionalidade (fenômeno biológico dependente da
-bioquímica específica de suas origens) e tudo o mais usando princípios químicos diferentes dos usados por seres humanos <span class="citation">(Searle <a href="#ref-searle1980minds">1980</a>)</span> .</p>
-<p>Em contestamento a Searle, Daniel Dennett defende o projeto de Turing porque agir inteligente consiste na capacidade de processamento de informação <span class="citation">(Dennett <a href="#ref-dennett2009part">2009</a>)</span>. Segundo Dennett, o problema da mente deve ser abordado com base na teoria evolutiva darwiniana pois o que entendemos por mental está relacionado ao tipo de resposta que nosso organismo dá para as demandas que estão para além daquelas que dizem respeito à manutenção da vida <span class="citation">(Silveira <a href="#ref-da2013searle">2013</a>)</span>. Para ele, como ele denomina de <em>intencionalidade intrínseca</em>, Seartle errou em atribuir aos humanos a intencionalidade produzida exclusivamente pela interação das partes que constituem uma totalidade complexa, não necessitando de influências ou interferências externas. Para Dennet nossa intencionalidade não é original <span class="citation">(Dennett <a href="#ref-dennett2009part">2009</a>)</span>.</p>
-<p>Para Dennet o principal argumento criticando o argumento do quarto chinês, é a forma como investigamos os fenômenos mentais. É uma região que possibilita infinitas especulações, sendo o método das ciências empíricas o mais apropriado ao estudo da mente <span class="citation">(Silveira <a href="#ref-da2013searle">2013</a>)</span>.</p>
-<p>A diferença entre ambos é de natureza filosófica com ontologias e epistemologias divergentes. É notável a importância das discussões filosóficas. O antagonismo dicotômico dos dois filósofos possuem fundamentações que auxiliam na compreensão da mente. Quando teremos estas respostas? As máquinas serão capazes de raciocinar algum dia? Até onde uma IA pode chegar?</p>
+<p>É fundamental estimarmos a importância de um atributo, tanto uma avaliação individual quanto à avaliação de subconjuntos de atributos. É uma questão complexa e multidimensional <span class="citation">(Liu and Motoda <a href="#ref-liu2012feature">2012</a>)</span>. Podemos avaliar se os atributos selecionados pela etapa do pré-processamento auxiliam a melhorar a precisão do classificador ou a simplifcar algum modelo construído. A seguir, apresenta-se algumas medidas utilizadas <span class="citation">(Lee <a href="#ref-lee2005seleccao">2005</a>)</span>.</p>
+<div id="medinfo" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Medidas de Informação</h3>
+<p>As medidas de informação determinam o ganho de informação a partir de um atributo. O ganho de informação é definido como a diferença entre a incerteza a <em>priori</em> e a incerteza a <em>posteriori</em> considerando-se o atributo <span class="math inline">\(X_i\)</span>. <span class="math inline">\(X_i\)</span> é preferido ao atributo <span class="math inline">\(X_j\)</span> se seu ganho de informação for maior que de <span class="math inline">\(X_j\)</span>. Uma das mais utilizadas é a entropia que normalmente é usada na teoria da informação para medir a pureza ou impureza de um determinado conjunto.</p>
+<p><span class="citation">Shannon (<a href="#ref-shannon1948mathematical">1948</a>)</span>, tomou como “ponto de partida” encontrar uma forma matemática de medir o quanto de informação existe na transmissão de uma mensagem de um ponto a outro, denominando-a entropia. Sua proposta baseava-se na ideia de que o aumento da probabilidade do próximo símbolo diminuiria o tamanho da informação. Com isso, a entropia pode ser definida como a quantidade de incerteza que há em uma mensagem e que diminui à medida que os símbolos são transmitidos (vai se conhecendo a mensagem), tendo-se então a informação, que pode ser vista como redução da incerteza <span class="citation">(Shannon <a href="#ref-shannon1948mathematical">1948</a>; Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>. Por exemplo: ao utilizarmos como idioma a nossa língua portuguesa e ao transmitir como símbolo a letra “q”, a probabilidade do próximo símbolo ser a letra “u” é maior que a de ser qualquer outro símbolo, enquanto que a probabilidade de ser novamente a letra “q” é praticamente nula <span class="citation">(Paviotti and Magossi <a href="#ref-paviotti2019consideraccoes">2019</a>)</span>.</p>
+<p>Shannon define que a entropia pode ser calculada por meio da soma das probabilidades de ocorrência de cada símbolo pela expressão <span class="math inline">\(∑ p_i = 1 = 100\%\)</span>, em que <span class="math inline">\(p_i\)</span> representa a probabilidade do i-ésimo símbolo que compõe a mensagem. Segundo ele, estes símbolos devem ser representados através de sequências binárias, utilizando das propostas de <span class="citation">Nyquist (<a href="#ref-nyquist1924certain">1924</a>)</span> e <span class="citation">Hartley (<a href="#ref-hartley1928transmission">1928</a>)</span>. Sua proposta consistia em representar símbolos de um alfabeto através de um logaritmo de acordo com suas respectivas unidades de informação. A entropia proposta por ele é obtida pela média das medidas de Hartley <span class="citation">(Moser and Chen <a href="#ref-moser2012student">2012</a>)</span>.</p>
+<p>Se A é discreto com distribuição de probabilidade <span class="math inline">\(p(A)\)</span>, a entropia será:</p>
+<p><span class="math display" id="eq:entropia">\[\begin{equation} 
+  H(A)=- \sum p(A)log_2(p(A)) 
+  \tag{5.1}
+\end{equation}\]</span></p>
+<p>Para facilitar a compreensão, vamos supor um exemplo de um questionário com resposta binária entre “sim” e “não”: quanto mais distribuído as probabilidades das respostas, mais desorganizada é, logo maior suaa entropia, do contrário caso for uma probabilidade de ser zero “sim”/“não” ou de ser 1 (100%), ou seja, ter apenas uma opção de resposta, será menos distribuído e portanto menor usa entropia.</p>
+<div class="figure" style="text-align: center"><span id="fig:entropia"></span>
+<img src="Figuras/entropia.jpg" alt="Gráfico de Probabilidade x Entropia." width="70%" />
+<p class="caption">
+Figura 5.1: Gráfico de Probabilidade x Entropia.
+</p>
+</div>
 
+<p>O ganho de informação portanto mede a redução da entropia (nesse caso) causada pela partição dos exemplos de acordo com os valores do atributo.</p>
+<p><span class="math display" id="eq:ganhodeinf">\[\begin{equation} 
+  \mbox{Ganho de Informação}(D,T)=\mbox{entropia}(D)-\displaystyle \sum_{i=1}^k \frac{|D_i|}{|D|}. \mbox{entropia}(D_i) 
+  \tag{5.2}
+\end{equation}\]</span></p>
+<p>É muito utilizado em algoritmo de <strong>Árvore de decisão</strong> que será apresentado na seção <a href="ptII.html#ptII">8</a> com um exemplo de seu uso.</p>
+</div>
+<div id="meddist" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Medidas de Similaridade e Dissimilaridade</h3>
+<p>É provável que já tenha ouvido falar em algo como medidas de distância, separabilidade, discriminação, divergência, similaridade ou dissimilaridade. É uma questão importante decidir até que ponto dois elementos de um conjunto de dados podem ser considerados com caractéristicas semelhantes ou não.</p>
+<p>Supondo que possuímos um conjunto de dados constituído por <span class="math inline">\(n\)</span> elementos amostrais. O objetivo é agrupar esses elementos em <span class="math inline">\(g\)</span> grupos de acordo com um vetor <span class="math inline">\(X_j=[X_{1j}X_{2j}...X_{pj}]&#39;, j=1,2,...,n\)</span> que representa o valor observado da variável <span class="math inline">\(i\)</span> medida no elemento <span class="math inline">\(j\)</span>. Lembrando que existem diversas medidas diferentes e que produzem um determinado tipo de agrupamento de acordo com sua metodologia. A seguir será apresentado algumas comuns no ramo.</p>
+<div id="disteuclidana" class="section level4">
+<h4><span class="header-section-number">5.1.2.1</span> Distância Euclidiana</h4>
+<p>A distância Euclidiana entre dois elementos <span class="math inline">\(X_l\)</span> e <span class="math inline">\(X_k\)</span>, com <span class="math inline">\(l \neq k\)</span>, é definida por:</p>
+<p><span class="math display" id="eq:euclidiana">\[\begin{equation} 
+  d(X_l,X_k)=[(X_l-X_k)&#39;(X_l - X_k)]^{1/2}=[\displaystyle \sum^p_{i=1}(X_{il}-X_{ik})^2]^{1/2}
+  \tag{5.3}
+\end{equation}\]</span></p>
+<p>sendo comparado os dois elementos amostrais em cada variável pertencente ao vetor. Por exemplo, a tabela a seguir apresenta a renda mensal (em salários mínimos) e a idade de seis indivíduos de uma localidade <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
+<table>
+<caption><span id="tab:dadossrendaa">Tabela 5.1: </span> Renda e Idade de 6 indíviduos <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</caption>
+<thead>
+<tr class="header">
+<th align="center"><strong>Indivíduo</strong></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">Média</th>
+<th align="center">Desvio Padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Renda</strong></td>
+<td align="center">9,6</td>
+<td align="center">8,4</td>
+<td align="center">2,4</td>
+<td align="center">18,2</td>
+<td align="center">3,9</td>
+<td align="center">6,4</td>
+<td align="center">8,15</td>
+<td align="center">5,61</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Idade</strong></td>
+<td align="center">28</td>
+<td align="center">31</td>
+<td align="center">42</td>
+<td align="center">38</td>
+<td align="center">25</td>
+<td align="center">41</td>
+<td align="center">34,17</td>
+<td align="center">7,14</td>
+</tr>
+</tbody>
+</table>
+<p>A distância Euclidiana entre os indíviduos A e B nas variáveis Renda e Idade será:</p>
+<p><span class="math display">\[d(X_A,X_B)=[(9,60-8,40)^2+(28-31)^2]^{1/2}=3,23\]</span>
+Assim sucessivamente para cada uma das observações, obtemos a matriz:</p>
+<p><span class="math display">\[D_{6x6}=\begin{bmatrix}\\
+ &amp;A&amp;B&amp;C&amp;D&amp;E&amp;F \\
+ A&amp;0&amp;&amp;&amp;&amp;&amp;\\
+ B&amp;3,23&amp;0&amp;&amp;&amp;&amp;\\
+ C &amp; 15,74&amp; 12,53&amp;0&amp;&amp;&amp;\\
+ D&amp; 13,19&amp; 12,04&amp; 16,29&amp;0&amp;&amp;\\
+ E&amp; 6,44&amp; 7,50&amp; 17,06&amp; 19,33&amp;0&amp;\\
+ F&amp; 13,39&amp; 10,19&amp; 4,12&amp; 12,18&amp; 16,19&amp;0 \\
+\end{bmatrix}\]</span></p>
+<p>Podendo agora analisar quais observações estão mais próximas entre si ou mais distantes de acordo com as características da Renda e da Idade.</p>
+</div>
+<div id="distponderada" class="section level4">
+<h4><span class="header-section-number">5.1.2.2</span> Distância Ponderada</h4>
+<p>Também conhecido como <strong>distância generalzada</strong>, esta metologia tem como base uma matriz <span class="math inline">\(A_{pxp}\)</span> de ponderação. Quando <span class="math inline">\(A_{pxp}\)</span> for uma matriz identidade, esta distância generalizada será a <strong>distância Euclidiana</strong>; se <span class="math inline">\(A_{pxp}\)</span> for a matriz inversa da matriz de covariâncias amostrais <span class="math inline">\(S^{-1}_{pxp}\)</span>, será a <strong>distância de <span class="citation">Mahalanobis (<a href="#ref-mahalanobis1936generalized">1936</a>)</span></strong> e se <span class="math inline">\(A_{pxp}=diag(\frac{1}{p})\)</span>, teremos a distância <strong>Euclidiana Média</strong>. A escolha dessa matriz <span class="math inline">\(A_{pxp}\)</span> reflete o tipo de informação que o pesquisador pretende utilizar na ponderação das diferenças das coordernadas dos vetores em estudo <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>, a distância de Mahalanobis, por exemplo, leva em consideração as possíveis diferenças de variâncias e as relações lineares entre as variáveis, em termos de variância, na ponderação.</p>
+<p><span class="math display" id="eq:distpond">\[\begin{equation} 
+  d(X_l,X_k)=[(X_l-X_k)&#39;A_{pxp}(X_l - X_k)]^{1/2}
+  \tag{5.4}
+\end{equation}\]</span></p>
+<p>Continuando com dados da @tab:dadossrendaa</p>
+</div>
+</div>
+<div id="medidasdep" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Medidas de Dependência</h3>
+<div class="figure" style="text-align: center"><span id="fig:correlacao"></span>
+<img src="Figuras/correlacao.png" alt="Padrões de correlação. Elaborado por Gujarati and Porter (2011) e adaptado Henri (1978)." width="70%" />
+<p class="caption">
+Figura 5.2: Padrões de correlação. Elaborado por <span class="citation">Gujarati and Porter (<a href="#ref-gujarati2011econometria">2011</a>)</span> e adaptado <span class="citation">Henri (<a href="#ref-theil1978">1978</a>)</span>.
+</p>
+</div>
+
+</div>
+<div id="medidas-de-precisão" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Medidas de Precisão</h3>
+</div>
+<div id="medidas-de-consistência" class="section level3">
+<h3><span class="header-section-number">5.1.5</span> Medidas de consistência</h3>
+</div>
+</div>
+<div id="testesanova" class="section level2">
+<h2><span class="header-section-number">5.2</span> Teste de hipóteses e Análise de Variância</h2>
+
+</div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-dennett2009part">
-<p>Dennett, Daniel C. 2009. “The Part of Cognitive Science That Is Philosophy.” <em>Topics in Cognitive Science</em> 1 (2): 231–36.</p>
+<div id="ref-gujarati2011econometria">
+<p>Gujarati, Damodar N, and Dawn C Porter. 2011. <em>Econometria Básica-5</em>. Amgh Editora.</p>
 </div>
-<div id="ref-guimaraes2019inteligencia">
-<p>Guimarães, Rodrigo Régnier Chemim. 2019. “A Inteligência Artificial E a Disputa Por Diferentes Caminhos Em Sua Utilização Preditiva No Processo Penal.” <em>Revista Brasileira de Direito Processual Penal</em> 5 (3): 1555–88.</p>
+<div id="ref-hartley1928transmission">
+<p>Hartley, Ralph VL. 1928. “Transmission of Information 1.” <em>Bell System Technical Journal</em> 7 (3): 535–63.</p>
 </div>
-<div id="ref-meehl1954clinical">
-<p>Meehl, Paul E. 1954. “Clinical Versus Statistical Prediction: A Theoretical Analysis and a Review of the Evidence Minneapolis: University of Minnesota Press.[Reprinted with New Preface.” In <em>In Proceedings of the 1955 Invitational Conference on Testing Problems</em>. Citeseer.</p>
+<div id="ref-theil1978">
+<p>Henri, Theil. 1978. <em>Introduction to Econometrics</em>. Englewood Cliffs, New Jersey: Prentice Hall.</p>
 </div>
-<div id="ref-russel2013inteligencia">
-<p>RUSSEL, Stuart, and Peter Norvig. 2013. “Inteligência Artificial. Tradução de Regina célia Smille.” <em>Rio de Janeiro: Campus Elsevier</em>.</p>
+<div id="ref-lee2005seleccao">
+<p>Lee, Huei Diana. 2005. “Seleção de Atributos Importantes Para a Extração de Conhecimento de Bases de Dados.” PhD thesis, Universidade de São Paulo.</p>
 </div>
-<div id="ref-searle1980minds">
-<p>Searle, John R. 1980. “Minds, Brains, and Programs, from the Behavioral and Brain Sciences, Vol. 3.” <em>Cambridge University Press Http://Members. Aol. Com/NeoNoetics/MindsBrainsPrograms. Html From</em> 23: 2004.</p>
+<div id="ref-liu2012feature">
+<p>Liu, Huan, and Hiroshi Motoda. 2012. <em>Feature Selection for Knowledge Discovery and Data Mining</em>. Vol. 454. Springer Science &amp; Business Media.</p>
 </div>
-<div id="ref-da2013searle">
-<p>Silveira, José Atı́lio Pires da. 2013. “Searle E Dennett: Duas Perspectivas de Estudo Da Mente.” <em>Problemata: Revista Internacional de Filosofı́a</em> 4 (2): 238–58.</p>
+<div id="ref-mahalanobis1936generalized">
+<p>Mahalanobis, Prasanta Chandra. 1936. “On the Generalized Distance in Statistics.” In. National Institute of Science of India.</p>
+</div>
+<div id="ref-mingoti2007analise">
+<p>Mingoti, Sueli Aparecida. 2007. “Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada.” In <em>Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada</em>, 295–95.</p>
+</div>
+<div id="ref-moser2012student">
+<p>Moser, Stefan M, and Po-Ning Chen. 2012. <em>A Student’s Guide to Coding and Information Theory</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-nyquist1924certain">
+<p>Nyquist, Harry. 1924. “Certain Factors Affecting Telegraph Speed.” <em>Transactions of the American Institute of Electrical Engineers</em> 43: 412–22.</p>
+</div>
+<div id="ref-paviotti2019consideraccoes">
+<p>Paviotti, José Renato, and Carlos J Magossi. 2019. “Considerações Sobre O Conceito de Entropia Na Teoria Da Informação.”</p>
+</div>
+<div id="ref-shannon1948mathematical">
+<p>Shannon, Claude E. 1948. “A Mathematical Theory of Communication.” <em>The Bell System Technical Journal</em> 27 (3): 379–423.</p>
 </div>
 </div>
             </section>
@@ -290,8 +413,8 @@ bioquímica específica de suas origens) e tudo o mais usando princípios quími
           </div>
         </div>
       </div>
-<a href="i-a.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="machinelearning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="machinelearning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preprocesso.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -322,7 +445,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-VertentesIA.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-medidas.Rmd",
 "text": "Edit"
 },
 "history": {
