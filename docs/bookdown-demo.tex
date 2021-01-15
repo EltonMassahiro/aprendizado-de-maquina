@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2020-12-29}
+\date{2021-01-14}
 
 \begin{document}
 \maketitle
@@ -178,120 +178,6 @@ Poucos instruem como devemos enxergar todo esse cosmos que ao longo da história
 Não cabe a mim dizer como estudar, mas o que posso lhe aconselhar como principal ponto é a \textbf{paciência}. Temas como esse podem abranger qualquer campo, desde a filosofia até a área da saúde e portanto, do mesmo modo que se aplica a qualquer conteúdo, o mais importante é a base. Leia, releia, pesquise, veja vídeos, ouça um podcast, converse e discuta com colegas e professores a respeito. Não se cobre de que precisa aprender o mais rápido possível, mas preze a qualidade do estudo.
 
 Com intuito de explicar sobre Aprendizado de Máquina. Na seção \textbf{AQUI VOU COLOCAR A REFERENCIA DA SESSAO}, para faciliar o leitor dependendo de sua demanda de conteúdo, busquei separar em subseções a lógica computacional e a matemática. Tornando mais prático para o público que não tem interesse no modelo matemático e que busca o conhecimento de determinado assunto quanto ao público que demanda esse conteúdo.
-
-\hypertarget{dicio}{%
-\section{Dicionário}\label{dicio}}
-
-\begin{itemize}
-\item
-  \textbf{Escalares e Vetores:}
-\item
-  \textbf{Espaço Vetorial e Transformação Linear:}
-\item
-  \textbf{Assimetria e Curtose:}
-\item
-  \textbf{Variância e Desvio padrão (Erro padrão):}
-\item
-  \textbf{Covariância:} A covariância mede a relação linear entre duas variáveis.
-  É possível utilizar a covariância para compreender a direção da relação entre as variáveis. Valores de covariância positivos indicam que valores acima da média de uma variável estão associados a valores médios acima da outra variável e abaixo dos valores médios são igualmente associado. Valores de covariância negativos indicam que valores acima da média de uma variável estão associados com valores médios abaixo da outra variável.
-\item
-  \textbf{Distribuição normal:}
-\item
-  \textbf{Distribuição binomial:}
-\item
-  \textbf{Disitrbuição de Poisson:} \citep{banzatto1992experimentaccao} Quando número de plantas daninhas por parcela, número de insetos capturados em armadilhas luminosas, número de pulgões ou ácaros por folhas, etc.
-\item
-  \textbf{Teorema de Bayes:} quando tratamos de probabilidades, \(P(A|B)\) e \(P(B|A)\) podem ser parecidos, mas possuem grande diferença entre as probabilidades que representam. Por exemplo \(P(A|B)\) pode se referir sobre a probabilidade de uma pessoa que cometeu um furto (B) ser condenada (A) e \(P(B|A)\) seria a probabilidade de uma pessoa que foi condenada por furto ter efetivamente cometido um crime. A causa se torna o efeito e o efeito se torna a causa \citep{freund2009estatistica}.
-\end{itemize}
-
-Pela regra geral de multiplicação que afirma que a probabilidade da ocorrência de dois eventos é o produto da probibilidade da ocorrência de um deles pela probabilidade condicional da ocorrência do outro evento, temos:
-
-\begin{equation} 
- P(A \bigcap B)= P(A). P(B|A) \  \mbox{ou} \ P(A \bigcap B)= P(B). P(A|B)
-  \label{eq:multprob}
-\end{equation}
-
-Igualando ambas expressões, temos: \$ P(A). P(B\textbar{}A) = P(B). P(A\textbar{}B)\$ e portanto, divindo por \(P(B)\), obtém-se o Teorema de Bayes que descreve a probabilidade de um evento, baseado em um conhecimento a \emph{priori} que pode estar relacionado ao evento:
-
-\begin{equation} 
- P(A|B) = \frac{P(A).P(B|A)}{P(B)}
-  \label{eq:bayes}
-\end{equation}
-
-Para \(B_n\) e \(A_k\) atributos, podemos reescrever:
-
-\begin{equation} 
- P(A_k|B_1,...,B_n) = \frac{P(A_k).P(B_1,...,B_n|A_k)}{P(B_1,...,B_n)}
-  \label{eq:bayesn}
-\end{equation}
-
-\textbf{Exemplo:} este exemplo pode ser encontrado em \citet{freund2009estatistica}. Numa certa empresa, 4\% dos homens e 1\% das mulheres têm mais de 1,75m
-de altura, respectivamente, sendo que 60\% dos trabalhadores são mulheres. Um trabalhador é escolhido ao acaso.
-
-\begin{enumerate}
-\def\labelenumi{\Alph{enumi})}
-\tightlist
-\item
-  Qual a probabilidade de que tenha mais de 1,75m?
-\end{enumerate}
-
-\emph{Solução:} Temos de informação de que 60\% dos trabalhadores são mulheres e que 1\% delas possuem mais de 1,75m. Portanto 40\% dos trabalhadores são homens, sendo 4\% deles com mais de 1,75m. Logo temos que:
-\[P(> 1, 75m) = (0, 04 . 0.4) + (0, 01 . 0.6) = 0, 022 \\ → 2, 2\% \ \mbox{ de probabilidade de que tenha mais de 1,75m.}\]
-
-\begin{enumerate}
-\def\labelenumi{\Alph{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  E que seja homem dado que o trabalhador escolhido tenha mais de 1,75m?
-\end{enumerate}
-
-\emph{Solução:} pelo enunciado ``que seja homem dado que o trabalhador escolhido tenha mais de 1,75m'', podemos perceber que já possuímos uma afirmação que já foi escolhido uma pessoa que tenha mais que 1,75m e queremos saber se é homem. Por meio da questão anterior sabemos a probabilidade P(\textgreater{} 1,75m). Portanto:
-\[P(H| > 1, 75m) = \frac{P(> 1, 75m|H).P(H)}{P(> 1, 75m)}=\frac{0,04.0,4}{0, 022} \]
-
-\[→ 72,73\% \ \mbox{de probabilidade de ser homem dado que seja maior que 1,75m.}\]
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Função de verossimilhança:} a verossimilhança \(L\) de um conjunto de parâmetros \(\theta\), com dada informação \(x\). É igual a probabilidade da mesma observação \(x\) ter ocorrido dados os valores dos mesmos parâmetros \(\theta\). Conhecendo um parâmetro \(\theta\), a probabilidade condicional de \(x\) é \(P(x|\theta)\), mas se o valor de \(x\) é conhecido, pode-se realizar inferências sobre o valor de \(\theta\) \citep{bolfarine2001introduccao}.
-\end{itemize}
-
-\begin{equation} 
- L(\theta |x)=P(x| \theta)
-  \label{eq:fverossimilhanca}
-\end{equation}
-
-Para ``\(n\)'' valores:
-
-\begin{equation} 
- L(\theta |x_1,..., x_n)=\prod_{i=1}^{n} P(x_i| \theta)
-  \label{eq:fsumverossimilhanca}
-\end{equation}
-
-Geralmente utiliza-se o logaritmo natural em verossimilhança \(L(\theta |x)=ln L(\theta|x)\) como função suporte e facilitar em seu estudo.
-
-Para facilitar a compreensão, considere a observação de que você esteja ouvindo barulho em sua sala de estar num dia de natal (observação \(x\)), você parte da hipótese inicial que poderia ser o ``Papai Noel'' lhe entregando presentes (hipótese \(\theta\)). A probabilidade de ser Noel lhe entregando presente apenas porque ouviu o barulho, isto é, \(P(\theta|x)\) é baixa. No entanto o contrário, você com a afirmação de que é o Noel lhe entregando presentes, a probabilidade de haver barulho em sua sala de estar é bem alta, logo a verossimilhança \(L(\theta|x)=P(x|\theta)\).
-
-\begin{itemize}
-\item
-  \textbf{Parâmetros:} podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.
-\item
-  \textbf{Paramétrico x Não Paramétrico:}
-\item
-  \textbf{Correlação:}
-\item
-  \textbf{Supervisionada x Não supervisionada:}
-\item
-  \textbf{Produto Interno:}
-\item
-  \textbf{Multiplicadores de Lagrange:}*
-\item
-  \textbf{Karush-Kuhn-Tucker (KKT):}
-\item
-  \textbf{Bias:}
-  \url{https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/}
-\end{itemize}
 
 \hypertarget{i-a}{%
 \chapter{Inteligência Artificial (IA)}\label{i-a}}
@@ -438,8 +324,317 @@ Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos 
 
 Agora que temos todo o contexto histórico podemos ir adiante do conteúdo aplicado. A tópico a seguir trataremos um pouco de alguns conceitos muito importantes que são utilizados em muitos algoritmos de Aprendizado de Máquina para que possamos gradualmente responder estes questionamentos.
 
-\hypertarget{fundamentos}{%
-\chapter{Fundamentos}\label{fundamentos}}
+\hypertarget{dicio}{%
+\chapter{Um pouco de revisão}\label{dicio}}
+
+Com os \emph{softwares} atuais é possível de que o pesquisador consiga fazer uma análise dos dados sem compreender totalmente a matemática por trás. Busco sempre que puder anexar um exemplo de acordo com cada tema apresentado para facilitar a compreensão, porém suponho de que o leitor esteja familiarizado com conceitos fundamentais de estatística, probabilidade e álgebra liner, portanto conceitos fundamentais como tipos de amostragem, probabilidades e suas distribuições, teste de hipóteses e significância, potência dos testes estatísticos, intervalos de confiança, escalares e vetores, espaço vetorial e transformação linear, produto interno, assimetria e curtose, entre outos..
+
+Nesta seção são apresentadas brevemente um pouco desses conteúdos. É provável de que o leitor já saiba. Porém acredito de que sejam fundamentais para o Aprendizado de Máquina e seria bom para revisá-lo. Sinta-se livre em pular este capítulo. Ao caso de ser algo totalmente novo, reforço-o de introduzir com outras literaturas a respeito, pois são imprescindíveis aos conteúdos dos próximos capítulos.
+
+\textbf{Bons estudos}.
+
+\hypertarget{um-pouco-de-uxe1lgebra-linear}{%
+\section{Um pouco de Álgebra Linear}\label{um-pouco-de-uxe1lgebra-linear}}
+
+\begin{itemize}
+\item
+  \textbf{Escalares e Vetores:}
+\item
+  \textbf{Espaço Vetorial e Transformação Linear:}
+\item
+  \textbf{Produto Interno:}
+\end{itemize}
+
+\hypertarget{um-pouco-de-estatuxedstica.-parte-i}{%
+\section{Um pouco de Estatística. Parte I}\label{um-pouco-de-estatuxedstica.-parte-i}}
+
+\begin{itemize}
+\item
+  \textbf{Assimetria e Curtose:}
+\item
+  \textbf{Variância e Desvio padrão (Erro padrão)}
+\item
+  \textbf{Covariância:} a covariância mede a relação linear entre duas variáveis. É possível utilizar a covariância para compreender a direção da relação entre as variáveis. Valores de covariância positivos indicam que valores acima da média de uma variável estão associados a valores médios acima da outra variável e abaixo dos valores médios são igualmente associado. Valores de covariância negativos indicam que valores acima da média de uma variável estão associados com valores médios abaixo da outra variável.
+\item
+  \textbf{Distribuição normal:}
+\item
+  \textbf{Distribuição binomial:}
+\item
+  \textbf{Distribuição de Poisson:} \citep{banzatto1992experimentaccao} Quando número de plantas daninhas por parcela, número de insetos capturados em armadilhas luminosas, número de pulgões ou ácaros por folhas, etc.
+\item
+  \textbf{Teorema de Bayes:} quando tratamos de probabilidades, \(P(A|B)\) e \(P(B|A)\) podem ser parecidos, mas possuem grande diferença entre as probabilidades que representam. Por exemplo \(P(A|B)\) pode se referir sobre a probabilidade de uma pessoa que cometeu um furto (B) ser condenada (A) e \(P(B|A)\) seria a probabilidade de uma pessoa que foi condenada por furto ter efetivamente cometido um crime. A causa se torna o efeito e o efeito se torna a causa \citep{freund2009estatistica}.
+\end{itemize}
+
+Pela regra geral de multiplicação que afirma que a probabilidade da ocorrência de dois eventos é o produto da probibilidade da ocorrência de um deles pela probabilidade condicional da ocorrência do outro evento, temos:
+
+\begin{equation} 
+ P(A \bigcap B)= P(A). P(B|A) \  \mbox{ou} \ P(A \bigcap B)= P(B). P(A|B)
+  \label{eq:multprob}
+\end{equation}
+
+Igualando ambas expressões, temos: \$ P(A). P(B\textbar{}A) = P(B). P(A\textbar{}B)\$ e portanto, divindo por \(P(B)\), obtém-se o Teorema de Bayes que descreve a probabilidade de um evento, baseado em um conhecimento a \emph{priori} que pode estar relacionado ao evento:
+
+\begin{equation} 
+ P(A|B) = \frac{P(A).P(B|A)}{P(B)}
+  \label{eq:bayes}
+\end{equation}
+
+Para \(B_n\) e \(A_k\) atributos, podemos reescrever:
+
+\begin{equation} 
+ P(A_k|B_1,...,B_n) = \frac{P(A_k).P(B_1,...,B_n|A_k)}{P(B_1,...,B_n)}
+  \label{eq:bayesn}
+\end{equation}
+
+\textbf{Exemplo:} este exemplo pode ser encontrado em \citet{freund2009estatistica}. Numa certa empresa, 4\% dos homens e 1\% das mulheres têm mais de 1,75m
+de altura, respectivamente, sendo que 60\% dos trabalhadores são mulheres. Um trabalhador é escolhido ao acaso.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Qual a probabilidade de que tenha mais de 1,75m?
+\end{enumerate}
+
+Temos de informação de que 60\% dos trabalhadores são mulheres e que 1\% delas possuem mais de 1,75m. Portanto 40\% dos trabalhadores são homens, sendo 4\% deles com mais de 1,75m. Logo temos que:
+\[P(> 1, 75m) = (0, 04 . 0.4) + (0, 01 . 0.6) = 0, 022 \\ → 2, 2\% \ \mbox{ de probabilidade de que tenha mais de 1,75m.}\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  E que seja homem dado que o trabalhador escolhido tenha mais de 1,75m?
+\end{enumerate}
+
+Pelo enunciado ``que seja homem dado que o trabalhador escolhido tenha mais de 1,75m'', podemos perceber que já possuímos uma afirmação que já foi escolhido uma pessoa que tenha mais que 1,75m e queremos saber se é homem. Por meio da questão anterior sabemos a probabilidade P(\textgreater{} 1,75m). Portanto:
+\[P(H| > 1, 75m) = \frac{P(> 1, 75m|H).P(H)}{P(> 1, 75m)}=\frac{0,04.0,4}{0, 022} \]
+
+\[→ 72,73\% \ \mbox{de probabilidade de ser homem dado que seja maior que 1,75m.}\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Função de verossimilhança:} a verossimilhança \(L\) de um conjunto de parâmetros \(\theta\), com dada informação \(x\). É igual a probabilidade da mesma observação \(x\) ter ocorrido dados os valores dos mesmos parâmetros \(\theta\). Conhecendo um parâmetro \(\theta\), a probabilidade condicional de \(x\) é \(P(x|\theta)\), mas se o valor de \(x\) é conhecido, pode-se realizar inferências sobre o valor de \(\theta\) \citep{bolfarine2001introduccao}.
+\end{itemize}
+
+\begin{equation} 
+ L(\theta |x)=P(x| \theta)
+  \label{eq:fverossimilhanca}
+\end{equation}
+
+Para ``\(n\)'' valores:
+
+\begin{equation} 
+ L(\theta |x_1,..., x_n)=\prod_{i=1}^{n} P(x_i| \theta)
+  \label{eq:fsumverossimilhanca}
+\end{equation}
+
+Geralmente utiliza-se o logaritmo natural em verossimilhança \(L(\theta |x)=ln L(\theta|x)\) como função suporte e facilitar em seu estudo.
+
+Para facilitar a compreensão, considere a observação de que você esteja ouvindo barulho em sua sala de estar num dia de natal (observação \(x\)), você parte da hipótese inicial que poderia ser o ``Papai Noel'' lhe entregando presentes (hipótese \(\theta\)). A probabilidade de ser Noel lhe entregando presente apenas porque ouviu o barulho, isto é, \(P(\theta|x)\) é baixa. No entanto o contrário, você com a afirmação de que é o Noel lhe entregando presentes, a probabilidade de haver barulho em sua sala de estar é bem alta, logo a verossimilhança \(L(\theta|x)=P(x|\theta)\).
+
+\begin{itemize}
+\item
+  \textbf{Parâmetros:} podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.
+\item
+  \textbf{Paramétrico x Não Paramétrico:}
+\end{itemize}
+
+\hypertarget{um-pouco-de-estatuxedstica.-parte-ii}{%
+\section{Um pouco de Estatística. Parte II}\label{um-pouco-de-estatuxedstica.-parte-ii}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Teorema do Limite Central:} quando é utilizado a média amostral para estimar a média de uma população, ocorre-se incertezas em relação ao erro. O Teorema do Limite Central é um teorema fundamental para a estatísticas e faz com que possa ser aplicado independente da forma da distribuição da população. Ele diz que se \(\overline{x}\) é a média de uma amostra aleatória de tamanho \(n\) de uma população infinita com a média \(\mu\) e o desvio-padrão \(\sigma\) e se \(n\) é grande o suficiente (em geral \(n=30\)), então possui próximo a distribuição normal padrão:
+\end{itemize}
+
+\begin{equation} 
+ z=\frac{\overline{x}-\mu}{\sigma / \sqrt{n}}
+  \label{eq:teoremacentralimite}
+\end{equation}
+
+Este teorema também pode ser utilizado para populações finitas, mas não é comum e são poucas situações de que haja esta possibilidade. A utilização mais comum é quando \(n\) é grande enquanto \(\frac{n}{N}\) pequeno.
+
+\textbf{Exemplo \citep{fariaestatistic}:} O fabricante de uma lâmpada especial afirma que o seu produto tem vida média de 1.600 hors, com desvio padrão de 250 horas. O dono de uma empresa compra 100 lâmpadas desse fabricante. Qual é a probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650?
+
+Podemos aceitar que as 250 lâmpadas compradas sejam uma amostra aleatória simples da população referente às lâmpadas produzidas por esse fabricante. Como \(n=100\) é um tamanho suficientemente grande de amostra, é possível utilizarmos o Teorema Central do Limite e entender que \(X=\)vida útil de uma lâmpada se aproxima da distribuição normal \(\overline{X}\approx N(\mu;\frac{\sigma^2}{n})\). Logo:
+\[\overline{X}\approx N(1600;\frac{250^2}{100})\]
+\[Pr(\overline{X}>1650)=Pr\bigg( \frac{\overline{X}-1600}{\sqrt{\frac{250^2}{100}}}>\frac{1650-1600}{\sqrt{\frac{250^2}{100}}} \bigg)\]
+\[=Pr(Z>2,0)\]
+\[=0,5-tab(2,0)\]
+\[=0,5-0,47725=0,02275\]
+A probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650 é de 2,275\%.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Testes de hipóteses:}
+\end{itemize}
+
+\begin{quote}
+Uma hipótese estatística é uma afirmação ou conjectura sobre um parâmetro, ou parâmetros, de uma população (ou populações); pode também se referir ao tipo, ou natureza, da população (ou populações).
+
+--- \citet{freund2009estatistica}.
+\end{quote}
+
+O Teste de Hipóteses é um procedimento estatístico que os permitem rejeitar ou não rejeitar uma hipótese estatística por meio dos dados observados de uma amostra. Para desenvolver os processos de testes de hipóteses estatísticas precisamos saber precisamente o que esperar quando uma hipótese é verdadeira, por isso em geral formula-se a hipótese contrária àquela que queremos provar. Supondo que estamos desconfiados em um jogo que seus dados não são honestos, ao formularmos a hipótese de que esses dados são viciados, dependeria do quão viciados eles são. Porém, ao supor que eles são perfeitamente equilibrados, poderíamos calcular todas as probabilidades necessárias para concluirmos a hipótese. Se pretendermos verificar que a análise de um analista de dados é mais eficiente do que o outro, iremos formular a hipótese de que ambos são igualmente eficientes. Se a durabilidade de uma camisa feita por algodão é maior que uma camisa feita por políester, formularemos a hipótese de que ambas possuem as durabilidades iguais. A hipótese de não haver diferença (hipóteses iguais) denominamos como \textbf{hipóteses nulas (\(H_0\))}, utilizada para qualquer hipótese estabelecida prioritariamente para ver se ela pode ser rejeitada. A hipótese ue aceitamos quando rejeitamos a nula, é chamada de \textbf{hipótese alternativa (\(H_A\))} \citep{freund2009estatistica}. Vamos seguir alguns exemplos de \citet{freund2009estatistica}.
+
+\textbf{Exemplo:} um psicólogo pretende determinar se o tempo médio de reação de um adulto a um estímulo visual é realmente de 0,38 segundos. Sua hipótese nula
+\[H_0: \mu=0,38\ \mbox{segundos}\]
+contra a hipótese alternativa
+\[H_A: \mu \neq 0,38\ \mbox{segundos}\]
+em que \(\mu\) é o tempo médio de reação de um adulto ao estímulo visual. Para realizar o teste, o psicólogo decide tomar uma amostra aleatória de \(n=40\) adultos com objetivo de aceitar a hipótese nula se a média da amostra cair em algum ponto entre 0,36 e 0,40 segundos; do contrário a hipótese será rejeitada. Como a decisão se baseia em uma amostra, existe a possibilidade de a média amostral ser menor do que 0,36 segundos ou maior que 0,40 segundos mesmo se a verdadeira média amostral ser 0,38 segundos. Da mesma forma é possível que a média amostral esteja entre os intervalos de 0,36 e 0,40 segundos mesmo que a verdadeira média possua, por exemplo, 0,41 segundos. Portanto, é importante investigar a probabilidade de que o teste nos leve a uma decisão errada.
+
+Vamos supor que o desvio padrão seja \(\sigma=0,08\) segundos para estes dados e investiguemos a possibilidade de rejeitar falsamente a hipótese nula. Iremos supor que o verdadeiro tempo médio de reação seja 0,38 segundos, então encontramos a probabilidade de que a média amostral vá ser menor ou igual a 36 segundos ou maior igual a 40. A probabilidade de que isso ocorra é dada pela somas das áreas das duas regiões coloridas apresentadas na Figura \ref{fig:testehip1} a seguir, e pode ser determinada pela distribuição amostral da média por uma distribuição normal.
+
+Supondo que a população amostrada possa ser tratada como sendo infinita, a média da distribuição amostral é dado por:
+
+\[\sigma_{\overline{x}}=\frac{\sigma}{\sqrt{n}}=\frac{0,08}{\sqrt{40}}\approx 0,0126\]
+A linha de divisória em unidades padronizadas, são:
+\[z=\frac{0,36-0,38}{0,0126}\approx -1,59 \ \mbox{e} \ z=\frac{0,40-0,38}{0,0126}\approx 1,59\]
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/testehip1} 
+
+}
+
+\caption{Critério de teste e distribuição amostral de \(\overline{x}\) com \(\mu =0,38\) segundos \citep{freund2009estatistica}.}\label{fig:testehip1}
+\end{figure}
+
+
+
+Por meio da Tabela Z (tabela I do livro estatistica que vou por) observamos que a área da cauda da distribuição amostral da será \(0,50000-0,4441=0,0559\). Portanto a probabilidade de obter um valor em uma ou em outra cauda da distribuição será de \(2(0,0559)=0,1118\).
+
+Vamos agora com a possibilidade de que o teste deixa de detectar que a hipótese nula é falsa, ou seja \(\mu \neq 0,38\) segundos. Portanto iremos supor que o verdadeiro tempo médio de reação seja de 0,41 segundos. Obtendo uma média amostral no intervalo de 36 a 40 segundos levaria à aceitação errônea da hipótese nula de \(\mu=0,38\) segundos. Portanto a média da distribuição amostral será:
+
+\[\sigma_{\overline{x}}=\frac{\sigma}{\sqrt{n}}=\frac{0,08}{\sqrt{40}}\approx 0,0126\]
+As linhas divisórias em unidades padronizadas, são:
+\[z=\frac{0,36-0,41}{0,0126}\approx -3,77 \ \mbox{e} \ z=\frac{0,40-0,41}{0,0126}\approx -0,79\]
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/testehip2} 
+
+}
+
+\caption{Critério de teste e distribuição amostral de \(\overline{x}\) com \(\mu =0,41\) segundos \citep{freund2009estatistica}.}\label{fig:testehip2}
+\end{figure}
+
+
+
+Por fim cabe ao psicólogo decidir qual risco é aceitável: a probabildiade de 0,11 de rejeitar erroneamente a hipótese nula de \(\mu = 0,38\) ou a probabilidade 0,21 de erroneamente aceitá-la quando na realidade é \(0,41\).
+
+Portanto resume-se em:
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:tabelahipotese} Resumo de uma situação típica dos testes de hipóteses.}\tabularnewline
+\toprule
+& \textbf{Aceitar \(H_0\)} & \textbf{Rejeitar \(H_0\)}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& \textbf{Aceitar \(H_0\)} & \textbf{Rejeitar \(H_0\)}\tabularnewline
+\midrule
+\endhead
+\textbf{\(H_0\) é verdadeiro} & Decisão Correta & Erro tipo I\tabularnewline
+\textbf{\(H_0\) é falso} & Erro tipo II & Decisão Correta\tabularnewline
+\bottomrule
+\end{longtable}
+
+Se a hipótese nula \(H_0\) é verdadeira e aceita ou falsa e rejeitada, a decisão é correta em ambos casos; se é verdadeira e rejeitada ou falsa aceita. O erro tipo I e a probabilidade de obtê-lo é ocorrida pela letra grega \(\alpha\) e o erro tipo II pelo \(\beta\). Portanto pelo exemplo, temos que \(\alpha=0,11\) e \(\beta=0,21\) quando \(\mu=0,41\) e o psicólogo deve decidir se aceita ou rejeita a hipótese nula de \(\mu=0,38\)
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Região Crítica e nível de significância:} no geral definimos uma região crítica (RC) como o conjunto de valores no qual a probabilidade de ocorrência é pequena sob a hipótese de ser verdade o \(H_0\). Por exemplo: lançada 30 vezes uma moeda, sendo obtida num total de 28 caras. Claramente iremos desconfiar que é uma moeda honesta, visto que a probabilidade de ser obtida 28 caras em 30 lançamentos de uma moeda honesta é de 0,000000433996. Mesmo que haja essa mínima possibilidade de que a moeda honesta acerte este evento, pela perspectiva do teste de hipóteses, a obtenção de tal evento será uma evidência de que a nossa hipótese nula de honestidade da moeda não é muito plausível. Assim não dizemos que a moeda não é honesta, concluímos que não há evidência suficiente para apoiar a hipótese nula \citep{fariaestatistic}.
+\end{itemize}
+
+A definição dessa pequena probabilidade se faz por meio da escolha do \textbf{nível de significância \(\alpha\)} do teste, expressa como:
+
+\begin{equation} 
+ \alpha=Pr(\mbox{Erro tipo I})=Pr(\mbox{rejeitar} \ H_0|H_0 \ \mbox{é verdadeira})
+  \label{eq:nivelsignificancia}
+\end{equation}
+
+Geralmente é utilizado em \(\alpha=0,05\), \(\alpha=0,01\) ou \(\alpha=0,10\) como nível de significância, com isso torna-se possível estabelecer a região crítica usando a distribuição amostral da estatística de teste \citep{fariaestatistic}.
+
+De \citet{fariaestatistic}, segue:
+
+\textbf{Exemplo 1:} Considere uma população representada por uma variável aleatória normal com média \(\mu\) e variância 400. Queremos testar:
+
+\[H_0:\mu = 100\]
+\[H_A:\mu \neq 100\]
+Com base em uma amostra aleatória simples de tamanho \(n=16\). Para tal define-se a região crítica como RC: \(\overline{X}<85\) ou \(\overline{X}>115\). Qual é a probabilidade do erro tipo I?
+
+\[\alpha=Pr(\mbox{Erro tipo I})=Pr(\mbox{rejeitar} \ H_0|H_0 \ \mbox{é verdadeira})\]
+\[=Pr[\{\overline{X}<85\} \cup \{\overline{X}>115\} \ | \ \overline{X}\sim N(100;\frac{400}{16}=25)]\]
+\[=Pr[\overline{X}<85 \ | \  \overline{X}\sim N(100;25)]+Pr[\overline{X}>115 \ | \ \overline{X}\sim N(100;25)]\]
+\[=Pr\bigg( Z<\frac{85-100}{5} \bigg)+Pr\bigg( z>\frac{115-100}{5} \bigg)\]
+\[=Pr(Z>-3)+Pr(Z>3) \rightarrow 2.Pr(Z>3)\]
+\[\alpha=0,0027\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aplicações do Teste de Hipótese - Média com a variância conhecida:} ao caso de interessarmos na média de uma população normal e supondo que a variância seja conhecida. Pelo teste temos que:
+\end{itemize}
+
+\begin{equation} 
+z=\frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
+  \label{eq:testehipmedia}
+\end{equation}
+
+onde \(\mu_o\) é o valor da média que ocorre sobre a hipótese nula. Trabalhar com unidades padronizadas \(z\) nos permitem formular vários critérios que se aplicam a muitos problemas diferentes. Lembrando que são amostras suficientemente grandes para que a distribuição amostral da média possa ser próxima por uma distribuição normal padrão.
+
+\textbf{Exemplo \citep{freund2009estatistica}:} Uma oceanógrafa com base numa amostra aleatória de tamanho \(n=35\) e ao nível 0,05 de significância, quer testar se a profundidade média do oceano numa determinada área é de 72,4 metros conforme registrado. O que ela decidirá se obtiver \(\overline{x}=73,2\) metros e se puder supor, usando informações de estudos anteriores análogos, que \(\sigma=2,1\) metros?
+
+\[H_0: \mu=72,4 \mbox{metros}\]
+\[H_A: \mu \neq 72,4 \mbox{metros}\]
+Temos que \(\alpha=0,05\), ou seja, pela tabela de distribuição normal bilateral AQUI PONHO A TABELA ANEXADA teríamos 0,025 para cada lado e portanto, ciente de que cada lado da curva equivale a 0,5 (ou 50\%) e subtraindo os 0,025, obtemos \(0,475\). Pela tabela verificamos então que iremos rejeitar a hipótese nula se \(Z \leq -1,96\) ou \(z \geq 1,96\). Logo:
+\[z=\frac{73,2-72,4}{2,1/\sqrt{35}}\approx 2,25\]
+Como \(z-2,25\) pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre \(\overline{x}=73,2\) e \(\mu=72,4\) é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo valor \(p\) que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de \(Z=-2,25\) e da direita \(z=2,25\), observando a tabela temos que \(2(0,5000-0,4878)=0,0244\), poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aplicações do Teste de Hipótese - Média com a variância desconhecida:} vamos supor que não sabemos o valor da variância e agora a um caso de \(n\) não suficientemente grande, ou seja, utilizamos o teste \(t\):
+\end{itemize}
+
+\begin{equation} 
+t=\frac{\overline{X}-\mu_0}{S/\sqrt{n}}
+  \label{eq:testehipvardesc}
+\end{equation}
+
+\textbf{Exemplo \citep{freund2009estatistica}:} A safra de alfafa de uma amostra aleatória de seis lotes de teste é dada por 1,4; 1,6; 0,9; 1,9; 2,2; e 1,2 tonelada por acre. Ao nível de 0,05 de significância, teste se isso corrobora a alegação de que a safra média para este tipo de alfafa é de 1,5 tonelada por acre.
+
+\[H_0: \mu=1,5\]
+\[H_A: \mu\neq1,5\]
+Temos que \(\alpha=0,05\), temos que \(n=6\) observações e portanto 6-1=5 graus de liberdade. Portanto pela tabela XXXXXXXXX de distribuição \(t\) de \emph{student} , em área na cauda superior de 0,025 e 5 G.L, rejeitaremos a hipótese nula se \(t\leq -2,75\) ou \(t\geq 2,75\). Calculando a médio e o desvio-padrão dos dados, substituindo na expressão anterior, temos:
+\[t=\frac{1,533-1,5}{0,472/\sqrt{6}}\approx 0,171\]
+Portanto não podemos rejeitar a hipótese nula, ou seja, os dados tendem a apoiar a alegação de que a safra média para esse tipo de alfafa é de 1,5 tonelada por acre.
+
+Existe diversos outros como o teste para duas médias com amostras independentes ou dependentes, com proporções, etc. Ao leitor que pretende se aprofundar nesse conteúdo sugiro buscar literaturas complementares no campo de estatística.
+
+\begin{itemize}
+\item
+  \textbf{Análise de Variância:}
+\item
+  \textbf{Supervisionada x Não supervisionada:}
+\end{itemize}
+
+\hypertarget{multlagrange}{%
+\section{Multiplicadores de Lagrange}\label{multlagrange}}
+
+\hypertarget{kkt}{%
+\section{Karush-Kuhn-Tucker (KKT)}\label{kkt}}
+
+\hypertarget{bias}{%
+\section{Bias}\label{bias}}
+
+\url{https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/}
 
 \hypertarget{medidasimport}{%
 \section{Medidas de Importância}\label{medidasimport}}
@@ -454,6 +649,8 @@ Tradução de \citet{liu2012feature}.
 
 \hypertarget{medidasdep}{%
 \subsection{Medidas de Dependência}\label{medidasdep}}
+
+Conhecidas como medidas de \textbf{correlação} ou \textbf{associação}.
 
 \begin{figure}
 
@@ -583,17 +780,42 @@ Portanto pelo cálculo da distância Ponderada por Mahalanobis:
 \[d(X_A,X_B)=\bigg[(1,2 \ \ -3) S^{-1} \begin{pmatrix} 1,2 \\ -3  \end{pmatrix} \bigg]^{1/2}=0,46\]
 E sucessivamente calcula-se para às outras observações.
 
-\hypertarget{distminkowsky}{%
-\subsubsection{Distância de Minkowsky}\label{distminkowsky}}
-
 \hypertarget{medidas-de-precisuxe3o}{%
 \subsection{Medidas de Precisão}\label{medidas-de-precisuxe3o}}
+
+Referente a tarefas de precisão, dado um algoritmo de aprendizado com sua amostra de dados. o algoritmo de maior desempenho preditivo ao modelo será selecionado \citep{kohavi1997wrappers}. Não necessariamente precisa de um único subconjunto ótimo de atributos, pois é possível alcançar a mesma precisão com diferentes subconjuntos de atributos.
+
+A \textbf{Utilidade Incremental} por exemplo \citep{caruana1994useful}, onde uma dada amostra de dados \(S\), com um determinado algoritmo de aprendizado e um subconjunto de atributos. Um atributo \(X_i\) é incrementalmente útil para o modelo em relação ao subconjunto de dados \(F\) se a precisão da hipótese produzida pelo modelo considerando o conjunto de atributos \(X_i \cup F\) é melhor que a precisão alcançanda utilizando-se apenas o subconjunto \(F\) \citep{lee2005seleccao}.
+
+É muito comum seu uso em algoritmos de seleção de atributos que realizam a busca no espaço de subconjuntos de atributos, removendo e adicionando-os com abordagens como \emph{wrapper} e \emph{embedded} (apresentadas na seção seguinte). Importante lembrar que um atributo considerado importante não implica que o mesmo estará no subconjunto ótimo de atributos.
 
 \hypertarget{medidas-de-consistuxeancia}{%
 \subsection{Medidas de consistência}\label{medidas-de-consistuxeancia}}
 
-\hypertarget{testesanova}{%
-\section{Teste de hipóteses e Análise de Variância}\label{testesanova}}
+São medidas dependentes do conjunto de treinamento que permitem encontrar um subconjunto mínimo de atributos que satisfaz a proporção de inconsistência aceita (definida geralmente pelo pesquisador e com base alguma fundamentação teórica). O objetivo da análise por consistência é proporcionar a construção de hipóteses lógicas consistentes em um conjunto de treinamento. Note que elas não detectam a ocorrência de atributos redundantes, pois não possibilitam a distinção entre atributos igualmente adequados \citep{parmezan2012avaliaccao}.
+
+Um atributo \(X_i\) é importante se aparece em toda fórmula \emph{booleana} e do contrário não importante \citep{almuallim1994learning, lee2005seleccao}, por exemplo:
+
+\[X_1=1 \ \mbox{e} \ X_2=0 \ \mbox{então classe}=1\]
+\[X_1=1 \ \mbox{e} \ X_3=0 \ \mbox{então classe}=1\]
+\[X_1=0 \ \mbox{e} \ X_2=1 \ \mbox{então classe}=0\]
+Partindo dessa definição, \(X_1\) é considerado importante pois é encontrado em todas as regras delimitadas, e portanto, \(X_2\) e \(X_3\) não são importantes.
+
+\citet{dash2003consistency} e \citet{liu1996probabilistic} definem como critério de avaliação que um subconjunto de atributos importantes é definido por meio de uma \textbf{taxa de inconsistência}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Um exemplo será considerado \textbf{inconsistente} se existirem pelo menos dois exemplos exatamente iguais exceto pelo valor da classe;
+\item
+  A \textbf{contagem de inconsistência} é dada pelo número de vezes que este exemplo ocorre nos dados subtraído o maior número entre as diferentes classes;
+\item
+  a \textbf{taxa de inconsistência} de um subconjunto de atributos é a soma de todas as contagens de inconsistência de todos os exemplos do subconjunto nos dados dividido pelo número total de exemplos.
+\end{enumerate}
+
+Por exemplo: um exemplo \(E_i\) inconsistente aparece \(N_{Ei}\) vezes dos quais \(N_{C1}\) pertencem à classe \(C_1\), \(N_{C2}\) pertencem à classe \(C_2\) e \(N_{C3}\) pertencem à classe \(C_3\). Portanto \(N_{Ei}=N_{C1}+N_{C2}N_{C3}\). Supondo que \(N_{C3}\) é o maior valor entre todos, a contagem de inconsistência é \(N_{Ei}-N_{C3}\). Com dado o subconjunto e um valor mínim da taxa delimitado pelo pesquisador, se a taxa de inconsistência for menor que o definido, poderá ser dito consistente \citep{lee2005seleccao}.
+
+Existe muitos critérios de importância de atributos em muitas literaturas e torna dificultoso em identificar quais algoritmos e metodologias são mais apropriados para o conjunto de dados. Com as medidas de importância, torna-se possível avaliar se os atributos selecionados auxiliam no modelo proposto pelo pesquisador ou o oposto. Cabe ao pesquisador com base em literaturas verificar qual utilizador de acordo com suas preferências e conjunto de dados em análise.
 
 \hypertarget{preprocesso}{%
 \chapter{Pré-processamento}\label{preprocesso}}
@@ -1065,7 +1287,7 @@ Após isso precisamos normalizar os dados, para que a soma das duas probabilidad
 \[P(não doença|positivo) = 0,24/(0,18+0,24) = 0,5714\]
 Logo, podemos concluir que se o resultado do teste da nova pessoa for positivo, ela possui aproximadamente 43\% (0,4285) de chance de estar doente.
 
-\textbf{Observação e resumo geral:} Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma \textbf{suposição de independência entre os preditores} diferentemente do caso em \ref{dicio} (Teorema de Bayes), ou seja, O Naive Bayes assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Ao caso da melancia, uma fruta verde, redonda e com um tamanho de diâmetro X é possível ser ela, porém mesmo que estas variáveis dependam uma das outras e de outras características, elas contribuem de forma independente para a probabilidade de que seja uma melancia. É um modelo simples de construir e útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.
+Naive Bayes é uma técnica de classificação baseado no teorema de Bayes com uma \textbf{suposição de independência entre os preditores} diferentemente do caso em \ref{dicio} (Teorema de Bayes), ou seja, O Naive Bayes assume que a presença de uma característica particular em uma classe não está relacionada com a presença de qualquer outro fator. Ao caso da melancia, uma fruta verde, redonda e com um tamanho de diâmetro X é possível ser ela, porém mesmo que estas variáveis dependam uma das outras e de outras características, elas contribuem de forma independente para a probabilidade de que seja uma melancia. É um modelo simples de construir e útil para grandes volumes de dados. Porém a própria independência entre os preditores a torna desvantajosa para apliação prática e que variáveis categóricas num conjunto de dados de teste que não foram treinadas, não irá estimar essa nova variável.
 
 Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{fig:naive} demonstra, os atributos contribuem de forma independente para a probabilidade de A.
 
@@ -1107,7 +1329,7 @@ em que:
 
 Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o \textbf{Método dos Mínimos Quadrados (MMQ)} atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores \(\beta_0\) e \(\beta_1\) que minimizam os erros.
 
-Como não podemos observar a função de regressão populacional (FRP), precisamos estimálo por meio da função de regressão amostral:
+Como não podemos observar a função de regressão populacional (FRP), precisamos estimá-lo por meio da função de regressão amostral:
 \[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \]
 \[Y_i=\hat{Y_i}+\hat{\mu_i}\]
 \[\mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]
@@ -1133,7 +1355,7 @@ Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que 
     \label{eq:mmqeq}
 \end{equation}
 
-O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) e \(\beta_1\) que proporcionam o menor valor possível (encontrando \(\hat{\beta_0}\) e \(\hat{\beta_1}\)) de \(\sum \hat{\mu}_i\). Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatísticoler, como por exemplo a seção 3A de \citet{gujarati2011econometria}) encontra-se:
+O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) e \(\beta_1\) que proporcionam o menor valor possível (encontrando \(\hat{\beta_0}\) e \(\hat{\beta_1}\)) de \(\sum \hat{\mu}_i\). Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatístico ler, como por exemplo a seção 3A de \citet{gujarati2011econometria}) encontra-se:
 
 \begin{equation}
     \sum Y_i=n\hat{\beta_0} + \hat{\beta_1} \sum X_i
@@ -1168,7 +1390,7 @@ Para entendermos melhor, vamos visualizar por Diagrama de Venn \citep{kennedy198
 
 }
 
-\caption{Critério do minímos quadrados \citet{gujarati2011econometria}.}\label{fig:ballentine}
+\caption{Coeficiente de determinação, prossegue a sobreposição de (a): \(r^2=0\) até (f) \(r^2=1\) \citep{gujarati2011econometria}.}\label{fig:ballentine}
 \end{figure}
 
 
@@ -1579,6 +1801,90 @@ Primeiramente vamos encontrar a derivada parcial de \(j(\theta_0,\theta_1)\):
 Pode-se também multiplicar a função de custo por \(\frac{1}{2}\) para que quando faz-se a derivada, facilite no cálculo e multiplicar a função de custo por um escalar não irá afetar a localização do mínimo.
 \[j(\theta)=\frac{1}{2m}\displaystyle \sum^m_{i=1}(f_\theta(x^i)-y^i)^2\]
 Com isso em foco de minimizarmos, basta aplicarmos o banco de dados de \(X\) e \(Y\) em seu modelo e de seus dois \(\theta's\) de entrada. Repetindo as iterações para atualizar seus valores até a convergência e identificando os parâmetros que se aproximam.
+
+\hypertarget{regularizacao}{%
+\section{Regularização}\label{regularizacao}}
+
+Como sabe-se, um Modelo de Regressão Linear Simples (MRLS) pode ser expresso como:
+
+\begin{equation}
+    y_i=\beta_0+\displaystyle \sum^p_{j=1}x_{ij}\beta_j+\mu_i, \mbox{com} \ i=1,2,...,n
+\end{equation}
+
+em que \(y_i\) é variável resposta, e cada vetor \(x_i=(x_{i1},x_{i2},...,x_{ip})^T\) representa as \(p\) características observadas para cada observação \(i\) da amostra; \(\beta_0\) o intercepto e o vetor dos coeficientes \(\beta=(\beta_1,\beta_2,...,\beta_p)^T\) trata-se dos parâmetros a serem estimados e estabelecem a relação entre a variável resposta e as preditoras.
+
+Sabemos também que métodos de seleção de variáveis como \emph{backward, forward} e \emph{stepwise} buscam amenizar o erro da predição e melhorar a interpretação do modelo, porém visto que o processo é discreto na escolha das variáveis regressoras (retendo ou descartando), o modelo resultante pode apresentar grande variância e portanto, não diminuir esse erro de predição quando compararmos com o modelo completo. A \textbf{regularização} é uma outra abordagem com estes mesmos propósitos, ela desestímula o ajuste excessivo dos dados, afim de diminuir sua variância. A regressão \textbf{\emph{Lasso}} e a regressão \textbf{\emph{Ridge}} são métodos utilizados para regularizar o modelo por meio de penalidades, alterando alguns fatores de modo a priorizar (ou não) partes da equação e por fim, melhorar a qualidade de predição.
+
+\hypertarget{penalizacoes}{%
+\subsection{\texorpdfstring{Penalizações - Regressão \emph{Lasso} e a Regressão \emph{Ridge}}{Penalizações - Regressão Lasso e a Regressão Ridge}}\label{penalizacoes}}
+
+O método dos mínimos quadrados, como sabemos, consiste em minimizar a soma dos quadrados dos resíduos do modelo e fatores como multicolinearidade por exemplo, que pode ser ou não controlados pelo pesquisador, pode influenciar na pesquisa e muitas vezes apontar como não significativas variáveis importantes. O MMQ quando penalizado e, partindo das mesmas suposições do MRLM, pode apresentar uma melhoria. Ela será expressa como:
+
+\begin{equation}
+    min_\beta \bigg\{\displaystyle \sum^n_{i=1}(y_i-\displaystyle \sum^p_{j=1}x_{ij}\beta_j)^2+s\displaystyle \sum^p_{j=1}|\beta_j|^q\bigg\}
+    \label{eq:penalizacao}
+\end{equation}
+
+onde \(s\) é o fator de penalização, um parâmetro de ajuste (\emph{tuning parameter}) no qual deve ser maior do que a soma dos valores absolutos dos coeficientes do modelo e o termo \(s\displaystyle \sum^p_{j=1}|\beta_j|^q\) representa a penalização. Ao caso de \(q=0\), é contabilizado a quantidade de coeficientes não-nulos presentes no modelo, uma penalizção do tipo \textbf{\(L_0\)}.
+
+Para \(q=1\) é a penalização do tipo \textbf{\(L_1\)}, conhecida como \textbf{Lasso}. Robert Tibshirani propôs em seu artigo \emph{Regression Shrinkage and Selection via the LASSO} \citep{tibshirani1996regression}, é uma técnica que a cada dia torna maior seu uso no Aprendizado de Máquina com sua interessante possibilidade para seleção de variáveis. O \emph{Lasso} pode ser usado em análises com um grande banco de dados, especialmente se a quantidade de covariáveis (qualquer variável contínua e geralmente não controlada durante a coleta de dados) for maior do que o número de observações e também garante que uma boa parte dos coeficientes destas covariáveis seja nula, sugerindo que as demais são as características importantes a serem analisadas \citep{silva2018tecnica}. Um modelo é \textbf{esparso (sparse model)} quando apenas alguns dos coeficientes possuem estimações diferentes de zero \citep{hastie2015statistical}, ele melhora na interpretação com a vantagem de facilitar as estimações computacionais e pode fornecer maior precisão de predição.
+
+A técnica \emph{Lasso} basicamente minimiza a soma dos quadrados dos resíduos do modelo utilizando o parâmetro de ajuste \emph{tuning parameter} \(s\) que deve ser maior de que a soma dos valores absolutos dos coeficientes do modelo. Este parâmetro desempenha um papel fundamental, pois serve como um ``grau'' de quanto irá encolher durante a estimação, quanto maior seu valor, menor a distância entre os estimadores. Existe diversas técnicas para estimar seu valor.
+
+Uma penalização \textbf{\(L_1\)} que faz com que essa regularização \emph{Lasso} force os coeficientes a zerar (quando há múltiplas atributos altamente correlacionados, selecionam apenas um desses atributos e zeram o coefiente das menos importantes, de forma a minimizar a penalização \(L_1\)). Podemos entender que esse modelo realiza uma seleção de atributos (por este motivo o termo inglês \emph{Shrinkage}, encolhimento), gerando vários coeficientes com peso zero e ignorados, facilitando na interpretação do modelo e diminuindo a variância. O \emph{Lasso} pode conduzir a uma região de restrição convexa e connsequentemente a um problema de otimização convexo e usa seu mecanismo de penalizar os coeficientes de acordo com o seu valor absoluto.
+
+Quando \(q=2\), temos a penalização do tipo \textbf{\(L_2\)} que corresponde à regressão \textbf{\emph{Ridge}} (regressão em cristas). O método \emph{Ridge} foi introduzido originalmente por \citet{hoerl1959optimum} para examinar superfícies de resposta quadráticas \(k\)-dimensionais, ou seja é um método gráfico e de inferência sobre os níveis ótimos de um fator de um superfície de resposta a distâncias fixas do centro da região experimental expecíficada \citep{do2009metodo}.
+
+Muitos também a utilizam como método alternativo ao MMQ no caso de haver multicolinearidade em uma amostra. Como a penalização \(L_2\) é maior para coeficientes maiores por haver \(q=2\), ela faz com que os atributos que contribuem menos para o poder preditivo do modelo sejam levados para uma ``irrelevância'' em relação às de maior contribuição - como sabe-se o impacto de um expoente quadrático é maior em valores altos do que o impacto do mesmo expoente em valores bem pequenos - e têm como objetivo suavizar os atributos que sejam relacionados uns aos outros.
+
+Pode-se dizer que a diferença entre \(L_1\) e \(L_2\), num geral, é que a regressão Lasso não é diferenciável e a \(L_2\) é, para \(q<1\) as regiões serão não convexas e para \(q<1\) os problemas serão convexos \citep{silva2018tecnica}. A penalização Ridge encolhe os parâmetros, mas não a seleção de variáveis. Ao caso da penalização de \emph{Lasso} que possui uma penalização pelos valores absolutos ela encolhe e faz a seleção dos atributos.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/lassoridge2d} 
+
+}
+
+\caption{Regiões de restrição para valores diferentes de \(q\) em \(\mathbb{R}^2\). de \citet{silva2018tecnica} com base em \citet{hastie2015statistical}.}\label{fig:lassoridge2d}
+\end{figure}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/lassoridge3d} 
+
+}
+
+\caption{Regiões de restrição para valores de \(q=\{2;1;0,8\}\) em \(\mathbb{R}^3\). de \citet{silva2018tecnica} com base em \citet{hastie2015statistical}.}\label{fig:lassoridge3d}
+\end{figure}
+
+
+
+\hypertarget{elasticnet}{%
+\subsection{\texorpdfstring{Elastic Net - \(L_1+L_2\)}{Elastic Net - L\_1+L\_2}}\label{elasticnet}}
+
+A técnica \textbf{\emph{Elastic Net}} \citep{zou2005regularization} também tem como propósito a penalização para que se melhore a acurácia dos estimadores de mínimos quadrados. Ela se trata exatamente de combinar os termos de regularização de \(L_1\) e de \(L_2\).
+
+\begin{equation}
+    \lambda\bigg[ \frac{1}{2}(1-\alpha)||\beta||_2^2+\alpha||\beta||_1\bigg]
+  \label{eq:elsticnet}
+\end{equation}
+
+\citet{hastie2015statistical} citam que o principal estímulo para este estudo é que quando as variáveis são muito correlacionadas, o \emph{Lasso} não tem um bom desempenho. A Adiçaõ do termo \(\frac{1}{2}(1-\alpha)||\beta||^2_2\) auxilia a controlar estas fortes correlações entre os grupos de variáveis e manter a característica da regressão Lasso de tornar modelos esparsos \citep{silva2018tecnica}. Como consequência do uso dos dois métodos, é preciso determinar dois hiperparâmetros para obter soluções ótimas.
+
+Ao observar um gráfico de \emph{Elastic Net}, pode-se observar de que este método compartilha de atributos gráficos de \(L_1\) e \(L_2\): bordas e cantos afiados indicando a seleção e um contorno curvado para o compartilhamento de coeficientes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/elasticnet} 
+
+}
+
+\caption{\emph{Elastic Net} em \(\mathbb{R}^3\). de \citet{silva2018tecnica} com base em \citet{hastie2015statistical}.}\label{fig:elasticnet}
+\end{figure}
+
+
 
 \hypertarget{ptII}{%
 \chapter{Algoritmos de Aprendizagem - Parte II}\label{ptII}}
@@ -2193,12 +2499,6 @@ Ao segundo caso, em que Adilson não irá optar o investimento em seu estalecime
 
 Portanto Adilson tem uma probabilidade maior de escolher investir os R\$40.000,00 para ampliar sua lanchonete. Lembrando que foi utilizado o critério de médias, podendo haver diversos outros.
 
-\hypertarget{elastic-net}{%
-\section{Elastic Net}\label{elastic-net}}
-
-\hypertarget{knn}{%
-\section{KNN}\label{knn}}
-
 \hypertarget{AC}{%
 \section{Análise de Componentes Principais}\label{AC}}
 
@@ -2804,7 +3104,7 @@ A primeira componente principal (Dim1), as variáveis que se referem ao patrimô
 Para a segunda componente principal (Dim2), note que Patrimônio e Ganho Líquido estão em sentidos opostos, o que reafirma nossa análise anterior de ser uma comparação entre elas.
 
 \hypertarget{anuxe1lise-de-agrupamentos---clusters}{%
-\section{Análise de Agrupamentos - Clusters}\label{anuxe1lise-de-agrupamentos---clusters}}
+\section{\texorpdfstring{Análise de Agrupamentos - \emph{Clusters}}{Análise de Agrupamentos - Clusters}}\label{anuxe1lise-de-agrupamentos---clusters}}
 
 A Análise de Agrupamentos, também conhecido como Análise de Conglomerados, classificação ou \emph{Clusters}, tem como propósito dividir os elementos de uma amostra (ou população) em grupos de modo que os elementos pertencentes a estes grupos tenham características similares entre si e heterôgenos com os outros grupos \citep{mingoti2007analise}. Esta classificação vai de acordo com a medida e o método de classificação. Este tipo de análise é muito comum seu uso em diversas áreas como segmentação de clientes de acordo com perfis de consumo \citep{punj1983cluster}, perfis de personalidade em psicologia \citep{speece1985classification}, classificação de cidades, etc. Para o agrupamento de \emph{clusters}, tomaremos como base a literatura de \citet{mingoti2007analise}.
 
@@ -3700,14 +4000,128 @@ Tivemos um resultado interessante com um bom valor de \(R^2\) e próximo ao do e
 
 Em \ref{valid} serão apresentados outros métodos para medir o desempenho e validar seu modelo.
 
-\hypertarget{modelos-nivel-iii}{%
-\section{modelos nivel III}\label{modelos-nivel-iii}}
+\hypertarget{knn-k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}{%
+\section{\texorpdfstring{KNN: K-Vizinhos Mais Próximos (\emph{K-Nearest Neighbors})}{KNN: K-Vizinhos Mais Próximos (K-Nearest Neighbors)}}\label{knn-k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}}
+
+Uma metodologia muito conhecida e utilizada, referida na literatura de \citep{bhattacharya1981application} e \citep{bhattacharya2005geometric}. O \textbf{K-Vizinhos Mais Próximos}, do inglês \textbf{\emph{K-Nearest Neighbors} (KNN)}, é um classificador simples. O conjunto de treinamento é formado por vetores com \(n\)-dimensões no qual cada elemento deste conjunto retrata um ponto no espaço \(n\)-dimensional.
+
+Vamos supor que temos um conjunto de dados repartido em duas classes: doentes e não doentes. Com a entrada de mais um paciente para a análise, temos uma nova observação que ainda não está classificada. Dentro do conjunto de treinamento, o classificador KNN procura \(K\) elementos que estejam mais próximos deste elemento de classe desconhecida, ou seja, que tenham a menor distância. Após verificar quais são as classes desses \(K\) vizinhos e a classe mais frequente das observações próximas, será atribuída a classe deste elemento desconhecido. Por isso é denominado por K-Vizinhos Mais Próximos, onde \(K\) indica a quantidade de vizinhos próximos à observação nova no conjunto de dados.
+
+Como já vimos, existe diversos métodos de calcular a distância entre as observações, algumas delas estão apresentadas em \ref{meddist}. Muitas vezes por ser um exaustivo processo computacional para calcular todas as distâncias entre as observações com a observação de classe desconhecida, é comum para que identifique vizinhos mais próximos, elaborar uma hiper-esfera de raio \(R\) que será decidido pelo pesquisador e selecionar os elementos que estão dentro desta hiper-esfera. Este processo torna muito mais rápido e barato para o pesquisador, porém como desvantagem de haver possibilidade de não ter pontos dentro da hiper-esfera.
+
+Na figura \ref{fig:knn1} temos como exemplo uma situação onde queremos saber se o novo paciente de um hospital está doente ou não. De acordo com pacientes anteriores, podemos reprentar graficamente com características \(X_1\) E \(X_2\) e identificar em qual classe cada um pertence. Após calcularmos as distância entre as observações e este elemento de classificação desconhecida, podemos identificar os vizinhos mais próximos. Supondo que temos três vizinhos (\(k=3\)) mais próximo do elemento de classe desconhecida, note que das três observações (duas azuis e uma vermelha) próximas do elemento, duas são consideradas ``doentes'' (cor azul) e uma ``não doente'' (vermelho).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knn1} 
+
+}
+
+\caption{Exemplo gráfico de KNN com \(k=3\).}\label{fig:knn1}
+\end{figure}
+
+
+
+Por voto de maioria, com duas azuis e uma vermelha (2x1), este elemento será classificado pelo algoritmo como ``doente''.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knn2} 
+
+}
+
+\caption{Exemplo gráfico de KNN com \(k=3\). Como a maioria é classificada como ``doente'' entre os vizinhos próximos do elemento, o elemento desconhecido também será.}\label{fig:knn2}
+\end{figure}
+
+
+
+\hypertarget{exknn}{%
+\subsection{Exemplo}\label{exknn}}
+
+1 - A EmprestaX, uma empresa de empréstimos nova em uma cidade, possui apenas alguns dias de serviço. Com intuito de melhorar na identificação de seu público alvo, a empresa pretende utilizar o algoritmo de KNN com base no histórico de seus primeiros clientes: Renda mensal, a quantidade de Contas atrasadas e sua classificação de ser ou não um possível cliente.
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:dadossrendaaknn} Dados históricos de clientes da EmprestaX com as variáveis Renda Mensal (R\$), Contas Atrasadas e Possível Cliente.}\tabularnewline
+\toprule
+\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endhead
+\textbf{Renda Mensal} & R\$ 4000,00 & R\$ 1000,00 & R\$ 2500,00 & R\$ 2800,00\tabularnewline
+\textbf{Contas Atrasadas} & 1 & 3 & 2 & 2\tabularnewline
+\textbf{Possível Cliente} & Não & Sim & Sim & Não\tabularnewline
+\bottomrule
+\end{longtable}
+
+Supondo um indivíduo E com uma renda mensal de R\$ 3300,00 , duas contas atrasadas. Pelo método de KNN, com k=3 vizinhos, qual será sua classificação de ser ou não um possível cliente para a EmprestaX?
+
+Primeiramente, vamos observar os pontos em um gráfico:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knnex1} 
+
+}
+
+\caption{Gráfico gerado com base na tabela \ref{tab:dadossrendaaknn} e classificação para Possível Cliente em: Sim, Não, Não Classificado.}\label{fig:knnex1}
+\end{figure}
+
+
+
+Agora que observamos o gráfico, lembrando que pode haver diversos métodos para calcular a distância ou considerando uma hiper-esfera, vamos calcular a Distância Euclidiana entre as observações:
+\[\mbox{Distância entre E e A=}\sqrt{(4000-3300)^2+(1-2)^2}=700,0007\]
+Repetindo o mesmo processo para todas observações, obtemos:
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &A&B&C&D&E \\
+ A&0&&&&\\
+ B&3000,0007&0&&&\\
+ C & 1500,0003& 1500,0003&0&&\\
+ D& 1200,0004& 1800,0003& 300,0000&0&\\
+ E& 700,0007& 2300,0002& 800,0000& 500,0000&0\\
+\end{bmatrix}\]
+
+Como queremos \(k=3\) vizinhos mais próximos do indivíduo E para que se possa classificá-lo, temos então:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& \textbf{A} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endhead
+\textbf{E} & 700,0007 & 800,0000 & 500,0000\tabularnewline
+\textbf{Possível Cliente} & Não & Sim & Não\tabularnewline
+\bottomrule
+\end{longtable}
+
+Portanto, pela maioria, temos que o indivído E não será considerado um possível cliente pelo algoritmo de KNN.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knnex2} 
+
+}
+
+\caption{Gráfico gerado com base na tabela @tab:dadossrendaaknn e classificado conforme o algoritmo de KNN com \(k=3\) vizinhos próximos do elemento novo na amostra.}\label{fig:knnex2}
+\end{figure}
+
+
+
+Note que neste exemplo, caso fosse escolhido com \(k=4\) ou \(k=2\) vizinhos, haveria empate e necessitaria de alterarmos o valor de \(k\) ou utilizar algum outro método de classificação. Aumentar o número de observações para a amostra também é muito importante para que se treine seu modelo de Aprendizado de Máquina.
+
+\hypertarget{ptIII}{%
+\chapter{Algoritmos de Aprendizagem - Parte III}\label{ptIII}}
+
+\hypertarget{rf}{%
+\section{\texorpdfstring{Floresta Aleatória - \emph{Random Forest}}{Floresta Aleatória - Random Forest}}\label{rf}}
 
 \hypertarget{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}{%
 \section{grad boosting -\textgreater{} estudar boosting e bagging dentro de emseamble}\label{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}}
 
-\hypertarget{redes-neurais}{%
-\section{Redes Neurais}\label{redes-neurais}}
+\hypertarget{redesneurais}{%
+\chapter{Redes Neurais}\label{redesneurais}}
 
 \hypertarget{valid}{%
 \chapter{Validação de um modelo}\label{valid}}
