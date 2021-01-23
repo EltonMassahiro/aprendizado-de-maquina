@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2021-01-14}
+\date{2021-01-23}
 
 \begin{document}
 \maketitle
@@ -595,7 +595,7 @@ onde \(\mu_o\) é o valor da média que ocorre sobre a hipótese nula. Trabalhar
 \[H_A: \mu \neq 72,4 \mbox{metros}\]
 Temos que \(\alpha=0,05\), ou seja, pela tabela de distribuição normal bilateral AQUI PONHO A TABELA ANEXADA teríamos 0,025 para cada lado e portanto, ciente de que cada lado da curva equivale a 0,5 (ou 50\%) e subtraindo os 0,025, obtemos \(0,475\). Pela tabela verificamos então que iremos rejeitar a hipótese nula se \(Z \leq -1,96\) ou \(z \geq 1,96\). Logo:
 \[z=\frac{73,2-72,4}{2,1/\sqrt{35}}\approx 2,25\]
-Como \(z-2,25\) pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre \(\overline{x}=73,2\) e \(\mu=72,4\) é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo valor \(p\) que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de \(Z=-2,25\) e da direita \(z=2,25\), observando a tabela temos que \(2(0,5000-0,4878)=0,0244\), poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.
+Como \(z-2,25\) pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre \(\overline{x}=73,2\) e \(\mu=72,4\) é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo \textbf{valor \(p\) (probabilidade de cauda)} que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de \(Z=-2,25\) e da direita \(z=2,25\), observando a tabela temos que \(2(0,5000-0,4878)=0,0244\), poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.
 
 \begin{itemize}
 \tightlist
@@ -762,7 +762,7 @@ Também conhecido como \textbf{distância generalzada}, esta metologia tem como 
   \label{eq:distpond}
 \end{equation}
 
-Continuando com dados da @tab:dadossrendaa e tomando como exemplo de ponderada pelo método de Mahalanobis. Ao calcular a matriz de covariância e sua respectiva inversa, obtemos:
+Continuando com dados da \ref{tab:dadossrendaa} e tomando como exemplo de ponderada pelo método de Mahalanobis. Ao calcular a matriz de covariância e sua respectiva inversa, obtemos:
 
 \[S=
 \begin{bmatrix}
@@ -1305,10 +1305,10 @@ Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{f
 \hypertarget{reg}{%
 \section{Regressão}\label{reg}}
 
+A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória. É uma análise supervisionada.
+
 \hypertarget{reglin}{%
 \subsection{Análise de Regressão Linear Simples}\label{reglin}}
-
-A análise de variância, pressupõe a independência dos efeitos dos diversos tratamentos utilizados no experimento. Quando a hipótese não é verificada, necessitamos refletir a dependência entre os efeitos dos tratamentos. No caso de experimentos quantitativos, frequentemente justifica a existência da equação de regressão, que une os valores dos tratamentos aos analisados. Em grande parte, trata de estimação e/ou previsão do valor médio (para população) da variável dependente com base nos valores conhecidos da variável explanatória, ela é supervisionada.
 
 Como na prática não conseguimos análisar uma população, trabalhamos em cima de amostras e estimamos para o todo, para que possamos fazer uma aproximação. Partimos da ideia de estimarmos uma função com dados amostrais com o menor erro possível. Portanto, o \(Y_i\) (população) observado pode ser expresso como:
 
@@ -1327,7 +1327,7 @@ em que:
 
 \(\hat{Y_i}\) é o valor observado com \(i\) níveis de \(X\) (estimador da esperança \(E(Y|Xi)\)), \(\hat{\beta_0}\) a constante de regressão estimado e intercepto de \(\hat{Y}\), \(\hat{\beta_1}\) o coeficiente de regressão estimado que seria a variação de \(\hat{Y}\) em função da variação de cada unidade de \(X\), \(X_i\) com \(i\) níveis da variável independente e \(\hat{\mu_i}\) é o erro associado à distância entre o valor observado e o correspondente ponto na curva. Note que os ``chapéis'' em cima das variáveis é utilizado quando referimos a estimações, ou seja, são variáveis de dados amostrais e não a população.
 
-Mas como estimâmetros os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o \textbf{Método dos Mínimos Quadrados (MMQ)} atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores \(\beta_0\) e \(\beta_1\) que minimizam os erros.
+Mas como estimaremos os parâmetros da função de forma que fique mais próxima possível e com o menor erro? Com o método dos \textbf{Mínimos Quadrados Ordinários (MMQ)} atribuído ao Carl Friedrich Gauss - matemático alemão - torna-se possível estimar os melhores \(\beta_0\) e \(\beta_1\) que minimizam os erros.
 
 Como não podemos observar a função de regressão populacional (FRP), precisamos estimá-lo por meio da função de regressão amostral:
 \[Y_i=\hat{\beta_0}+\hat{\beta_1}X_i+\hat{\mu_i} \]
@@ -1335,7 +1335,7 @@ Como não podemos observar a função de regressão populacional (FRP), precisam
 \[\mbox{Logo temos que} \rightarrow \ \hat{\mu_i}=Y_i-\hat{\beta_0}-\hat{\beta_1} X_i\]
 
 Podemos ver que os erros \(\hat{\mu_i}\) (resíduos) são basicamente as diferenças entre os valores observados e estimados de \(Y\). Ao caso de dados com \(n\) pares de observações de \(Y\) e \(X\), queremos encontrar a FRA que se encontra o mais próximo possível do \(Y\) observado, ou seja, escolher a
-FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura \ref{fig:mmq}, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultari a possibilidade de minimizarmos.
+FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) seja a menor possível. Porém, como se pode ver pelo diagrama de dispersão na Figura \ref{fig:mmq}, os erros possuem a mesma importância com variações entre sinais positivos e negativos e sua somatória será zero. Isso dificultaria a possibilidade de minimizarmos.
 
 \begin{figure}
 
@@ -1355,7 +1355,7 @@ Para evitarmos isso, utilizamos o critério dos mínimos quadrados, de modo que 
     \label{eq:mmqeq}
 \end{equation}
 
-O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) e \(\beta_1\) que proporcionam o menor valor possível (encontrando \(\hat{\beta_0}\) e \(\hat{\beta_1}\)) de \(\sum \hat{\mu}_i\). Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatístico ler, como por exemplo a seção 3A de \citet{gujarati2011econometria}) encontra-se:
+O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) e \(\beta_1\) que proporcionam o menor valor possível (encontrando \(\hat{\beta_0}\) e \(\hat{\beta_1}\)) de \(\sum \hat{\mu}_i\). Por meio de cálculo diferenciável (recomendo o leitor interessado em se aprofundar na definição matemática buscar literaturas em foco estatístico ler, como por exemplo de \citet{gujarati2011econometria}) é possível obter:
 
 \begin{equation}
     \sum Y_i=n\hat{\beta_0} + \hat{\beta_1} \sum X_i
@@ -1367,9 +1367,82 @@ O método dos mínimos quadrados nos oferece estimativas únicas de \(\beta_0\) 
     \label{eq:sumyixi}
 \end{equation}
 
-AQUI VOU COLOCAR DO JEITO Q FIZ EM ECONOMETRIA COM AS DEFINCOES E AS DERIVADAS
+Para encontrarmos os valores dos \(\beta's\) a fim de minimizar. Precisamos aplicar a derivada parcial:
 
-Para que seja feito o modelo de regressão, ela depende das premissas: independência das variáveis erro, homogeneidade das variâncias, normalidade e relação linear entre as variáveis.
+\[\mbox{temos que:  }\ \sum\hat{\mu}_i^2=\sum(Y_i-\hat{\beta_0}-\hat{\beta}_1X_i)^2\]
+\[\frac{\partial(\sum\hat{\mu})}{\partial \hat{\beta}_0}\rightarrow-2\sum\hat{\mu}=-2\sum(Y_i-\hat{\beta}_0-\hat{\beta}_1X_i)\]
+\[\frac{\partial(\sum\hat{\mu})}{\partial \hat{\beta}_1}\rightarrow-2\sum\hat{\mu}X_i=-2\sum(Y_i-\hat{\beta}_0-\hat{\beta}_1X_i)X_i\]
+\[(Y_i-\hat{\beta}_0-\hat{\beta}_1X_i)=0 \ \ \ (I)\]
+\[(Y_i X_i-\hat{\beta}_0X_i-\hat{\beta}_1X_i^2)=0 \ \ \ (II)\]
+Expandindo o somatório de (I):
+\[-\sum Y_i+ n\hat{\beta}_0+\hat{\beta}_1\sum X_i=0\]
+Note que se isolarmos \(\sum Y_i\), obtém-se a equação \eqref{eq:sumyi}. Ao isolarmos \(\hat{\beta}_0\) obtemos:
+\[\hat{\beta}_0=\frac{\sum Y_i}{n}-\hat{\beta}_1\frac{X_i}{n} \ \ \ (III)\]
+\begin{equation}
+\hat{\beta}_0=\overline{Y}_i-\hat{\beta}_1\overline{X}_i
+\label{eq:betazero}
+\end{equation}
+
+Expandindo (II), obtemos:
+\[-\sum X_iY_i+\hat{\beta}_0\sum X_i+\hat{\beta}_1\sum X_i^2=0 \ \ \ (IV)\]
+Note também que isolando \(\sum X_i Y_i\) teremos a equação \eqref{eq:sumyixi}.
+
+Por fim, substituindo (III) em (IV) e manipulando algebricamente, também temos \(\hat{beta}_1\):
+\[\hat{\beta}_1=\frac{n\sum X_iY_i-\sum X_i \sum Y_i}{n\sum X_i^2-(\sum X_i)^2}=\frac{\sum (X_i-\overline{X})(Y_i-\overline{Y})}{\sum(X_i-\overline{X})^2}\]
+\begin{equation}
+\hat{\beta_1}=\frac{\sum x_i y_i}{\sum x_i^2}
+\label{eq:betaum}
+\end{equation}
+em que \(\overline{X}\) e \(\overline{Y}\) são as médias amostrais de \(X\) e de \(Y\) e que \(x_i=(X_i-\overline{X})\) e \(y_i=(Y_i-\overline{Y})\).
+
+Os estimadores são conhecidos como \textbf{estimadores de mínimos quadrados}. Cada estimador proporciona um único valor do parâmetro populacional relevante e que, após obtê-los, torna-se possível elaborar a linha de regressão amostral que passa pelas médias amostrais de \(X\) e de \(Y\).
+
+Para obtermos o erro padrão da estimativa como uma medida resumida da ``qualidade do ajustamento'' da linha de regressão, podemos pela expressão:
+
+\begin{equation}
+\hat{\sigma}=\sqrt{\frac{\sum \hat{\mu}_i^2}{n-2}}
+\label{eq:desvioreg}
+\end{equation}
+
+Lembrando que para obtermos a variância, basta elevarmos ao quadrado.
+
+Para que seja feito o modelo de regressão, ela depende das premissas: independência das variáveis erro, homogeneidade das variâncias, normalidade e relação linear entre as variáveis \(X\) e \(Y\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Para a independência do termo de erro, os valores assumidos pelo regressor \(X\) podem ser fixos ou mudar de acordo com variável dependente \(Y\). Para o o caso de não serem fixos, a covariância entre a variável e a o termo erro precisa ser zero (independentes). \(cov(X_i,\mu_i)=0\).
+\item
+  O valor médio do erro \(\mu_i\) é zero. Ou seja: \(E(\mu_i|X_i)=0\) e se \(X\) não aleatório \(E(\mu)i=0\). Isto implica de que não haja viés de especificação do modelo diante da análise empírica, os fatores não inclusos específicamente no modelo agrupados em \(\mu_i\) não afetam sistematicamente o valor médio de \(Y\) \citep{gujarati2011econometria}.
+\item
+  Variância constante de \(\mu_i\) (\textbf{Homocedasticidade}). A variância do termo de erro será a mesma independente do valor de \(X\).
+\item
+  Entre os termos de erro, dados qualquer valor de \(X\), não há autocorrelação. Ou seja \(cov(\mu_i,\mu_j|X_i \ \mbox{e} \ X_j)=0\), em que \(i\) e \(j\) são duas observações diferentes \citep{gujarati2011econometria}. Para entender melhor, na figura a seguir, não queremos (a) e (b).
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/autocorrmu} 
+
+}
+
+\caption{Padrões de correlação entre os termos de erro. (a) correlação serial positiva; (b) correlação serial negativa; (c) correlação zero \citet{gujarati2011econometria}.}\label{fig:autocorrmu}
+\end{figure}
+
+
+
+Para o caso das observações \(X's\) com \(Y\) precisa-se haver correlações entre si.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  O número de observações \(n\) deve ser maior que o número de parâmetros a serem estimados e que os valores de \(X\) em uma amostra não devem ser os mesmos ou muito discrepantes (poderá haver problemas de \emph{outliers} que será apresentado em \ref{outlier}).
+\item
+  Uma das propriedades da distribuição normal é que qualquer função linear que possui variáveis com distribuição normal também é normalmente distribuída; as variáveis com distribuição normal, covariância ou correlações iguais a zero, indicam que há independência das variáveis presentes na amostra. Por isso é importante a etapa de pré-processamento. Aos interessados, recomendo-os buscar em algumas literaturas alguns testes de normalidade, como a de \citep{shapiro1965analysis}, para verificar o comportamento do conjunto de dados.
+\end{enumerate}
+
+Segundo o \textbf{Teorema de Gauss-Markov}, dadas as premissas do modelo clássico de regressão linear, os estimadores de mínimos quadrados dos estimadores não viesados possuem variância mínima. Podemos dizer que são o melhor estimador linear não viesado \citep{gujarati2011econometria}.
 
 \begin{itemize}
 \tightlist
@@ -1378,7 +1451,7 @@ Para que seja feito o modelo de regressão, ela depende das premissas: independ�
 \end{itemize}
 
 Estimamos os parâmetros e o erro da função, agora precisamos considerar a \textbf{qualidade do ajuste} da linha de regressão ajustada a um conjunto de dados, ou seja, vamos descobrir quão ``bom'' o ajuste dessa linha de regressão
-amostral é adequada aos dados. Se todas as observações estivessem exatamente em cima da linha de regressão, seria ``perfeito'', o que raramente acontece e provávelmente seria um problema de \textbf{Overfitting} (será apresentado no próximo capítulo para verificarmos a validade do modelo). O coeficiente de terminação \(r^2\) é um medida que diz quanto a linha de regressão
+amostral é adequada aos dados. Se todas as observações estivessem exatamente em cima da linha de regressão, seria ``perfeito'', o que raramente acontece e provávelmente seria um problema de \textbf{Overfitting} (será apresentado em \ref{valid} para verificarmos a validade do modelo). O coeficiente de terminação \(r^2\) é um medida que diz quanto a linha de regressão
 amostral ajusta-se aos dados.
 
 Para entendermos melhor, vamos visualizar por Diagrama de Venn \citep{kennedy1981ballentine}. O círculo \(Y\) representa a variação da variável dependente \(Y\) e o círculo \(X\), a variação da variável explanatória \(X\) como vimos em regressão linear. A área sombreada indica o quanto em que a variação de \(Y\) é explicada pela variação de \(X\). Quanto maior a área sobreposta, maior a parte da variação de \(Y\) é explicada por \(X\). O coefiente de determinação \(r^2\) é apenas a medida numérica dessa sobreposição. Na Figura \ref{fig:ballentine}, conforme move-se da esquerda para a direita, a sobreposição aumenta, ou seja, uma proporção cada vez maior da variação de \(Y\)
@@ -1418,13 +1491,82 @@ sendo SQT a soma total dos quadrados, SQE a soma do quadrados explicados e SQR s
     \label{eq:coefdet}
 \end{equation}
 
-Por manipulação algébrica, podemos verificar também que \(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\), sendo \(S^2_x\ \mbox{e} \ S^2_y\) as respectivas variâncias amostrais de \(X\) e \(Y\).
+\(r^2\) portanto, mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão. Por manipulação algébrica, podemos verificar também que \(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\), sendo \(S^2_x\ \mbox{e} \ S^2_y\) as respectivas variâncias amostrais de \(X\) e \(Y\).
 
 Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em \ref{medidasdep}, que mede o grau de associação entre duas variáveis.
 
 \[r=\pm \sqrt{r^2}\]
+- \textbf{Análise de Variância na Regressão}
 
-AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA e falar de ANOVA
+Anteriormente vimos que \(\sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i\) podem ser expressas como \(STQ=SQE+SQR\), a soma total de quadrados (STQ) composta pela soma dos quadrados expicados pela regressão (SQE) e a soma do quadrado dos resíduos (SQR). Como sabe-se sobre análise de variância, associados a eles encontra-se os graus de liberdade, onde \(STQ\) possui \(n-1\) g.l ao calcular a média da amostra \(\overline{Y}\). A \(SQR\) tem \(n-2\) g.l (ao caso de duas variáveis com o intercepto presente) e a \(SQE\) possui 1 g.l (ao caso de duas variáveis) pela função \(SQE=\hat{\beta_1^2}\sum x^2_i\).
+
+A tabela \textbf{ANOVA} com a hipótese nula \(H_0: \beta_1=0\) para verificar a existência da relação e a influência de \(X\) em \(Y\) ficará como:
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:anovareg} Tabela ANOVA para um modelo de regressão de duas variáveis.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+C.V\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+G.L\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+S.Q\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+Q.M\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+F.C\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+C.V\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+G.L\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+S.Q\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+Q.M\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+F.C\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+Regressão (SQE)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\sum \hat{y}_i^2=\hat{\beta}_1^2 \sum x_i^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\hat{\beta}_1^2 \sum x_i^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\frac{Q.M.SQE}{Q.M.SQR}\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+Erro (SQR)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+n-2\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\sum \hat{\mu}_i^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\frac{\sum \mu_i^2}{n-2}=\hat{\sigma}^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+Total (STQ)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+n-1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\(\sum \hat{y}_i^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \textbf{Não esqueça:} dependendo das variáveis em estudo é possível que haja comportamento polinomial ao observarmos no gráfico, podendo ser quadrática, cúbica, etc. Os procedimentos são os mesmos de que linear, mas basicamente incluímos a variável e seu respectivo grau. Dependendo do comportamento muitas vezes é mais fácil ao invés e manter em exponencial (não linear), linearizarmos a função por meio dos logaritmos, semi-logaritmicos entre outros. Isso faz com que temos menos trabalho para tratarmos e estimarmos os parâmetros da função exponencial.
 
@@ -1440,8 +1582,6 @@ AQUI VOU COLOCAR UM EXEMPLO DE REGRESSOA PARA ENTENDER E PARTE MATEMATICA e fala
 
 
 Atualmente é bem comum utilizarmos o modelo \textbf{log-log}, pois seu coeficiente angular \(\beta_i\) mede a \textbf{elasticidade} de \(Y\) em relação a \(X\), ou seja, a variação percentual de \(Y\) correspondente a uma variação percentual em \(X\). Por exemplo: na Figura \ref{fig:explog} se \(Y\) representa a quantidade demandada de camisetas e \(X\) seu preço unitário. Em (a) temos a relação da quantidade de demanda por camisetas e o preço, mas com a transformação logaritmica teremos a estimação de \(-\beta_2\) (pois é uma reta descendente) que indica a elasticidade preço (variação em \(ln(Y)\) por unidade de variação em \(ln(X)\)). Portanto teríamos a variação percentual da quantidade demandada de camisetas dada uma variação percentual do preço. Atente-se: \textbf{porcentagem} \citep{gujarati2011econometria}.
-
-Resumo geral: Em palavras, r2 mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão.
 
 \hypertarget{regmult}{%
 \subsection{Regressão Linear Múltipla}\label{regmult}}
@@ -1595,14 +1735,332 @@ em que, com a variância \(\hat{\sigma}^2=\frac{1}{N_i\hat{P_i}(1-\hat{P_i})}\),
 
 Como o \(R^2\) não é significativa nos modelos binários. É comum utilizar as \textbf{pseudo \$R\^{}2} {[}long1997regression{]} - existe uma variedade delas - ou o \textbf{Count \(R^2\)} que nada mais é que o número de previsões corretas com o número total de observações. Para a hiótese nula de que todos os coeficientes angulares são simultâneamente iguais a zero, utiliza-se a \textbf{estatística da razão de verossimilhança} que segue a distribuição \(\chi^2\) que equivale ao teste F.
 
-\hypertarget{probit}{%
-\subsubsection{Probit}\label{probit}}
-
-\hypertarget{tobit}{%
-\subsubsection{Tobit}\label{tobit}}
+Ressalto que existe muitos outros modelo de regressão, como por exemplo os modelos \textbf{Probit} e \textbf{Tobit}. Podemos dizer que possuem em geral os mesmos fundamentos da regressão que conhecemos, porém possuem algumas particularidades como a distribuição acumulada adequada dependendo da situação. O modelo \textbf{Probit} é muito utilizado quando supomos de que na distribuição do termo de erro, segue uma distribuição normal e utilizamos um limiar como referência para podermos estimar a probabilidade (possui resultados semelhantes de Logit). Ao caso da \textbf{Tobit} é muito utilizada para estimar relações com variáveis dependentes censuradas (por exemplo \(Y_i=Y_i^* \ \mbox{para} \ Y_i^* > 0 \ \mbox{e} \ Y_i=0 \ \mbox{para} \ Y_i^*\leq 0\)). Importante o pesquisador preparar seus dados e ter ciência de qual problema tratar e como lidar com este problema, para que se aplique um modelo adequado à situação.
 
 \hypertarget{exemplo1reg}{%
 \subsection{Exemplos}\label{exemplo1reg}}
+
+Com base em \citet{morettin2017estatistica}, vamos a alguns exemplos de regressão linear simples:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A tabela a seguir, apresenta dados sobre o índice de mortalidade por câncer de pulmão (100=média) e o índice de consumo de fumo (100=média) para 25 grupos ocupacionais.
+\end{enumerate}
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:cancercigarro} Índice de mortalidade por câncer de pulmão e índice de consumo de fumo para 25 grupos sociais. Disponível em: \url{http://lib.stat.cmu.edu/datasets/} \emph{apud} \citep{morettin2017estatistica}, p.~160.}\tabularnewline
+\toprule
+\textbf{Ocupação} & \textbf{Câncer} & \textbf{Fumo}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Ocupação} & \textbf{Câncer} & \textbf{Fumo}\tabularnewline
+\midrule
+\endhead
+Fazendeiro, profissionais de atividades florestais, pescador & 84 & 77\tabularnewline
+Minerador, cavouqueiro & 116 & 137\tabularnewline
+Operários da produção de combustíveis, coque e produtos químicos & 123 & 117\tabularnewline
+Vidraceiro e ceramista & 128 & 94\tabularnewline
+Fundidor & 155 & 116\tabularnewline
+Operários da fabricação de eletroeletrônicos & 101 & 102\tabularnewline
+Profissionais de engenharia e atividades associadas & 118 & 111\tabularnewline
+Madereiros, marceneiros & 113 & 93\tabularnewline
+Curtidores em confecção de artigos de couro & 104 & 88\tabularnewline
+Operários da fabricação de artigos têxtis & 88 & 102\tabularnewline
+Operários da confecção de vestuário & 104 & 91\tabularnewline
+Profissionais da produção de alimentos, bebidas e tabaco & 129 & 104\tabularnewline
+Operários da fabricação de papel e atividades gráficas & 86 & 107\tabularnewline
+Operários da fabricação de outros produtos & 96 & 112\tabularnewline
+Operários da construção civil & 144 & 113\tabularnewline
+Pintores e decoradores & 139 & 110\tabularnewline
+Operadores de máquinas, guindastes etc. & 113 & 125\tabularnewline
+Operários não incluídos nestas categorias & 146 & 113\tabularnewline
+Profissionais de transportes e comunicações & 128 & 115\tabularnewline
+Estoquistas em armazéns, depósitos e lojas, almoxarifes\ldots{} & 115 & 105\tabularnewline
+Escreventes, escriturários, funcionários de escritórios & 79 & 87\tabularnewline
+Vendedores & 85 & 91\tabularnewline
+Profisisonais de seviços, esportes e recreadores & 120 & 100\tabularnewline
+Administradores e gerentes & 60 & 76\tabularnewline
+Artistas e proissionais e técnicos em geral & 51 & 66\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+
+\textbf{a.} Trace o gráfico de mortalidade por câncer de pulmão em relação ao índice de fumo. Que padrão podemos observar?
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/cancerfumo} 
+
+}
+
+\caption{Gráfico de mortalidade por câncer em relação ao índice de fumo.}\label{fig:cancerfumo}
+\end{figure}
+
+
+
+Podemos verificar que conforme aumenta o número do índice de fumo, aumenta o índice de mortalidade por câncer. Visualizando o gráfico podemos perceber que possui uma correlação alta e positiva entre as variáveis.
+
+\textbf{b.} Considerando Y = índice de mortalidade por câncer de pulmão e X = índice de fumo, estime um mdelo de regressão linear e obtenha as estatísticas de regressão.
+
+Ao calcularmos a média de X e Y, \(\overline{Y}=109,0\) e \(\overline{X}=102,08\), podemos calcular \(y_i=Y_i-\overline{Y}\) e \(x_i=X_i-\overline{X}\) entre outras estatísticas habituais.
+
+\begin{longtable}[]{@{}lcccccccc@{}}
+\toprule
+& Câncer & Fumo & \(y_i\) & \(x_i\) & \(x^2_i\) & \(y_ix_i\) & \(y^2_i\) & \(X^2_i\)\tabularnewline
+\midrule
+\endhead
+& 84 & 77 & -25 & -25 & 629.01 & 627 & 625 & 5929\tabularnewline
+& 116 & 137 & 7 & 35 & 1219.41 & 244.44 & 49 & 18769\tabularnewline
+& 123 & 117 & 14 & 15 & 222.61 & 208.88 & 196 & 13689\tabularnewline
+& 128 & 94 & 19 & -8 & 65.29 & -153.52 & 361 & 8836\tabularnewline
+& 155 & 116 & 46 & 14 & 193.77 & 640.32 & 2116 & 13456\tabularnewline
+& 101 & 102 & -8 & 0 & 0.01 & 0.64 & 64 & 10404\tabularnewline
+& 118 & 111 & 9 & 9 & 79.57 & 80.28 & 81 & 12321\tabularnewline
+& 113 & 93 & 4 & -9 & 82.45 & -36.32 & 16 & 8649\tabularnewline
+& 104 & 88 & -5 & -14 & 198.25 & 70.4 & 25 & 7744\tabularnewline
+& 88 & 102 & -21 & 0 & 0.01 & 1.68 & 441 & 10404\tabularnewline
+& 104 & 91 & -5 & -11 & 122.77 & 55.4 & 25 & 8281\tabularnewline
+& 129 & 104 & 20 & 2 & 3.69 & 38.4 & 400 & 10816\tabularnewline
+& 86 & 107 & -23 & 5 & 24.21 & -113.16 & 529 & 11449\tabularnewline
+& 96 & 112 & -13 & 10 & 98.41 & -128.96 & 169 & 12544\tabularnewline
+& 144 & 113 & 35 & 11 & 119.25 & 382.2 & 1225 & 12769\tabularnewline
+& 139 & 110 & 30 & 8 & 62.73 & 237.6 & 900 & 12100\tabularnewline
+& 113 & 125 & 4 & 23 & 525.33 & 91.68 & 16 & 15625\tabularnewline
+& 146 & 113 & 37 & 11 & 119.25 & 404.04 & 1369 & 12769\tabularnewline
+& 128 & 115 & 19 & 13 & 166.93 & 245.48 & 361 & 13225\tabularnewline
+& 115 & 105 & 6 & 3 & 8.53 & 17.52 & 36 & 11025\tabularnewline
+& 79 & 87 & -30 & -15 & 227.41 & 452.4 & 900 & 7569\tabularnewline
+& 85 & 91 & -24 & -11 & 122.77 & 265.92 & 576 & 8281\tabularnewline
+& 120 & 100 & 11 & -2 & 4.33 & -22.88 & 121 & 10000\tabularnewline
+& 60 & 76 & -49 & -26 & 680.17 & 1277.92 & 2401 & 5776\tabularnewline
+& 51 & 66 & -58 & -36 & 1301.77 & 2092.64 & 3364 & 4356\tabularnewline
+Soma & 2725 & 2552 & 0 & 0 & 6278 & 6980 & 16366 & 266786\tabularnewline
+\bottomrule
+\end{longtable}
+
+Podemos agora calcular \(\hat{\beta_1}=\frac{\sum x_i y_i}{\sum x_i^2}=\frac{6980}{6278}\approx 1,112\) e portanto, podemos encontrar \(\hat{\beta}_0=\overline{Y}_i-\hat{\beta}_1\overline{X}_i \rightarrow 109,000-1.112 \ . \ 102,080\approx -4,50\).
+
+Agora que temos os estimadores \(\beta_0\) e \(\beta_1\), podemos encontrar \(\hat{y}_i=\beta_0+\beta_1 . X_i\), o erro \(\mu_i=Y_i-\hat{y}_i\) e seu quadrado \(\mu^2\).
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+\(\hat{y}\) & \(\mu_i=Y_i-\hat{y}_i\) & \(\mu^2\)\tabularnewline
+\midrule
+\endhead
+81.11 & 2.89 & 8.32\tabularnewline
+147.83 & -31.83 & 1012.88\tabularnewline
+125.59 & -2.59 & 6.70\tabularnewline
+100.02 & 27.98 & 783.09\tabularnewline
+124.48 & 30.52 & 931.66\tabularnewline
+108.91 & -7.91 & 62.58\tabularnewline
+118.92 & -0.92 & 0.84\tabularnewline
+98.90 & 14.10 & 198.69\tabularnewline
+93.35 & 10.65 & 113.53\tabularnewline
+108.91 & -20.91 & 437.27\tabularnewline
+96.68 & 7.32 & 53.57\tabularnewline
+111.13 & 17.87 & 319.17\tabularnewline
+114.47 & -28.47 & 810.56\tabularnewline
+120.03 & -24.03 & 577.42\tabularnewline
+121.14 & 22.86 & 522.52\tabularnewline
+117.81 & 21.19 & 449.19\tabularnewline
+134.48 & -21.48 & 461.54\tabularnewline
+121.14 & 24.86 & 617.95\tabularnewline
+123.37 & 4.63 & 21.48\tabularnewline
+112.25 & 2.75 & 7.58\tabularnewline
+92.23 & -13.23 & 175.12\tabularnewline
+96.68 & -11.68 & 136.44\tabularnewline
+106.69 & 13.31 & 177.23\tabularnewline
+80.00 & -20.00 & 400.12\tabularnewline
+68.88 & -17.88 & 319.86\tabularnewline
+2725 & 0 & 8605,31\tabularnewline
+\bottomrule
+\end{longtable}
+
+Sua variância, com \(n=25\) observações, \(\sigma^2=\frac{\sum \mu_i^2}{n-2}=\frac{8605,31}{23}=374,144\) e o coeficiente de determinação \(r^2=1-\frac{\sum \mu^2_i}{\sum y^2_i}=1-\frac{8605}{16366}=0,4742\).
+
+O ajuste da reta de regressão linear será portanto \(\hat{y}=-4,50+1,11x\).
+
+\textbf{c.} Teste a hipótese de que o fumo não tem influência sobre o câncer de pulmão com nível de significância \(\alpha=5\%\).
+
+Queremos
+\[H_0: \ \hat{\beta_1}=0\]
+\[H_1: \ \hat{\beta_1}\neq 0\]
+
+Temos que \(SQR = \sum \hat{\mu}^2 = 8605,31\) e \(SQ Total = \sum \hat{y}^2_i=16366\). Logo \(SQE = SQT - SQR \approx 7760,695.\) Por fim, os Quadrados médios que referem-se a divisão das somas dos quadrados pelos seus respectivos graus de liberdade, podemos calcular e verificar o valor F tabelado.
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+\begin{minipage}[b]{0.14\columnwidth}\raggedright
+C.V\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+G.L\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+S.Q\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+Q.M\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+F.C (\(\frac{Q.M. \  SQE}{Q.M.\ SQR}\))\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+F. Tabelado (\(1,n-2,\alpha=5\%\))\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Regressão\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+7760,695\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+7760,695\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+20,743\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+4,280\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Erro\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+23\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+8605\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+374,144\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+16366\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+681,917\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Como \(F.C > F. Tabelado\). Rejeita-se \(H_0\) e há relação linear e influência sobre o câncer de pulmão com 5\% de significância. Por meio do uso do software R, chegou-se a um p-valor de 0.000141, pode-se rejeitar \(H_0\) (é significativo) com baixa porcentagem de significância.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  A seguir, os dados são referentes a porcentagem da população economicamente ativa empregada no setor primário e o respectivo índice de analfabetismo para algumas regiões metropoliatanas brasileiras.
+\end{enumerate}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:ecoativa} Indicadores Sociais para Áreas Urbanas, IBGE, 1977 \emph{apud} \citep{morettin2017estatistica}, p.~92.}\tabularnewline
+\toprule
+\textbf{Regiões Metropolitanas} & \textbf{Setor Primário (X)} & \textbf{Índice de Analfabetismo (Y)}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Regiões Metropolitanas} & \textbf{Setor Primário (X)} & \textbf{Índice de Analfabetismo (Y)}\tabularnewline
+\midrule
+\endhead
+São Paulo & 2,0 & 17,5\tabularnewline
+Rio de Janerio & 2,5 & 18,5\tabularnewline
+Belém & 2,9 & 19,5\tabularnewline
+Belo Horizonte & 3,3 & 22,2\tabularnewline
+Salvador & 4,1 & 26,5\tabularnewline
+Porto Alegre & 4,3 & 16,6\tabularnewline
+Recife & 7,0 & 36,6\tabularnewline
+Fortaleza & 13,0 & 38,4\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{a.} Sabedo que a reta de regressão linear simples ajustada é \(\hat{y}=13,561+2,289x\), faça o teste de significância:
+
+\[SQT=\sum \hat{y}^2_i - \overline{Y}=5305,85-\frac{38298,49}{8}=518,538\]
+\[SQE = 400,26 \ \mbox{e} \ SQR=118,12\]
+\[\mbox{(encorajo-o ao leitor verificar)}\]
+Queremos
+\[H_0: \ \hat{\beta_1}=0\]
+\[H_1: \ \hat{\beta_1}\neq 0\]
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+\begin{minipage}[b]{0.14\columnwidth}\raggedright
+C.V\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+G.L\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+S.Q\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+Q.M\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+F.C (\(\frac{Q.M. \  SQE}{Q.M.\ SQR}\))\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+F. Tabelado (\(1,n-2,\alpha\))\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Regressão (SQE)\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+400,26\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+400,26\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+20,33\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+5,99\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Erro (SQR)\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+118,12\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+19,686\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+Total\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+518,54\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+-\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Como \(F.C > F. Tabelado\), rejeita-se \(H_0\) à \(5\%\) do nível de significância, à inclinação \(\beta_1\) é diferente de zero e assim há relação linear simples entre o porcentual de analfabetismo e porcentual do setor primário.
+
+\textbf{b.} Estime o índice de analfabetismo para 20\% da população empregada no setor primário.
+
+\[\hat{y}=13,561+2,289 \ . \ 20\%=59,341\%\]
+O porcentual do valor estimado do índice de analfabetismo é de 59,341\% para 20\% da população empregada no setor primário.
+
+\textbf{c.} Determine o coeficiente de determinação e interprete seu resultado.
+
+\[r^2=\frac{SQE}{SQT}=\frac{400,26}{518,54}=0,7719\]
+Logo, da variação total do índice de analfabetismo, 77\% é explicado pela equação da reta.
 
 \hypertarget{GD}{%
 \section{Gradiente Descendente (GD)}\label{GD}}

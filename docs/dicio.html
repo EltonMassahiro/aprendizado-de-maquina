@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-01-14" />
+<meta name="date" content="2021-01-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -436,7 +436,7 @@ z=\frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
 <span class="math display">\[H_A: \mu \neq 72,4 \mbox{metros}\]</span>
 Temos que <span class="math inline">\(\alpha=0,05\)</span>, ou seja, pela tabela de distribuição normal bilateral AQUI PONHO A TABELA ANEXADA teríamos 0,025 para cada lado e portanto, ciente de que cada lado da curva equivale a 0,5 (ou 50%) e subtraindo os 0,025, obtemos <span class="math inline">\(0,475\)</span>. Pela tabela verificamos então que iremos rejeitar a hipótese nula se <span class="math inline">\(Z \leq -1,96\)</span> ou <span class="math inline">\(z \geq 1,96\)</span>. Logo:
 <span class="math display">\[z=\frac{73,2-72,4}{2,1/\sqrt{35}}\approx 2,25\]</span>
-Como <span class="math inline">\(z-2,25\)</span> pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre <span class="math inline">\(\overline{x}=73,2\)</span> e <span class="math inline">\(\mu=72,4\)</span> é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo valor <span class="math inline">\(p\)</span> que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de <span class="math inline">\(Z=-2,25\)</span> e da direita <span class="math inline">\(z=2,25\)</span>, observando a tabela temos que <span class="math inline">\(2(0,5000-0,4878)=0,0244\)</span>, poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.</p>
+Como <span class="math inline">\(z-2,25\)</span> pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre <span class="math inline">\(\overline{x}=73,2\)</span> e <span class="math inline">\(\mu=72,4\)</span> é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo <strong>valor <span class="math inline">\(p\)</span> (probabilidade de cauda)</strong> que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de <span class="math inline">\(Z=-2,25\)</span> e da direita <span class="math inline">\(z=2,25\)</span>, observando a tabela temos que <span class="math inline">\(2(0,5000-0,4878)=0,0244\)</span>, poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.</p>
 <ul>
 <li><strong>Aplicações do Teste de Hipótese - Média com a variância desconhecida:</strong> vamos supor que não sabemos o valor da variância e agora a um caso de <span class="math inline">\(n\)</span> não suficientemente grande, ou seja, utilizamos o teste <span class="math inline">\(t\)</span>:</li>
 </ul>
@@ -583,7 +583,7 @@ Assim sucessivamente para cada uma das observações, obtemos a matriz:</p>
   d(X_l,X_k)=[(X_l-X_k)&#39;A_{pxp}(X_l - X_k)]^{1/2}
   \tag{5.13}
 \end{equation}\]</span></p>
-<p>Continuando com dados da @tab:dadossrendaa e tomando como exemplo de ponderada pelo método de Mahalanobis. Ao calcular a matriz de covariância e sua respectiva inversa, obtemos:</p>
+<p>Continuando com dados da <a href="dicio.html#tab:dadossrendaa">5.2</a> e tomando como exemplo de ponderada pelo método de Mahalanobis. Ao calcular a matriz de covariância e sua respectiva inversa, obtemos:</p>
 <p><span class="math display">\[S=
 \begin{bmatrix}
 31.471&amp; 2.15000 \\
