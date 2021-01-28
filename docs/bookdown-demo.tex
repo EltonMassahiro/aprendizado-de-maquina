@@ -126,7 +126,7 @@
 
 \title{Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2021-01-23}
+\date{2021-01-27}
 
 \begin{document}
 \maketitle
@@ -266,7 +266,7 @@ Atualmente, existem muitas atividades, pesquisas e aplicações em diversos tema
 Poderíamos falar desde exemplos de inteligência artificial aplicados em casos jurídicos, diagnósticos na área da saúde, identificadores de \emph{fake news} (notíficas falsas) até a robótica. É uma extensa lista de exemplos na área que até hoje estão em desenvolvimento em busca de cada vez mais melhorar. A AGI (\emph{Artificial General Intelligence}), ou Inteligência Artificial Geral, trabalha na criação de uma inteligência artificial generalista, similar a humana, capaz de ser especialista em uma área, mas também aprender com facilidade outras. Uma área que se tornou uma das principais linhas de pesquisa e nos dias de hoje gera discussões sobre até onde a IA pode alcançar.
 
 \hypertarget{vertentes-de-uma-ia-e-fundamentauxe7uxe3o-filosuxf3fica}{%
-\chapter{Vertentes de uma IA e fundamentação filosófica}\label{vertentes-de-uma-ia-e-fundamentauxe7uxe3o-filosuxf3fica}}
+\section{Vertentes de uma IA e fundamentação filosófica}\label{vertentes-de-uma-ia-e-fundamentauxe7uxe3o-filosuxf3fica}}
 
 \begin{quote}
 Os filósofos têm estado por aí há muito mais tempo que os computadores e vêm tentando resolver algumas questões que se relacionam à IA: como a mente funciona? É possível que as máquinas ajam com inteligência, de modo semelhante às pessoas, e, se isso acontecer, elas realmente terão mentes conscientes? Quais são as implicações éticas de máquinas inteligentes?
@@ -1222,8 +1222,75 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 
 
 
+\hypertarget{valid}{%
+\chapter{Validação de um modelo}\label{valid}}
+
+\hypertarget{fitt}{%
+\section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{fitt}}
+
+Sendo \textbf{muito importantes} nesta área, o Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}.
+
+\begin{itemize}
+\item
+  \textbf{Overfitting}: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.
+
+  As principais causas e soluções de um Overfitting são:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    Algoritmo muito complexo para os dados: caso for possível, pode-se simplificar o modelo utilizado por um algoritmo mais simples, com menos parâmetros. Permitindo reduzir as chances do modelo sofrer overfitting.
+  \item
+    Poucos dados para treinar: dependendo da quantidade de dados utilizados para treinar, pode ser que seja uma amostra pequena, com isso recomenda-se aumentar seu tamanho coletando mais dados.
+  \item
+    Ruídos nos dados de treinamento: é comum dentro do banco de dados existir algum tipo de ruído, isto é, \emph{outlier} (valores extremos ou até mesmo valores incorretos nos dados). Esses ruídos podem fazer com que o modelo aprenda sobre ele, levando ao overfitting. Seria recomendado pré-processamento adequado para tratar essa interferência.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}{%
+\subsection{\texorpdfstring{\textbf{Underfitting}: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}{Underfitting: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}}\label{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}}
+
+As principais causas e soluções de um Underfitting são:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Algoritmo inadequado: bem provável que o modelo estatístico proposto pelo pesquisa pode não ter sido adequado ao comportamento dos dados. Por exemplo aplicar um algoritmo para funções de primeiro grau (linear) em um conjunto de dados com comportamento exponencial (função de segundo grau). Recomendável o pesquisador substituir o algoritmo escolhendo outro com outros parâmetros para solucionar o underfitting.
+\item
+  Características não representativas: há possibilidade de que as características que estamos utilizando para treinar o modelo não sejam representativas, ou seja, não possuem relação entre si ou não sejam importantes para o modelo aplicado.
+\item
+  Modelo com muitos parâmetros de restrição: o modelo torna-se inflexível, restrito, e não consegue se ajustar de forma adequada aos dados.
+\end{enumerate}
+
+Segue abaixo a Figura \ref{fig:graficofit} demonstrando os dois casos anteriores e um modelo adequado.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/graficofit} 
+
+}
+
+\caption{``Gráfico representando um \emph{Underfitting}, um Modelo bem ajustado e um \emph{Overfitting} respectivamente.''}\label{fig:graficofit}
+\end{figure}
+
+
+
+\hypertarget{validauxe7uxe3o-cruzada}{%
+\section{Validação Cruzada}\label{validauxe7uxe3o-cruzada}}
+
+A fim de que não haja previsões desastrosas geradas pelo modelo, para medirmos o desempenho real do modelo criado, é necessário que realizemos testes com ele, utilizando dados diferentes dos que foram apresentados no início. Portanto uma das técnicas mais utilizadas é a \textbf{Cross-validation (Validação Cruzada)}.
+
+Após a realização do pré-processamento (analisar), iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
+Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com
+
+\hypertarget{como-escolher-um-bom-modelo}{%
+\section{Como escolher um bom modelo?}\label{como-escolher-um-bom-modelo}}
+
+\hypertarget{aocroc}{%
+\section{AOC e ROC}\label{aocroc}}
+
 \hypertarget{Algoritmosaprendizagem}{%
-\chapter{Algoritmos de Aprendizagem - Parte I}\label{Algoritmosaprendizagem}}
+\chapter{Algoritmos de Aprendizagem I}\label{Algoritmosaprendizagem}}
 
 \emph{Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.}
 
@@ -2345,7 +2412,7 @@ Ao observar um gráfico de \emph{Elastic Net}, pode-se observar de que este mét
 
 
 \hypertarget{ptII}{%
-\chapter{Algoritmos de Aprendizagem - Parte II}\label{ptII}}
+\chapter{Algoritmos de Aprendizagem II}\label{ptII}}
 
 \hypertarget{svm}{%
 \section{\texorpdfstring{Máquina de Vetores Suporte - \emph{Support Vectors Machine}}{Máquina de Vetores Suporte - Support Vectors Machine}}\label{svm}}
@@ -2811,7 +2878,7 @@ Um nó que é dividido em sub-nós é chamado de nó pai. Os sub-nós são os n�
 
 Em geral são determinadas regras em seu algoritmo. As regras são escritas considerando o trajeto do nó raiz até uma folha da árvore. Por elas tenderem a crescer muito, de acordo com algumas aplicações, elas são muitas vezes substituídas pelas regras. Isto acontece em virtude das regras poderem ser facilmente modularizadas. Uma regra pode ser compreendida sem que haja a necessidade de se referenciar outras regras \citep{ingargiola1996building}.
 
-Sua função é de particionar recursivamente um conjunto de treinamento, até que cada subconjunto obtido deste particionamento contenha casos de uma única classe. Com esta finalidade, basicamente a árvore de decisão verifica e compara a distribuição de classes durante a construção da árvore. Após finalizar a árvore, sua saída são dados organizados de maneira compacta, que são utilizados para classificar novos casos \citep{holsheimer1994data}. De início não é utilizado nenhum modelo estatístico nela, apenas classifica os atributos de acordo com as amostras provenientes. Mas atualmente utilizam técnicas estatísticas para aperfeiçoar o modelo e avaliar seus resultados \citep{shiba2005classificaccao}.
+Sua função é de particionar recursivamente um conjunto de treinamento, até que cada subconjunto obtido deste particionamento contenha casos de uma única classe. Com esta finalidade, basicamente a árvore de decisão verifica e compara a distribuição de classes durante a construção da árvore. Após finalizar a árvore, sua saída são dados organizados de maneira compacta, que são utilizados para classificar novos casos \citep{holsheimer1994data}. De início não é utilizado nenhum modelo estatístico nela, apenas classifica os atributos de acordo com as amostras provenientes - precisa-se de cuidado ao seu uso pois tende a ser sensível com a amostra de treinamento. Mas atualmente utilizam técnicas estatísticas para aperfeiçoar o modelo e avaliar seus resultados \citep{shiba2005classificaccao}. Ela tem um bom desempenho quando há poucos atributos altamente relevantes, ao caso de complexidade no conjunto de dados poderá haver grandes dificuldades.
 
 Geralmente utilizam-na para classificação (variáveis categóricas), mas também é possível para a Análise de Regressão (variáveis contínuas) que ja vimos. Para as árvores de regressão são utilizadas quando a variável dependente é contínua. O valor obtido pelos nós de término nos dados de treinamento é o valor médio das observações. Para classificação o obtido pelos nós de término nos dados de treinamento é a moda, ou seja, a observação mais recorrente no conjunto de dados. Ambos processos continuam o processo de divisão até atingir algum critério fornecido pelo pesquisador. Mas como fazemos esta divisão para podermos classificar?
 
@@ -4570,83 +4637,68 @@ Portanto, pela maioria, temos que o indivído E não será considerado um possí
 Note que neste exemplo, caso fosse escolhido com \(k=4\) ou \(k=2\) vizinhos, haveria empate e necessitaria de alterarmos o valor de \(k\) ou utilizar algum outro método de classificação. Aumentar o número de observações para a amostra também é muito importante para que se treine seu modelo de Aprendizado de Máquina.
 
 \hypertarget{ptIII}{%
-\chapter{Algoritmos de Aprendizagem - Parte III}\label{ptIII}}
+\chapter{\texorpdfstring{Os métodos \emph{Ensemble}}{Os métodos Ensemble}}\label{ptIII}}
+
+Os métodos \textbf{\emph{ensemble} (conjunto)} são algoritmos de aprendizado que constroem um conjunto de classificadores e combinam os resultados de cada modelo para classificar um novo modelo de exemplo \citep{dietterich2000ensemble}, obtendo um valor final único a fim de melhorar a precisão e estabilidade do modelo. Os mais conhecidos são as técnicas de \textbf{\emph{boosting}} \citep{freund1996experiments}, \textbf{\emph{bagging}} \citep{breiman1996bagging} e \textbf{\emph{Random Forest}} \citep{breiman2001random, liaw2002classification} e \textbf{\emph{Extra Trees}}.
+
+Como é uma resposta agregada de outros modelos preditivos, tratamos de algoritmos mais complexos que necessitam de um custo computacional maior, mais tempo e com mais processos para que se tenha um desempenho melhor.
+
+\hypertarget{bagging}{%
+\section{Bagging}\label{bagging}}
 
 \hypertarget{rf}{%
 \section{\texorpdfstring{Floresta Aleatória - \emph{Random Forest}}{Floresta Aleatória - Random Forest}}\label{rf}}
 
-\hypertarget{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}{%
-\section{grad boosting -\textgreater{} estudar boosting e bagging dentro de emseamble}\label{grad-boosting---estudar-boosting-e-bagging-dentro-de-emseamble}}
+A \textbf{Floresta Aleatória}, do inglês \textbf{\emph{Random Forest}} \citep{breiman2001random, liaw2002classification}, é um classificador composto de classificadores projetados especialmente para árvores de decisão \(\{h_k(X),k=1,2,...,L.\}\) onde \(T_k\) são amostras aleatórias independentes e identicamente distribuídas e que cada árvore decide a classe mais popular para a entrada de \(X\) (baixa correlação entre as árvores) . Vetores aleatórios são gerados a partir de uma distribuição e probabilidade fixa sobre o vetor de entrada inicial. A precisão da Floresta Aleatória é medida probabilísticamente em termos de margem do classificador, dado um conjunto de classificadores \(h_1(x), h_2(x),...,h_k(x)\), e um conjunto de treinamento aleatório a partir do vetor \(Y\), \(X\) \citep{gomez2012random}.
 
-\hypertarget{redesneurais}{%
-\chapter{Redes Neurais}\label{redesneurais}}
+Como mencionado em \ref{decisiontree}, as Árvores de Decisão tendem a serem sensíveis à amostra de treinamento (ruídos). As Florestas Aleatórias buscam sanar este tipo de problema. A Floresta Aleatória é uma variação de \emph{Bagging}, onde na construção da árvore, apenas um subconjunto aleatório das características participa da subdivisão de um nó. Pode-se melhorar a acurácia do modelo por meio da parametrização, que traz uma maior variação entre as árvores (mais estável que \emph{bagging}).
 
-\hypertarget{valid}{%
-\chapter{Validação de um modelo}\label{valid}}
+Durante as construções das árvores, utiliza-se para medirmos o erro, o \textbf{\emph{out of bag} (OOB)}. Diferentemente dos erros tradicionais estimados (como validação cruzada, por exemplo), cada árvore de decisão dessa floresta construída a partir de um subconjunto (aleatório) de treinamento, pode ser testada com os exemplos que sobram (de fora) da classificação (exemplos \emph{out of bag}). O próprio treinamento da Floresta Aleatória fornece uma estimativa de erro que denomina-se \textbf{erro \emph{out of bag} }.
 
-\hypertarget{fitt}{%
-\section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{fitt}}
+Um ótimo exemplo, elaborado e apresentado pela Ariane Machado Lima em uma de suas aulas online na Universidade de São Paulo (USP) sobre Florestas Aleatórias e o \emph{out of bag} foi: imagine uma amostra de treinamento com duas classes e \(n=18\) observações, como um dos parâmetros a serem definidos a quantidade de árvores de de decisões \(n\_estim=4\) e amostras \emph{bootstrap} (reposição) com \(obs=10\) observações aleatórias em cada árvore que podem ou não serem repetidas.
 
-Sendo \textbf{muito importantes} nesta área, o Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}.
-
-\begin{itemize}
-\item
-  \textbf{Overfitting}: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.
-
-  As principais causas e soluções de um Overfitting são:
-
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \item
-    Algoritmo muito complexo para os dados: caso for possível, pode-se simplificar o modelo utilizado por um algoritmo mais simples, com menos parâmetros. Permitindo reduzir as chances do modelo sofrer overfitting.
-  \item
-    Poucos dados para treinar: dependendo da quantidade de dados utilizados para treinar, pode ser que seja uma amostra pequena, com isso recomenda-se aumentar seu tamanho coletando mais dados.
-  \item
-    Ruídos nos dados de treinamento: é comum dentro do banco de dados existir algum tipo de ruído, isto é, \emph{outlier} (valores extremos ou até mesmo valores incorretos nos dados). Esses ruídos podem fazer com que o modelo aprenda sobre ele, levando ao overfitting. Seria recomendado pré-processamento adequado para tratar essa interferência.
-  \end{enumerate}
-\end{itemize}
-
-\hypertarget{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}{%
-\subsection{\texorpdfstring{\textbf{Underfitting}: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}{Underfitting: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}}\label{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}}
-
-As principais causas e soluções de um Underfitting são:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Algoritmo inadequado: bem provável que o modelo estatístico proposto pelo pesquisa pode não ter sido adequado ao comportamento dos dados. Por exemplo aplicar um algoritmo para funções de primeiro grau (linear) em um conjunto de dados com comportamento exponencial (função de segundo grau). Recomendável o pesquisador substituir o algoritmo escolhendo outro com outros parâmetros para solucionar o underfitting.
-\item
-  Características não representativas: há possibilidade de que as características que estamos utilizando para treinar o modelo não sejam representativas, ou seja, não possuem relação entre si ou não sejam importantes para o modelo aplicado.
-\item
-  Modelo com muitos parâmetros de restrição: o modelo torna-se inflexível, restrito, e não consegue se ajustar de forma adequada aos dados.
-\end{enumerate}
-
-Segue abaixo a Figura \ref{fig:graficofit} demonstrando os dois casos anteriores e um modelo adequado.
+Nesta amostra de treinamento será verificado quais elementos que situam-se fora de cada árvore composta por 10 observações (\emph{OOB}) e quantas vezes fora para selecionar as árvores. Por exemplo, nesta mesma situação vamos supor que das três árvores de decisão, a observação 1 encontra-se dentro de uma árvore e \emph{OOB} nas três restantes. Como a maioria das árvores não encontra-se esta observação específica, elas vão ditar a classificação desta observação (votação por maioria que pode acertar ou errar). Ao caso contrário da observação 2, por exemplo, encontra-se apenas em uma \emph{OOB} e em três árvores de decisão. Portanto a \emph{OOB} irá decidir a classificação desta observação. Assim sucessivamente até finalizar a contagem. Para as observações que não se encontram em nenhuma amostra, não serão contabilizadas no erro.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/graficofit} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/outofbag} 
 
 }
 
-\caption{``Gráfico representando um \emph{Underfitting}, um Modelo bem ajustado e um \emph{Overfitting} respectivamente.''}\label{fig:graficofit}
+\caption{Exemplificação de \emph{out of bag} \citep{machadousprf}.}\label{fig:outofbag}
 \end{figure}
 
 
 
-\hypertarget{validauxe7uxe3o-cruzada}{%
-\section{Validação Cruzada}\label{validauxe7uxe3o-cruzada}}
+Para cada momento que temos 0 e 1 para classificar (ou até por regressão) cada elemento que estavam \emph{OOB}, calcula-se a média das previsões como estimação de erro \emph{out of bag}. Lembrando que permanece a medida de impureza na elaboração das árvores, como o índice de gini por exemplo.
 
-A fim de que não haja previsões desastrosas geradas pelo modelo, para medirmos o desempenho real do modelo criado, é necessário que realizemos testes com ele, utilizando dados diferentes dos que foram apresentados no início. Portanto uma das técnicas mais utilizadas é a \textbf{Cross-validation (Validação Cruzada)}.
+O procedimento \emph{bootstrap} traz um melhor desempenho do modelo pois diminui a variância sem aumentaro viés, ou seja, embora as previsões de uma única árvore seja altamente sensível ao ruído em seu treinamento, a média de muitas árvores não será - desde que não sejam correlacionadas. Para estimarmos a incerteza das previsões de todas as árvores de regressão em \(x'\), seu desvio padrão, podemos por meio da equação:
 
-Após a realização do pré-processamento (analisar), iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
-Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com
+\begin{equation}
+\sigma = \sqrt{\frac{\sum^B_{b=1}(f_b(x')-\hat{f})^2}{B-1}}
+\label{eq:desviorf}
+\end{equation}
 
-\hypertarget{como-escolher-um-bom-modelo}{%
-\section{Como escolher um bom modelo?}\label{como-escolher-um-bom-modelo}}
+onde o \(B\) é o número de árvores, um parâmetro livre que pode variar dependendo do conjunto de treinamento e a decisão do pesquisador.
 
-\hypertarget{aocroc}{%
-\section{AOC e ROC}\label{aocroc}}
+Para calcularmos a importância de um atributo (\emph{score}), para cada elemento \(e\) e para cada árvore \(t\), permuta-se os valores de \(e\) nos exemplos OOB de \(t\), ou seja: após permutarmos cada árvore terá uma nova votação em relação a cada elemento \(e\) \emph{OOB}, com novas classificações e novos erros \(OOB_p\). Podendo agora calcular a importância da variável \(e\) e analizá-la como uma taxa de acréscimo sobre o erro.
+
+\begin{equation}
+\mbox{Importância de} \ e = \frac{(OOB_p-OOB)}{OOB}
+\label{eq:impc}
+\end{equation}
+
+O erro tradicional, geralmente utiliza-se todas as árvores como vantagem, porém é preciso dividir a amostra inicial em treinamento e teste. O \emph{out of bag} utiliza toda a amostra, mas muitas vezes superestima o erro. Com a monitoração adequada dos parâmetros, como profundidade de cada árvore, número de atributos sorteados para cada divisão (com reposição), número de árvores, de nós por exemplo, pode ser melhorada esta superstimação e trazendo um bom modelo para o pesquisador.
+
+Para aumentar a aleatoriedade no modelo. É possível utilizar o \emph{bagging} em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos \citep{gomez2012random}. Conforme \citep{breiman2001random}, o uso do \emph{bagging} melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador \emph{OOB}. A força pode ser interpretada como medida de desempenho para cada árvore. Aumentando a força das árvores individuais, reduz-se a taxa de erro de um flores, assim como a baixa correlação tende a diminuir \citep{oshiro2013abordagem}.
+
+Um algoritmo que se tornou bem conhecido e bastante similar à Floresta Aleatória, é o \textbf{\emph{Extra-Trees}} \citep{geurts2006extremely}. Neste caso, é adicionado mais uma camada de aleatoriedade para montar as árvores. O algoritmo utiliza como estratégia aleatória, na montagem dos nós ao invés de utilizar métricas como ganho de informação. Este acréscimo de aleatoriedade faz com que tenha uma diminuição no viés com menor custo computacional e dispêndio de tempo \citep{machado2020avaliaccao}.
+
+\hypertarget{boosting}{%
+\section{grad boosting}\label{boosting}}
+
+\hypertarget{redesneurais}{%
+\chapter{Redes Neurais}\label{redesneurais}}
 
   \bibliography{book.bib,packages.bib}
 
