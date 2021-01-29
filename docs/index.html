@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Machine Learning</title>
-  <meta name="description" content="Tutorial de Machine Learning." />
+  <title>Fundamentos de Machine Learning</title>
+  <meta name="description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Machine Learning" />
+  <meta property="og:title" content="Fundamentos de Machine Learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Tutorial de Machine Learning." />
+  <meta property="og:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Machine Learning" />
+  <meta name="twitter:title" content="Fundamentos de Machine Learning" />
   
-  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  <meta name="twitter:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
 
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-01-27" />
+<meta name="date" content="2021-01-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,68 +52,6 @@
 
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -176,7 +114,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="valid.html"><a href="valid.html"><i class="fa fa-check"></i><b>6</b> Validação de um modelo</a><ul>
 <li class="chapter" data-level="6.1" data-path="valid.html"><a href="valid.html#fitt"><i class="fa fa-check"></i><b>6.1</b> <em>Overfitting, Underfitting</em></a><ul>
-<li class="chapter" data-level="6.1.1" data-path="valid.html"><a href="valid.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>6.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+<li class="chapter" data-level="6.1.1" data-path="valid.html"><a href="valid.html#overfitting-um-cenário-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-porém-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-é-ruim.-nesta-situação-seu-modelo-aprendeu-tão-bem-as-relações-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informações-das-variáveis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-porém-com-estes-novos-dados-diferentes-do-treino-esta-regra-não-tem-validade-e-seu-desempenho-é-afetado."><i class="fa fa-check"></i><b>6.1.1</b> <strong>Overfitting</strong>: Um cenário de <em>overfitting</em> ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.</a></li>
+<li class="chapter" data-level="6.1.2" data-path="valid.html"><a href="valid.html#underfitting"><i class="fa fa-check"></i><b>6.1.2</b> <strong>Underfitting</strong></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="valid.html"><a href="valid.html#validação-cruzada"><i class="fa fa-check"></i><b>6.2</b> Validação Cruzada</a></li>
 <li class="chapter" data-level="6.3" data-path="valid.html"><a href="valid.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>6.3</b> Como escolher um bom modelo?</a></li>
@@ -226,9 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ptIII.html"><a href="ptIII.html"><i class="fa fa-check"></i><b>9</b> Os métodos <em>Ensemble</em></a><ul>
-<li class="chapter" data-level="9.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>9.1</b> Bagging</a></li>
-<li class="chapter" data-level="9.2" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>9.2</b> Floresta Aleatória - <em>Random Forest</em></a></li>
-<li class="chapter" data-level="9.3" data-path="ptIII.html"><a href="ptIII.html#boosting"><i class="fa fa-check"></i><b>9.3</b> grad boosting</a></li>
+<li class="chapter" data-level="9.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>9.1</b> <em>Bagging</em></a></li>
+<li class="chapter" data-level="9.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>9.2</b> <em>Boosting</em></a></li>
+<li class="chapter" data-level="9.3" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>9.3</b> Floresta Aleatória - <em>Random Forest</em></a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="redesneurais.html"><a href="redesneurais.html"><i class="fa fa-check"></i><b>10</b> Redes Neurais</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -244,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Machine Learning</a>
           </h1>
         </div>
 
@@ -253,9 +192,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Machine Learning</h1>
+<h1 class="title">Fundamentos de Machine Learning</h1>
 <p class="author"><em>Elton Massahiro Saito Loures</em></p>
-<p class="date"><em>2021-01-27</em></p>
+<p class="date"><em>2021-01-29</em></p>
 </div>
 <div id="prefácio" class="section level1 unnumbered">
 <h1>Prefácio</h1>
@@ -270,11 +209,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="agradecimentos" class="section level2">
 <h2><span class="header-section-number">0.4</span> Agradecimentos</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># or the development version</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></a></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+<script type="text/javascript">
+title=document.getElementById('header');
+title.innerHTML = '<img src="Figuras/coverml.png" alt="Test Image">' + title.innerHTML
+</script>
 
 </div>
 </div>
@@ -301,19 +239,15 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "github", "instagram"]
 },
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
+"fontsettings": ["white", "sepia", "night"],
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
 "text": "Edit"
@@ -326,10 +260,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": null,
 "toc": {
 "collapse": "subsection"
-}
+},
+"info": false
 });
 });
 </script>

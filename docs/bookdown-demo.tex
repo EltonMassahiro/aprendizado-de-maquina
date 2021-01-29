@@ -35,51 +35,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Machine Learning},
+  pdftitle={Fundamentos de Machine Learning},
   pdfauthor={Elton Massahiro Saito Loures},
   pdfborder={0 0 0},
   breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
@@ -124,9 +84,9 @@
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{Machine Learning}
+\title{Fundamentos de Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2021-01-27}
+\date{2021-01-29}
 
 \begin{document}
 \maketitle
@@ -150,18 +110,6 @@
 
 \hypertarget{agradecimentos}{%
 \section{Agradecimentos}\label{agradecimentos}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{# or the development version}
-\CommentTok{# devtools::install_github("rstudio/bookdown")}
-\end{Highlighting}
-\end{Shaded}
-
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.name/tinytex/}.
 
 \hypertarget{intro}{%
 \chapter{Introdução}\label{intro}}
@@ -1228,29 +1176,29 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 \hypertarget{fitt}{%
 \section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{fitt}}
 
-Sendo \textbf{muito importantes} nesta área, o Underfitting (sub-ajustado) e Overfitting (sobre-ajustado) são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}.
+Sendo \textbf{muito importantes} nesta área, o \textbf{\emph{Underfitting} (sub-ajustado)} e \textbf{\emph{Overfitting}} (sobre-ajustado)** são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}. Vamos entender melhor do que eles se tratam.
 
-\begin{itemize}
+\hypertarget{overfitting-um-cenuxe1rio-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-poruxe9m-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-uxe9-ruim.-nesta-situauxe7uxe3o-seu-modelo-aprendeu-tuxe3o-bem-as-relauxe7uxf5es-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informauxe7uxf5es-das-variuxe1veis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-poruxe9m-com-estes-novos-dados-diferentes-do-treino-esta-regra-nuxe3o-tem-validade-e-seu-desempenho-uxe9-afetado.}{%
+\subsection{\texorpdfstring{\textbf{Overfitting}: Um cenário de \emph{overfitting} ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.}{Overfitting: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.}}\label{overfitting-um-cenuxe1rio-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-poruxe9m-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-uxe9-ruim.-nesta-situauxe7uxe3o-seu-modelo-aprendeu-tuxe3o-bem-as-relauxe7uxf5es-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informauxe7uxf5es-das-variuxe1veis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-poruxe9m-com-estes-novos-dados-diferentes-do-treino-esta-regra-nuxe3o-tem-validade-e-seu-desempenho-uxe9-afetado.}}
+
+As principais causas e soluções de um \emph{overfitting} são:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Overfitting}: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.
+  Algoritmo muito complexo para os dados: caso for possível, pode-se simplificar o modelo utilizado por um algoritmo mais simples, com menos parâmetros. Permitindo reduzir as chances do modelo sofrer \emph{overfitting}.
+\item
+  Poucos dados para treinar: dependendo da quantidade de dados utilizados para treinar, pode ser que seja uma amostra pequena, com isso recomenda-se aumentar seu tamanho coletando mais dados.
+\item
+  Ruídos nos dados de treinamento: é comum dentro do banco de dados existir algum tipo de ruído, isto é, \emph{outlier} (valores extremos ou até mesmo valores incorretos nos dados). Esses ruídos podem fazer com que o modelo aprenda sobre ele, levando ao overfitting. Seria recomendado pré-processamento adequado para tratar essa interferência.
+\end{enumerate}
 
-  As principais causas e soluções de um Overfitting são:
+\hypertarget{underfitting}{%
+\subsection{\texorpdfstring{\textbf{Underfitting}}{Underfitting}}\label{underfitting}}
 
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \item
-    Algoritmo muito complexo para os dados: caso for possível, pode-se simplificar o modelo utilizado por um algoritmo mais simples, com menos parâmetros. Permitindo reduzir as chances do modelo sofrer overfitting.
-  \item
-    Poucos dados para treinar: dependendo da quantidade de dados utilizados para treinar, pode ser que seja uma amostra pequena, com isso recomenda-se aumentar seu tamanho coletando mais dados.
-  \item
-    Ruídos nos dados de treinamento: é comum dentro do banco de dados existir algum tipo de ruído, isto é, \emph{outlier} (valores extremos ou até mesmo valores incorretos nos dados). Esses ruídos podem fazer com que o modelo aprenda sobre ele, levando ao overfitting. Seria recomendado pré-processamento adequado para tratar essa interferência.
-  \end{enumerate}
-\end{itemize}
+No cenário \emph{underfitting}, o desempenho já é ruim no próprio treinamento de seu algoritmo.
 
-\hypertarget{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}{%
-\subsection{\texorpdfstring{\textbf{Underfitting}: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}{Underfitting: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.}}\label{underfitting-no-cenuxe1rio-underfitting-o-desempenho-juxe1-uxe9-ruim-no-pruxf3prio-treinamento-de-seu-algoritmo.}}
-
-As principais causas e soluções de um Underfitting são:
+As principais causas e soluções de um \emph{underfitting} são:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4644,7 +4592,24 @@ Os métodos \textbf{\emph{ensemble} (conjunto)} são algoritmos de aprendizado q
 Como é uma resposta agregada de outros modelos preditivos, tratamos de algoritmos mais complexos que necessitam de um custo computacional maior, mais tempo e com mais processos para que se tenha um desempenho melhor.
 
 \hypertarget{bagging}{%
-\section{Bagging}\label{bagging}}
+\section{\texorpdfstring{\emph{Bagging}}{Bagging}}\label{bagging}}
+
+O método \emph{bagging} \citep{breiman1996bagging} é um dos métodos de algoritmos de aprendizado de máquinas mais antigos. Este método utiliza amostras \emph{bootstrap} - amostragem com reposição no qual por meio do conjunto de treinamento inicial, seleciona-se aleatoriamente exemplos para um novo subconjunto de treinamento \citep{oshiro2013abordagem}.
+
+Na técnica \emph{bagging}, portanto, diferentes subconjuntos \(T_k\) são aleatóriamente elaborados, com reposição, a partir do original e tem como idéia básica criar classificadores a partir de um conjunto de dados de treinamento com distribuição uniforme de probabilidades. Cada amostra possui o mesmo tamanho da base de dados originais e por ser \emph{bootstrap} alguns elementos podem aparecer repetidamente, ao passo que alguns podem ser que não estejam presentes no conjunto de treinamento. Cada subconjunto \(T_k\) é utilizado para treinar um classificador diferente \(\{h_k(x)\}\) e a classificação é definida pelo voto majoritário sobre todos os classificadores.
+
+Conforme \citep{oshiro2013abordagem},este método consiste então em combinar \(T\) classificadores de \(N\) amostras geradas a partir do conjunto de treinamento \(M\) com \(R\) elementos. Cada classificador possui \(m\) elementos do conjunto de treinamento original de \(M\). Em vez de utilizar todas as observações do conjunto original do treinamento, escolhe elementos uniformemente com repetição e gerando \(k\) exemplos, que representam aspectos originais da base de dados. Em cada exemplo o classificador é gerado independentemente e a classificação de um novo elemento será executada sobre cada um dos \(T\) classificadores.
+
+A cada tentativa \(t=1,2,...,T\), um conjunto de treinamento de tamanho \(N\) é amostrado do conjunto de treinamento original com o mesmo tamanho. Também a cada tentativa, um classificador \(C_i\) será gerado e no final um classificador \(C^*\) será formado através da geração de \(T\) classificadores obtidos em cada tentativa. Para uma amostra desconhecida, cada classificador \(C_i\) retorna seu voto e por fim o classificador \(C^*\) retornará a classe com o maior número de votos.
+
+Vamos pensar numa aplicação deste método em árvores de decisão: primeiramente, o \emph{bagging} faz um sorteio de todas as amostras - escolhe uma, sorteia e escolhe outra sucessivamente - com reposição com, por exemplo, 70\% do total. Por isso podem vir elementos repetidos ou até mesmo omitir alguns (\emph{bootstrap}). Temos agora um \emph{dataset} para construirmos uma árvore de decisão. Da mesma forma, faz este processo com uma segunda árvore, uma terceira e assim por diante com um novo \emph{dataset} aleatório com \emph{bootstrap}. Note que temos então uma estimação para cada árvore diferente com dados diferentes sorteados. Um mesmo modelo de Aprendizado de Máquina com conjuntos diferentes. Com o voto majoritário (situação de classificação) ou uma média (como um caso de regressão) de todas as estimações dos classificadores \(C_i\), obtemos um classificador \(C^*\) final. O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver @ref(\#fitt)) com essa repetição do mesmo modelo de Aprendizado de Máquina. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
+
+O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver @ref(\#fitt)) pois repetimos o modelo várias vezes com vários conjuntos aleatórios e situações com novos esimadores de treino. Ao entrar novos dados para o teste, ele terá um desempenho semelhante. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
+
+\hypertarget{boost}{%
+\section{\texorpdfstring{\emph{Boosting}}{Boosting}}\label{boost}}
+
+técnicas de \textbf{\emph{boosting}} \citep{freund1996experiments},
 
 \hypertarget{rf}{%
 \section{\texorpdfstring{Floresta Aleatória - \emph{Random Forest}}{Floresta Aleatória - Random Forest}}\label{rf}}
@@ -4672,7 +4637,9 @@ Nesta amostra de treinamento será verificado quais elementos que situam-se fora
 
 Para cada momento que temos 0 e 1 para classificar (ou até por regressão) cada elemento que estavam \emph{OOB}, calcula-se a média das previsões como estimação de erro \emph{out of bag}. Lembrando que permanece a medida de impureza na elaboração das árvores, como o índice de gini por exemplo.
 
-O procedimento \emph{bootstrap} traz um melhor desempenho do modelo pois diminui a variância sem aumentaro viés, ou seja, embora as previsões de uma única árvore seja altamente sensível ao ruído em seu treinamento, a média de muitas árvores não será - desde que não sejam correlacionadas. Para estimarmos a incerteza das previsões de todas as árvores de regressão em \(x'\), seu desvio padrão, podemos por meio da equação:
+Podemos dizer então que o erro \emph{OOB} é o erro médio de predição em cada amostra de treinamento \(X_i\), no qual na construção de uma amostra-árvore haverá um conjunto de amostra de \emph{bootstrap} (\emph{in the bag}) e outro com dados não escolhidos no processo da amostragem (\emph{out of bag}). Na construção da floresta (\(n\) amostra-árvores) muitos exemplos de \emph{bootstrap} e \emph{OOB} elaborados. Estes conjuntos \emph{OOB} podem ser agrupados em um conjunto de dados. Ao considerar \(Y\) como a classe com a maioria dos votos, todas as vezes em que a observação foi considerada \emph{OOB}, a proporção de vezes que \(Y\) não for igual à verdadeira classe da observação, será a estimativa de erro \emph{OOB}. Para o caso de problema de regressão, utiliza-se o método erro quadrado médio (MSE).
+
+O procedimento \emph{bootstrap} traz um melhor desempenho do modelo pois diminui a variância sem aumentar o viés, ou seja, embora as previsões de uma única árvore seja altamente sensível ao ruído em seu treinamento, a média de muitas árvores não será - desde que não sejam correlacionadas. Para estimarmos a incerteza das previsões de todas as árvores de regressão em \(x'\), seu desvio padrão, podemos por meio da equação:
 
 \begin{equation}
 \sigma = \sqrt{\frac{\sum^B_{b=1}(f_b(x')-\hat{f})^2}{B-1}}
@@ -4690,12 +4657,9 @@ Para calcularmos a importância de um atributo (\emph{score}), para cada element
 
 O erro tradicional, geralmente utiliza-se todas as árvores como vantagem, porém é preciso dividir a amostra inicial em treinamento e teste. O \emph{out of bag} utiliza toda a amostra, mas muitas vezes superestima o erro. Com a monitoração adequada dos parâmetros, como profundidade de cada árvore, número de atributos sorteados para cada divisão (com reposição), número de árvores, de nós por exemplo, pode ser melhorada esta superstimação e trazendo um bom modelo para o pesquisador.
 
-Para aumentar a aleatoriedade no modelo. É possível utilizar o \emph{bagging} em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos \citep{gomez2012random}. Conforme \citep{breiman2001random}, o uso do \emph{bagging} melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador \emph{OOB}. A força pode ser interpretada como medida de desempenho para cada árvore. Aumentando a força das árvores individuais, reduz-se a taxa de erro de um flores, assim como a baixa correlação tende a diminuir \citep{oshiro2013abordagem}.
+Para aumentar a aleatoriedade no modelo. É possível utilizar o \emph{bagging} em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos \citep{gomez2012random}. Conforme \citep{breiman2001random}, o uso do \emph{bagging} melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador \emph{OOB}. A força pode ser interpretada como medida de desempenho para cada árvore, uma árvore com uma baixa taxa de erro é um classificador forte. Aumentando a força das árvores individuais, reduz-se a taxa de erro de uma floresta, assim como a baixa correlação tende a diminuir \citep{oshiro2013abordagem}.
 
 Um algoritmo que se tornou bem conhecido e bastante similar à Floresta Aleatória, é o \textbf{\emph{Extra-Trees}} \citep{geurts2006extremely}. Neste caso, é adicionado mais uma camada de aleatoriedade para montar as árvores. O algoritmo utiliza como estratégia aleatória, na montagem dos nós ao invés de utilizar métricas como ganho de informação. Este acréscimo de aleatoriedade faz com que tenha uma diminuição no viés com menor custo computacional e dispêndio de tempo \citep{machado2020avaliaccao}.
-
-\hypertarget{boosting}{%
-\section{grad boosting}\label{boosting}}
 
 \hypertarget{redesneurais}{%
 \chapter{Redes Neurais}\label{redesneurais}}

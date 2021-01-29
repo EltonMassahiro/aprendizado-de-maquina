@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 9 Os métodos Ensemble | Machine Learning</title>
-  <meta name="description" content="Tutorial de Machine Learning." />
+  <title>Capítulo 9 Os métodos Ensemble | Fundamentos de Machine Learning</title>
+  <meta name="description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 9 Os métodos Ensemble | Machine Learning" />
+  <meta property="og:title" content="Capítulo 9 Os métodos Ensemble | Fundamentos de Machine Learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Tutorial de Machine Learning." />
+  <meta property="og:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 9 Os métodos Ensemble | Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 9 Os métodos Ensemble | Fundamentos de Machine Learning" />
   
-  <meta name="twitter:description" content="Tutorial de Machine Learning." />
+  <meta name="twitter:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
 
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-01-27" />
+<meta name="date" content="2021-01-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,68 +52,6 @@
 
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -176,7 +114,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="valid.html"><a href="valid.html"><i class="fa fa-check"></i><b>6</b> Validação de um modelo</a><ul>
 <li class="chapter" data-level="6.1" data-path="valid.html"><a href="valid.html#fitt"><i class="fa fa-check"></i><b>6.1</b> <em>Overfitting, Underfitting</em></a><ul>
-<li class="chapter" data-level="6.1.1" data-path="valid.html"><a href="valid.html#underfitting-no-cenário-underfitting-o-desempenho-já-é-ruim-no-próprio-treinamento-de-seu-algoritmo."><i class="fa fa-check"></i><b>6.1.1</b> <strong>Underfitting</strong>: No cenário underfitting, o desempenho já é ruim no próprio treinamento de seu algoritmo.</a></li>
+<li class="chapter" data-level="6.1.1" data-path="valid.html"><a href="valid.html#overfitting-um-cenário-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-porém-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-é-ruim.-nesta-situação-seu-modelo-aprendeu-tão-bem-as-relações-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informações-das-variáveis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-porém-com-estes-novos-dados-diferentes-do-treino-esta-regra-não-tem-validade-e-seu-desempenho-é-afetado."><i class="fa fa-check"></i><b>6.1.1</b> <strong>Overfitting</strong>: Um cenário de <em>overfitting</em> ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.</a></li>
+<li class="chapter" data-level="6.1.2" data-path="valid.html"><a href="valid.html#underfitting"><i class="fa fa-check"></i><b>6.1.2</b> <strong>Underfitting</strong></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="valid.html"><a href="valid.html#validação-cruzada"><i class="fa fa-check"></i><b>6.2</b> Validação Cruzada</a></li>
 <li class="chapter" data-level="6.3" data-path="valid.html"><a href="valid.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>6.3</b> Como escolher um bom modelo?</a></li>
@@ -226,9 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ptIII.html"><a href="ptIII.html"><i class="fa fa-check"></i><b>9</b> Os métodos <em>Ensemble</em></a><ul>
-<li class="chapter" data-level="9.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>9.1</b> Bagging</a></li>
-<li class="chapter" data-level="9.2" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>9.2</b> Floresta Aleatória - <em>Random Forest</em></a></li>
-<li class="chapter" data-level="9.3" data-path="ptIII.html"><a href="ptIII.html#boosting"><i class="fa fa-check"></i><b>9.3</b> grad boosting</a></li>
+<li class="chapter" data-level="9.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>9.1</b> <em>Bagging</em></a></li>
+<li class="chapter" data-level="9.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>9.2</b> <em>Boosting</em></a></li>
+<li class="chapter" data-level="9.3" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>9.3</b> Floresta Aleatória - <em>Random Forest</em></a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="redesneurais.html"><a href="redesneurais.html"><i class="fa fa-check"></i><b>10</b> Redes Neurais</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -244,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine Learning</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Machine Learning</a>
           </h1>
         </div>
 
@@ -257,11 +196,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Os métodos <strong><em>ensemble</em> (conjunto)</strong> são algoritmos de aprendizado que constroem um conjunto de classificadores e combinam os resultados de cada modelo para classificar um novo modelo de exemplo <span class="citation">(Dietterich <a href="#ref-dietterich2000ensemble">2000</a>)</span>, obtendo um valor final único a fim de melhorar a precisão e estabilidade do modelo. Os mais conhecidos são as técnicas de <strong><em>boosting</em></strong> <span class="citation">(Freund, Schapire, and others <a href="#ref-freund1996experiments">1996</a>)</span>, <strong><em>bagging</em></strong> <span class="citation">(Breiman <a href="#ref-breiman1996bagging">1996</a>)</span> e <strong><em>Random Forest</em></strong> <span class="citation">(Breiman <a href="#ref-breiman2001random">2001</a>; Liaw, Wiener, and others <a href="#ref-liaw2002classification">2002</a>)</span> e <strong><em>Extra Trees</em></strong>.</p>
 <p>Como é uma resposta agregada de outros modelos preditivos, tratamos de algoritmos mais complexos que necessitam de um custo computacional maior, mais tempo e com mais processos para que se tenha um desempenho melhor.</p>
 <div id="bagging" class="section level2">
-<h2><span class="header-section-number">9.1</span> Bagging</h2>
+<h2><span class="header-section-number">9.1</span> <em>Bagging</em></h2>
+<p>O método <em>bagging</em> <span class="citation">(Breiman <a href="#ref-breiman1996bagging">1996</a>)</span> é um dos métodos de algoritmos de aprendizado de máquinas mais antigos. Este método utiliza amostras <em>bootstrap</em> - amostragem com reposição no qual por meio do conjunto de treinamento inicial, seleciona-se aleatoriamente exemplos para um novo subconjunto de treinamento <span class="citation">(Oshiro <a href="#ref-oshiro2013abordagem">2013</a>)</span>.</p>
+<p>Na técnica <em>bagging</em>, portanto, diferentes subconjuntos <span class="math inline">\(T_k\)</span> são aleatóriamente elaborados, com reposição, a partir do original e tem como idéia básica criar classificadores a partir de um conjunto de dados de treinamento com distribuição uniforme de probabilidades. Cada amostra possui o mesmo tamanho da base de dados originais e por ser <em>bootstrap</em> alguns elementos podem aparecer repetidamente, ao passo que alguns podem ser que não estejam presentes no conjunto de treinamento. Cada subconjunto <span class="math inline">\(T_k\)</span> é utilizado para treinar um classificador diferente <span class="math inline">\(\{h_k(x)\}\)</span> e a classificação é definida pelo voto majoritário sobre todos os classificadores.</p>
+<p>Conforme <span class="citation">(Oshiro <a href="#ref-oshiro2013abordagem">2013</a>)</span>,este método consiste então em combinar <span class="math inline">\(T\)</span> classificadores de <span class="math inline">\(N\)</span> amostras geradas a partir do conjunto de treinamento <span class="math inline">\(M\)</span> com <span class="math inline">\(R\)</span> elementos. Cada classificador possui <span class="math inline">\(m\)</span> elementos do conjunto de treinamento original de <span class="math inline">\(M\)</span>. Em vez de utilizar todas as observações do conjunto original do treinamento, escolhe elementos uniformemente com repetição e gerando <span class="math inline">\(k\)</span> exemplos, que representam aspectos originais da base de dados. Em cada exemplo o classificador é gerado independentemente e a classificação de um novo elemento será executada sobre cada um dos <span class="math inline">\(T\)</span> classificadores.</p>
+<p>A cada tentativa <span class="math inline">\(t=1,2,...,T\)</span>, um conjunto de treinamento de tamanho <span class="math inline">\(N\)</span> é amostrado do conjunto de treinamento original com o mesmo tamanho. Também a cada tentativa, um classificador <span class="math inline">\(C_i\)</span> será gerado e no final um classificador <span class="math inline">\(C^*\)</span> será formado através da geração de <span class="math inline">\(T\)</span> classificadores obtidos em cada tentativa. Para uma amostra desconhecida, cada classificador <span class="math inline">\(C_i\)</span> retorna seu voto e por fim o classificador <span class="math inline">\(C^*\)</span> retornará a classe com o maior número de votos.</p>
+<p>Vamos pensar numa aplicação deste método em árvores de decisão: primeiramente, o <em>bagging</em> faz um sorteio de todas as amostras - escolhe uma, sorteia e escolhe outra sucessivamente - com reposição com, por exemplo, 70% do total. Por isso podem vir elementos repetidos ou até mesmo omitir alguns (<em>bootstrap</em>). Temos agora um <em>dataset</em> para construirmos uma árvore de decisão. Da mesma forma, faz este processo com uma segunda árvore, uma terceira e assim por diante com um novo <em>dataset</em> aleatório com <em>bootstrap</em>. Note que temos então uma estimação para cada árvore diferente com dados diferentes sorteados. Um mesmo modelo de Aprendizado de Máquina com conjuntos diferentes. Com o voto majoritário (situação de classificação) ou uma média (como um caso de regressão) de todas as estimações dos classificadores <span class="math inline">\(C_i\)</span>, obtemos um classificador <span class="math inline">\(C^*\)</span> final. O método <em>bagging</em> é muito útil para evitar <em>overfitting</em> (ver @ref(#fitt)) com essa repetição do mesmo modelo de Aprendizado de Máquina. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.</p>
+<p>O método <em>bagging</em> é muito útil para evitar <em>overfitting</em> (ver @ref(#fitt)) pois repetimos o modelo várias vezes com vários conjuntos aleatórios e situações com novos esimadores de treino. Ao entrar novos dados para o teste, ele terá um desempenho semelhante. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.</p>
+
+</div>
+<div id="boost" class="section level2">
+<h2><span class="header-section-number">9.2</span> <em>Boosting</em></h2>
+<p>O método <strong><em>boosting</em></strong> <span class="citation">(Freund, Schapire, and others <a href="#ref-freund1996experiments">1996</a>)</span> é um método de combinação de muitos classificadores com o propósito de fornecer uma classificação muito mais eficiente, considerado uma das ideias mais poderosas de aprendizagem nos últimos vinte anos <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-hastie2009elements">2009</a>)</span>. É um processo iterativo utilizado para ser alterado adaptativamente a distribuição de exemplos de treinamento, assim os classificadores de base tem como foco exemplos difíceis de classificar. Originalmente foi elaborado para problemas de classificação, mas pode ser muito bem aplicado para regressão.</p>
+<p>O mais conhecido é o algoritmo <em>boosting</em> proposto por <span class="citation">Freund, Schapire, and others (<a href="#ref-freund1996experiments">1996</a>)</span>, o <strong><em>AdaBoost</em> (Adaptative Boosting</strong>.</p>
 
 </div>
 <div id="rf" class="section level2">
-<h2><span class="header-section-number">9.2</span> Floresta Aleatória - <em>Random Forest</em></h2>
+<h2><span class="header-section-number">9.3</span> Floresta Aleatória - <em>Random Forest</em></h2>
 <p>A <strong>Floresta Aleatória</strong>, do inglês <strong><em>Random Forest</em></strong> <span class="citation">(Breiman <a href="#ref-breiman2001random">2001</a>; Liaw, Wiener, and others <a href="#ref-liaw2002classification">2002</a>)</span>, é um classificador composto de classificadores projetados especialmente para árvores de decisão <span class="math inline">\(\{h_k(X),k=1,2,...,L.\}\)</span> onde <span class="math inline">\(T_k\)</span> são amostras aleatórias independentes e identicamente distribuídas e que cada árvore decide a classe mais popular para a entrada de <span class="math inline">\(X\)</span> (baixa correlação entre as árvores) . Vetores aleatórios são gerados a partir de uma distribuição e probabilidade fixa sobre o vetor de entrada inicial. A precisão da Floresta Aleatória é medida probabilísticamente em termos de margem do classificador, dado um conjunto de classificadores <span class="math inline">\(h_1(x), h_2(x),...,h_k(x)\)</span>, e um conjunto de treinamento aleatório a partir do vetor <span class="math inline">\(Y\)</span>, <span class="math inline">\(X\)</span> <span class="citation">(Gómez and others <a href="#ref-gomez2012random">2012</a>)</span>.</p>
 <p>Como mencionado em <a href="ptII.html#decisiontree">8.2</a>, as Árvores de Decisão tendem a serem sensíveis à amostra de treinamento (ruídos). As Florestas Aleatórias buscam sanar este tipo de problema. A Floresta Aleatória é uma variação de <em>Bagging</em>, onde na construção da árvore, apenas um subconjunto aleatório das características participa da subdivisão de um nó. Pode-se melhorar a acurácia do modelo por meio da parametrização, que traz uma maior variação entre as árvores (mais estável que <em>bagging</em>).</p>
 <p>Durante as construções das árvores, utiliza-se para medirmos o erro, o <strong><em>out of bag</em> (OOB)</strong>. Diferentemente dos erros tradicionais estimados (como validação cruzada, por exemplo), cada árvore de decisão dessa floresta construída a partir de um subconjunto (aleatório) de treinamento, pode ser testada com os exemplos que sobram (de fora) da classificação (exemplos <em>out of bag</em>). O próprio treinamento da Floresta Aleatória fornece uma estimativa de erro que denomina-se <strong>erro <em>out of bag</em> </strong>.</p>
@@ -275,7 +226,8 @@ Figura 9.1: Exemplificação de <em>out of bag</em> <span class="citation">(MACH
 </div>
 
 <p>Para cada momento que temos 0 e 1 para classificar (ou até por regressão) cada elemento que estavam <em>OOB</em>, calcula-se a média das previsões como estimação de erro <em>out of bag</em>. Lembrando que permanece a medida de impureza na elaboração das árvores, como o índice de gini por exemplo.</p>
-<p>O procedimento <em>bootstrap</em> traz um melhor desempenho do modelo pois diminui a variância sem aumentaro viés, ou seja, embora as previsões de uma única árvore seja altamente sensível ao ruído em seu treinamento, a média de muitas árvores não será - desde que não sejam correlacionadas. Para estimarmos a incerteza das previsões de todas as árvores de regressão em <span class="math inline">\(x&#39;\)</span>, seu desvio padrão, podemos por meio da equação:</p>
+<p>Podemos dizer então que o erro <em>OOB</em> é o erro médio de predição em cada amostra de treinamento <span class="math inline">\(X_i\)</span>, no qual na construção de uma amostra-árvore haverá um conjunto de amostra de <em>bootstrap</em> (<em>in the bag</em>) e outro com dados não escolhidos no processo da amostragem (<em>out of bag</em>). Na construção da floresta (<span class="math inline">\(n\)</span> amostra-árvores) muitos exemplos de <em>bootstrap</em> e <em>OOB</em> elaborados. Estes conjuntos <em>OOB</em> podem ser agrupados em um conjunto de dados. Ao considerar <span class="math inline">\(Y\)</span> como a classe com a maioria dos votos, todas as vezes em que a observação foi considerada <em>OOB</em>, a proporção de vezes que <span class="math inline">\(Y\)</span> não for igual à verdadeira classe da observação, será a estimativa de erro <em>OOB</em>. Para o caso de problema de regressão, utiliza-se o método erro quadrado médio (MSE).</p>
+<p>O procedimento <em>bootstrap</em> traz um melhor desempenho do modelo pois diminui a variância sem aumentar o viés, ou seja, embora as previsões de uma única árvore seja altamente sensível ao ruído em seu treinamento, a média de muitas árvores não será - desde que não sejam correlacionadas. Para estimarmos a incerteza das previsões de todas as árvores de regressão em <span class="math inline">\(x&#39;\)</span>, seu desvio padrão, podemos por meio da equação:</p>
 <p><span class="math display" id="eq:desviorf">\[\begin{equation}
 \sigma = \sqrt{\frac{\sum^B_{b=1}(f_b(x&#39;)-\hat{f})^2}{B-1}}
 \tag{9.1}
@@ -287,11 +239,8 @@ Figura 9.1: Exemplificação de <em>out of bag</em> <span class="citation">(MACH
 \tag{9.2}
 \end{equation}\]</span></p>
 <p>O erro tradicional, geralmente utiliza-se todas as árvores como vantagem, porém é preciso dividir a amostra inicial em treinamento e teste. O <em>out of bag</em> utiliza toda a amostra, mas muitas vezes superestima o erro. Com a monitoração adequada dos parâmetros, como profundidade de cada árvore, número de atributos sorteados para cada divisão (com reposição), número de árvores, de nós por exemplo, pode ser melhorada esta superstimação e trazendo um bom modelo para o pesquisador.</p>
-<p>Para aumentar a aleatoriedade no modelo. É possível utilizar o <em>bagging</em> em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos <span class="citation">(Gómez and others <a href="#ref-gomez2012random">2012</a>)</span>. Conforme <span class="citation">(Breiman <a href="#ref-breiman2001random">2001</a>)</span>, o uso do <em>bagging</em> melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador <em>OOB</em>. A força pode ser interpretada como medida de desempenho para cada árvore. Aumentando a força das árvores individuais, reduz-se a taxa de erro de um flores, assim como a baixa correlação tende a diminuir <span class="citation">(Oshiro <a href="#ref-oshiro2013abordagem">2013</a>)</span>.</p>
+<p>Para aumentar a aleatoriedade no modelo. É possível utilizar o <em>bagging</em> em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos <span class="citation">(Gómez and others <a href="#ref-gomez2012random">2012</a>)</span>. Conforme <span class="citation">(Breiman <a href="#ref-breiman2001random">2001</a>)</span>, o uso do <em>bagging</em> melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador <em>OOB</em>. A força pode ser interpretada como medida de desempenho para cada árvore, uma árvore com uma baixa taxa de erro é um classificador forte. Aumentando a força das árvores individuais, reduz-se a taxa de erro de uma floresta, assim como a baixa correlação tende a diminuir <span class="citation">(Oshiro <a href="#ref-oshiro2013abordagem">2013</a>)</span>.</p>
 <p>Um algoritmo que se tornou bem conhecido e bastante similar à Floresta Aleatória, é o <strong><em>Extra-Trees</em></strong> <span class="citation">(Geurts, Ernst, and Wehenkel <a href="#ref-geurts2006extremely">2006</a>)</span>. Neste caso, é adicionado mais uma camada de aleatoriedade para montar as árvores. O algoritmo utiliza como estratégia aleatória, na montagem dos nós ao invés de utilizar métricas como ganho de informação. Este acréscimo de aleatoriedade faz com que tenha uma diminuição no viés com menor custo computacional e dispêndio de tempo <span class="citation">(Machado and others <a href="#ref-machado2020avaliaccao">2020</a>)</span>.</p>
-</div>
-<div id="boosting" class="section level2">
-<h2><span class="header-section-number">9.3</span> grad boosting</h2>
 </div>
 </div>
 <h3>References</h3>
@@ -313,6 +262,9 @@ Figura 9.1: Exemplificação de <em>out of bag</em> <span class="citation">(MACH
 </div>
 <div id="ref-gomez2012random">
 <p>Gómez, Silvio Normey, and others. 2012. “Random Forests Estocástico.”</p>
+</div>
+<div id="ref-hastie2009elements">
+<p>Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>. Springer Science &amp; Business Media.</p>
 </div>
 <div id="ref-liaw2002classification">
 <p>Liaw, Andy, Matthew Wiener, and others. 2002. “Classification and Regression by randomForest.” <em>R News</em> 2 (3): 18–22.</p>
@@ -350,19 +302,15 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "github", "instagram"]
 },
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
+"fontsettings": ["white", "sepia", "night"],
 "edit": {
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/09.1-ModeloIFilho.Rmd",
 "text": "Edit"
@@ -375,10 +323,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": null,
 "toc": {
 "collapse": "subsection"
-}
+},
+"info": false
 });
 });
 </script>
