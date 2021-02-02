@@ -2,7 +2,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-]{book}
+  openany]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -80,13 +80,12 @@
   \thm@preskip=8pt plus 2pt minus 4pt
   \thm@postskip=\thm@preskip
 }
-\makeatother
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
 \title{Fundamentos de Machine Learning}
 \author{Elton Massahiro Saito Loures}
-\date{2021-01-29}
+\date{2021-02-02}
 
 \begin{document}
 \maketitle
@@ -102,30 +101,32 @@
 \hypertarget{por-que-ler-esse-livro}{%
 \section{Por que ler esse livro?}\label{por-que-ler-esse-livro}}
 
+Caro leitor, se você veio até esse livro é bem provável que passou e ainda passa pelas mesmas dificuldades que todo estudante interessado nessa área.
+
+Ao elevado número de pesquisas que fiz para aprender o que era a Inteligência Artificial, o que era o \emph{Machine Learning} (Aprendizado de Máquina) e todos os outros temas similares, é nítido que ainda não está totalmente definido o conceito de cada um. É um ramo novo na área acadêmica, na indústria e em todo o mercado, com diversos temas, diversos modelos matemáticos, diversos modelos computacionais, diversos \emph{softwares}, diversas aplicações e em diversas áreas. Diversos ``diversos''\ldots{} E o mais assustador é que esse campo une todos esses ``diversos'', tornando o universo \textbf{caótico} ainda maior. Quando destaco o termo ``caótico'', refiro exatamente pela ironia deste mote, todo esse universo confuso é aplicado em nosso cotidiano para organizar, analisar, diagnosticar e facilitar as coisas.
+
+Poucos instruem como devemos enxergar todo esse cosmos que ao longo da história está passando por diversas construções para estruturar seu conceito. Com uma tentativa de trazer isso com base em artigos, livros, vídeos, podcasts e cursos, disponho este simples livro com o propósito de organizar a imagem que você, leitor, tem de Aprendizado de Máquina e entender os principais modelos utilizados tanto no meio acadêmico, quanto no mercado de trabalho.
+
 \hypertarget{estrutura}{%
 \section{Estrutura}\label{estrutura}}
 
 \hypertarget{informauxe7uxf5es-a-respeito-do-conteuxfado}{%
 \section{Informações a respeito do conteúdo}\label{informauxe7uxf5es-a-respeito-do-conteuxfado}}
 
+Se há algo em posso lhe aconselhar como principal ponto para estudar este tema é a \textbf{paciência}. Temas como esse podem abranger qualquer campo, desde a filosofia até a área da saúde e portanto, do mesmo modo que se aplica a qualquer conteúdo, o mais importante é a base. Leia, releia, pesquise, veja vídeos, ouça um podcast, converse e discuta com colegas e professores a respeito. Não se cobre de que precisa aprender o mais rápido possível, mas preze a qualidade do estudo. Posso lhe garantir que é um tema que exige seu foco e dedicação.
+
+Busquei da melhor forma possível separar por capítulos de acordo com as etapas de aprendizagem: desde sua história e filosofia, preparar os dados para a análise, como validar seus modelos de análise, os principais modelos e métodos a serem utilizados em \emph{Machine Learning} em seu banco de dados e com um breve desfecho com a tentativa de juntar os conceitos de todos estes capítulos. Busquei tornar o mais prático para todos.
+
+Em muitos temas fiz o possível de acrescentar exemplos didáticos para facilitar o conteúdo, o que é claro, dependendo modelo não é possível sem um auxílio de um programa computacional e torna dificíl demonstrar por estas páginas. Mas esperançosamente, torço de que seja útil e didático para sua formação e quem sabe proporcione o conhecimento suficiente para trabalhar e estudar isso em sua própria residência e própria decisão de qual \emph{software} utilizar, como preparar seus dados, qual modelo(s) aplicar e como interpretar seus resultados.
+
 \hypertarget{agradecimentos}{%
 \section{Agradecimentos}\label{agradecimentos}}
 
-\hypertarget{intro}{%
-\chapter{Introdução}\label{intro}}
+Sinto demasiadamente não poder citar o nome de todos que contribuíram, não apenas neste livro, mas em minha vida. Primeiramente e o mais importante, aos meus pais Adilson e Anna que sempre apoiaram meu estudo e deram todo suporte em minha vida e ao meu irmão Ewerton que sempre me acolheu e me ensinou.
 
-Caro leitor, se você veio até esse livro é bem provável que passou e/ou ainda passa pelas mesmas dificuldades que todo estudante interessado nessa área.
+Aos meus amigos Rafael Bortotto, Vinicius Garcia, Hélio Petronilho, Matheus Martins que em todos os encontros deram apoio e suporte emocional. À Caroline Ferro e Rafael Umemoto meus queridos amigos amiga e à Alice Nascimento que sempre esteve ao meu lado, minha amada companheira.
 
-Ao elevado número de pesquisas que fiz para aprender o que era a Inteligência Artificial, o que era o \emph{Machine Learning} (Aprendizado de Máquina) e todos os outros temas similares, é nítido que ainda não está totalmente definido o conceito de cada um. É um ramo novo na área acadêmica, na indústria e em todo o mercado, com diversos temas, diversos modelos matemáticos, diversos modelos computacionais, diversos \emph{softwares}, diversas aplicações e em diversas áreas. Diversos ``diversos''\ldots{} E o mais assustador é que esse campo une todos esses ``diversos'', tornando o universo \textbf{caótico} ainda maior. Quando destaco o termo ``caótico'', refiro exatamente pela ironia deste mote, todo esse universo confuso é aplicado em nosso cotidiano para organizar, analisar, diagnosticar e facilitar as coisas.
-
-Poucos instruem como devemos enxergar todo esse cosmos que ao longo da história está passando por diversas construções para estruturar seu conceito. Com uma tentativa de trazer isso com base em artigos, livros, vídeos, podcasts e cursos, disponho este simples livro com o propósito de organizar a imagem que você, leitor, tem de Aprendizado de Máquina e entender os principais modelos utilizados tanto no meio acadêmico, quanto no mercado de trabalho.
-
-\hypertarget{dicas-de-estudo}{%
-\section{Dicas de estudo}\label{dicas-de-estudo}}
-
-Não cabe a mim dizer como estudar, mas o que posso lhe aconselhar como principal ponto é a \textbf{paciência}. Temas como esse podem abranger qualquer campo, desde a filosofia até a área da saúde e portanto, do mesmo modo que se aplica a qualquer conteúdo, o mais importante é a base. Leia, releia, pesquise, veja vídeos, ouça um podcast, converse e discuta com colegas e professores a respeito. Não se cobre de que precisa aprender o mais rápido possível, mas preze a qualidade do estudo.
-
-Com intuito de explicar sobre Aprendizado de Máquina. Na seção \textbf{AQUI VOU COLOCAR A REFERENCIA DA SESSAO}, para faciliar o leitor dependendo de sua demanda de conteúdo, busquei separar em subseções a lógica computacional e a matemática. Tornando mais prático para o público que não tem interesse no modelo matemático e que busca o conhecimento de determinado assunto quanto ao público que demanda esse conteúdo.
+Agradeço aos professores e colegas do grupo Econostat da Universidade Estadual de Londrina, em especial Lucas Santana e Leandro Meyer que me incentivaram e auxiliaram em boa parte da trajetória em que estou. À Embrapa-soja e a doutora Maria Cristina que proporcionou muito em meus estudos. Agradeço a todas pessoas - que provávelmente sabem que estou as referindo - que fizeram e fazem parte de minha vida. Obrigado!
 
 \hypertarget{i-a}{%
 \chapter{Inteligência Artificial (IA)}\label{i-a}}
@@ -251,7 +252,7 @@ A diferença entre ambos é de natureza filosófica com ontologias e epistemolog
 \hypertarget{machinelearning}{%
 \chapter{O Aprendizado de Máquina}\label{machinelearning}}
 
-Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado \textbf{Machine Learning (ML)}. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ela é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Como modelos estatísticos, busca entender a estrutura dos dados modelos que atendam a certos pressupostos - muitas vezes não temos conhecimento de como essa estrutura se parece.
+Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado \textbf{Machine Learning (ML)}. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ele é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Ele busca entender a estrutura dos dados com modelos que atendam a certos pressupostos - muitas vezes não temos nem conhecimento de como essa estrutura se parece.
 
 \citet{samuel1959some}, engenheiro do MIT popularizou o termo \emph{``Machine Learning''} (Aprendizado de Máquina), descrevendo o conceito com ``um campo de estudo que dá aos computadores a habilidade de aprender sem terem sidos programados para tal'' \citep{simon2013too}. Com a expansão da internet e seu abundante armazenamento de dados na web, o \emph{Big data}, foi necessário - ainda é - aprimorar sistemas de organização, classificação, análise de dados e identificação de padrões para tratá-los. Isso fez com que o Aprendizado de Máquina entrasse em destaque e passasse a ser uma das áreas mais importantes. Na seção \ref{i-a} foi apresentado alguns exemplos de aplicações de IA, o mesmo se aplicam para o ML.
 
@@ -270,48 +271,198 @@ Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos 
   \textbf{Como verificarmos se os dados já estão bons para aplicar o algoritmo? Quais modelos podemos aplicar? Como sabemos que essas previsões são confiáveis? Como evitar problemas de um modelo ruim?}
 \end{itemize}
 
-Agora que temos todo o contexto histórico podemos ir adiante do conteúdo aplicado. A tópico a seguir trataremos um pouco de alguns conceitos muito importantes que são utilizados em muitos algoritmos de Aprendizado de Máquina para que possamos gradualmente responder estes questionamentos.
+Agora que temos todo o contexto histórico podemos ir adiante do conteúdo aplicado. O tópico a seguir trataremos um pouco de alguns conceitos muito importantes que são utilizados em muitos algoritmos de ML para que possamos gradualmente responder estes questionamentos.
 
 \hypertarget{dicio}{%
-\chapter{Um pouco de revisão}\label{dicio}}
+\chapter{Uma breve revisão}\label{dicio}}
 
 Com os \emph{softwares} atuais é possível de que o pesquisador consiga fazer uma análise dos dados sem compreender totalmente a matemática por trás. Busco sempre que puder anexar um exemplo de acordo com cada tema apresentado para facilitar a compreensão, porém suponho de que o leitor esteja familiarizado com conceitos fundamentais de estatística, probabilidade e álgebra liner, portanto conceitos fundamentais como tipos de amostragem, probabilidades e suas distribuições, teste de hipóteses e significância, potência dos testes estatísticos, intervalos de confiança, escalares e vetores, espaço vetorial e transformação linear, produto interno, assimetria e curtose, entre outos..
 
-Nesta seção são apresentadas brevemente um pouco desses conteúdos. É provável de que o leitor já saiba. Porém acredito de que sejam fundamentais para o Aprendizado de Máquina e seria bom para revisá-lo. Sinta-se livre em pular este capítulo. Ao caso de ser algo totalmente novo, reforço-o de introduzir com outras literaturas a respeito, pois são imprescindíveis aos conteúdos dos próximos capítulos.
+Nesta seção são apresentadas brevemente um pouco desses conteúdos. É provável de que o leitor já saiba. Porém acredito de que sejam fundamentais para o Aprendizado de Máquina e seria bom para revisá-lo. Sinta-se livre em pular este capítulo. Ao caso de ser algo totalmente novo, reforço-o de introduzir com outras literaturas, além dessa, a respeito pois são imprescindíveis aos conteúdos dos próximos capítulos.
 
 \textbf{Bons estudos}.
 
 \hypertarget{um-pouco-de-uxe1lgebra-linear}{%
 \section{Um pouco de Álgebra Linear}\label{um-pouco-de-uxe1lgebra-linear}}
 
+Primeiramente é importante lembrar que grandezas escalares necessitam apenas do valor numérico (módulo), ao caso de compreender grandezas vetoriais necessitam da direção e do sentido, além do módulo.
+
+Para representação gráfica de uma grandeza vetorial, utiliza-se um segmento orientado \textbf{AB}, como uma ``flecha''. Quanto maior for o tamanho deste segmento, maior o módulo deste vetor, ou seja, é proporcional ao comprimento.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/vetor} 
+
+}
+
+\caption{demonstração de um vetor.}\label{fig:vetor}
+\end{figure}
+
+
+
+\textbf{Espaço Vetorial:} estrutura que generaliza as propriedades de vetores em \(\mathbb{R}^3\), podendo somar elementos e realizar multiplicação por escalares. Um espaço vetorial sobre um corpo \(K\) é um conjunto \(V\) com as operações adição de vetores (\(+\)) e multiplicação por escalar (concatenação). A soma opera em pares de vetores e retorna um vetor (\(+:V\ \mbox{x} \ V \rightarrow V\)), e a multiplicação por escalar opera em pares de escalar e vetor, retornando (\(.:K \ \mbox{x} \ V \rightarrow V\)). Para que \(V\) e \(K\) com as duas operações forme um espaço vetorial as operações devem ser \citep{algebrajeronimo}:
+
 \begin{itemize}
 \item
-  \textbf{Escalares e Vetores:}
+  Associativas: \(c(dv)=(cd)v\);
 \item
-  \textbf{Espaço Vetorial e Transformação Linear:}
+  A soma de vetores é comutativa: \(u+w=w+u\);
 \item
-  \textbf{Produto Interno:}
+  A multiplicação por escalar (.) é distributiva, tanto em adição de vetores quanto em adição de escalares: \(c(v+w)=cv+cw\);
+\item
+  Existe um vetor \(0\), neutro para adição: \(v+0=v\);
+\item
+  Para todo vetor \(v\) existe um \(-v\), tal que \(v+(-v)=0\);
+\item
+  Mutiplicação pela identidade do corpo não modificar um vetor \(lv=v\).
+\item
+  \textbf{Exemplo 1:} o conjunto composto pelos números reais \(\mathbb{R}\), com as operações de multiplicação e adição entre números reais usuais é um espaço vetorial real pois todas as propriedades são verificadas.
+\item
+  \textbf{Exemplo 2:} o conjunto \(M_{mn}(K)\) das matrizes com \(m\) linhas e \(n\) colunas com elementos de um corpo \(K\) é um espaço vetorial de \(K\).
 \end{itemize}
 
-\hypertarget{um-pouco-de-estatuxedstica.-parte-i}{%
-\section{Um pouco de Estatística. Parte I}\label{um-pouco-de-estatuxedstica.-parte-i}}
+\textbf{Transformação Linear:} sejam \(U\) e \(V\) dois espaços vetoriais sobre um mesmo corpo. Uma transformação linear é uma função \(T:V\rightarrow U\) tal que para todo escalar \(c\) e todos vetores \(v,w \ \epsilon \ V\) \citep{algebrajeronimo},
+
+\begin{itemize}
+\tightlist
+\item
+  \(T(v+w)=T(v)+T(w)\);
+\item
+  \(T(cv)=cT(v)\).
+\end{itemize}
+
+Um operador linear é uma transformação linear de um espaço nele mesmo (\(T:U\rightarrow U\)).
 
 \begin{itemize}
 \item
-  \textbf{Assimetria e Curtose:}
+  \textbf{Exemplo 1:} A função que dá a transposta de uma matriz é uma transformação linear de \(M_{mn}\) em \(M_{mn}\): claramente, \(c(A^T)=(cA)^T\), e \(A^T+B^T=(A+B)^T\).
 \item
-  \textbf{Variância e Desvio padrão (Erro padrão)}
-\item
-  \textbf{Covariância:} a covariância mede a relação linear entre duas variáveis. É possível utilizar a covariância para compreender a direção da relação entre as variáveis. Valores de covariância positivos indicam que valores acima da média de uma variável estão associados a valores médios acima da outra variável e abaixo dos valores médios são igualmente associado. Valores de covariância negativos indicam que valores acima da média de uma variável estão associados com valores médios abaixo da outra variável.
-\item
-  \textbf{Distribuição normal:}
-\item
-  \textbf{Distribuição binomial:}
-\item
-  \textbf{Distribuição de Poisson:} \citep{banzatto1992experimentaccao} Quando número de plantas daninhas por parcela, número de insetos capturados em armadilhas luminosas, número de pulgões ou ácaros por folhas, etc.
-\item
-  \textbf{Teorema de Bayes:} quando tratamos de probabilidades, \(P(A|B)\) e \(P(B|A)\) podem ser parecidos, mas possuem grande diferença entre as probabilidades que representam. Por exemplo \(P(A|B)\) pode se referir sobre a probabilidade de uma pessoa que cometeu um furto (B) ser condenada (A) e \(P(B|A)\) seria a probabilidade de uma pessoa que foi condenada por furto ter efetivamente cometido um crime. A causa se torna o efeito e o efeito se torna a causa \citep{freund2009estatistica}.
+  \textbf{Exemplo 2:} A função \(T:\mathbb{R}\rightarrow \mathbb{R}\), com \(T(x)=x+4\). Esta função não é transformação linear, pois:
 \end{itemize}
+
+\[T(x+y)=T(x+y)+2\]
+\[T(x+y)\neq T(x)+T(y)=(x+2)+(y+2)=(x+y)+4\]
+\[\mbox{logo:} \ T(x+y)\neq T(x)+T(y)\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo 3:} a função \(f(x_1,x_2)=x_1+x_2\) é uma transformação linear de \(\mathbb{R}^2\) em \(\mathbb{R}\), pois para dois vetores \((x_1,x_2)\) e \((y_1,y_2)\),
+\end{itemize}
+
+\[f[(x_1,x_2)+(y_1,y_2)]=f(x_1+y_1,x_2+y_2)=x_1+y_1+x_2+y_2=f(x_1,x_2)+f(y_1+y_2)\]
+ou para qualquer constante \(k\) e qualquer vetor (\(x_1,x_2\)),
+\[f(k(x_1,x_2))=f(kx_1,kx_2)=kx_1+kx_2=k(x_1+x_2)=kf(x_1,x_2)\]
+
+\textbf{Produto Interno:} um produto interno em um espaço vetorial \(V\) sobre \(\mathbb{R}\) é uma função de \(V \mbox{x} V\) em \(\mathbb{R}\), denotado por \(\langle u,v \rangle\), possui as seguintes propriedades:
+
+\begin{itemize}
+\tightlist
+\item
+  comutatividade: \(\langle u,v \rangle=\langle v,u \rangle\);
+\item
+  positividade: \(\langle v,v \rangle \geq 0,\) e \(\langle 0,0 \rangle =0\);
+\item
+  bilinearidade: o produto interno é linear nos dois argumentos (pois são comutativos) - para todo escalar e vetor.
+\end{itemize}
+
+O produto interno (ou escalar) em \(\mathbb{R}^2\) ou \(\mathbb{R}^3\) pode ser expresso por:
+\[\langle u,v \rangle =\sum_i u_i \ . \  v_i = u^Tv\]
+em que \(T\) indica a transposta de \(u\).
+
+Se o produo interno de dois vetores for igual a zero, podemos dizer que são ortogonas.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo:} Calcule o produto interno de \(u=(2,3,1)\) e \(v=(1,2,2)\):
+  \[\mbox{temos que: }\langle u,v \rangle =u \ . \  v\]
+  \(=(2,3,1).(1,2,2)=2.1+3.2+1.2=10\)
+\end{itemize}
+
+\hypertarget{estatuxedstica}{%
+\section{Estatística}\label{estatuxedstica}}
+
+\textbf{Parâmetros:} podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.
+
+\textbf{Paramétrico x Não Paramétrico:} os testes paramétricos assumem que a distribuição de probabilidade da população seja conhecida nos dados extraídos e que somente os valores de certos parâmetros, tais quais média e o desvio padrão, sejam desconhecidos. Ao caso dos dados não satisfazerem as suposições assumidas pelas técnicas tradicionais, utiliza-se métodos não paramétricos de inferência estatística. As técnicas não paramétricas assumem poucas ou até mesmo nenhuma hipótese sobre a distribuição de probabilidade da população, podemos dizer que não possuem dados com estruturas ou parâmetros característicos.
+
+\textbf{Variância e Desvio padrão (Erro padrão):} a dispersão de um conjunto de dados será pequena se os valores estão concentrados em torno da média e grande no oposto, denota-se \textbf{desvios da média} medir a variação de um conjunto de dados em termos das quantidades pelas quais os valores desviam de sua média:
+
+\begin{equation}
+    x_1-\overline{x},x_2-\overline{x},...,x_n-\overline{x} \rightarrow \sum(x-\overline{x})
+        \label{eq:desviomedia}
+\end{equation}
+
+Não estamos interessados se são negativos ou positivos, e sim em sua magnitude dos desvios. Um meio é trabalharmos com os quadrados dos desvio da média e extrairmos a raiz quadrada do resultado (compensar o uso do quadrado dos desvios):
+
+\begin{equation}
+ \sqrt{\frac{\sum(x-\overline{x})^2}{n}}
+     \label{eq:desviomedquad}
+\end{equation}
+
+Como na prática não possuímos a média verdadeira (populacional), somente a estimada, calcula-se então a nomeada \textbf{desvio-padrão amostral} denotada por \(s\):
+
+\begin{equation}
+s=\sqrt{\frac{\sum(x-\overline{x})^2}{n-1}}
+    \label{eq:desviopadrao}
+\end{equation}
+
+O quadrado do desvio-padrão, ou seja, \(s^2\) é denominado \textbf{variância amostral} e tanto o desvio-padrão quanto a variância são medidas de dispersão.
+
+Importante ressaltar que costumamos tratar em população como \textbf{desvio-padrão populacional} (\(\sigma\) quando dividimos por \(N\) e \(S\) quando dividimos por \(N-1\)). Sendo \(\sigma^2\) sua \textbf{variância populacional}.
+
+\textbf{Covariância:} a covariância mede a relação linear entre duas variáveis. É possível utilizar a covariância para compreender a direção da relação entre as variáveis. Valores de covariância positivos indicam que valores acima da média de uma variável estão associados a valores médios acima da outra variável e abaixo dos valores médios são igualmente associado. Valores de covariância negativos indicam que valores acima da média de uma variável estão associados com valores médios abaixo da outra variável.
+
+\begin{equation}
+    Cov(x,y)=s^2_{xy}=E(xy)-E(x)E(y)
+    \label{eq:covariancia}
+\end{equation}
+
+em que \(E\) é a esperança (média).
+
+\textbf{Distribuição normal:} em estatística, uma distribuição de probabilidade descreve o comportamento aleatório de um fenômeno dependente do acaso. Há muitas distribuições de probabilidade diferentes, sendo de muita importância, a distribuição simétrica perfeitamente denominada como \textbf{distribuição em forma de sino} ou \textbf{distribuição normal}. Quando a média, mediana e a moda coincidem. Dizemos que \(X\) é uma variável aleatória normal, ou normalmente distribuída, com parâmetros \(\mu\) e \(\sigma^2\), se a função densidade de \(X\) é dada por:
+
+\begin{equation}
+    f(x)=\frac{1}{\sqrt{2\pi \sigma}}e^{-(x-\mu)^2/2\sigma^2} \ \ -\infty<x<\infty
+    \label{eq:fnormal}
+\end{equation}
+
+A função de densidade é uma curva em forma de sino simétrica em relação a \(\mu\), como demonstra a seguinte figura:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/distnormal} 
+
+}
+
+\caption{Função de densidade de probabilidade normal: (a) \(\mu\), \(\sigma=1\); (b) \(\mu\) e \(\sigma^2\) arbitrários \citep{rossprobability}.}\label{fig:distnormal}
+\end{figure}
+
+
+
+\textbf{Distribuição binomial:} a distribuição de probabilidade discreta do número de sucessos com \(n\) tentativas, supondo \(X\) binomial com parâmetros \((n,p)\). Calcula-se sua distribuição como:
+
+\begin{equation}
+    P[X\leq i]=\displaystyle \sum_{k=0}^i \begin{pmatrix}n\\k \end{pmatrix}p^k(1-p)^{n-k} \ \ \ i=0,1,...,n
+    \label{eq:fbinominal}
+\end{equation}
+
+onde probabilidade de um ponto amostral com sucessos nos \(k\) primeiros ensaios e falhas nos \(n−k\) ensaios seguintes é \(p^k(1−p)^{n−k}\).
+
+\textbf{Distribuição de \emph{Poisson}:} a variável aleatória \(X\) que pode assumir um valores \(0,1,2,...\) é chamada de variável aleatória de \emph{Poisson} com parâmetro \(\lambda>0\) \citep{rossprobability}:
+
+\begin{equation}
+    p(i)=P\{X=i\}=e^{-\lambda}\frac{\lambda^i}{i!} \ \ \ i=0,1,2...
+    \label{eq:poisson}
+\end{equation}
+
+A equação \eqref{eq:poisson} define uma função de proababilidade, pois:
+
+\[\displaystyle \sum^\infty_{i=0}p(i)=e^{-\lambda}\sum^\infty_{i=0} \frac{\lambda^i}{i!} = e^{-\lambda}e^\lambda=1\]
+que pode ser aplicada como aproximação de uma variável aleatória binomial com parâmetros \((n,p)\) com \(n\) grande e \(p\) suficientemente pequeno para que \(np\) tenha tamanho moderado e muito utilizado para dados de contagem, na qual a média é igual à variância \citep{banzatto1992experimentaccao}.
+
+\textbf{Teorema de Bayes:} quando tratamos de probabilidades, \(P(A|B)\) e \(P(B|A)\) podem ser parecidos, mas possuem grande diferença entre as probabilidades que representam. Por exemplo \(P(A|B)\) pode se referir sobre a probabilidade de uma pessoa que cometeu um furto (B) ser condenada (A) e \(P(B|A)\) seria a probabilidade de uma pessoa que foi condenada por furto ter efetivamente cometido um crime. A causa se torna o efeito e o efeito se torna a causa \citep{freund2009estatistica}.
 
 Pela regra geral de multiplicação que afirma que a probabilidade da ocorrência de dois eventos é o produto da probibilidade da ocorrência de um deles pela probabilidade condicional da ocorrência do outro evento, temos:
 
@@ -334,8 +485,12 @@ Para \(B_n\) e \(A_k\) atributos, podemos reescrever:
   \label{eq:bayesn}
 \end{equation}
 
-\textbf{Exemplo:} este exemplo pode ser encontrado em \citet{freund2009estatistica}. Numa certa empresa, 4\% dos homens e 1\% das mulheres têm mais de 1,75m
-de altura, respectivamente, sendo que 60\% dos trabalhadores são mulheres. Um trabalhador é escolhido ao acaso.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo:} este exemplo pode ser encontrado em \citet{freund2009estatistica}. Numa certa empresa, 4\% dos homens e 1\% das mulheres têm mais de 1,75m
+  de altura, respectivamente, sendo que 60\% dos trabalhadores são mulheres. Um trabalhador é escolhido ao acaso.
+\end{itemize}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -360,11 +515,66 @@ Pelo enunciado ``que seja homem dado que o trabalhador escolhido tenha mais de 1
 
 \[→ 72,73\% \ \mbox{de probabilidade de ser homem dado que seja maior que 1,75m.}\]
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Função de verossimilhança:} a verossimilhança \(L\) de um conjunto de parâmetros \(\theta\), com dada informação \(x\). É igual a probabilidade da mesma observação \(x\) ter ocorrido dados os valores dos mesmos parâmetros \(\theta\). Conhecendo um parâmetro \(\theta\), a probabilidade condicional de \(x\) é \(P(x|\theta)\), mas se o valor de \(x\) é conhecido, pode-se realizar inferências sobre o valor de \(\theta\) \citep{bolfarine2001introduccao}.
-\end{itemize}
+\textbf{Assimetria e Curtose:} como visto anteriormente, uma distribuição simétrica perfeitamente denominada como \textbf{distribuição normal} possui a seguinte forma:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/simetria} 
+
+}
+
+\caption{Distribuição perfeitamente simétrica \citep{freund2009estatistica}.}\label{fig:simetria}
+\end{figure}
+
+
+
+Quando as distribuições apresentam uma `'cauda'' em uma das extremidades, são denominadas \textbf{assimétricas}, quando apresenta na esquerda, dizemos \textbf{negativamente assimétricas} , na direita são \textbf{positivamente assimétricas}.
+
+Estes conceitos aplicam-se a qualquer tipo de dados. Para conjuntos de dados grandes, pode-se agrupar e esboçar um histograma, mas caso não for suficiente, usa-se por meio de \textbf{medidas de assimetria}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/assimetria} 
+
+}
+
+\caption{Distribuição positivamente assimétrica (a) e negativamente assimétrica (b) respectivamente \citep{freund2009estatistica}.}\label{fig:assimetria}
+\end{figure}
+
+
+
+Dentre os métodos para o cálculo do coeficiente de assimetria, destaca-se o coeficiente de Pearson, que será apresentado mais a frente.
+
+\begin{equation}
+    SK=\frac{3(\overline{m}-q_2)}{s} \quad \quad SK=\frac{\overline{m}-Mo}{s}
+     \label{eq:coefassimetria}
+\end{equation}
+
+Sendo \(SK\) o coeficiente, \(\overline{m}\) a média, \(q_2\) a mediana, \(Mo\) a moda e \(s\) seu desvio padrão. A média e a mediana coincidem quando \(SK=0\).
+
+Quanto ao grau de achatamento da curva são denominadas \textbf{platicúrticas, mesocúrticas e leptocúrticas} a caudas curtas, neutras e longas respectivamente.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/curtose} 
+
+}
+
+\caption{Distribuições com formatos leptocúrtica (a), mesocúrtica (b) e platicúrtica (c) respectivamente \citep{freund2009estatistica}.}\label{fig:curtose}
+\end{figure}
+
+
+
+E, para medir o grau de curtose, pode-se utilizar o coeficiente de curtose:
+
+\begin{equation}
+    K=\frac{q_3-q_1}{2(P_{90}-P_{10})}
+    \label{eq:curtose}
+\end{equation}
+
+Com \(K\) coeficiente de curtose, \(q_3\) terceiro quartil, \(q_1\) primeiro quartil, \(P_{90}\) e \(P_{10}\) percentis 90 e 10 respectivamente.
+
+\textbf{Função de verossimilhança:} a verossimilhança \(L\) de um conjunto de parâmetros \(\theta\), com dada informação \(x\). É igual a probabilidade da mesma observação \(x\) ter ocorrido dados os valores dos mesmos parâmetros \(\theta\). Conhecendo um parâmetro \(\theta\), a probabilidade condicional de \(x\) é \(P(x|\theta)\), mas se o valor de \(x\) é conhecido, pode-se realizar inferências sobre o valor de \(\theta\) \citep{bolfarine2001introduccao}.
 
 \begin{equation} 
  L(\theta |x)=P(x| \theta)
@@ -382,21 +592,7 @@ Geralmente utiliza-se o logaritmo natural em verossimilhança \(L(\theta |x)=ln 
 
 Para facilitar a compreensão, considere a observação de que você esteja ouvindo barulho em sua sala de estar num dia de natal (observação \(x\)), você parte da hipótese inicial que poderia ser o ``Papai Noel'' lhe entregando presentes (hipótese \(\theta\)). A probabilidade de ser Noel lhe entregando presente apenas porque ouviu o barulho, isto é, \(P(\theta|x)\) é baixa. No entanto o contrário, você com a afirmação de que é o Noel lhe entregando presentes, a probabilidade de haver barulho em sua sala de estar é bem alta, logo a verossimilhança \(L(\theta|x)=P(x|\theta)\).
 
-\begin{itemize}
-\item
-  \textbf{Parâmetros:} podem ser vistos como características númericas de um modelo ou população. Os valores não podem ser mensurados diretamente mas que podem ser estimados através dos dados de uma amostra.
-\item
-  \textbf{Paramétrico x Não Paramétrico:}
-\end{itemize}
-
-\hypertarget{um-pouco-de-estatuxedstica.-parte-ii}{%
-\section{Um pouco de Estatística. Parte II}\label{um-pouco-de-estatuxedstica.-parte-ii}}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Teorema do Limite Central:} quando é utilizado a média amostral para estimar a média de uma população, ocorre-se incertezas em relação ao erro. O Teorema do Limite Central é um teorema fundamental para a estatísticas e faz com que possa ser aplicado independente da forma da distribuição da população. Ele diz que se \(\overline{x}\) é a média de uma amostra aleatória de tamanho \(n\) de uma população infinita com a média \(\mu\) e o desvio-padrão \(\sigma\) e se \(n\) é grande o suficiente (em geral \(n=30\)), então possui próximo a distribuição normal padrão:
-\end{itemize}
+\textbf{Teorema do Limite Central:} quando é utilizado a média amostral para estimar a média de uma população, ocorre-se incertezas em relação ao erro. O Teorema do Limite Central é um teorema fundamental para a estatísticas e faz com que possa ser aplicado independente da forma da distribuição da população. Ele diz que se \(\overline{x}\) é a média de uma amostra aleatória de tamanho \(n\) de uma população infinita com a média \(\mu\) e o desvio-padrão \(\sigma\) e se \(n\) é grande o suficiente (em geral \(n=30\)), então possui próximo a distribuição normal padrão:
 
 \begin{equation} 
  z=\frac{\overline{x}-\mu}{\sigma / \sqrt{n}}
@@ -405,7 +601,11 @@ Para facilitar a compreensão, considere a observação de que você esteja ouvi
 
 Este teorema também pode ser utilizado para populações finitas, mas não é comum e são poucas situações de que haja esta possibilidade. A utilização mais comum é quando \(n\) é grande enquanto \(\frac{n}{N}\) pequeno.
 
-\textbf{Exemplo \citep{fariaestatistic}:} O fabricante de uma lâmpada especial afirma que o seu produto tem vida média de 1.600 hors, com desvio padrão de 250 horas. O dono de uma empresa compra 100 lâmpadas desse fabricante. Qual é a probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650?
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo} \citep{fariaestatistic}: O fabricante de uma lâmpada especial afirma que o seu produto tem vida média de 1.600 hors, com desvio padrão de 250 horas. O dono de uma empresa compra 100 lâmpadas desse fabricante. Qual é a probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650?
+\end{itemize}
 
 Podemos aceitar que as 250 lâmpadas compradas sejam uma amostra aleatória simples da população referente às lâmpadas produzidas por esse fabricante. Como \(n=100\) é um tamanho suficientemente grande de amostra, é possível utilizarmos o Teorema Central do Limite e entender que \(X=\)vida útil de uma lâmpada se aproxima da distribuição normal \(\overline{X}\approx N(\mu;\frac{\sigma^2}{n})\). Logo:
 \[\overline{X}\approx N(1600;\frac{250^2}{100})\]
@@ -415,11 +615,7 @@ Podemos aceitar que as 250 lâmpadas compradas sejam uma amostra aleatória simp
 \[=0,5-0,47725=0,02275\]
 A probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650 é de 2,275\%.
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Testes de hipóteses:}
-\end{itemize}
+\textbf{Testes de hipóteses:}
 
 \begin{quote}
 Uma hipótese estatística é uma afirmação ou conjectura sobre um parâmetro, ou parâmetros, de uma população (ou populações); pode também se referir ao tipo, ou natureza, da população (ou populações).
@@ -427,13 +623,17 @@ Uma hipótese estatística é uma afirmação ou conjectura sobre um parâmetro,
 --- \citet{freund2009estatistica}.
 \end{quote}
 
-O Teste de Hipóteses é um procedimento estatístico que os permitem rejeitar ou não rejeitar uma hipótese estatística por meio dos dados observados de uma amostra. Para desenvolver os processos de testes de hipóteses estatísticas precisamos saber precisamente o que esperar quando uma hipótese é verdadeira, por isso em geral formula-se a hipótese contrária àquela que queremos provar. Supondo que estamos desconfiados em um jogo que seus dados não são honestos, ao formularmos a hipótese de que esses dados são viciados, dependeria do quão viciados eles são. Porém, ao supor que eles são perfeitamente equilibrados, poderíamos calcular todas as probabilidades necessárias para concluirmos a hipótese. Se pretendermos verificar que a análise de um analista de dados é mais eficiente do que o outro, iremos formular a hipótese de que ambos são igualmente eficientes. Se a durabilidade de uma camisa feita por algodão é maior que uma camisa feita por políester, formularemos a hipótese de que ambas possuem as durabilidades iguais. A hipótese de não haver diferença (hipóteses iguais) denominamos como \textbf{hipóteses nulas (\(H_0\))}, utilizada para qualquer hipótese estabelecida prioritariamente para ver se ela pode ser rejeitada. A hipótese ue aceitamos quando rejeitamos a nula, é chamada de \textbf{hipótese alternativa (\(H_A\))} \citep{freund2009estatistica}. Vamos seguir alguns exemplos de \citet{freund2009estatistica}.
+O Teste de Hipóteses é um procedimento estatístico que os permitem rejeitar ou não rejeitar uma hipótese estatística por meio dos dados observados de uma amostra. Para desenvolver os processos de testes de hipóteses estatísticas precisamos saber precisamente o que esperar quando uma hipótese é verdadeira, por isso em geral formula-se a hipótese contrária àquela que queremos provar. Supondo que estamos desconfiados em um jogo que seus dados não são honestos, ao formularmos a hipótese de que esses dados são viciados, dependeria do quão viciados eles são. Porém, ao supor que eles são perfeitamente equilibrados, poderíamos calcular todas as probabilidades necessárias para concluirmos a hipótese. Se pretendermos verificar que a análise de um analista de dados é mais eficiente do que o outro, iremos formular a hipótese de que ambos são igualmente eficientes. Se a durabilidade de uma camisa feita por algodão é maior que uma camisa feita por políester, formularemos a hipótese de que ambas possuem as durabilidades iguais. A hipótese de não haver diferença (hipóteses iguais) denominamos como \textbf{hipóteses nulas (\(H_0\))}, utilizada para qualquer hipótese estabelecida prioritariamente para ver se ela pode ser rejeitada. A hipótese que aceitamos quando rejeitamos a nula, é chamada de \textbf{hipótese alternativa (\(H_A\))}. Vamos a um exemplo.
 
-\textbf{Exemplo:} um psicólogo pretende determinar se o tempo médio de reação de um adulto a um estímulo visual é realmente de 0,38 segundos. Sua hipótese nula
-\[H_0: \mu=0,38\ \mbox{segundos}\]
-contra a hipótese alternativa
-\[H_A: \mu \neq 0,38\ \mbox{segundos}\]
-em que \(\mu\) é o tempo médio de reação de um adulto ao estímulo visual. Para realizar o teste, o psicólogo decide tomar uma amostra aleatória de \(n=40\) adultos com objetivo de aceitar a hipótese nula se a média da amostra cair em algum ponto entre 0,36 e 0,40 segundos; do contrário a hipótese será rejeitada. Como a decisão se baseia em uma amostra, existe a possibilidade de a média amostral ser menor do que 0,36 segundos ou maior que 0,40 segundos mesmo se a verdadeira média amostral ser 0,38 segundos. Da mesma forma é possível que a média amostral esteja entre os intervalos de 0,36 e 0,40 segundos mesmo que a verdadeira média possua, por exemplo, 0,41 segundos. Portanto, é importante investigar a probabilidade de que o teste nos leve a uma decisão errada.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo} \citep{freund2009estatistica}: um psicólogo pretende determinar se o tempo médio de reação de um adulto a um estímulo visual é realmente de 0,38 segundos. Sua hipótese nula
+  \[H_0: \mu=0,38\ \mbox{segundos}\]
+  contra a hipótese alternativa
+  \[H_A: \mu \neq 0,38\ \mbox{segundos}\]
+  em que \(\mu\) é o tempo médio de reação de um adulto ao estímulo visual. Para realizar o teste, o psicólogo decide tomar uma amostra aleatória de \(n=40\) adultos com objetivo de aceitar a hipótese nula se a média da amostra cair em algum ponto entre 0,36 e 0,40 segundos; do contrário a hipótese será rejeitada. Como a decisão se baseia em uma amostra, existe a possibilidade de a média amostral ser menor do que 0,36 segundos ou maior que 0,40 segundos mesmo se a verdadeira média amostral ser 0,38 segundos. Da mesma forma é possível que a média amostral esteja entre os intervalos de 0,36 e 0,40 segundos mesmo que a verdadeira média possua, por exemplo, 0,41 segundos. Portanto, é importante investigar a probabilidade de que o teste nos leve a uma decisão errada.
+\end{itemize}
 
 Vamos supor que o desvio padrão seja \(\sigma=0,08\) segundos para estes dados e investiguemos a possibilidade de rejeitar falsamente a hipótese nula. Iremos supor que o verdadeiro tempo médio de reação seja 0,38 segundos, então encontramos a probabilidade de que a média amostral vá ser menor ou igual a 36 segundos ou maior igual a 40. A probabilidade de que isso ocorra é dada pela somas das áreas das duas regiões coloridas apresentadas na Figura \ref{fig:testehip1} a seguir, e pode ser determinada pela distribuição amostral da média por uma distribuição normal.
 
@@ -494,11 +694,7 @@ Portanto resume-se em:
 
 Se a hipótese nula \(H_0\) é verdadeira e aceita ou falsa e rejeitada, a decisão é correta em ambos casos; se é verdadeira e rejeitada ou falsa aceita. O erro tipo I e a probabilidade de obtê-lo é ocorrida pela letra grega \(\alpha\) e o erro tipo II pelo \(\beta\). Portanto pelo exemplo, temos que \(\alpha=0,11\) e \(\beta=0,21\) quando \(\mu=0,41\) e o psicólogo deve decidir se aceita ou rejeita a hipótese nula de \(\mu=0,38\)
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Região Crítica e nível de significância:} no geral definimos uma região crítica (RC) como o conjunto de valores no qual a probabilidade de ocorrência é pequena sob a hipótese de ser verdade o \(H_0\). Por exemplo: lançada 30 vezes uma moeda, sendo obtida num total de 28 caras. Claramente iremos desconfiar que é uma moeda honesta, visto que a probabilidade de ser obtida 28 caras em 30 lançamentos de uma moeda honesta é de 0,000000433996. Mesmo que haja essa mínima possibilidade de que a moeda honesta acerte este evento, pela perspectiva do teste de hipóteses, a obtenção de tal evento será uma evidência de que a nossa hipótese nula de honestidade da moeda não é muito plausível. Assim não dizemos que a moeda não é honesta, concluímos que não há evidência suficiente para apoiar a hipótese nula \citep{fariaestatistic}.
-\end{itemize}
+\textbf{Região Crítica e nível de significância:} no geral definimos uma região crítica (RC) como o conjunto de valores no qual a probabilidade de ocorrência é pequena sob a hipótese de ser verdade o \(H_0\). Por exemplo: lançada 30 vezes uma moeda, sendo obtida num total de 28 caras. Claramente iremos desconfiar que é uma moeda honesta, visto que a probabilidade de ser obtida 28 caras em 30 lançamentos de uma moeda honesta é de 0,000000433996. Mesmo que haja essa mínima possibilidade de que a moeda honesta acerte este evento, pela perspectiva do teste de hipóteses, a obtenção de tal evento será uma evidência de que a nossa hipótese nula de honestidade da moeda não é muito plausível. Assim não dizemos que a moeda não é honesta, concluímos que não há evidência suficiente para apoiar a hipótese nula \citep{fariaestatistic}.
 
 A definição dessa pequena probabilidade se faz por meio da escolha do \textbf{nível de significância \(\alpha\)} do teste, expressa como:
 
@@ -511,7 +707,11 @@ Geralmente é utilizado em \(\alpha=0,05\), \(\alpha=0,01\) ou \(\alpha=0,10\) c
 
 De \citet{fariaestatistic}, segue:
 
-\textbf{Exemplo 1:} Considere uma população representada por uma variável aleatória normal com média \(\mu\) e variância 400. Queremos testar:
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo:} Considere uma população representada por uma variável aleatória normal com média \(\mu\) e variância 400. Queremos testar:
+\end{itemize}
 
 \[H_0:\mu = 100\]
 \[H_A:\mu \neq 100\]
@@ -524,11 +724,7 @@ Com base em uma amostra aleatória simples de tamanho \(n=16\). Para tal define-
 \[=Pr(Z>-3)+Pr(Z>3) \rightarrow 2.Pr(Z>3)\]
 \[\alpha=0,0027\]
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Aplicações do Teste de Hipótese - Média com a variância conhecida:} ao caso de interessarmos na média de uma população normal e supondo que a variância seja conhecida. Pelo teste temos que:
-\end{itemize}
+\textbf{Aplicações do Teste de Hipótese - Média com a variância conhecida:} ao caso de interessarmos na média de uma população normal e supondo que a variância seja conhecida. Pelo teste temos que:
 
 \begin{equation} 
 z=\frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
@@ -537,7 +733,11 @@ z=\frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}
 
 onde \(\mu_o\) é o valor da média que ocorre sobre a hipótese nula. Trabalhar com unidades padronizadas \(z\) nos permitem formular vários critérios que se aplicam a muitos problemas diferentes. Lembrando que são amostras suficientemente grandes para que a distribuição amostral da média possa ser próxima por uma distribuição normal padrão.
 
-\textbf{Exemplo \citep{freund2009estatistica}:} Uma oceanógrafa com base numa amostra aleatória de tamanho \(n=35\) e ao nível 0,05 de significância, quer testar se a profundidade média do oceano numa determinada área é de 72,4 metros conforme registrado. O que ela decidirá se obtiver \(\overline{x}=73,2\) metros e se puder supor, usando informações de estudos anteriores análogos, que \(\sigma=2,1\) metros?
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo} \citep{freund2009estatistica}: Uma oceanógrafa com base numa amostra aleatória de tamanho \(n=35\) e ao nível 0,05 de significância, quer testar se a profundidade média do oceano numa determinada área é de 72,4 metros conforme registrado. O que ela decidirá se obtiver \(\overline{x}=73,2\) metros e se puder supor, usando informações de estudos anteriores análogos, que \(\sigma=2,1\) metros?
+\end{itemize}
 
 \[H_0: \mu=72,4 \mbox{metros}\]
 \[H_A: \mu \neq 72,4 \mbox{metros}\]
@@ -545,18 +745,18 @@ Temos que \(\alpha=0,05\), ou seja, pela tabela de distribuição normal bilater
 \[z=\frac{73,2-72,4}{2,1/\sqrt{35}}\approx 2,25\]
 Como \(z-2,25\) pertence a região critíca, então a hipótese nula deve ser rejeitada, a diferença entre \(\overline{x}=73,2\) e \(\mu=72,4\) é significante. Note que se a oceanógrafa tivesse utilizado o nível de 0,01 de significância nesse exemplo, ela não poderia ter rejeitado a hipótese nula. Pelo \textbf{valor \(p\) (probabilidade de cauda)} que é muito utilizado atualmente como medida de significância e é dado pela área total sob a curvada esquerda de \(Z=-2,25\) e da direita \(z=2,25\), observando a tabela temos que \(2(0,5000-0,4878)=0,0244\), poderíamos rejeitar a hipótese nula ao nível de 0,0244 de significância.
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Aplicações do Teste de Hipótese - Média com a variância desconhecida:} vamos supor que não sabemos o valor da variância e agora a um caso de \(n\) não suficientemente grande, ou seja, utilizamos o teste \(t\):
-\end{itemize}
+\textbf{Aplicações do Teste de Hipótese - Média com a variância desconhecida:} vamos supor que não sabemos o valor da variância e agora a um caso de \(n\) não suficientemente grande, ou seja, utilizamos o teste \(t\):
 
 \begin{equation} 
 t=\frac{\overline{X}-\mu_0}{S/\sqrt{n}}
   \label{eq:testehipvardesc}
 \end{equation}
 
-\textbf{Exemplo \citep{freund2009estatistica}:} A safra de alfafa de uma amostra aleatória de seis lotes de teste é dada por 1,4; 1,6; 0,9; 1,9; 2,2; e 1,2 tonelada por acre. Ao nível de 0,05 de significância, teste se isso corrobora a alegação de que a safra média para este tipo de alfafa é de 1,5 tonelada por acre.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exemplo} \citep{freund2009estatistica}: A safra de alfafa de uma amostra aleatória de seis lotes de teste é dada por 1,4; 1,6; 0,9; 1,9; 2,2; e 1,2 tonelada por acre. Ao nível de 0,05 de significância, teste se isso corrobora a alegação de que a safra média para este tipo de alfafa é de 1,5 tonelada por acre.
+\end{itemize}
 
 \[H_0: \mu=1,5\]
 \[H_A: \mu\neq1,5\]
@@ -566,22 +766,134 @@ Portanto não podemos rejeitar a hipótese nula, ou seja, os dados tendem a apoi
 
 Existe diversos outros como o teste para duas médias com amostras independentes ou dependentes, com proporções, etc. Ao leitor que pretende se aprofundar nesse conteúdo sugiro buscar literaturas complementares no campo de estatística.
 
+\textbf{Estatística F:} para a comparação de duas variâncias, utilizamos a estatística F como razão de variâncias. Sua hipótese nula será rejeitada se F for grande (variação entre \(overline{x}\) é muito grade para ser atribuído ao acaso). Utiliza-se a tabela XXXX onde compara-se as médias de \(k\) amostras aleatórias de tamanho \(n\), ou seja, os \textbf{graus de liberdade do denominador e do numerador} são respetivamente \(k-1\) e \(k(n-1)\).
+
+\begin{equation} 
+F=\frac{\mbox{estimativa de }\sigma^2 \ \mbox{baseada na variação entre as }\overline{x}'s}{\mbox{estimativa} de \sigma^2 \ \mbox{baseada na variação dentro das amostras}}
+  \label{eq:testef}
+\end{equation}
+
 \begin{itemize}
+\tightlist
 \item
-  \textbf{Análise de Variância:}
-\item
-  \textbf{Supervisionada x Não supervisionada:}
+  \textbf{Exemplo}:
 \end{itemize}
 
-\hypertarget{multlagrange}{%
-\section{Multiplicadores de Lagrange}\label{multlagrange}}
+\textbf{Análise de Variância:} também chamada de \textbf{ANOVA}, expressa uma medida da variação total num conjunto de dados como uma soma de termos, cada um dos quais é atribuído a uma fonte ou causa específica de variação \citep{freund2009estatistica}. Ao caso de apenas uma fonte de variação, dizemos \textbf{análise de variância de um critério}. Ela é utilizada para comparar a variabilidade entre as médias amostrais dos grupos e a variação dentro desses grupos.
 
-\hypertarget{kkt}{%
-\section{Karush-Kuhn-Tucker (KKT)}\label{kkt}}
+Para medir a variação total de \(kn\), em que consiste de \(k\) amostras com tamanho \(n\), é utilizado a \textbf{soma de quadrados total}:
 
-\hypertarget{bias}{%
-\section{Bias}\label{bias}}
+\begin{equation} 
+STQ= \displaystyle \sum^k_{i=1} \displaystyle \sum^k_{n=1}(x_{ij}-\overline{x})^2
+  \label{eq:sqtanova}
+\end{equation}
 
+em que \(x_{ij}\) é a \(j\)-ésima observação da \(i\)-ésima amostra (\(i=1,2,...,k\) e \(j=1,2,...,n\)) e \(\overline{x}\) é a média de todas as \(kn\) observações. Caso dividirmos a STQ ´pr \(kn-1\), obteremos variância dos dados combinados \citep{freund2009estatistica}.
+
+Ela também pode ser expressa pela seguinte identidade:
+
+\begin{equation} 
+STQ= n \displaystyle \sum^k_{i=1} (\overline{x}_i-\overline{x})^2+ \displaystyle \sum^k_{n=1}(x_{ij}-\overline{x}_i)^2
+  \label{eq:sqtanova2}
+\end{equation}
+
+onde \(n \displaystyle \sum^k_{i=1} (\overline{x}_i-\overline{x})^2\) é a \textbf{soma de quadrados de tratamentos SQ(Tr) que mede a variação entre as médias amostrais e \(\displaystyle \sum^k_{n=1}(x_{ij}-\overline{x}_i)^2\) é a} soma dos quadrados de erros SQE** que mede a variação dentro das amostrais individuais. Em SQE, refere-se ao erro experimental, que nada mais é a diferença entre STQ e SQ(Tr).
+
+A identidadade de ANOVA de um critério simplificada fica:
+
+\begin{equation} 
+STQ= SQ(Tr)+SQE
+  \label{eq:sqtanova3}
+\end{equation}
+
+Ao dividirmos a SQ(Tr) por \(k-1\) obtemos a grandeza que utiliza-se na estatística F, que é conhecida como \textbf{quadrado médio de tratamento} que tem como objetivo medir a variação entre as médias amostrais.
+
+\begin{equation} 
+QM(Tr)=\frac{SQ(Tr)}{k-1}
+  \label{eq:qmtr1}
+\end{equation}
+
+Da mesma forma, ao dividir SQE por \(k(n-1)\), obtemos o \textbf{quadrado médio de erro} que mede a variação dentre das amostrais.
+
+\begin{equation} 
+QME=\frac{SQE}{k(n-1)}
+  \label{eq:qme1}
+\end{equation}
+
+A estatítistica F, portanto será:
+
+\begin{equation} 
+F=\frac{QM(Tr)}{QME}
+  \label{eq:fanova}
+\end{equation}
+
+Podemos apresentar todos os cálculos com a finalidade de determinar F com a \textbf{tabela de análise de variância}:
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:anova1} Tabela de ANOVA de um critério.}\tabularnewline
+\toprule
+\textbf{Fonte de Variação} & \textbf{Graus de Liberdade} & \textbf{Soma de Quadrados} & \textbf{Quadrado Médio} & \textbf{F}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Fonte de Variação} & \textbf{Graus de Liberdade} & \textbf{Soma de Quadrados} & \textbf{Quadrado Médio} & \textbf{F}\tabularnewline
+\midrule
+\endhead
+Tratamentos & \(k-1\) & \(SQ(Tr)\) & \(QM(Tr)\) & \(\frac{QM(Tr)}{QME}\)\tabularnewline
+Erro & \(k(n-1)\) & \(SQE\) & \(QME\) &\tabularnewline
+Total & \(kn-1\) & \(STQ\) & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+Calculado F, temos a suposição de que os dados são compostos de amostras de populações normais, seguindo a hipótese nula das médias serem iguais e como hipótese alternativa de que as médias \(\mu\) não todas iguais.
+
+Ao caso de houver dois critérios, ocorre o acréscimo de blocos e teremos então a \textbf{soma de quadrados de blocos}:
+
+\begin{equation} 
+SQB=\frac{1}{k}. \displaystyle \sum^n_{j=1} T^2_j-\frac{1}{kn}.T^2
+  \label{eq:sqblocoss}
+\end{equation}
+
+em que \(T_j\) é o total de todos os valores do j-ésimo bloco.
+
+A STQ portanto, será expressao como:
+
+\begin{equation} 
+STQ=SQ(Tr)+SQB+SQE
+  \label{eq:sqtanova2crit}
+\end{equation}
+
+Por fim, a \textbf{tabela de ANOVA de dois critérios}:
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:anova2} Tabela de ANOVA de dois critérios.}\tabularnewline
+\toprule
+\textbf{Fonte de Variação} & \textbf{Graus de Liberdade} & \textbf{Soma de Quadrados} & \textbf{Quadrado Médio} & \textbf{F}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Fonte de Variação} & \textbf{Graus de Liberdade} & \textbf{Soma de Quadrados} & \textbf{Quadrado Médio} & \textbf{F}\tabularnewline
+\midrule
+\endhead
+Tratamentos & \(k-1\) & \(SQ(Tr)\) & \(QM(Tr)\) & \(\frac{QM(Tr)}{QME}\)\tabularnewline
+Blocos & \(n-1\) & SQB & \(QMB\) & \(\frac{QMB}{QME}\)\tabularnewline
+Erro & \(k(n-1)\) & \(SQE\) & \(QME\) &\tabularnewline
+Total & \(kn-1\) & \(STQ\) & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Exemplo 1:}
+
+\textbf{Supervisionada x Não supervisionada:}
+
+\textbf{Multiplicadores de Lagrange}
+
+\textbf{Karush-Kuhn-Tucker (KKT):}
+
+\hypertarget{dicionuxe1rio}{%
+\section{Dicionário}\label{dicionuxe1rio}}
+
+\textbf{Bias}
 \url{https://iaexpert.academy/2020/09/28/importancia-do-bias-nas-redes-neurais/}
 
 \hypertarget{medidasimport}{%
@@ -973,7 +1285,7 @@ Com algoritmo EM (Expectativa-maximização), por \citet{dempster1977maximum} é
 
 Resumo geral: o algoritmo EM, faz a etapa E com a função de verossimilhança para encontrar um valor médio e preencher os dados faltantes, faz a etapa M utilizando a máximização de verossimilhança para encontrar um valor médio com o menor erro possível e continua, a partir do resultado do segundo passo, sucessivamente até convergir no melhor valor e menor erro possível (global) para preencher os dados faltantes.
 
-Além de dados faltantes, é possível lidarmos com grande volume de dados. Por isso, o processamento computacional se torna cada vez mais complexo e para aumentarmos a eficiência e reduzir os custos usamos o processo de redução de dados ou a hierarquização para separarmos os conjuntos a serem estudados. Pode-se por meio de \textbf{Agregação de cubo de dados} (atividade de construção de um cubo de dados) que apesar de gerar maior necessidade de armazenamento, permite um processamento mais rápido por não necessitar varrer toda a base em busca de determinado valor. A \textbf{Seleção de subconjuntos de atributos} para utilizar os atributos altamente relevantes em detrimento dos menos relevantes (como por exemplo verificar pela significância). Ou também \textbf{reduzir a numerosidade } ou \textbf{dimensionalidade} que permitem que os dados seja estimados por alternativas de representação de dados menores e compactados e alguns métodos para hierarquizar as variáveis. Na seção de XXXXXXXXXXXX serão apresentados as principais estratégias.
+Além de dados faltantes, é possível lidarmos com grande volume de dados. Por isso, o processamento computacional se torna cada vez mais complexo e para aumentarmos a eficiência e reduzir os custos usamos o processo de redução de dados ou a hierarquização para separarmos os conjuntos a serem estudados. Pode-se por meio de \textbf{Agregação de cubo de dados} (atividade de construção de um cubo de dados) que apesar de gerar maior necessidade de armazenamento, permite um processamento mais rápido por não necessitar varrer toda a base em busca de determinado valor. A \textbf{Seleção de subconjuntos de atributos} para utilizar os atributos altamente relevantes em detrimento dos menos relevantes (como por exemplo verificar pela significância). Ou também \textbf{reduzir a numerosidade } ou \textbf{dimensionalidade} que permitem que os dados seja estimados por alternativas de representação de dados menores e compactados e alguns métodos para hierarquizar as variáveis. Na seção \ref{ptII} será apresentados algumas estratégias muito utilizadas.
 
 \hypertarget{outlier}{%
 \subsection{\texorpdfstring{\emph{Outlier}}{Outlier}}\label{outlier}}
@@ -1006,12 +1318,20 @@ Uma maneira mais complexa e muito precisa, é de identificá-los através de an�
 A escolha das medidas estatísticas para sua análise ou modelo de Aprendizado de Máquina dependem muito dos tipos de dados das variáveis em observação. Estes tipos de dados podem ser numéricos (como uma sala de aula, com alunos que variam sua altura de 1,51 metros a 1,98 metros) e categórico (como uma classificação num hospital de pacientes doentes ou não doentes), embora esses dois tipos podem ser subdivididos como números inteiros e ponto flutuante para variáveis numéricas e booleano, ordinal ou nominal para variáveis categóricas.
 
 As subdivisões mais comuns são:
-- Variáveis Numéricas:
-1. Variáveis inteiras (exemplo: \(1,2,3,..., n\));
-2. Variáveis de ponto flutuante (parte fracionária, por exemplo: 1,17; 0,10; 47,2).
 
 \begin{itemize}
 \tightlist
+\item
+  Variáveis Numéricas:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Variáveis inteiras (exemplo: \(1,2,3,..., n\));
+  \item
+    Variáveis de ponto flutuante (parte fracionária, por exemplo: 1,17; 0,10; 47,2).
+  \end{enumerate}
 \item
   Variáveis categóricas:
 
@@ -1103,7 +1423,7 @@ arc \ sen \sqrt{\frac{x}{100}}
 \end{enumerate}
 
 \begin{equation}
-log(x) \ \mbox{ou} ln(x)
+log(x) \ \mbox{ou} \ ln(x)
 \label{eq:translog}
 \end{equation}
 
@@ -1157,7 +1477,7 @@ conjunto de exemplos descrito utilizando somente o subconjunto de atributos impo
 • \textbf{\emph{Embedded} - Embutida:} é realizada internamente pelo próprio algoritmo de extração de padrões. Esta estratégia seleciona o subconjunto de atributos no processo de construção do modelo de classificação, durante a fase de treinamento, e geralmente são específicos para um dado algoritmo de aprendizado. A principal diferença dos métodos do tipo \emph{embedded} e \emph{wrapper},
 é que em \emph{embedded} depende em relação a um modelo preditivo específico, assim não permite a sua implementação em combinação com outros modelos \citep{souza2014computational}.
 
-Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o excesso de categorias - que ironicamente tem o propósito de organizar e facilitar. Basicamente são estratégias diferentes com sentidos diferentes de se iniciar a busca de atributos que podem ser irrelevantes ou relevantes: antes de criar um modelo de Aprendizado de maquina; usa-se um modelo de aprendizado para selecionar os atributos antes de iniciar uma etapa de análise {[}pode-se até mesmo realizar outro algoritmo de aprendizado após este algoritmo de seleção{]} ou a própria seleção com a análise {[}mesmo algoritmo para selecionar e concluir{]}). Quando misturamos esta estratégia, denominamos de \textbf{híbridos}.
+Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o excesso de categorias - que ironicamente tem o propósito de organizar e facilitar. Basicamente são estratégias diferentes com sentidos diferentes de se iniciar a busca de atributos que podem ser irrelevantes ou relevantes: antes de criar um modelo de Aprendizado de maquina; usa-se um modelo de aprendizado para selecionar os atributos antes de iniciar uma etapa de análise, pode-se até mesmo realizar outro algoritmo de aprendizado após este algoritmo de seleção, ou a própria seleção com a análise (mesmo algoritmo para selecionar e concluir). Quando misturamos esta estratégia, denominamos de \textbf{híbridos}.
 
 \begin{figure}
 
@@ -1173,13 +1493,17 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 \hypertarget{valid}{%
 \chapter{Validação de um modelo}\label{valid}}
 
+Com os dados totalmente preparados pela etapa de pré-processamento, estarão aptos para serem aplicados a um modelo de \emph{Machine Learning} para que se consiga estimar e realizar previsões, ajustar parâmetros e repetindo o processo até que se consiga um bom modelo, ou seja, contendo o mínimo de erro possível. É importante antes de finalizar sua análise, que o pesquisador verifique se seu modelo está adequado ao conjunto de dados, aplicado corretamente e fazer uma validação.
+
 \hypertarget{fitt}{%
 \section{\texorpdfstring{\emph{Overfitting, Underfitting}}{Overfitting, Underfitting}}\label{fitt}}
 
 Sendo \textbf{muito importantes} nesta área, o \textbf{\emph{Underfitting} (sub-ajustado)} e \textbf{\emph{Overfitting}} (sobre-ajustado)** são dois termos que temos que estar sempre atentos. Um bom modelo não deve sofrer de nenhum deles \citep{silver2013sinal}. Vamos entender melhor do que eles se tratam.
 
-\hypertarget{overfitting-um-cenuxe1rio-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-poruxe9m-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-uxe9-ruim.-nesta-situauxe7uxe3o-seu-modelo-aprendeu-tuxe3o-bem-as-relauxe7uxf5es-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informauxe7uxf5es-das-variuxe1veis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-poruxe9m-com-estes-novos-dados-diferentes-do-treino-esta-regra-nuxe3o-tem-validade-e-seu-desempenho-uxe9-afetado.}{%
-\subsection{\texorpdfstring{\textbf{Overfitting}: Um cenário de \emph{overfitting} ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.}{Overfitting: Um cenário de overfitting ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.}}\label{overfitting-um-cenuxe1rio-de-overfitting-ocorre-quando-nos-dados-de-treino-o-seu-modelo-ml-tem-um-desempenho-excelente-poruxe9m-quando-utilizamos-os-dados-em-novos-bancos-de-dados-seu-resultado-uxe9-ruim.-nesta-situauxe7uxe3o-seu-modelo-aprendeu-tuxe3o-bem-as-relauxe7uxf5es-existentes-dos-conjuntos-de-dados-para-treino-que-acabou-apenas-decorando-esses-dados.-portanto-ao-receber-as-informauxe7uxf5es-das-variuxe1veis-preditoras-aos-novos-dados-o-modelo-tenta-aplicar-as-mesmas-regras-decoradas-poruxe9m-com-estes-novos-dados-diferentes-do-treino-esta-regra-nuxe3o-tem-validade-e-seu-desempenho-uxe9-afetado.}}
+\hypertarget{overfitting}{%
+\subsection{\texorpdfstring{\textbf{Overfitting}}{Overfitting}}\label{overfitting}}
+
+Um cenário de \emph{overfitting} ocorre quando, nos dados de treino, o seu modelo ML tem um desempenho excelente, porém quando utilizamos os dados em novos bancos de dados, seu resultado é ruim. Nesta situação, seu modelo aprendeu tão bem as relações existentes dos conjuntos de dados para treino que acabou apenas decorando esses dados. Portanto ao receber as informações das variáveis preditoras aos novos dados, o modelo tenta aplicar as mesmas regras decoradas, porém com estes novos dados (diferentes do treino) esta regra não tem validade e seu desempenho é afetado.
 
 As principais causas e soluções de um \emph{overfitting} são:
 
@@ -1223,12 +1547,40 @@ Segue abaixo a Figura \ref{fig:graficofit} demonstrando os dois casos anteriores
 
 
 
+\hypertarget{separauxe7uxe3o-de-dados}{%
+\section{Separação de dados}\label{separauxe7uxe3o-de-dados}}
+
+Dependendo modelo que utilizarmos no conjunto de dados preparado, é possível trabalharmos com a totalidade dos dados históricos e obter um modelo de ML pronto para receber novos dados e realizar suas previsões de acordo com seu algoritmo, porém muitas vezes não teríamos como saber qual sua real performance em seu modelo. O algoritmo poderia estar com problemas de \textbf{overfitting} e ter decorado os dados, o que para suas futuras previsões é bem possível que haja graves problemas.
+
+Para medirmos esta performance, é fundamental de que se faça testes com este modelo, portanto é necessário utilizar um conjunto de dados diferentes do quais foram utilizados em sua formulação. Após a etapa de tratar os dados (pré-processmento), é recomendável antes de elaborar seu modelo ML, separar este \emph{dataset} total \(n\) em dois grupos: o primeiro grupo tem como propósito treinar o modelo, são os dados que serão apresentados ao algoritmo proposto pelo pesquisador para que se elabore um modelo (geralmente utilizam em torno dos 70\% dos dados) e o segundo grupo tem como responsabilidade testar este modelo treinado pelo primeiro grupo. É composto pelo resto do \emph{dataset} não utilizado no primeiro grupo e serve para ser apresesentado ao modelo elaborado, assim faz uma simulação de previsões com dados reais permitindo com que avalie o desempenho dele. É importante que o processo de separação dos dados seja de forma aleatória em seu \emph{dataset}, para que se evite grandes problemas de viés.
+
+Vamos imaginar a situação de avaliar bons pagadores e maus pagadores: você possui um enorme banco de dados com as características dos indivíduos e a classificação de quem é bom ou mau pagador e que está por ordem de idade - totalmente tratados pela etapa de pré-processamento. Primeiramente pegamos 70\% do total do conjunto de dados aleatoriamente e separamos para treinarmos um modelo.
+
+Após definirmos um modelo adequado ao conjunto de dados de treino, vamos treiná-lo com os dados apresentados para que ele aprenda a estimar valores futuros e classificar de acordo com as características do indivíduo, se será um bom ou mau pagador. Para verificarmos se este modelo é bom, utilizamos os outros 30\% da amostra, aplicamos no modelo treinado pelo primeiro grupo de dados e por fim comparamos com a \textbf{tabela de confusão}. Esta tabela basicamente possui os dados dos 30\% dos dados com suas classificações originais e a classificação que o próprio algoritmo que aprendeu com o primeiro grupo definiu, permitindo que possamos comparar seus acertos e erros. Note que caso não houvesse aleatoriedade na separação dos dados, possívelmente o modelo iria aprender apenas as pessoas com menor idade, os outros 30\% seriam os mais velhos, isso faria com que o modelo não prevesse corretamente.
+
+Supondo que 30\% dos dados equivale a 100 indivíduos a serem classificados e com a seguinte tabela de confusão:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+& Bom Pagador & Mau Pagador\tabularnewline
+\midrule
+\endhead
+Bom Pagador & 45 & 10\tabularnewline
+Mau Pagador & 13 & 32\tabularnewline
+\bottomrule
+\end{longtable}
+
+Podemos ver que como ``Bom Pagador'', o algoritmo que aprendeu com o primeiro grupo composto pelos outros 70\% dos dados, acertou 45 e errou 10 dizendo que era ``Mau pagador''. Do caso de classificar como ``Mau pagador'', o modelo acertou 32 e 13 eram na verdade ``Bom Pagador''. Portanto podemos calcular sua taxa de acerto e de erro apenas somando e dividindo pelo total:
+
+\[\mbox{Taxa de Acertos:}\ \frac{45+32}{100}=0,77 \ \ \ \mbox{Taxa de Erros:}\ \frac{10+13}{100}=0,23\]
+Podemos ver que o modelo, com os dados de teste, acertou 77\% e erro 23\%. Aparentemente o modelo não está tão bom. Neste caso o pesquisador precisaria verificar se está com um modelo adequado (pode ser que tenha outros melhores), se estão corretamenteajustados seus parâmetros ou se há necessidade de mais amostras em seu modelo para aprender.
+
 \hypertarget{validauxe7uxe3o-cruzada}{%
 \section{Validação Cruzada}\label{validauxe7uxe3o-cruzada}}
 
 A fim de que não haja previsões desastrosas geradas pelo modelo, para medirmos o desempenho real do modelo criado, é necessário que realizemos testes com ele, utilizando dados diferentes dos que foram apresentados no início. Portanto uma das técnicas mais utilizadas é a \textbf{Cross-validation (Validação Cruzada)}.
 
-Após a realização do pré-processamento (analisar), iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
+Após a realização do pré-processamento ou análise de dados com algum modelo específico, iremos separar a totalidade dos dados históricos existentes em dois grupos, sendo o primeiro responsável pelo aprendizado do modelo, e o segundo por realizar os testes.
 Seguindo o mesmo exemplo de bons ou mau pagadores, usualmente separamos o conjunto de dados dos clientes em duas amostras. Uma com
 
 \hypertarget{como-escolher-um-bom-modelo}{%
@@ -4609,7 +4961,9 @@ O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver @ref
 \hypertarget{boost}{%
 \section{\texorpdfstring{\emph{Boosting}}{Boosting}}\label{boost}}
 
-técnicas de \textbf{\emph{boosting}} \citep{freund1996experiments},
+O método \textbf{\emph{boosting}} \citep{freund1996experiments} é um método de combinação de muitos classificadores com o propósito de fornecer uma classificação muito mais eficiente, considerado uma das ideias mais poderosas de aprendizagem nos últimos vinte anos \citep{hastie2009elements}. É um processo iterativo utilizado para ser alterado adaptativamente a distribuição de exemplos de treinamento, assim os classificadores de base tem como foco exemplos difíceis de classificar. Originalmente foi elaborado para problemas de classificação, mas pode ser muito bem aplicado para regressão.
+
+O mais conhecido é o algoritmo \emph{boosting} proposto por \citet{freund1996experiments}, o \textbf{\emph{AdaBoost} (Adaptative Boosting}.
 
 \hypertarget{rf}{%
 \section{\texorpdfstring{Floresta Aleatória - \emph{Random Forest}}{Floresta Aleatória - Random Forest}}\label{rf}}
