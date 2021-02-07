@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 Algoritmos de Aprendizagem I | Fundamentos de Machine Learning</title>
+  <title>Capítulo 6 Modelos de Aprendizagem I | Fundamentos de Machine Learning</title>
   <meta name="description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 Algoritmos de Aprendizagem I | Fundamentos de Machine Learning" />
+  <meta property="og:title" content="Capítulo 6 Modelos de Aprendizagem I | Fundamentos de Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 Algoritmos de Aprendizagem I | Fundamentos de Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 6 Modelos de Aprendizagem I | Fundamentos de Machine Learning" />
   
   <meta name="twitter:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -85,14 +85,13 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="dicio.html"><a href="dicio.html"><i class="fa fa-check"></i><b>3</b> Uma breve revisão</a><ul>
 <li class="chapter" data-level="3.1" data-path="dicio.html"><a href="dicio.html#um-pouco-de-álgebra-linear"><i class="fa fa-check"></i><b>3.1</b> Um pouco de Álgebra Linear</a></li>
-<li class="chapter" data-level="3.2" data-path="dicio.html"><a href="dicio.html#estatística"><i class="fa fa-check"></i><b>3.2</b> Estatística</a></li>
-<li class="chapter" data-level="3.3" data-path="dicio.html"><a href="dicio.html#dicionário"><i class="fa fa-check"></i><b>3.3</b> Dicionário</a></li>
-<li class="chapter" data-level="3.4" data-path="dicio.html"><a href="dicio.html#medidasimport"><i class="fa fa-check"></i><b>3.4</b> Medidas de Importância</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="dicio.html"><a href="dicio.html#medidasdep"><i class="fa fa-check"></i><b>3.4.1</b> Medidas de Dependência</a></li>
-<li class="chapter" data-level="3.4.2" data-path="dicio.html"><a href="dicio.html#medinfo"><i class="fa fa-check"></i><b>3.4.2</b> Medidas de Informação</a></li>
-<li class="chapter" data-level="3.4.3" data-path="dicio.html"><a href="dicio.html#meddist"><i class="fa fa-check"></i><b>3.4.3</b> Medidas de Similaridade e Dissimilaridade</a></li>
-<li class="chapter" data-level="3.4.4" data-path="dicio.html"><a href="dicio.html#medidas-de-precisão"><i class="fa fa-check"></i><b>3.4.4</b> Medidas de Precisão</a></li>
-<li class="chapter" data-level="3.4.5" data-path="dicio.html"><a href="dicio.html#medidas-de-consistência"><i class="fa fa-check"></i><b>3.4.5</b> Medidas de consistência</a></li>
+<li class="chapter" data-level="3.2" data-path="dicio.html"><a href="dicio.html#um-pouco-de-estatística"><i class="fa fa-check"></i><b>3.2</b> Um pouco de Estatística</a></li>
+<li class="chapter" data-level="3.3" data-path="dicio.html"><a href="dicio.html#medidasimport"><i class="fa fa-check"></i><b>3.3</b> Medidas de Importância</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="dicio.html"><a href="dicio.html#medidasdep"><i class="fa fa-check"></i><b>3.3.1</b> Medidas de Dependência</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dicio.html"><a href="dicio.html#medinfo"><i class="fa fa-check"></i><b>3.3.2</b> Medidas de Informação</a></li>
+<li class="chapter" data-level="3.3.3" data-path="dicio.html"><a href="dicio.html#meddist"><i class="fa fa-check"></i><b>3.3.3</b> Medidas de Similaridade e Dissimilaridade</a></li>
+<li class="chapter" data-level="3.3.4" data-path="dicio.html"><a href="dicio.html#medidas-de-precisão"><i class="fa fa-check"></i><b>3.3.4</b> Medidas de Precisão</a></li>
+<li class="chapter" data-level="3.3.5" data-path="dicio.html"><a href="dicio.html#medidas-de-consistência"><i class="fa fa-check"></i><b>3.3.5</b> Medidas de consistência</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="preprocesso.html"><a href="preprocesso.html"><i class="fa fa-check"></i><b>4</b> Pré-processamento</a><ul>
@@ -111,12 +110,11 @@
 <li class="chapter" data-level="5.1.1" data-path="valid.html"><a href="valid.html#overfitting"><i class="fa fa-check"></i><b>5.1.1</b> <strong>Overfitting</strong></a></li>
 <li class="chapter" data-level="5.1.2" data-path="valid.html"><a href="valid.html#underfitting"><i class="fa fa-check"></i><b>5.1.2</b> <strong>Underfitting</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="valid.html"><a href="valid.html#separação-de-dados"><i class="fa fa-check"></i><b>5.2</b> Separação de dados</a></li>
-<li class="chapter" data-level="5.3" data-path="valid.html"><a href="valid.html#validação-cruzada"><i class="fa fa-check"></i><b>5.3</b> Validação Cruzada</a></li>
-<li class="chapter" data-level="5.4" data-path="valid.html"><a href="valid.html#como-escolher-um-bom-modelo"><i class="fa fa-check"></i><b>5.4</b> Como escolher um bom modelo?</a></li>
-<li class="chapter" data-level="5.5" data-path="valid.html"><a href="valid.html#aocroc"><i class="fa fa-check"></i><b>5.5</b> AOC e ROC</a></li>
+<li class="chapter" data-level="5.2" data-path="valid.html"><a href="valid.html#holdout"><i class="fa fa-check"></i><b>5.2</b> Validação cruzada Hold-out</a></li>
+<li class="chapter" data-level="5.3" data-path="valid.html"><a href="valid.html#kfold"><i class="fa fa-check"></i><b>5.3</b> Validação Cruzada <em>K-fold</em></a></li>
+<li class="chapter" data-level="5.4" data-path="valid.html"><a href="valid.html#aocroc"><i class="fa fa-check"></i><b>5.4</b> ROC e AUC</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html"><i class="fa fa-check"></i><b>6</b> Algoritmos de Aprendizagem I</a><ul>
+<li class="chapter" data-level="6" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html"><i class="fa fa-check"></i><b>6</b> Modelos de Aprendizagem I</a><ul>
 <li class="chapter" data-level="6.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#naive-bayes"><i class="fa fa-check"></i><b>6.1</b> Naive Bayes</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exbayes"><i class="fa fa-check"></i><b>6.1.1</b> Exemplo</a></li>
 </ul></li>
@@ -187,8 +185,16 @@
 
             <section class="normal" id="section-">
 <div id="Algoritmosaprendizagem" class="section level1">
-<h1><span class="header-section-number">Capítulo 6</span> Algoritmos de Aprendizagem I</h1>
-<p><em>Existe uma infinidade de algoritmos utilizados em machine learning, cada um com uma finalidade específica. Há também características que podem inviabilizar a escolha do modelo mais preciso para determinado problema, como a utilização alto poder computacional.</em></p>
+<h1><span class="header-section-number">Capítulo 6</span> Modelos de Aprendizagem I</h1>
+<p>É fato que existe uma infinidade de algoritmos utilizados em ML, melhoramos muito e atualmente um modelo pode ter até mais que uma finalidade específica. Temos o presente de ver inúmeros projetos que não apenas as gerações anteriores, como nós também não imaginávamos. É fato também de há muitas variáveis que podem inviabilizar a escolha do melhor modelo para determinado problema ou ainda as limitações de desempenho computacional.</p>
+<p>Antes de darmos início aos modelos de aprendizagem, é importante saber que dentro do ML, o aprendizado pode ser realizado pelas formas: supervisionada, não supervisionada e por reforço.</p>
+<ul>
+<li><p><strong>Análise supervisionada:</strong> quando é dado um conjunto de dados rotulados. Basicamente sabemos qual é a nossa saída e que ela deve ser semelhante a este conjunto de dados, havendo uma ideia de que há uma relação entre essa saída e a entrada dos dados (conjunto de dados inicial). Como por exemplo a quantidade de combustível consumida pelo veículo na semana (saída e rótulo) com as variáveis tamanho do motor e tempo com o ar-condicionado ligado na semana (variáveis entrada). Aplicada geralmente em casos de análise de regressão e classificação com variáveis categóricas ou binárias (serão apresentadas gradualmente).</p></li>
+<li><p><strong>Análise não supervisionada:</strong> nesta situação não temos uma variável a ser respondida (saída) ou rótulo, a ideia é identificar grupos de acordo com sua semelhança. Como por exemplo identificar perfis de clientes em uma loja de acordo com as variáveis de entrada (características). Utilizada geralmente na identificação de grupos com alguma(s) característica(s) em comum - por alguma medida estatística - em Análise de Componentes Principais e <em>Clusters</em>, por exemplo.</p></li>
+<li><p><strong>Análise por reforço:</strong> quando há uso de treinamentos de modelos de aprendizado de máquina para tomar decisões. O agente com o objetivo de receber recompensas em um sistema complexo e sem respostas definitivas, trabalha com tentativa e erro para encontrar a solução do problema. O pesquisador-programador com o intuito de encontrar o melhor resultado com o menor erro programa recompensas ou penalidades para as ações executas pela máquina. Cabe ao modelo de acordo com suas regras pré-definidas com suas tentativas de minimzar o erro e maximizar a recompensar encontrar a “melhor resposta” possível. Como o caso da criança que tenta andar de bicicleta e a cada tentativa, busca melhorar seu “modelo” e diminuir seus erros para que consiga andar de bicicleta adequadamente.</p></li>
+</ul>
+<p>Lembrando de que também pode ser combinado estas formas e possívelmente deve ter ouvido falar de outros nomes, muitos por exemplo, utilizam o termo “semi-supervisionada” ao caso de exemplos com supervisão e não supervisão trabalhadas juntas. A base é a análise supervisionada e a não supervisionada, com o uso do reforço para o aprendizado de máquina, incluiu-se a análise por reforço como uma terceira.</p>
+<p>O objetivo de que a máquina se torne capaz de tomar suas próprias decisões ou pelo menos com o mínimo de intervenção humana continua. Existe muitos algoritmos de ML com diferentes metodologias e também que muitas vezes são combinadas. Ainda é um desafio pro ser humano conquistar este objetivo. Sem mais delongas, agora que temos todo o contexto histórico e discussões de ML, possuímos a base adequada para o estudo, vamos iniciar com o estudo dos modelos de Aprendizado de Máquina. A seguir, apresenta-se a base de muitos cientistas e desenvolvedores.</p>
 <div id="naive-bayes" class="section level2">
 <h2><span class="header-section-number">6.1</span> Naive Bayes</h2>
 <p>Antes de falarmos sobre este algoritmo, vamos para o conceito matemático. Em (<a href="dicio.html#dicio">3</a>) tratamos do Teorema de Bayes para <span class="math inline">\(n\)</span> atributos. Colocando-o como probabilidade condicional:
@@ -373,7 +379,7 @@ Figura 6.5: Coeficiente de determinação, prossegue a sobreposição de (a): <s
     \tag{6.13}
 \end{equation}\]</span></p>
 <p><span class="math inline">\(r^2\)</span> portanto, mede a proporção ou percentual da variação total de Y explicada pelo modelo de regressão. Por manipulação algébrica, podemos verificar também que <span class="math inline">\(r^2=\hat{\beta}^2_1(\frac{S^2_x}{S^2_y})\)</span>, sendo <span class="math inline">\(S^2_x\ \mbox{e} \ S^2_y\)</span> as respectivas variâncias amostrais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
-<p>Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em <a href="dicio.html#medidasdep">3.4.1</a>, que mede o grau de associação entre duas variáveis.</p>
+<p>Note que ao aplicarmos a raiz quadrada no coeficiente de determinação obtemos o coeficiente de correlação visto em <a href="dicio.html#medidasdep">3.3.1</a>, que mede o grau de associação entre duas variáveis.</p>
 <p><span class="math display">\[r=\pm \sqrt{r^2}\]</span>
 - <strong>Análise de Variância na Regressão</strong></p>
 <p>Anteriormente vimos que <span class="math inline">\(\sum y^2_i=\hat{\beta}^2_1 \sum x_i^2+\sum \hat{\mu}^2_i\)</span> podem ser expressas como <span class="math inline">\(STQ=SQE+SQR\)</span>, a soma total de quadrados (STQ) composta pela soma dos quadrados expicados pela regressão (SQE) e a soma do quadrado dos resíduos (SQR). Como sabe-se sobre análise de variância, associados a eles encontra-se os graus de liberdade, onde <span class="math inline">\(STQ\)</span> possui <span class="math inline">\(n-1\)</span> g.l ao calcular a média da amostra <span class="math inline">\(\overline{Y}\)</span>. A <span class="math inline">\(SQR\)</span> tem <span class="math inline">\(n-2\)</span> g.l (ao caso de duas variáveis com o intercepto presente) e a <span class="math inline">\(SQE\)</span> possui 1 g.l (ao caso de duas variáveis) pela função <span class="math inline">\(SQE=\hat{\beta_1^2}\sum x^2_i\)</span>.</p>
@@ -440,7 +446,7 @@ Figura 6.6: Em (a) curva de função exponencial e (b) após aplicarmos o logari
 <p>Da mesma forma, <span class="math inline">\(Y_i\)</span> a variável dependente, <span class="math inline">\(X_{2}\)</span> e <span class="math inline">\(X_{3}\)</span> as independentes explanatórias (explicativa), <span class="math inline">\(\mu_i\)</span> o erro estocático e <span class="math inline">\(i\)</span> para indicar <span class="math inline">\(i\)</span>-ésima observação. Ao caso dos parâmetros, <span class="math inline">\(\beta_0\)</span> como intercepto, <span class="math inline">\(\beta_1\)</span> e <span class="math inline">\(\beta_2\)</span> os <strong>coeficientes parciais de regressão/angulares</strong>. <span class="math inline">\(\beta_2\)</span> mede a variação no valor médio de <span class="math inline">\(Y\)</span> (esperança de <span class="math inline">\(Y\)</span>), por unidade de variação em <span class="math inline">\(X_2\)</span>, mantendo <span class="math inline">\(X_3\)</span> constante, ou seja, traz o efeito “direto” de uma unidade de variação em <span class="math inline">\(X_2\)</span> sobre o valor médio de <span class="math inline">\(Y\)</span>, excluindo o efeito de <span class="math inline">\(X_3\)</span> na média de <span class="math inline">\(Y\)</span>. De mesmo modo, <span class="math inline">\(X_3\)</span> com <span class="math inline">\(X_2\)</span> constante.</p>
 <p>A regressão múltipla pressupõe as mesma hipóteses de que a regressão linear simples, porém como acréscimo - e muito importante- que as variáveis independentes devem estar <strong>ausentes de multicolinearidade</strong>, ou seja, não devem haver relação linear entre si. Se essa relação linear existir entre <span class="math inline">\(X_2\)</span> e <span class="math inline">\(X_3\)</span> <strong>são colineares</strong> ou <strong>linearmente dependentes</strong>, do contrário <strong>linearmente independentes</strong>. Caso a multicolinearidade for perfeita, os coeficientes de regressão das variáveis <span class="math inline">\(X\)</span> serão indeterminados e seus erros padrão, infinitos. Se a multicolinearidade for menos que perfeita, serão determinado mas com grandes erros padrão (em relação aos próprios
 coeficientes), o que trará um modelo ruim para sua estimação.</p>
-<p>Para medirmos a multicolinearidade é comum a análise de <strong>correlação de pearson</strong> entre todas as variáveis, como mencionada em <strong>Medidas de Dependência <a href="dicio.html#medidasdep">3.4.1</a></strong>, ou analisar a ocorrência de intervalo de confiança mais amplo, verificação de razões “t” insignificantes mesmo que seu <span class="math inline">\(R^2\)</span> esteja alto, parâmetros estimados muitos sensíveis a qualquer alteração de dados e comumente utilizado para verificar o <strong>fator de inflação de variância (FIV)</strong> <span class="citation">(Montgomery, Peck, and Vining <a href="#ref-montgomery2012introduction">2012</a>)</span>, que pode ser expressa como:</p>
+<p>Para medirmos a multicolinearidade é comum a análise de <strong>correlação de pearson</strong> entre todas as variáveis, como mencionada em <strong>Medidas de Dependência <a href="dicio.html#medidasdep">3.3.1</a></strong>, ou analisar a ocorrência de intervalo de confiança mais amplo, verificação de razões “t” insignificantes mesmo que seu <span class="math inline">\(R^2\)</span> esteja alto, parâmetros estimados muitos sensíveis a qualquer alteração de dados e comumente utilizado para verificar o <strong>fator de inflação de variância (FIV)</strong> <span class="citation">(Montgomery, Peck, and Vining <a href="#ref-montgomery2012introduction">2012</a>)</span>, que pode ser expressa como:</p>
 <p><span class="math display" id="eq:vif">\[\begin{equation}
     VIF_j=\frac{1}{1-r^2_j} \ \ j=1,2,...,p
     \tag{6.15}
@@ -1337,15 +1343,14 @@ Figura 6.8: Gráfico tridimensional a exemplo de Gradiente Descendente <span cla
 
 <p>O algoritmo pode ser expresso como:</p>
 <p><span class="math display" id="eq:GD">\[\begin{equation}
-    \theta_j := \theta_j - \alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1 
-    \tag{6.24}
+    \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j}J(\theta_0,\theta_1) \ \mbox{com} \ j=\theta_0 \ \mbox{e} \ j=\theta_1     \tag{6.24}
 \end{equation}\]</span></p>
 <p>com <span class="math inline">\(j\)</span> referindo-se à quantidade de observações (parâmetros que pretendemos estimar) da amostra.</p>
-<p>O algoritmo é processado da seguinte forma: imagine na mesma Figura <a href="Algoritmosaprendizagem.html#fig:gd">6.8</a> que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em <span class="math inline">\(Z=10\)</span>. Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de <span class="math inline">\(Z\)</span> ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu <span class="math inline">\(\alpha\)</span> um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com <span class="math inline">\(\alpha \frac{d}{d \theta_j}J(\theta_0,\theta_1)\)</span>. Caso fosse uma taxa pequena de <span class="math inline">\(\alpha\)</span>, seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de <span class="math inline">\(Z\)</span> (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.</p>
+<p>O algoritmo é processado da seguinte forma: imagine na mesma Figura <a href="Algoritmosaprendizagem.html#fig:gd">6.8</a> que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em <span class="math inline">\(Z=10\)</span>. Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de <span class="math inline">\(Z\)</span> ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu <span class="math inline">\(\alpha\)</span> um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com <span class="math inline">\(\alpha \frac{\partial}{\partial \theta_j}J(\theta_0,\theta_1)\)</span>. Caso fosse uma taxa pequena de <span class="math inline">\(\alpha\)</span>, seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de <span class="math inline">\(Z\)</span> (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.</p>
 <p>Com o primeiro passo dado (supor passo <span class="math inline">\(1 = 40\)</span>), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada <span class="math inline">\(\theta\)</span> <strong>simultâneamente</strong> (caso dois <span class="math inline">\(\theta\)</span>’s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto <span class="math inline">\(2=15\)</span>. Conforme vai se aproximando de <span class="math inline">\(Z\)</span>, seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de <span class="math inline">\(Z=10\)</span> que é o ponto ótimo da função.</p>
 <p>Assim o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (sim! Podemos encontrar os parâmetros dos exemplos de regressão com este algoritmo também!)</p>
 <p>Desta forma, atribuímos (“<span class="math inline">\(:=\)</span>”) para a própria observação de entrada da função receber ela mesma subtraída <span class="math inline">\(\alpha\)</span> que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). <strong><span class="math inline">\(\alpha\)</span>( learning rate - taxa de aprendizagem)</strong> é um valor fixo que controla o tamanho do passo em cada iteração: quando <span class="math inline">\(\alpha\)</span> for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). <span class="citation">Rendle and Schmidt-Thieme (<a href="#ref-rendle2008online">2008</a>)</span> divulgaram que a fatoração de matrizes para a predição de <em>ratings</em> nos dados do desafio <em>Netflix</em> precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.</p>
-<p>Para facilitar a compreensão do efeito da taxa de variação, observe a Figura <a href="Algoritmosaprendizagem.html#fig:gd1">6.9</a>. No primeiro gráfico você inicia seu algoritmo com o valor <span class="math inline">\(\theta\)</span> e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\geq 0\)</span>), portanto em <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor positivo}\)</span>, faz que com que esse novo <span class="math inline">\(\theta\)</span> (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (<span class="math inline">\(\frac{d}{d\theta}j(\theta)\leq 0\)</span>), portanto <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor negativo}\)</span>, fará com que o novo <span class="math inline">\(\theta\)</span> seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.</p>
+<p>Para facilitar a compreensão do efeito da taxa de variação, observe a Figura <a href="Algoritmosaprendizagem.html#fig:gd1">6.9</a>. No primeiro gráfico você inicia seu algoritmo com o valor <span class="math inline">\(\theta\)</span> e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (<span class="math inline">\(\frac{\partial}{\partial\theta}j(\theta)\geq 0\)</span>), portanto em <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor positivo}\)</span>, faz que com que esse novo <span class="math inline">\(\theta\)</span> (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (<span class="math inline">\(\frac{\partial}{\partial\theta}j(\theta)\leq 0\)</span>), portanto <span class="math inline">\(\theta=\theta-\alpha.\mbox{um valor negativo}\)</span>, fará com que o novo <span class="math inline">\(\theta\)</span> seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.</p>
 <div class="figure" style="text-align: center"><span id="fig:gd1"></span>
 <img src="Figuras/gd1.png" alt="Efeito da taxa de variação no Gradiente Descendente." width="70%" />
 <p class="caption">
@@ -1361,7 +1366,7 @@ Figura 6.9: Efeito da taxa de variação no Gradiente Descendente.
 </ol>
 <p><span class="math display">\[j(\theta)=\theta^2\]</span></p>
 <p>Queremos minimizá-la <span class="math inline">\(min \ j(\theta)\)</span>. Portanto precisamos inicialmente colocar um número aleatório para nosso parâmetro - não ótimo - para que o algoritmo atualize a cada iteração. Vamos supor a taxa de aprendizagem (<em>learning rate</em>) <span class="math inline">\(\alpha=0,1\)</span> e <span class="math inline">\(\theta=4\)</span> para facilitar. Ou seja, <span class="math inline">\(j(\theta)=4^2=16\)</span>. Vamos atualizar os parâmetros:</p>
-<p><span class="math display">\[\theta := \theta-\alpha.\frac{d}{d\theta}j(\theta) \]</span>
+<p><span class="math display">\[\theta := \theta-\alpha.\frac{\partial}{\partial\theta}j(\theta) \]</span>
 <span class="math display">\[\mbox{derivando a função} \ j(\theta)=\theta^2 \ \mbox{e substituindo:}\]</span>
 <span class="math display">\[\theta:= \theta -\alpha.2\theta \]</span>
 <span class="math display">\[\mbox{substituindo os valores de}\ \alpha\ \mbox{e}\ \theta: \]</span>
@@ -1479,7 +1484,7 @@ Figura 6.10: Função <span class="math inline">\(X^2\)</span> com valores de en
 <span class="math display">\[j(\theta_1,\theta_2)=1^2+2^2=5\]</span>
 Queremos <span class="math inline">\(min \ j(\theta_1,\theta_2)\)</span>Como explicado, ao caso de haver mais de um parâmetro precisamos separar atualizar cada um simultâneamente e aplicar derivada parcial em sua função:</li>
 </ol>
-<p><span class="math display">\[\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{d}{d\theta_2}j(\theta_1,\theta_2)\]</span>
+<p><span class="math display">\[\theta_1:=\theta_1-\alpha \frac{\partial}{\partial\theta_1}j(\theta_1,\theta_2) \ \ \mbox{e}\ \ \theta_2:=\theta_2-\alpha \frac{\partial}{\partial\theta_2}j(\theta_1,\theta_2)\]</span>
 <span class="math display">\[\mbox{calculando as derivadas parciais de}\ j(\theta_1,\theta_2)=\theta_1^2+\theta_2^2\ \mbox{obtemos:}\]</span>
 <span class="math display">\[\frac{d}{d\theta_1}j(\theta_1,\theta_2)=2\theta_1 \ \
 \mbox{e}\ \ \frac{d}{d\theta_2}j(\theta_1,\theta_2)=2\theta_2\]</span></p>
