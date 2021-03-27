@@ -75,22 +75,25 @@
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabela}
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
   \thm@postskip=\thm@preskip
 }
-\usepackage{float} \floatplacement{figure}{H}
+\usepackage{float} \floatplacement{figure}{H} \usepackage{graphicx} \usepackage{fancyhdr} \pagestyle{fancy} \fancyhead[R]{\thepage} \fancyhead[L]{Fundamentos de \textit{Machine Learning}} \renewcommand{\headrulewidth}{0pt} \fancyfoot{} \AtBeginDocument{\renewcommand{\chaptername}{Capítulo}}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{Fundamentos de Machine Learning}
+\title{Fundamentos de \emph{Machine Learning}}
 \author{Elton Massahiro Saito Loures}
-\date{2021-02-07}
+\date{2021-03-26}
 
 \begin{document}
 \maketitle
 
+\renewcommand*\contentsname{Sumário}
 {
 \setcounter{tocdepth}{1}
 \tableofcontents
@@ -253,7 +256,7 @@ A diferença entre ambos é de natureza filosófica com ontologias e epistemolog
 \hypertarget{machinelearning}{%
 \chapter{O Aprendizado de Máquina}\label{machinelearning}}
 
-Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado \textbf{Machine Learning (ML)}. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ele é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Ele busca entender a estrutura dos dados com modelos que atendam a certos pressupostos - muitas vezes não temos nem conhecimento de como essa estrutura se parece.
+Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado \textbf{\emph{Machine Learning (ML)}}. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ele é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Ele busca entender a estrutura dos dados com modelos que atendam a certos pressupostos - muitas vezes não temos nem conhecimento de como essa estrutura se parece.
 
 \citet{samuel1959some}, engenheiro do MIT popularizou o termo \emph{``Machine Learning''} (Aprendizado de Máquina), descrevendo o conceito com ``um campo de estudo que dá aos computadores a habilidade de aprender sem terem sidos programados para tal'' \citep{simon2013too}. Com a expansão da internet e seu abundante armazenamento de dados na \emph{web}, o \emph{Big data}, foi necessário - ainda é - aprimorar sistemas de organização, classificação, análise de dados e identificação de padrões para tratá-los. Isso fez com que o Aprendizado de Máquina entrasse em destaque e passasse a ser uma das áreas mais importantes. Na seção \ref{i-a} foi apresentado alguns exemplos de aplicações de IA, o mesmo se aplicam para o ML.
 
@@ -292,11 +295,11 @@ Para representação gráfica de uma grandeza vetorial, utiliza-se um segmento o
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/vetor} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/vetor} 
 
 }
 
-\caption{demonstração de um vetor.}\label{fig:vetor}
+\caption{Demonstração de um vetor.}\label{fig:vetor}
 \end{figure}
 
 
@@ -434,7 +437,7 @@ Os testes paramétricos assumem que a distribuição de probabilidade da popula�
 \setcounter{enumi}{2}
 \tightlist
 \item
-  \textbf{Variância e Desvio padrão (Erro padrão)}
+  \textbf{Variância e Desvio Padrão (Erro Padrão)}
 \end{enumerate}
 
 A dispersão de um conjunto de dados será pequena se os valores estão concentrados em torno da média e grande no oposto, denota-se \textbf{desvios da média} medir a variação de um conjunto de dados em termos das quantidades pelas quais os valores desviam de sua média:
@@ -484,7 +487,7 @@ em que \(E\) é a esperança (média).
 \setcounter{enumi}{4}
 \tightlist
 \item
-  \textbf{Distribuição normal}
+  \textbf{Distribuição Normal}
 \end{enumerate}
 
 Em estatística, uma distribuição de probabilidade descreve o comportamento aleatório de um fenômeno dependente do acaso. Há muitas distribuições de probabilidade diferentes, sendo de muita importância, a distribuição simétrica perfeitamente denominada como \textbf{distribuição em forma de sino} ou \textbf{distribuição normal}. Quando a média, mediana e a moda coincidem. Dizemos que \(X\) é uma variável aleatória normal, ou normalmente distribuída, com parâmetros \(\mu\) e \(\sigma^2\), se a função densidade de \(X\) é dada por:
@@ -498,7 +501,7 @@ A função de densidade é uma curva em forma de sino simétrica em relação a 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/distnormal} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/distnormal} 
 
 }
 
@@ -512,7 +515,7 @@ A função de densidade é uma curva em forma de sino simétrica em relação a 
 \setcounter{enumi}{5}
 \tightlist
 \item
-  \textbf{Distribuição binomial}
+  \textbf{Distribuição Binomial}
 \end{enumerate}
 
 A distribuição de probabilidade discreta do número de sucessos com \(n\) tentativas, supondo \(X\) binomial com parâmetros \((n,p)\). Calcula-se sua distribuição como:
@@ -618,7 +621,7 @@ Como visto anteriormente, uma distribuição simétrica perfeitamente denominada
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/simetria} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/simetria} 
 
 }
 
@@ -633,7 +636,7 @@ Estes conceitos aplicam-se a qualquer tipo de dados. Para conjuntos de dados gra
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/assimetria} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/assimetria} 
 
 }
 
@@ -655,7 +658,7 @@ Quanto ao grau de achatamento da curva são denominadas \textbf{platicúrticas, 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/curtose} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/curtose} 
 
 }
 
@@ -678,7 +681,7 @@ onde \(K\) é o coeficiente de curtose, \(q_3\) o terceiro quartil, \(q_1\) o pr
 \setcounter{enumi}{9}
 \tightlist
 \item
-  \textbf{Função de verossimilhança}
+  \textbf{Função de Verossimilhança}
 \end{enumerate}
 
 A verossimilhança \(L\) de um conjunto de parâmetros \(\theta\), com dada informação \(x\). É igual a probabilidade da mesma observação \(x\) ter ocorrido dados os valores dos mesmos parâmetros \(\theta\). Conhecendo um parâmetro \(\theta\), a probabilidade condicional de \(x\) é \(P(x|\theta)\), mas se o valor de \(x\) é conhecido, pode-se realizar inferências sobre o valor de \(\theta\) \citep{bolfarine2001introduccao}.
@@ -735,7 +738,7 @@ A probabilidade de que a vida média dessas lâmpadas ultrapasse 1.650 é de 2,2
 \setcounter{enumi}{11}
 \tightlist
 \item
-  \textbf{Testes de hipóteses}
+  \textbf{Testes de Hipóteses}
 \end{enumerate}
 
 \begin{quote}
@@ -766,7 +769,7 @@ A linha de divisória em unidades padronizadas, são:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/testehip1} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/testehip1} 
 
 }
 
@@ -785,7 +788,7 @@ As linhas divisórias em unidades padronizadas, são:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/testehip2} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/testehip2} 
 
 }
 
@@ -820,7 +823,7 @@ Se a hipótese nula \(H_0\) é verdadeira e aceita ou falsa e rejeitada, a decis
 \setcounter{enumi}{12}
 \tightlist
 \item
-  \textbf{Região Crítica e nível de significância}
+  \textbf{Região Crítica e Nível de Significância}
 \end{enumerate}
 
 No geral definimos uma região crítica (RC) como o conjunto de valores no qual a probabilidade de ocorrência é pequena sob a hipótese de ser verdade o \(H_0\). Por exemplo: lançada 30 vezes uma moeda, sendo obtida num total de 28 caras. Claramente iremos desconfiar que é uma moeda honesta, visto que a probabilidade de ser obtida 28 caras em 30 lançamentos de uma moeda honesta é de 0,000000433996. Mesmo que haja essa mínima possibilidade de que a moeda honesta acerte este evento, pela perspectiva do teste de hipóteses, a obtenção de tal evento será uma evidência de que a nossa hipótese nula de honestidade da moeda não é muito plausível. Assim não dizemos que a moeda não é honesta, concluímos que não há evidência suficiente para apoiar a hipótese nula \citep{fariaestatistic}.
@@ -858,7 +861,7 @@ Com base em uma amostra aleatória simples de tamanho \(n=16\). Para tal define-
 \setcounter{enumi}{13}
 \tightlist
 \item
-  \textbf{Aplicações do Teste de Hipótese - Média com a variância conhecida}
+  \textbf{Aplicações do Teste de Hipóteses - Média com a Variância Conhecida}
 \end{enumerate}
 
 Ao caso de interessarmos na média de uma população normal e supondo que a variância seja conhecida. Pelo teste temos que:
@@ -887,7 +890,7 @@ Como \(z-2,25\) pertence a região critíca, então a hipótese nula deve ser re
 \setcounter{enumi}{14}
 \tightlist
 \item
-  \textbf{Aplicações do Teste de Hipótese - Média com a variância desconhecida}
+  \textbf{Aplicações do Teste de Hipóteses - Média com a variância desconhecida}
 \end{enumerate}
 
 Vamos supor que não sabemos o valor da variância e agora a um caso de \(n\) não suficientemente grande, ou seja, utilizamos o teste \(t\):
@@ -1203,7 +1206,7 @@ Conhecidas como medidas de \textbf{correlação} ou \textbf{associação}.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/correlacao} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/correlacao} 
 
 }
 
@@ -1232,7 +1235,7 @@ Para facilitar a compreensão, vamos supor um exemplo de um questionário com re
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/entropia} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/entropia} 
 
 }
 
@@ -1585,7 +1588,7 @@ Pode-se verificar dados incomuns apenas verificando a taebla, mas dependendo do 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/outlier} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/outlier} 
 
 }
 
@@ -1646,7 +1649,7 @@ Para facilitar a compreensão, considere a série temporal \emph{AirPassengers} 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/airpassengers} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/airpassengers} 
 
 }
 
@@ -1770,7 +1773,7 @@ Observação e resumo geral: Note que o que muitas vezes confunde o leitor é o 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/diferenssa} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/diferenssa} 
 
 }
 
@@ -1827,11 +1830,11 @@ Segue abaixo a Figura \ref{fig:graficofit} demonstrando os dois casos anteriores
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/graficofit} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/graficofit} 
 
 }
 
-\caption{``Gráfico representando um \emph{Underfitting}, um Modelo bem ajustado e um \emph{Overfitting} respectivamente.''}\label{fig:graficofit}
+\caption{``Da esquerda para a direita, representações de um \emph{Underfitting}, um Modelo bem ajustado e um \emph{Overfitting} respectivamente.''}\label{fig:graficofit}
 \end{figure}
 
 
@@ -1927,7 +1930,7 @@ A validação cruzada \emph{K-fold} \citep{burman1989comparative}, diferencia do
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/kfold} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/kfold} 
 
 }
 
@@ -1943,7 +1946,7 @@ Um caso específico do \emph{K-fold} é o \textbf{\emph{Leave-one-out}} que cons
 \hypertarget{aocroc}{%
 \section{ROC e AUC}\label{aocroc}}
 
-Do inglês \textbf{\emph{receiver operating characteristics}}, \textbf{ROC} é um método gráfico utilizado para visualizar, organizar e selecionar classificadores com base no desempenho do modelo de classificação. Foram originalmente utilizados em detecção de sinais para avaliar a qualidade de transmissão de um sinal em um canal com ruído \citep{egan1975signal} e atualmente é aplicado em áreas distintas como a avaliação da capacidade de indivíduos distinguirem entre estímulo e não estímulo \citep{green1966signal}, avaliar a desigualdade de \citep{gastwirth1971general}, avaliar a qualidade das predições de tempo ao caso de eventos raros ou até mesmo a qualidade de um teste clínico \citep{zhou2009statistical, mylne2002decision, prati2008curvas}.
+Do inglês \textbf{\emph{receiver operating characteristics}}, \textbf{ROC} é um método gráfico utilizado para visualizar, organizar e selecionar classificadores com base no desempenho do modelo de classificação. Foram originalmente utilizados em detecção de sinais para avaliar a qualidade de transmissão de um sinal em um canal com ruído \citep{egan1975signal} e atualmente é aplicado em áreas distintas como a avaliação da capacidade de indivíduos distinguirem entre estímulo e não estímulo \citep{green1966signal}, avaliar a desigualdade de renda \citep{gastwirth1971general}, avaliar a qualidade das predições de tempo ao caso de eventos raros ou até mesmo a qualidade de um teste clínico \citep{zhou2009statistical, mylne2002decision}.
 
 Um dos primeiros a aplicar os gráficos ROC no Aprendizado de Máquina foi \citep{spackman1989signal} na avaliação e comparação de algoritmos e atualmente anda crescendo seu uso entre a comunidade acadêmica devido que a precisão da classificação simples muitas vezes é uma métrica fraca para medir o desempenho \citep{provost1997analysis}, além de que possuem vantagens para domínios com com distribuição de classe distorcida e custos de erro de classificação desiguais. Embora mesmo sendo simples, existem algumas complexidades e equívocos que exige um cuidado do pesquisador.
 
@@ -1966,11 +1969,18 @@ TFP=\frac{FP}{(FP+VN)}
 \label{eq:TFP}
 \end{equation}
 
-Para se construir o gráfico ROC, plota-se TFP no eixo das ordenada (\(x\)) e TVP (\emph{recall}) no eixo das abscissas (\(y\)). Conforme \citep{prati2008curvas}, o poto \((0,0)\) representa a estratégia de nunca classificar um exemplo como positivo, modelos que correspondem a esse ponto não representam falso positivo, porém também não conseguem classificar nenhum ponto verdadeiro positivo. Do contrário em \((100\%,100\%)\) representa de sempre classificar um novo exemplo como positivo. Ao ponto \((0,100\%)\) representa o modelo perfeito e todos os exemplos são corretamente classificados e ao ponto \((100\%,0)\) representa ao caso em que o modelo sempre erra em sua predição. Portanto, pode ser representado por duas linhas diagonais: a ascendente representa um modelo de comportamente estocástico em que os pontos pertencentes ao triângulo sueprior esquerdo a essa diagona representam modelos que desempenham melhor que o aleatório e aos pontos que se encontram no triângulo inferior direito representam modelos piores que o aleatório. Para a diagonal descendente temos os modelos de classificação que desempenham igualmente nas duas classes. À esquerda desta linha encontram-se os mdelos que desempenham melhor para a classe negativa em detrimento da positiva e à direita melhor para a classe positiva.
+Para se construir o gráfico ROC, plota-se TFP no eixo das ordenada (\(x\)) e TVP (\emph{recall}) no eixo das abscissas (\(y\)). Conforme \citep{prati2008curvas}, o ponto \((0,0)\) representa a estratégia de nunca classificar um exemplo como positivo, modelos que correspondem a esse ponto não representam falso positivo, porém também não conseguem classificar nenhum ponto verdadeiro positivo. Do contrário em \((100\%,100\%)\) representa de sempre classificar um novo exemplo como positivo. Ao ponto \((0,100\%)\) representa o modelo perfeito e todos os exemplos são corretamente classificados e ao ponto \((100\%,0)\) representa ao caso em que o modelo sempre erra em sua predição. Portanto, pode ser representado por duas linhas diagonais:
+
+\begin{itemize}
+\item
+  Linha diagonal ascendente: representa um modelo de comportamento estocástico em que, os pontos pertencentes ao triângulo superior esquerdo a essa diagonal representam modelos que desempenham melhor que o aleatório e aos pontos que se encontram no triângulo inferior direito, representam modelos piores que o aleatório.
+\item
+  Linha diagonal descendente: os modelos de classificação que desempenham igualmente nas duas classes. À esquerda desta linha encontram-se os modelos que desempenham melhor para a classe negativa em detrimento da positiva e à direita melhor para a classe positiva.
+\end{itemize}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/roc} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/roc} 
 
 }
 
@@ -1979,11 +1989,13 @@ Para se construir o gráfico ROC, plota-se TFP no eixo das ordenada (\(x\)) e TV
 
 
 
-Segue um exemplo de ROC com 5 pontos arbitrários representando 5 modelos de classificação diferentes (A,B,C,D e F) \citep{prati2008curvas}, Neste caso A dizemos ``conservativo'' pois ele faz uma classificação posiiva somente se têm grande segurança na classificação e D é considerado ``liberal'' pois prediz a classe positiva com mais frequência, porém com possibilidade de altas taxas de falsos positivos. Um ponto no espaço ROC é melhor que outro se e somente se estiver acima e à esquerda de outro ponto com uma maior taxa de verdadeiros positivos e uma menor taxa de falsos positivos.
+Segue um exemplo, Figura \ref{fig:roc2}, de ROC com 5 pontos arbitrários representando cinco modelos de classificações diferentes (\(A,B,C,D\) e \(F\)) \citep{prati2008curvas}. Neste caso, para o modelo \(A\), dizemos ``conservativo'' pois ele faz uma classificação positiva somente se têm grande segurança na classificação. Ao modelo \(D\), pode-se considerar ``liberal'' pois prediz a classe positiva com mais frequência, porém com possibilidade de altas taxas de falsos positivos.
+
+Um ponto no espaço ROC é melhor que outro se e somente se estiver acima e à esquerda de outro ponto com uma maior taxa de verdadeiros positivos e uma menor taxa de falsos positivos.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/roc2} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/roc2} 
 
 }
 
@@ -1996,7 +2008,7 @@ Para avaliarmos a ROC podemos utilizar a \textbf{Área embaixo da curva ROC}, do
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/AUC} 
+{\centering \includegraphics[width=1.1\linewidth,height=1\textheight]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/AUC} 
 
 }
 
@@ -2062,7 +2074,7 @@ Após coletarmos a análise, descobrimos que das 100 pessoas, 20 possuíam a doe
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/bayes} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/bayes} 
 
 }
 
@@ -2091,11 +2103,11 @@ Por isso \emph{Naive} vem do significado ``ingênuo'', pois como a Figura \ref{f
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/naive} 
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/naive} 
 
 }
 
-\caption{Gráfico de Probabilidade x Entropia.}\label{fig:naive}
+\caption{Esquema do método Naive Bayes e sua característica de independência.}\label{fig:naive}
 \end{figure}
 
 
@@ -2137,11 +2149,11 @@ FRA de modo que a soma dos resíduos \(\sum \hat{\mu}_i=\sum(Y_i-\hat{Y_i})\) se
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/mmq} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/mmq} 
 
 }
 
-\caption{Critério do minímos quadrados \citet{gujarati2011econometria}.}\label{fig:mmq}
+\caption{Critério dos minímos quadrados @{[}gujarati2011econometria{]}.}\label{fig:mmq}
 \end{figure}
 
 
@@ -2220,11 +2232,11 @@ Para que seja feito o modelo de regressão, ela depende das premissas: independ�
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/autocorrmu} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/autocorrmu} 
 
 }
 
-\caption{Padrões de correlação entre os termos de erro. (a) correlação serial positiva; (b) correlação serial negativa; (c) correlação zero \citet{gujarati2011econometria}.}\label{fig:autocorrmu}
+\caption{Padrões de correlação entre os termos de erro. (a) correlação serial positiva; (b) correlação serial negativa; (c) correlação zero \citep{gujarati2011econometria}.}\label{fig:autocorrmu}
 \end{figure}
 
 
@@ -2257,7 +2269,7 @@ Para entendermos melhor, vamos visualizar por Diagrama de Venn \citep{kennedy198
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ballentine} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/ballentine} 
 
 }
 
@@ -2370,7 +2382,7 @@ n-1\strut
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/explog} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/explog} 
 
 }
 
@@ -2591,7 +2603,7 @@ Artistas e proissionais e técnicos em geral & 51 & 66\tabularnewline
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/cancerfumo} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/cancerfumo} 
 
 }
 
@@ -2703,7 +2715,7 @@ Q.M\strut
 \end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
 F.C (\(\frac{Q.M. \  SQE}{Q.M.\ SQR}\))\strut
 \end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
-F. Tabelado (\(1,n-2,\alpha=5\%\))\strut
+F. Tab. (\(1,n-2,\alpha=5\%\))\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
@@ -2861,7 +2873,7 @@ O porcentual do valor estimado do índice de analfabetismo é de 59,341\% para 2
 Logo, da variação total do índice de analfabetismo, 77\% é explicado pela equação da reta.
 
 \hypertarget{GD}{%
-\section{Gradiente Descendente (GD)}\label{GD}}
+\section{Gradiente Descendente}\label{GD}}
 
 Para a obtenção dos parâmetros de forma analítica, como regressões, muitas vezes é difícil obter os parâmetros que minimizam determinada função de interesse. Dificuldades em obter a solução do sistema na forma fechada (ou não existir) ou quando \(n\) é muito grande, o cálculo da inversa (estimando os parâmetros matricialmente) pode ser muito caro computacionalmente.
 
@@ -2877,7 +2889,7 @@ Em caso de funções simples como regressão linear, não é necessário o uso d
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gd} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/gd} 
 
 }
 
@@ -2896,17 +2908,17 @@ com \(j\) referindo-se à quantidade de observações (parâmetros que pretendem
 
 O algoritmo é processado da seguinte forma: imagine na mesma Figura \ref{fig:gd} que você irá dar seu primeiro passo, olhou os 360 graus e inseriu as variáveis em seu algoritmo de GD e seu destino é em \(Z=10\). Seu algoritmo calcula se você passou seu destino mais do que devia ou se você está atrás de \(Z\) ainda e também verifica se precisa dar passos grandes por estar bem longe de seu destino, ou passos menores. Supondo que seu \(\alpha\) um pouquinho alto, podemos dar um passo grande para descer o monte (1) pela diferença da observação que você inseriu com \(\alpha \frac{\partial}{\partial \theta_j}J(\theta_0,\theta_1)\). Caso fosse uma taxa pequena de \(\alpha\), seu passo seria menor e sua derivada (taxa de variação) vai lhe dizer se você passou do ponto ótimo de \(Z\) (o quão a frente) ou está para trás (quão para trás) desse ponto ótimo.
 
-Com o primeiro passo dado (supor passo \(1 = 40\)), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada \(\theta\) \textbf{simultâneamente} (caso dois \(\theta\)'s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto \(2=15\). Conforme vai se aproximando de \(Z\), seus passos vão ficando cada vezes menores ( de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de \(Z=10\) que é o ponto ótimo da função.
+Com o primeiro passo dado (supor passo \(1 = 40\)), você precisa fazer o mesmo procedimento tomando agora o passo 1 como se fosse o inicial novamente, ou seja, atualizando sua função para cada \(\theta\) \textbf{simultâneamente} (caso dois \(\theta\)'s de entrada para a função, atualiza-se para ambos) até encontrar o novo valor ótimo do próximo passo no ponto \(2=15\). Conforme vai se aproximando de \(Z\), seus passos vão ficando cada vezes menores (de 15 para 11; de 11 para 10,50; de 10,50 para 10,10; de 10,10 para 10,05; etc) até chegar na melhor aproximação de \(Z=10\) que é o ponto ótimo da função.
 
-Assim o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (sim! Podemos encontrar os parâmetros dos exemplos de regressão com este algoritmo também!)
+Portanto, o algoritmo encontra os melhores parâmetros para buscar o ponto otimizado, com a estimatiza dos melhores parâmetros para a aproximação com os menores erros (podemos encontrar os parâmetros com o menor erro dos exemplos de regressão com este algoritmo também)
 
-Desta forma, atribuímos (``\(:=\)'') para a própria observação de entrada da função receber ela mesma subtraída \(\alpha\) que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). \textbf{\(\alpha\)( learning rate - taxa de aprendizagem)} é um valor fixo que controla o tamanho do passo em cada iteração: quando \(\alpha\) for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). \citet{rendle2008online} divulgaram que a fatoração de matrizes para a predição de \emph{ratings} nos dados do desafio \emph{Netflix} precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.
+Desta forma, atribuímos (``\(:=\)'') para a própria observação de entrada da função receber ela mesma subtraída \(\alpha\) que multiplica a derivada da função em relação a observação de entrada. Para que atualize a cada passo (iteração). \textbf{\(\alpha\) (learning rate - taxa de aprendizagem)} é um valor fixo que controla o tamanho do passo em cada iteração: quando \(\alpha\) for pequeno, o método fica lento, quando grande ele pode falhar na convergência e até mesmo divergir. Seu valor depende muito da pesquisa e de suas fundamentações teóricas, o que recomendo o leitor quando utilizar este método verificar um valor adequado, pode ser que dependendo do valor da taxa demore muito para finalizar o algoritmo pela quantidade de iterações (tamanhos de passos muito pequenos) ou divergir (tamanho de passos muito grandes). \citet{rendle2008online} divulgaram que a fatoração de matrizes para a predição de \emph{ratings} nos dados do desafio \emph{Netflix} precisou de 200 iterações, usando uma taxa de aprendizagem de 0,01.
 
 Para facilitar a compreensão do efeito da taxa de variação, observe a Figura \ref{fig:gd1}. No primeiro gráfico você inicia seu algoritmo com o valor \(\theta\) e com a derivada podemos observar que inclinação da reta tangente ao ponto é positiva (\(\frac{\partial}{\partial\theta}j(\theta)\geq 0\)), portanto em \(\theta=\theta-\alpha.\mbox{um valor positivo}\), faz que com que esse novo \(\theta\) (segunda iteração) seja menor que o da primeira iteração, visto que terá que subtrair e deslocar-se para esquerda para tender ao ponto mínimo. Da mesma forma, ao segundo gráfico, podemos verificar que a inclinação é negativa (\(\frac{\partial}{\partial\theta}j(\theta)\leq 0\)), portanto \(\theta=\theta-\alpha.\mbox{um valor negativo}\), fará com que o novo \(\theta\) seja maior do que da primeira iteração, pois irá somar e deslocar-se para direita tendendo ao ponto mínimo.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gd1} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/gd1} 
 
 }
 
@@ -2985,7 +2997,7 @@ Note que conforme \(\theta\) diminui, o custo também. Conforme mais iterações
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/gdx2} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/gdx2} 
 
 }
 
@@ -3096,7 +3108,7 @@ Pode-se dizer que a diferença entre \(L_1\) e \(L_2\), num geral, é que a regr
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/lassoridge2d} 
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/lassoridge2d} 
 
 }
 
@@ -3107,7 +3119,7 @@ Pode-se dizer que a diferença entre \(L_1\) e \(L_2\), num geral, é que a regr
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/lassoridge3d} 
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/lassoridge3d} 
 
 }
 
@@ -3132,7 +3144,7 @@ Ao observar um gráfico de \emph{Elastic Net}, pode-se observar de que este mét
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/elasticnet} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/elasticnet} 
 
 }
 
@@ -3141,8 +3153,121 @@ Ao observar um gráfico de \emph{Elastic Net}, pode-se observar de que este mét
 
 
 
+\hypertarget{k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}{%
+\section{\texorpdfstring{K-Vizinhos Mais Próximos (\emph{K-Nearest Neighbors})}{K-Vizinhos Mais Próximos (K-Nearest Neighbors)}}\label{k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}}
+
+Uma metodologia muito conhecida e utilizada, referida na literatura de \citep{bhattacharya1981application} e \citep{bhattacharya2005geometric}. O \textbf{K-Vizinhos Mais Próximos}, do inglês \textbf{\emph{K-Nearest Neighbors} (KNN)}, é um classificador simples. O conjunto de treinamento é formado por vetores com \(n\)-dimensões no qual cada elemento deste conjunto retrata um ponto no espaço \(n\)-dimensional.
+
+Vamos supor que temos um conjunto de dados repartido em duas classes: doentes e não doentes. Com a entrada de mais um paciente para a análise, temos uma nova observação que ainda não está classificada. Dentro do conjunto de treinamento, o classificador KNN procura \(K\) elementos que estejam mais próximos deste elemento de classe desconhecida, ou seja, que tenham a menor distância. Após verificar quais são as classes desses \(K\) vizinhos e a classe mais frequente das observações próximas, será atribuída a classe deste elemento desconhecido. Por isso é denominado por K-Vizinhos Mais Próximos, onde \(K\) indica a quantidade de vizinhos próximos à observação nova no conjunto de dados.
+
+Como vimos anteriormente, existe diversos métodos de calcular a distância entre as observações, algumas delas estão apresentadas em \ref{meddist}. Muitas vezes por ser um exaustivo processo computacional para calcular todas as distâncias entre as observações com a observação de classe desconhecida, é comum para que identifique vizinhos mais próximos, elaborar uma hiper-esfera de raio \(R\) que será decidido pelo pesquisador e selecionar os elementos que estão dentro desta hiper-esfera. Este processo torna muito mais rápido e barato para o pesquisador, porém como desvantagem de haver possibilidade de não ter pontos dentro da hiper-esfera.
+
+Na figura \ref{fig:knn1} temos como exemplo uma situação onde queremos saber se o novo paciente de um hospital está doente ou não. De acordo com pacientes anteriores, podemos reprentar graficamente com características \(X_1\) e \(X_2\) e identificar em qual classe cada um pertence.
+
+Após calcularmos as distância entre as observações e este elemento de classificação desconhecida, podemos identificar os vizinhos mais próximos. Supondo que temos três vizinhos (\(k=3\)) mais próximo do elemento de classe desconhecida, note que das três observações (duas azuis e uma vermelha) próximas do elemento, duas são consideradas ``doentes'' (cor azul) e uma ``não doente'' (vermelho).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/knn1} 
+
+}
+
+\caption{Exemplo gráfico de KNN com \(k=3\).}\label{fig:knn1}
+\end{figure}
+
+
+
+Por voto de maioria, com duas azuis e uma vermelha (2x1), este elemento será classificado pelo algoritmo como ``doente''.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/knn2} 
+
+}
+
+\caption{Exemplo gráfico de KNN com \(k=3\). Como a maioria é classificada como ``doente'' entre os vizinhos próximos do elemento, o elemento desconhecido também será.}\label{fig:knn2}
+\end{figure}
+
+
+
+\hypertarget{exknn}{%
+\subsection{Exemplo}\label{exknn}}
+
+1 - A EmprestaX, uma empresa de empréstimos nova em uma cidade, possui apenas alguns dias de serviço. Com intuito de melhorar na identificação de seu público alvo, a empresa pretende utilizar o algoritmo de KNN com base no histórico de seus primeiros clientes. A base de dados é composta pelas variáveis: Renda mensal, a quantidade de Contas atrasadas e sua classificação de ser ou não um possível cliente.
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:dadossrendaaknn} Dados históricos de clientes da EmprestaX com as variáveis Renda Mensal (R\$), Contas Atrasadas e Possível Cliente.}\tabularnewline
+\toprule
+\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endhead
+\textbf{Renda Mensal} & R\$ 4000,00 & R\$ 1000,00 & R\$ 2500,00 & R\$ 2800,00\tabularnewline
+\textbf{Contas Atrasadas} & 1 & 3 & 2 & 2\tabularnewline
+\textbf{Possível Cliente} & Não & Sim & Sim & Não\tabularnewline
+\bottomrule
+\end{longtable}
+
+Supondo um indivíduo E com uma renda mensal de R\$ 3300,00 , duas contas atrasadas. Pelo método de KNN, com k=3 vizinhos, qual será sua classificação de ser ou não um possível cliente para a EmprestaX?
+
+Primeiramente, vamos observar os pontos em um gráfico:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/knnex1} 
+
+}
+
+\caption{Gráfico gerado com base na tabela \ref{tab:dadossrendaaknn} e classificação para Possível Cliente em: Sim, Não, Não Classificado.}\label{fig:knnex1}
+\end{figure}
+
+
+
+Agora que observamos o gráfico, lembrando que pode haver diversos métodos para calcular a distância ou considerando uma hiper-esfera, vamos calcular a Distância Euclidiana entre as observações:
+\[\mbox{Distância entre E e A=}\sqrt{(4000-3300)^2+(1-2)^2}=700,0007\]
+Repetindo o mesmo processo para todas observações, obtemos:
+
+\[D_{5x5}=\begin{bmatrix}\\
+ &A&B&C&D&E \\
+ A&0&&&&\\
+ B&3000,0007&0&&&\\
+ C & 1500,0003& 1500,0003&0&&\\
+ D& 1200,0004& 1800,0003& 300,0000&0&\\
+ E& 700,0007& 2300,0002& 800,0000& 500,0000&0\\
+\end{bmatrix}\]
+
+Como queremos \(k=3\) vizinhos mais próximos do indivíduo E para que se possa classificá-lo, temos então:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& \textbf{A} & \textbf{C} & \textbf{D}\tabularnewline
+\midrule
+\endhead
+\textbf{E} & 700,0007 & 800,0000 & 500,0000\tabularnewline
+\textbf{Possível Cliente} & Não & Sim & Não\tabularnewline
+\bottomrule
+\end{longtable}
+
+Portanto, pela maioria, temos que o indivído E não será considerado um possível cliente pelo algoritmo de KNN.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/knnex2} 
+
+}
+
+\caption{Gráfico gerado com base na Tabela \ref{tab:dadossrendaaknn} e classificado conforme o algoritmo de KNN com \(k=3\) vizinhos próximos do elemento novo na amostra.}\label{fig:knnex2}
+\end{figure}
+
+
+
+Note que neste exemplo, caso fosse escolhido com \(k=4\) ou \(k=2\) vizinhos, haveria empate e necessitaria de alterarmos o valor de \(k\) ou utilizar algum outro método de classificação. Aumentar o número de observações para a amostra também é muito importante para que se treine seu modelo de Aprendizado de Máquina.
+
 \hypertarget{ptII}{%
-\chapter{Algoritmos de Aprendizagem II}\label{ptII}}
+\chapter{Modelos de Aprendizagem II}\label{ptII}}
 
 \hypertarget{svm}{%
 \section{\texorpdfstring{Máquina de Vetores Suporte - \emph{Support Vectors Machine}}{Máquina de Vetores Suporte - Support Vectors Machine}}\label{svm}}
@@ -3153,11 +3278,11 @@ Vamos supor um gráfico com características \(X_1\) e \(X_2\) e já classificad
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm1} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm1} 
 
 }
 
-\caption{Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes.}\label{fig:svm1}
+\caption{Gráfico de \(X_1\) e \(X_2\) com a classificação de em doentes e não doentes.}\label{fig:svm1}
 \end{figure}
 
 
@@ -3166,11 +3291,11 @@ Um exemplo como esse é simples observar que podemos separar os dados traçando 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm2} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm2} 
 
 }
 
-\caption{Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes por meio de um hiperplano.}\label{fig:svm2}
+\caption{Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes por meio de um hiperplano.}\label{fig:svm2}
 \end{figure}
 
 
@@ -3181,7 +3306,7 @@ Podemos encontrar em uma amostra vários hiperplanos de separação e válidos p
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm3} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm3} 
 
 }
 
@@ -3194,7 +3319,7 @@ O objetivo do algoritmo de SVM é identificar um hiperplano ``ideal'' que busca 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm4} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm4} 
 
 }
 
@@ -3228,7 +3353,7 @@ Um SVM linear procura encontrar um hiperplano ótimo que separe da melhor maneir
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm5} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm5} 
 
 }
 
@@ -3244,7 +3369,7 @@ Um hiperplano é considerado de margem máxima se separa um conjunto de vetores 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/margmax} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/margmax} 
 
 }
 
@@ -3315,7 +3440,7 @@ Assim teremos a distância entre hiperplanos e os vetores de suporte:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm6} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm6} 
 
 }
 
@@ -3381,7 +3506,7 @@ Nas situações reais a maioria dos padrões são mais complexos e não-lineares
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm7} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm7} 
 
 }
 
@@ -3390,13 +3515,13 @@ Nas situações reais a maioria dos padrões são mais complexos e não-lineares
 
 
 
-Segundo \citet{smola2000introduction}, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções \emph{Kernel} para tratarmos de uma problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).
+Segundo \citet{smola2000introduction}, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções \emph{Kernel} para tratarmos de um problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).
 
 Um conjunto de entrada \(X\) com pares \(\{(x_1,y_1);(x_2,y_2),...,(x_n,y_n)\}\) de uma amostra de treinamento (não-linearmente separável), são mapeados por meio de uma função \(\phi\) a fim de obter um novo conjunto de dados \(X'\) linearmente separável em um espaço de maior dimensionalidade, representado por \(\{(\phi(x_1),y_1),...,(\phi(x_n),y_n)\}\).
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/svm8} 
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/svm8} 
 
 }
 
@@ -3430,14 +3555,14 @@ Uma função \emph{Kernel}, pertencente a um domínio que permita calcular o pro
 \label{eq:kernel}
 \end{equation}
 
-A função precisa satisfazer as condições do \textbf{Teorema de Mercer}, portanto a matriz \(K\) é positivamente definida (autovalores maiores que zero). \(K\) é obtida por:
+A função precisa satisfazer as condições do \textbf{Teorema de Mercer} que permite verificar se um \emph{Kernel} pode ser representado como um produto interno no espaço de características \citep{mercer1909xvi}, portanto a matriz \(K\) é positivamente definida (autovalores maiores que zero). \(K\) é obtida por:
 
 \begin{equation}
 K=K_{ij}=\kappa(x_i,x_j)
 \label{eq:mercer}
 \end{equation}
 
-As funções \emph{Kernel} mais utilizadas são:
+As funções \emph{Kernel} mais utilizadas nas pesquisas e no mercado de trabalho são:
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{\label{tab:kernel} \emph{Kernels} mais populares \citep{gonccalves2015maquina}.}\tabularnewline
@@ -3577,7 +3702,7 @@ Portanto temos que \(w=\begin{pmatrix} 2,44\\2,83\end{pmatrix}\) e \(b=-2,06\). 
 \hypertarget{decisiontree}{%
 \section{\texorpdfstring{Árvore de Decisão (\emph{Decision Tree})}{Árvore de Decisão (Decision Tree)}}\label{decisiontree}}
 
-A Árvore de Decisão - \emph{Decision Tree} - é muito utilizada em algoritmos para classificação de dados, tem como objetivo construir classificadores que predizem classes baseadas nos valores de atributos de um \emph{dataset} (análise supervisionada). Ela pode ser aplicada tanto em variáveis categóricas quanto contínuas de entrada e de saída. Na árvore de decisão, dividimos a população ou amostra em dois ou mais conjuntos homogêneos com base nos divisores mais significativos das variáveis de entrada. É um modelo fácil de compreensão, útil para explorar os dados e classificar os dados, sem restrição do tipo de seus dados e pode ser considerada como não paramétrica, porém precisa-se tomar cuidado em ocorrer um sobreajuste e a aplicação em variáveis contínuas pode perder informações.
+A Árvore de Decisão, do inglês \emph{Decision Tree}, é muito utilizada em algoritmos para classificação de dados, tem como objetivo construir classificadores que predizem classes baseadas nos valores de atributos de um \emph{dataset} (análise supervisionada). Ela pode ser aplicada tanto em variáveis categóricas quanto contínuas de entrada e de saída. Na árvore de decisão, dividimos a população ou amostra em dois ou mais conjuntos homogêneos com base nos divisores mais significativos das variáveis de entrada. É um modelo fácil de compreensão, útil para explorar os dados e classificar os dados, sem restrição do tipo de seus dados e pode ser considerada como não paramétrica, porém precisa-se tomar cuidado em ocorrer um sobreajuste e a aplicação em variáveis contínuas pode perder informações.
 
 Há muitos algoritmos de classificação que constroem árvores de decisão. Cada um pode ter melhor desempenho em determinada situação e outro algoritmo pode ser mais eficiente em outros tipos de situações, não há como apontar qual o melhor método. Ela é composta por:
 
@@ -3595,11 +3720,11 @@ Há muitos algoritmos de classificação que constroem árvores de decisão. Cad
   Poda: O processo de remover sub-nós de um nó de decisão é chamado poda. Existe técnicas para avaliar o bom momento de podar o galho (sub-nó) da árvore.
 \end{enumerate}
 
-Segue abaixo uma demonstração da ramificação da árvore:
+Segue a Figura \ref{fig:decisiontree} uma demonstração da ramificação da árvore:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decisiontree} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/decisiontree} 
 
 }
 
@@ -3636,11 +3761,11 @@ Seria uma ótima escolha caso você precisasse ultrapassá-los em poucos segundo
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/poda} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/poda} 
 
 }
 
-\caption{Desenho de veículos em uma pista. Adaptado de \citep{analytics}.}\label{fig:poda}
+\caption{Representação de uma poda: veículos em uma pista. Adaptado de \citep{analytics}.}\label{fig:poda}
 \end{figure}
 
 
@@ -3665,7 +3790,7 @@ Vamos supor uma amostra com 30 alunos com duas características cada: Sexo (meni
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decision} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/decision} 
 
 }
 
@@ -3741,7 +3866,7 @@ Como o Ganho de Informação de Sexo é maior que o de Classe (menos impuro), a 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/decisionlanche} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/decisionlanche} 
 
 }
 
@@ -3767,7 +3892,7 @@ Vamos supor um conjunto de dados em apenas duas dimensões \((x, y)\) e que pode
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca1} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/pca1} 
 
 }
 
@@ -3776,11 +3901,13 @@ Vamos supor um conjunto de dados em apenas duas dimensões \((x, y)\) e que pode
 
 
 
-Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor \((x, y)\). Os eixos não representam algo físico, mas representam combinações de \(x\) e \(y\) que denominamos \textbf{``componentes principais''}, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura \ref{fig:pca2} e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo \(y\), visto que a componente do eixo \(x\) explica 99,30\% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo \(x\), analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.
+Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor \((x, y)\). Os eixos não representam algo físico, mas representam combinações de \(x\) e \(y\) que denominamos \textbf{``componentes principais''}, escolhidas para analisar a variação do eixo.
+
+Observe que rotacionamos o gráfico na Figura \ref{fig:pca2} e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo \(y\), visto que a componente do eixo \(x\) explica 99,30\% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo \(x\), analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca2} 
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/pca2} 
 
 }
 
@@ -3793,7 +3920,7 @@ Com mais dimensões, o ACP torna-se ainda mais útil pois possibilita observarmo
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/pca3} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/pca3} 
 
 }
 
@@ -3817,7 +3944,7 @@ Dado uma matriz \(A_{mxn}\) que define uma transformação linear (não muda sua
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/autovetor} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/autovetor} 
 
 }
 
@@ -4039,7 +4166,7 @@ Sendo geralmente escolhido as componentes com seus respectivos autovalores que e
 
 Caso esteja utilizando software para a análise, dependendo do software utilizado com seu determinado modelo de formulação de componentes principais, pode ocorrer essa troca de sinal que nada mais é do que uma reflexão em relação ao eixo, uma rotação em seu espaço vetorial n-dimensional em torno da origem, poderá ocasionar uma ``rotação'' em torno do eixo. Tratando de algebra linear e suas combinações lineares, a combinação poderá possuir soluções diferentes que diferem apenas o sinal.
 
-\textbf{Resumo geral:} É comum o pesquisador trabalhar com um volume de dados muito grande e que estão muitas vezes correlacionadas. A Análise de Componentes principais busca explicar a estrutura de variância e covariância de um vetor aleatório com \(p\) variáveis, possibilitando por meio da combinação linear deste vetor aleatório novas componentes (denominada componente principal) com menos variáveis (\(k<p\)) que o conjunto de dados original e não correlacionadas de modo que estas componentes principais retenha a maior parte da variação apresentada pelas originais, possibilitando classificarmos o conjunto de dados e até mesmo descartar variáveis que podem ser redundantes ou não importantes. Utiliza-se de fundamentações teóricas de Autovetores e Autovalores para que se encontre um novo sistema de coordenadas com novos pontos a partir das originais, pode-se dizer que rotacionamos para que se visualize num ``novo ângulo'', para descobrir e avaliar em ordem decrescente a variação (matriz de covariância do vetor aleatório) deste conjunto de dados. Os passos:
+Sintetizando, é comum o pesquisador trabalhar com um volume de dados muito grande e que estão muitas vezes correlacionadas. A Análise de Componentes principais busca explicar a estrutura de variância e covariância de um vetor aleatório com \(p\) variáveis, possibilitando por meio da combinação linear deste vetor aleatório novas componentes (denominada componente principal) com menos variáveis (\(k<p\)) que o conjunto de dados original e não correlacionadas de modo que estas componentes principais retenha a maior parte da variação apresentada pelas originais, possibilitando classificarmos o conjunto de dados e até mesmo descartar variáveis que podem ser redundantes ou não importantes. Utiliza-se de fundamentações teóricas de Autovetores e Autovalores para que se encontre um novo sistema de coordenadas com novos pontos a partir das originais, pode-se dizer que rotacionamos para que se visualize num ``novo ângulo'', para descobrir e avaliar em ordem decrescente a variação (matriz de covariância do vetor aleatório) deste conjunto de dados. Os passos:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4090,12 +4217,12 @@ Após calcularmos suas covariâncias (recomendo o leitor calcular e verificar e 
 
 \begin{longtable}[]{@{}cccc@{}}
 \toprule
-& \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido (\(X_3\))}\tabularnewline
+& \textbf{Ganho Bruto(\(X_1\))} & \textbf{Ganho Líq.(\(X_2\))} & \textbf{Patrimônio Líq.(\(X_3\))}\tabularnewline
 \midrule
 \endhead
-\textbf{Ganho Bruto (\(X_1\))} & 9550608,6 & 706121,1 & 14978232,5\tabularnewline
-\textbf{Ganho Líquido (\(X_2\))} & 706121,1 & 76269,5 & 933915,1\tabularnewline
-\textbf{Patrimônio Líquido (\(X_3\))} & 14978232,5 & 933915,1 & 34408113,0\tabularnewline
+\textbf{Ganho Bruto(\(X_1\))} & 9550608,6 & 706121,1 & 14978232,5\tabularnewline
+\textbf{Ganho Líq.(\(X_2\))} & 706121,1 & 76269,5 & 933915,1\tabularnewline
+\textbf{Patrimônio Líq.(\(X_3\))} & 14978232,5 & 933915,1 & 34408113,0\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -4253,12 +4380,12 @@ No exemplo anterior, vimos que as componentes principais foram obtidas a partir 
 
 \begin{longtable}[]{@{}cccc@{}}
 \toprule
-& \textbf{Ganho Bruto (\(X_1\))} & \textbf{Ganho Líquido (\(X_2\))} & \textbf{Patrimônio Líquido (\(X_3\))}\tabularnewline
+& \textbf{Ganho Bruto(\(X_1\))} & \textbf{Ganho Líq.(\(X_2\))} & \textbf{Patrimônio Líq.(\(X_3\))}\tabularnewline
 \midrule
 \endhead
-\textbf{Ganho Bruto (\(X_1\))} & 1,00 & 0,827 & 0,826\tabularnewline
-\textbf{Ganho Líquido (\(X_2\))} & 0,827 & 1,00 & 0,576\tabularnewline
-\textbf{Patrimônio Líquido (\(X_3\))} & 0,826 & 0,576 & 1,00\tabularnewline
+\textbf{Ganho Bruto(\(X_1\))} & 1,00 & 0,827 & 0,826\tabularnewline
+\textbf{Ganho Líq.(\(X_2\))} & 0,827 & 1,00 & 0,576\tabularnewline
+\textbf{Patrimônio Líq.(\(X_3\))} & 0,826 & 0,576 & 1,00\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -4350,11 +4477,11 @@ Com valores padronizados, fica mais fácil a visualizaçãor e interpretação d
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/biplotpadro} 
+{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/biplotpadro} 
 
 }
 
-\caption{Gráfico de biplot, em X a primeira componente principal e Y a segunda componente.}\label{fig:biplotpadro}
+\caption{Gráfico de biplot, em \(X\) a primeira componente principal e \(Y\) a segunda componente.}\label{fig:biplotpadro}
 \end{figure}
 
 
@@ -4373,7 +4500,7 @@ A Análise de Clusters são frequentemente classificadas em \textbf{Hierárquica
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/hierarq} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/hierarq} 
 
 }
 
@@ -4415,7 +4542,7 @@ A similaridade entre dois conglomerados é definida pelos dois elementos mais pa
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ligsimples} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/ligsimples} 
 
 }
 
@@ -4507,7 +4634,7 @@ Portanto, o o histórico do agrupamento e seu respectivo dendograma será:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendsimples} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/dendsimples} 
 
 }
 
@@ -4530,7 +4657,7 @@ Em cada estágio calcula-se para os pares de grupos, combinando num único aquel
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/ligcompleta} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/ligcompleta} 
 
 }
 
@@ -4607,7 +4734,7 @@ Portanto, o o histórico do agrupamento por meio da Ligação Completa e seu res
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendcomplete} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/dendcomplete} 
 
 }
 
@@ -4701,7 +4828,7 @@ Portanto, o o histórico do agrupamento e seu respectivo dendograma será:
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/dendaverage} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/dendaverage} 
 
 }
 
@@ -4862,7 +4989,7 @@ Como escolher o número final de grupos \(g\)? Em qual passo \(k\)? Isso varia m
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/steps} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/steps} 
 
 }
 
@@ -5259,145 +5386,186 @@ Tivemos um resultado interessante com um bom valor de \(R^2\) e próximo ao do e
 
 Em \ref{valid} serão apresentados outros métodos para medir o desempenho e validar seu modelo.
 
-\hypertarget{knn-k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}{%
-\section{\texorpdfstring{KNN: K-Vizinhos Mais Próximos (\emph{K-Nearest Neighbors})}{KNN: K-Vizinhos Mais Próximos (K-Nearest Neighbors)}}\label{knn-k-vizinhos-mais-pruxf3ximos-k-nearest-neighbors}}
+\hypertarget{redesneurais}{%
+\section{Redes Neurais Artificiais}\label{redesneurais}}
 
-Uma metodologia muito conhecida e utilizada, referida na literatura de \citep{bhattacharya1981application} e \citep{bhattacharya2005geometric}. O \textbf{K-Vizinhos Mais Próximos}, do inglês \textbf{\emph{K-Nearest Neighbors} (KNN)}, é um classificador simples. O conjunto de treinamento é formado por vetores com \(n\)-dimensões no qual cada elemento deste conjunto retrata um ponto no espaço \(n\)-dimensional.
+Como foi mencionado no capítulo \ref{i-a}, o primeiro trabalho a ser reconhecido como uma IA teve como objetivo estudar como os neurônios podiam funcionar. Foi elaborada por \citet{mcculloch1943logical} com a modelagem de uma rede neural simples com circuitos elétricos, havendo em seguida, a publicação de \emph{The Organization of Behavior} \citep{hebb1949organization} que fortalecia as teorias de que o condicionamento psicológico estava presente em qualquer parte dos animais.
 
-Vamos supor que temos um conjunto de dados repartido em duas classes: doentes e não doentes. Com a entrada de mais um paciente para a análise, temos uma nova observação que ainda não está classificada. Dentro do conjunto de treinamento, o classificador KNN procura \(K\) elementos que estejam mais próximos deste elemento de classe desconhecida, ou seja, que tenham a menor distância. Após verificar quais são as classes desses \(K\) vizinhos e a classe mais frequente das observações próximas, será atribuída a classe deste elemento desconhecido. Por isso é denominado por K-Vizinhos Mais Próximos, onde \(K\) indica a quantidade de vizinhos próximos à observação nova no conjunto de dados.
+Conforme \citet{russel2004inteligencia}, desde 1943 têm sido desenvolvidos modelos muitos mais detalhados e realistas, tanto de neurônios como também de sistemas maiores no cérebro, conduzindo ao campo moderno da \textbf{neurociência computacional}. Além disso, pesquisadores de IA e estatísticos aumentaram o interese nas propriedades mais avançadas das redes neurais, como por exemplo, a capacidade de realizar a computação distribuída, tolerando entradas ruidosas e aprender.
 
-Como já vimos, existe diversos métodos de calcular a distância entre as observações, algumas delas estão apresentadas em \ref{meddist}. Muitas vezes por ser um exaustivo processo computacional para calcular todas as distâncias entre as observações com a observação de classe desconhecida, é comum para que identifique vizinhos mais próximos, elaborar uma hiper-esfera de raio \(R\) que será decidido pelo pesquisador e selecionar os elementos que estão dentro desta hiper-esfera. Este processo torna muito mais rápido e barato para o pesquisador, porém como desvantagem de haver possibilidade de não ter pontos dentro da hiper-esfera.
-
-Na figura \ref{fig:knn1} temos como exemplo uma situação onde queremos saber se o novo paciente de um hospital está doente ou não. De acordo com pacientes anteriores, podemos reprentar graficamente com características \(X_1\) E \(X_2\) e identificar em qual classe cada um pertence. Após calcularmos as distância entre as observações e este elemento de classificação desconhecida, podemos identificar os vizinhos mais próximos. Supondo que temos três vizinhos (\(k=3\)) mais próximo do elemento de classe desconhecida, note que das três observações (duas azuis e uma vermelha) próximas do elemento, duas são consideradas ``doentes'' (cor azul) e uma ``não doente'' (vermelho).
+Uma rede neural artificial (RNA) assim como os outros modelos de ML, é treinado por exemplos de treino (dados históricos), porém a composição é feita por \textbf{``neurônios''} interligados. Normalmente o tipo de processamento de um único neurônio é a combinação linear das entradas com os pesos seguida pela passagem da combinação linear por uma \textbf{função de ativação} \citep{rauber2005redes}. Com base em \citet{russel2004inteligencia}, as redes são compostas por \textbf{nós} ou \textbf{unidades} conectadas por \textbf{ligações} direcionadas, onde uma ligação da unidade \(i\) para a unidade \(j\) serve para propagar a \textbf{ativação} \(x_i\) de \(i\) para \(j\). Cada ligação também possui um \textbf{peso} númerico \(w_{i,j}\) associado a ele, que tem como função determinar a força e o sinal de conexão. Como o caso, por exemplo, de modelos de regressão linear, onde cada unidade tem uma entrada fictícia \(x_1=1\) com peso \(w_{0,j}\).
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knn1} 
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/neuronio} 
 
 }
 
-\caption{Exemplo gráfico de KNN com \(k=3\).}\label{fig:knn1}
+\caption{Modelo simples de um neurônio de McCulloch e Pitts. A ativação de saída da unidade é \(x_j=g(\sum^n_{i=0}w_{i,j}x_i)\), em que \(x_j=y\) é a ativação de saída da unidade \(i\) e \(w_{i,j}\) é o peso sobre a ligação da unidade \(i\) com essa unidade.}\label{fig:neuronio}
 \end{figure}
 
 
 
-Por voto de maioria, com duas azuis e uma vermelha (2x1), este elemento será classificado pelo algoritmo como ``doente''.
+\begin{equation} 
+  in_j=\displaystyle \sum^n_{i=0} w_{i,j}x_i
+  \label{eq:reglinrede}
+\end{equation}
 
-\begin{figure}
+Em seguida, é aplicado uma função de ativação \(g\) a essa soma para que se obtenha a saída:
 
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knn2} 
-
-}
-
-\caption{Exemplo gráfico de KNN com \(k=3\). Como a maioria é classificada como ``doente'' entre os vizinhos próximos do elemento, o elemento desconhecido também será.}\label{fig:knn2}
-\end{figure}
-
-
-
-\hypertarget{exknn}{%
-\subsection{Exemplo}\label{exknn}}
-
-1 - A EmprestaX, uma empresa de empréstimos nova em uma cidade, possui apenas alguns dias de serviço. Com intuito de melhorar na identificação de seu público alvo, a empresa pretende utilizar o algoritmo de KNN com base no histórico de seus primeiros clientes: Renda mensal, a quantidade de Contas atrasadas e sua classificação de ser ou não um possível cliente.
-
-\begin{longtable}[]{@{}lllll@{}}
-\caption{\label{tab:dadossrendaaknn} Dados históricos de clientes da EmprestaX com as variáveis Renda Mensal (R\$), Contas Atrasadas e Possível Cliente.}\tabularnewline
-\toprule
-\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\textbf{Cliente} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\tabularnewline
-\midrule
-\endhead
-\textbf{Renda Mensal} & R\$ 4000,00 & R\$ 1000,00 & R\$ 2500,00 & R\$ 2800,00\tabularnewline
-\textbf{Contas Atrasadas} & 1 & 3 & 2 & 2\tabularnewline
-\textbf{Possível Cliente} & Não & Sim & Sim & Não\tabularnewline
-\bottomrule
-\end{longtable}
-
-Supondo um indivíduo E com uma renda mensal de R\$ 3300,00 , duas contas atrasadas. Pelo método de KNN, com k=3 vizinhos, qual será sua classificação de ser ou não um possível cliente para a EmprestaX?
-
-Primeiramente, vamos observar os pontos em um gráfico:
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knnex1} 
-
-}
-
-\caption{Gráfico gerado com base na tabela \ref{tab:dadossrendaaknn} e classificação para Possível Cliente em: Sim, Não, Não Classificado.}\label{fig:knnex1}
-\end{figure}
-
-
-
-Agora que observamos o gráfico, lembrando que pode haver diversos métodos para calcular a distância ou considerando uma hiper-esfera, vamos calcular a Distância Euclidiana entre as observações:
-\[\mbox{Distância entre E e A=}\sqrt{(4000-3300)^2+(1-2)^2}=700,0007\]
-Repetindo o mesmo processo para todas observações, obtemos:
-
-\[D_{5x5}=\begin{bmatrix}\\
- &A&B&C&D&E \\
- A&0&&&&\\
- B&3000,0007&0&&&\\
- C & 1500,0003& 1500,0003&0&&\\
- D& 1200,0004& 1800,0003& 300,0000&0&\\
- E& 700,0007& 2300,0002& 800,0000& 500,0000&0\\
-\end{bmatrix}\]
-
-Como queremos \(k=3\) vizinhos mais próximos do indivíduo E para que se possa classificá-lo, temos então:
-
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& \textbf{A} & \textbf{C} & \textbf{D}\tabularnewline
-\midrule
-\endhead
-\textbf{E} & 700,0007 & 800,0000 & 500,0000\tabularnewline
-\textbf{Possível Cliente} & Não & Sim & Não\tabularnewline
-\bottomrule
-\end{longtable}
-
-Portanto, pela maioria, temos que o indivído E não será considerado um possível cliente pelo algoritmo de KNN.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/knnex2} 
-
-}
-
-\caption{Gráfico gerado com base na tabela @tab:dadossrendaaknn e classificado conforme o algoritmo de KNN com \(k=3\) vizinhos próximos do elemento novo na amostra.}\label{fig:knnex2}
-\end{figure}
-
-
-
-Note que neste exemplo, caso fosse escolhido com \(k=4\) ou \(k=2\) vizinhos, haveria empate e necessitaria de alterarmos o valor de \(k\) ou utilizar algum outro método de classificação. Aumentar o número de observações para a amostra também é muito importante para que se treine seu modelo de Aprendizado de Máquina.
+\begin{equation} 
+  x_j=g(in_j)=g(\displaystyle \sum^n_{i=0}w_{i,j}x_i)
+  \label{eq:reglinrede}
+\end{equation}
 
 \hypertarget{ptIII}{%
 \chapter{\texorpdfstring{Os métodos \emph{Ensemble}}{Os métodos Ensemble}}\label{ptIII}}
 
-Os métodos \textbf{\emph{ensemble} (conjunto)} são algoritmos de aprendizado que constroem um conjunto de classificadores e combinam os resultados de cada modelo para classificar um novo modelo de exemplo \citep{dietterich2000ensemble}, obtendo um valor final único a fim de melhorar a precisão e estabilidade do modelo. Os mais conhecidos são as técnicas de \textbf{\emph{boosting}} \citep{freund1996experiments}, \textbf{\emph{bagging}} \citep{breiman1996bagging} e \textbf{\emph{Random Forest}} \citep{breiman2001random, liaw2002classification} e \textbf{\emph{Extra Trees}}.
+Os métodos \textbf{\emph{ensemble} (conjunto)} são algoritmos de aprendizado que constroem um conjunto de classificadores e combinam os resultados de cada modelo para classificar um novo modelo de exemplo \citep{dietterich2000ensemble}, obtendo um valor final único a fim de melhorar a precisão e estabilidade do modelo. Os mais conhecidos são as técnicas de \textbf{\emph{boosting}} \citep{freund1996experiments}, \textbf{\emph{bagging}} \citep{breiman1996bagging}, \textbf{\emph{Random Forest}} \citep{breiman2001random, liaw2002classification}, \textbf{\emph{Extra Trees}}, \textbf{\emph{GradientBoosting}}.
 
 Como é uma resposta agregada de outros modelos preditivos, tratamos de algoritmos mais complexos que necessitam de um custo computacional maior, mais tempo e com mais processos para que se tenha um desempenho melhor.
 
 \hypertarget{bagging}{%
 \section{\texorpdfstring{\emph{Bagging}}{Bagging}}\label{bagging}}
 
-O método \emph{bagging} \citep{breiman1996bagging} é um dos métodos de algoritmos de aprendizado de máquinas mais antigos. Este método utiliza amostras \emph{bootstrap} - amostragem com reposição no qual por meio do conjunto de treinamento inicial, seleciona-se aleatoriamente exemplos para um novo subconjunto de treinamento \citep{oshiro2013abordagem}.
+O método \emph{bagging} \citep{breiman1996bagging} é um dos métodos de algoritmos de aprendizado de máquina mais antigos. Este método utiliza amostras \emph{bootstrap} - amostragem com reposição no qual por meio do conjunto de treinamento inicial, seleciona-se aleatoriamente exemplos para um novo subconjunto de treinamento \citep{oshiro2013abordagem}.
 
 Na técnica \emph{bagging}, portanto, diferentes subconjuntos \(T_k\) são aleatóriamente elaborados, com reposição, a partir do original e tem como idéia básica criar classificadores a partir de um conjunto de dados de treinamento com distribuição uniforme de probabilidades. Cada amostra possui o mesmo tamanho da base de dados originais e por ser \emph{bootstrap} alguns elementos podem aparecer repetidamente, ao passo que alguns podem ser que não estejam presentes no conjunto de treinamento. Cada subconjunto \(T_k\) é utilizado para treinar um classificador diferente \(\{h_k(x)\}\) e a classificação é definida pelo voto majoritário sobre todos os classificadores.
 
-Conforme \citep{oshiro2013abordagem},este método consiste então em combinar \(T\) classificadores de \(N\) amostras geradas a partir do conjunto de treinamento \(M\) com \(R\) elementos. Cada classificador possui \(m\) elementos do conjunto de treinamento original de \(M\). Em vez de utilizar todas as observações do conjunto original do treinamento, escolhe elementos uniformemente com repetição e gerando \(k\) exemplos, que representam aspectos originais da base de dados. Em cada exemplo o classificador é gerado independentemente e a classificação de um novo elemento será executada sobre cada um dos \(T\) classificadores.
+Conforme \citep{oshiro2013abordagem}, este método consiste então em combinar \(T\) classificadores de \(N\) amostras geradas a partir do conjunto de treinamento \(M\) com \(R\) elementos. Cada classificador possui \(m\) elementos do conjunto de treinamento original de \(M\). Em vez de utilizar todas as observações do conjunto original do treinamento, escolhe elementos uniformemente com repetição e gerando \(k\) exemplos, que representam aspectos originais da base de dados. Em cada exemplo o classificador é gerado independentemente e a classificação de um novo elemento será executada sobre cada um dos \(T\) classificadores.
 
 A cada tentativa \(t=1,2,...,T\), um conjunto de treinamento de tamanho \(N\) é amostrado do conjunto de treinamento original com o mesmo tamanho. Também a cada tentativa, um classificador \(C_i\) será gerado e no final um classificador \(C^*\) será formado através da geração de \(T\) classificadores obtidos em cada tentativa. Para uma amostra desconhecida, cada classificador \(C_i\) retorna seu voto e por fim o classificador \(C^*\) retornará a classe com o maior número de votos.
 
-Vamos pensar numa aplicação deste método em árvores de decisão: primeiramente, o \emph{bagging} faz um sorteio de todas as amostras - escolhe uma, sorteia e escolhe outra sucessivamente - com reposição com, por exemplo, 70\% do total. Por isso podem vir elementos repetidos ou até mesmo omitir alguns (\emph{bootstrap}). Temos agora um \emph{dataset} para construirmos uma árvore de decisão. Da mesma forma, faz este processo com uma segunda árvore, uma terceira e assim por diante com um novo \emph{dataset} aleatório com \emph{bootstrap}. Note que temos então uma estimação para cada árvore diferente com dados diferentes sorteados. Um mesmo modelo de Aprendizado de Máquina com conjuntos diferentes. Com o voto majoritário (situação de classificação) ou uma média (como um caso de regressão) de todas as estimações dos classificadores \(C_i\), obtemos um classificador \(C^*\) final. O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver @ref(\#fitt)) com essa repetição do mesmo modelo de Aprendizado de Máquina. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
+Vamos pensar numa aplicação deste método em árvores de decisão: primeiramente, o \emph{bagging} faz um sorteio de todas as amostras - escolhe uma, sorteia e escolhe outra sucessivamente - com reposição com, por exemplo, 70\% do total. Por isso podem vir elementos repetidos ou até mesmo omitir alguns (\emph{bootstrap}). Temos agora um \emph{dataset} para construirmos uma árvore de decisão. Da mesma forma, faz este processo com uma segunda árvore, uma terceira e assim por diante com um novo \emph{dataset} aleatório com \emph{bootstrap}. Note que temos então uma estimação para cada árvore diferente com dados diferentes sorteados. Um mesmo modelo de Aprendizado de Máquina com conjuntos diferentes. Com o voto majoritário (situação de classificação) ou uma média (como um caso de regressão) de todas as estimações dos classificadores \(C_i\), obtemos um classificador \(C^*\) final. O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver \ref{fitt}) com essa repetição do mesmo modelo de Aprendizado de Máquina. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
 
-O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver @ref(\#fitt)) pois repetimos o modelo várias vezes com vários conjuntos aleatórios e situações com novos esimadores de treino. Ao entrar novos dados para o teste, ele terá um desempenho semelhante. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
+O método \emph{bagging} é muito útil para evitar \emph{overfitting} (ver \ref{fitt}) pois repetimos o modelo várias vezes com vários conjuntos aleatórios e situações com novos esimadores de treino. Ao entrar novos dados para o teste, ele terá um desempenho semelhante. Importante notar que ele é um método para ser aplicado em algum modelo de Aprendizado de Máquina, por exemplo, pode-se optar pelo algoritmo de Regressão Linear, KNN, árvore de decisão ou em alguma técnica de mineração de dados.
 
 \hypertarget{boost}{%
 \section{\texorpdfstring{\emph{Boosting}}{Boosting}}\label{boost}}
 
-O método \textbf{\emph{boosting}} \citep{freund1996experiments} é um método de combinação de muitos classificadores com o propósito de fornecer uma classificação muito mais eficiente, considerado uma das ideias mais poderosas de aprendizagem nos últimos vinte anos \citep{hastie2009elements}. É um processo iterativo utilizado para ser alterado adaptativamente a distribuição de exemplos de treinamento, assim os classificadores de base tem como foco exemplos difíceis de classificar. Originalmente foi elaborado para problemas de classificação, mas pode ser muito bem aplicado para regressão.
+O método \textbf{\emph{boosting}} \citep{freund1996experiments} é um método de combinação de classificadores com o propósito de fornecer uma classificação muito mais eficiente, considerado uma das ideias mais poderosas de aprendizagem nos últimos vinte anos \citep{hastie2009elements}. É um processo iterativo utilizado para ser alterado adaptativamente a distribuição de exemplos de treinamento, assim os classificadores de base tem como foco exemplos difíceis de classificar. Originalmente foi elaborado para problemas de classificação, mas pode ser muito bem aplicado para regressão.
 
-O mais conhecido é o algoritmo \emph{boosting} proposto por \citet{freund1996experiments}, o \textbf{\emph{AdaBoost} (Adaptative Boosting}.
+Válido ressaltar de que a seguir estão apresentados duas, e muito utilizadas, de muitas outras técnicas de \emph{boosting}. A ideia deste método é a combinação de classificadores para reforçar seu algoritmo base, portanto, pode variar de acordo com a fundamentação teórica proposta pelo pesquisador e as que estão sendo mais utilizadas no mercado.
+
+\hypertarget{adaboost}{%
+\subsection{\texorpdfstring{\emph{AdaBoost}}{AdaBoost}}\label{adaboost}}
+
+Um dos mais conhecidos proposto por \citet{freund1996experiments}, é o \textbf{\emph{AdaBoost} (Adaptative Boosting)}. Conforme \citep{freund1997decision}, o \emph{AdaBoost} apresenta algumas propriedades específicas que pode-se destacar como o baixo valor computacional por corresponder a um programa linear e ao caso de análises de grandes espaços dimensionais, como na casa de milhões, os valores de margem entre classes podem se apresentar muitas vezes bastante diferentes e mais precisos que outros métodos como SVM \citep{freund1999short, chaves2012estudo}. Apesar de sua simplicidade e flexibilidade de implementação, deve-se atentar aos possíveis ruídos devido do algoritmo enfatizar dados mais difíceis de serem classificados.
+
+Primeiramente, o conjunto de dados de treinamento é separado em \(m\) conjuntos exemplos definidos. Em seguida, utiliza-se o algoritmo base (modelo de regressão, árvores de decisão, \emph{naive bayes}, etc) escolhido de forma repetitiva aos exemplos, de modo que o \emph{AdaBoost} fornece ao algoritmo uma distribuição de pesos referentes a cada um dos dados de treinamento \citep{chaves2012estudo}.
+
+A cada ciclo de aprendizagem, o algoritmo gera uma hipótese \(h_f\). Portanto o algoritmo base tem com finalidade gerar uma hipótese com o menor erro de treinamento. Considerando, \textbf{por exemplo}, \(\omega_i^{t}\) o peso atribuído a (\(x_i,y_i\)) na iteração \(t\), temos:
+
+\begin{equation}
+    \omega_i^{t+1}=\frac{w_i^{t}}{Z_t}.k 
+    \label{eq:pesoadaboost}
+\end{equation}
+\[k=exp^{-\alpha_i} \ \mbox{se} \ h_t(x_i)=y_i\]
+\[k=exp^{\alpha_i}\ \mbox{se} \ h_t(x_i)\neq y_i\]
+
+em que \(\alpha_t=\frac{1}{2}ln(\frac{1-\varepsilon_t}{\varepsilon_t})\) é a importância associada do classificador, calculada a partir da taxa de erro da hipótese do classificador fraco (\(h_f\)) \(\varepsilon_t=Pr(h_f(x_i)\neq y_i)\) e \(Z_t\) é o fator de normalização utilizado para que a soma de todos pesos seja igual a 1. Portanto o peso diminui para registros classificados corretamente e aumenta para classificados erroneamente \citep{merjildo2013algoritmo, chaves2012estudo}.
+
+O resultado final do \emph{AdaBoost} é calculado com base no resultado dos classificadores e seus respectivos pesos:
+
+\begin{equation}
+   H_f(x)=sign(\sum_t \alpha_t h_t(x)) 
+    \label{eq:adaboost}
+\end{equation}
+
+Segue a Figura \ref{fig:adaboost} em que, da esquerda para a direita, temos a sequência do primeiro classificador treinando seus dados não ponderados, em seguida treina-o com ponderação e assim sucessivamente até chegar em seu resultado final combinado pelas hipóteses.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/adaboost} 
+
+}
+
+\caption{Exemplo de \emph{AdaBoost}. Atributos circulados referem-se aos classificados erroneamente \citep{marsh2016multivariate}.}\label{fig:adaboost}
+\end{figure}
+
+
+
+\hypertarget{gradientboost}{%
+\subsection{\texorpdfstring{\emph{Gradient Boosting}}{Gradient Boosting}}\label{gradientboost}}
+
+O algoritmo \emph{Gradient Boosting} \citep{friedman1999bump} consiste em um processo iterativo aditivo iniciado com uma previsão constante, cujo valor corresponde à média da variável de resposta na amostra de treinamento \((f_0(x)=\overline{y})\). A cada iteração, um novo termo é adicionado ao modelo corrente, com o objetivo de reduzir gradualmente o erro de previsão \citep{mayrink2015avaliaccao}. Alguma semelhança com Gradiente Descendente? Sim! Este modelo utiliza-se do algoritmo Gradiente Descendente para que se obtenha um modelo com os erros minimizados. As atualizações são calculadas seguindo o sentido inverso do gradiente da função objetivo em relação às aproximações correntes. Este processo irá se repetir até que seja atingida sua condição, como número máximo de iterações e erro minimizado. Sua diferença em relação ao \emph{AdaBoost} é que ao invés das deficiências dos modelos anteriores serem identificadas por peso, são através do gradiente para que se chegue a um modelo ``ótimo''.
+
+Este algoritmo \emph{ensemble} é \textbf{tipicamente} baseado em árvore de decisão, como por exemplo, \citet{yamagishi2008phone} utilizam-no para prever a duração de chamada telefônica em sistemas de síntese texto-discurso e \citet{zhang2015gradient} aplicam o \emph{Gradient Boosting} para previsão de tempo de viagem.
+
+No caso típico, as funções parametrizáveis \(F_m(x|\theta_m)\) são árvores de decisão. Os parâmetros \(\theta_m\) definem os particionamentos e as constantes de aproximação. A cada iteração, uma nova árvore de decisão \(F_m(x|\theta_m)\) é treinada para ajustar os gradientes da função objetivo em relação às previsões do modelo corrente, levando em conta cada observação da amostra de treinamento \citep{freitas2020}.
+
+\begin{equation}
+   \theta_{yi}=F_M(x_i)=\displaystyle \sum^M_{m=1}h_m(x_i)
+    \label{eq:gdboostarvore}
+\end{equation}
+
+em que \(h_m\) são os estimadores alunos fracos e \(M\) corresponde ao número de árvores de regressão \citep{ke2017lightgbm}.
+E \(F_M\) é definida como:
+
+\begin{equation}
+   F_m(x)=F_{m-1}(x)+h_m(x)
+    \label{eq:gdboostarvore2}
+\end{equation}
+
+onde a árvore recém-adicionada \(h_m\) é alocada com a finalidade de minimizar a soma de perdas \(L_m\), dado o conjunto anterior \(F_{m-1}\). Portanto, a cada iteração uma nova árvore de decisão é treinada para ajustar os erros
+obtidos pelo estado corrente do comit
+
+\begin{equation}
+   h_m=arg \underset{h}{min} L_m = arg \underset{h}{min} \displaystyle \sum^n_{i=1}l(y_i,F_{m-1}(x)+h(x_i))
+    \label{eq:gdboosttree}
+\end{equation}
+
+sendo \(l(y_i,F(x_i))\) uma função de perda.
+
+Para problemas de regressão, no geral, a função objetivo utilizada é o erro quadrático médio (MSE) e os gradientes da função correspondem aos resíduos de previsão da aproximação corrente.
+
+\hypertarget{bagboost}{%
+\section{\texorpdfstring{\emph{Bagging x Boosting}}{Bagging x Boosting}}\label{bagboost}}
+
+Tomando como base em \citet{zhou2012ensemble} e \citet{mayrink2015avaliaccao}, existem dois paradigmas entre os procedimentos de construção dos modelos: os métodos de combinação paralela, onde cada modelo é treinado de forma totalmente independente; e os métodos de combinação sequencial, em que o treinamento de um novo modelo depende do resultado obtido pelo modelo anterior.
+
+O método de \emph{Boosting} segue o paradigma sequencial, utilizando uma estratégia que busca atuar sobre os erros obtidos na etapa anterior, tem como finalidade reduzir gradativamente os resíduos de previsão. Dessa maneira, o processo de treinamento de cada novo modelo que irá compor o modelo final precisa ser alimentado com informações sobre os erros obtidos na etapa anterior. Funciona em modelos estáveis (como modelos lineares) melhor do que o \emph{Bagging}.
+
+Para o \emph{Bagging} - como validação cruzada, é um exemplo de combinação paralela. A cada rodada, o algoritmo sorteia aleatoriamente um subconjunto dos dados de treinamento e utiliza essa subamostra para que se treine um novo modelo. Geralmente é utilizado reposição no sorteio, tornando possível a ocorrência de observações replicadas nesses subconjuntos de treinamento de cada modelo. É muito utilizado para resolver problemas de \emph{overfitting} e diferentemente do \emph{Boosting} que possui ponderação em suas saídas, as saídas do \emph{Bagging} são igualmente importantes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/boostbag} 
+
+}
+
+\caption{\emph{Bagging x Boosting} \citep{mayrink2015avaliaccao}. Os porcentuais são valores parametrizáveis que indicam a proporção da subamostragem de dados em cada subconjunto da amostra total de treinamento.}\label{fig:boostbag}
+\end{figure}
+
+
+
+\hypertarget{stacking}{%
+\section{\texorpdfstring{\emph{Stacking}}{Stacking}}\label{stacking}}
+
+É um método \emph{ensemble} pouco utilizado em relação aos anteriores. Este método busca combinar diferentes hipóteses induzidas por diferentes algoritmos de aprendizado de máquina, tem como finalidade encontrar uma boa combinação desse conjunto de hipóteses denominada \(h^*\) \citep{bernardini2002combinaccao}.
+
+\citet{wolpert1992stacked} propôs o um esquema para aprender \(h^*\) com a estratégia \textbf{``\emph{leave-one-out cross validation}'' (``validação cruzada deixe um de fora'')}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Considere \(h_i^{(-i)})\) como sendo a hipótese construída pelo algoritmo de aprendizado \(A_l\) utilizando como conjunto de treinamento todos os \(N\) exemplos do base de dados de treinamento, com exceção do \(i\)-ésimo exemplo de \(x\). Ou seja, cada algoritmo é aplicado ao conjunto de treinamento \(N\) vezes, deixando de fora um exemplo de treinamento por vez.
+\item
+  Aplique cada classificador \(h_i^{(-i)}\) ao exemplo \(x_i\) para obter a classe predita \(y_i^l\). Com todas as classes preditas por cada um dos \(L\) classificadores, haverá um novo conjunto de dados contendo exemplos de ``nível 2'' para que se possa analisar.
+\item
+  Por fim, basta aplicar algum algoritmo de aprendizado a este novo conjunto ``nível 2'' de treinamento para aprender \(h^*\).
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/stack} 
+
+}
+
+\caption{Funcionamento do Algoritmo \emph{Stacking} \citep{bernardini2002combinaccao}.}\label{fig:stack}
+\end{figure}
+
+
 
 \hypertarget{rf}{%
 \section{\texorpdfstring{Floresta Aleatória - \emph{Random Forest}}{Floresta Aleatória - Random Forest}}\label{rf}}
@@ -5414,7 +5582,7 @@ Nesta amostra de treinamento será verificado quais elementos que situam-se fora
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{G:/Hiro/Documents/Meus feitos/Livro ML/bookdown-demo-master/Figuras/outofbag} 
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/outofbag} 
 
 }
 
@@ -5451,6 +5619,9 @@ Um algoritmo que se tornou bem conhecido e bastante similar à Floresta Aleatór
 
 \hypertarget{redesneurais}{%
 \chapter{Redes Neurais}\label{redesneurais}}
+
+\hypertarget{deeplearning}{%
+\chapter{\texorpdfstring{\emph{Deep Learning}}{Deep Learning}}\label{deeplearning}}
 
   \bibliography{book.bib,packages.bib}
 

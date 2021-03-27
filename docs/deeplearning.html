@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 O Aprendizado de Máquina | Fundamentos de Machine Learning</title>
+  <title>Capítulo 10 Deep Learning | Fundamentos de Machine Learning</title>
   <meta name="description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 2 O Aprendizado de Máquina | Fundamentos de Machine Learning" />
+  <meta property="og:title" content="Capítulo 10 Deep Learning | Fundamentos de Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 O Aprendizado de Máquina | Fundamentos de Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 10 Deep Learning | Fundamentos de Machine Learning" />
   
   <meta name="twitter:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="i-a.html"/>
-<link rel="next" href="dicio.html"/>
+<link rel="prev" href="redesneurais.html"/>
+<link rel="next" href="references.html"/>
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -191,38 +191,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="machinelearning" class="section level1">
-<h1><span class="header-section-number">Capítulo 2</span> O Aprendizado de Máquina</h1>
-<p>Agora que entendemos o conceito e a origem de uma IA, podemos entrar no tão esperado <strong><em>Machine Learning (ML)</em></strong>. Alguns pensam erroneamente ser algo distinto de uma IA, mas é importante entender que ele é um campo específico da inteligência artificial que tem como base a ideia de que sistemas podem aprender com dados e iterações, identificar padrões para que aprimorem seu desempenho diante de problemas específicos e possam tomar decisões com a menor intervenção humana possível. Ele busca entender a estrutura dos dados com modelos que atendam a certos pressupostos - muitas vezes não temos nem conhecimento de como essa estrutura se parece.</p>
-<p><span class="citation">Samuel (<a href="#ref-samuel1959some">1959</a>)</span>, engenheiro do MIT popularizou o termo <em>“Machine Learning”</em> (Aprendizado de Máquina), descrevendo o conceito com “um campo de estudo que dá aos computadores a habilidade de aprender sem terem sidos programados para tal” <span class="citation">(Simon <a href="#ref-simon2013too">2013</a>)</span>. Com a expansão da internet e seu abundante armazenamento de dados na <em>web</em>, o <em>Big data</em>, foi necessário - ainda é - aprimorar sistemas de organização, classificação, análise de dados e identificação de padrões para tratá-los. Isso fez com que o Aprendizado de Máquina entrasse em destaque e passasse a ser uma das áreas mais importantes. Na seção <a href="i-a.html#i-a">1</a> foi apresentado alguns exemplos de aplicações de IA, o mesmo se aplicam para o ML.</p>
-<p>Um aprendizado de máquina <strong>não</strong> é o mesmo que uma lista de instruções. Imagine uma criança aprendendo a andar de bicicleta, ela pode até receber algumas instruções para melhorar seu aprendizado, mas provável que ela irá aprender melhor com a tentativa e erro. Pedala, cai, levanta, pedala novamente e assim sucessivamente até ela realmente saber andar. Da forma similar ocorre com o Aprendizado de Máquina.</p>
-<div id="como-a-máquina-aprende" class="section level2">
-<h2><span class="header-section-number">2.1</span> Como a máquina aprende?</h2>
-<p>Você é um vendedor e está interessado em clientes “bons pagadores” e “maus pagadores”. Para cada cliente, possui um conjunto de dados como: idade, quantidade de faturas pagas antes do vencimento nos últimos 12 meses, quantidade de faturas atrasadas nos últimos 12 meses, região que reside, tempo de cadastro, etc. Você já se encontra com um banco de dados muito grande de clientes com seus respectivos dados e classificações como bons pagadores e maus pagadores e pretende utilizar um algoritmo de ML para aprender com esses dados de modo que, quando você receber o banco de dados de um novo cliente, esse algoritmo pode prever se a tendência desse cliente seria de bom pagador ou mau pagador.</p>
-<p>Primeiramente, você iria alimentar seu algoritmo de ML com os dado históricos que passaram por toda uma análise se havia dados faltantes, redundantes, etc e já classificados entre cliente bom pagador e mau pagador e suas respectivas características para treiná-lo. Com estes dados o algoritmo irá aprender por meio de com quais condições são necessárias para o cliente ser classificado como bom pagador ou mau pagador. Importante ressaltar que existem diferentes algoritmos de Aprendizado de Máquina que poderiam resolver esse problema, de acordo com modelos estatísticos e comandos computacionais que atendam a certos pressupostos.</p>
-<ul>
-<li><strong>Como verificarmos se os dados já estão bons para aplicar o algoritmo? Quais modelos podemos aplicar? Como sabemos que essas previsões são confiáveis? Como evitar problemas de um modelo ruim?</strong></li>
-</ul>
-<p>Agora que temos todo o contexto histórico podemos ir adiante do conteúdo aplicado. O tópico a seguir trataremos um pouco de alguns conceitos muito importantes que são utilizados em muitos algoritmos de ML para que possamos gradualmente responder estes questionamentos.</p>
+<div id="deeplearning" class="section level1">
+<h1><span class="header-section-number">Capítulo 10</span> <em>Deep Learning</em></h1>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-samuel1959some">
-<p>Samuel, Arthur L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” <em>IBM Journal of Research and Development</em> 3 (3): 210–29.</p>
-</div>
-<div id="ref-simon2013too">
-<p>Simon, Phil. 2013. <em>Too Big to Ignore: The Business Case for Big Data</em>. Vol. 72. John Wiley &amp; Sons.</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="i-a.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dicio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="redesneurais.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -249,7 +228,7 @@ gitbook.start({
 },
 "fontsettings": ["white", "sepia", "night"],
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-ML.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10.1-deeplearning.Rmd",
 "text": "Edit"
 },
 "history": {

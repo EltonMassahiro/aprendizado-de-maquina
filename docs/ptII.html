@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 7 Algoritmos de Aprendizagem II | Fundamentos de Machine Learning</title>
+  <title>Capítulo 7 Modelos de Aprendizagem II | Fundamentos de Machine Learning</title>
   <meta name="description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 7 Algoritmos de Aprendizagem II | Fundamentos de Machine Learning" />
+  <meta property="og:title" content="Capítulo 7 Modelos de Aprendizagem II | Fundamentos de Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 7 Algoritmos de Aprendizagem II | Fundamentos de Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 7 Modelos de Aprendizagem II | Fundamentos de Machine Learning" />
   
   <meta name="twitter:description" content="Entenda Machine Learning desde sua história até seus principais conceitos." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-02-07" />
+<meta name="date" content="2021-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,8 +131,11 @@
 <li class="chapter" data-level="6.4.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#penalizacoes"><i class="fa fa-check"></i><b>6.4.1</b> Penalizações - Regressão <em>Lasso</em> e a Regressão <em>Ridge</em></a></li>
 <li class="chapter" data-level="6.4.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#elasticnet"><i class="fa fa-check"></i><b>6.4.2</b> Elastic Net - <span class="math inline">\(L_1+L_2\)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#knn-k-vizinhos-mais-próximos-k-nearest-neighbors"><i class="fa fa-check"></i><b>6.5</b> KNN: K-Vizinhos Mais Próximos (<em>K-Nearest Neighbors</em>)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exknn"><i class="fa fa-check"></i><b>6.5.1</b> Exemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem II</a><ul>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Modelos de Aprendizagem II</a><ul>
 <li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></a><ul>
 <li class="chapter" data-level="7.1.1" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.1</b> Classificação de Padrões Linearmente Separáveis</a></li>
 <li class="chapter" data-level="7.1.2" data-path="ptII.html"><a href="ptII.html#margmax"><i class="fa fa-check"></i><b>7.1.2</b> Hiperplano de Separação Ótima / Margem Máxima</a></li>
@@ -153,16 +156,20 @@
 <li class="chapter" data-level="7.4.2" data-path="ptII.html"><a href="ptII.html#número-final-de-grupos"><i class="fa fa-check"></i><b>7.4.2</b> Número final de grupos</a></li>
 <li class="chapter" data-level="7.4.3" data-path="ptII.html"><a href="ptII.html#técnicas-não-hierárquicas"><i class="fa fa-check"></i><b>7.4.3</b> Técnicas Não Hierárquicas</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="ptII.html"><a href="ptII.html#knn-k-vizinhos-mais-próximos-k-nearest-neighbors"><i class="fa fa-check"></i><b>7.5</b> KNN: K-Vizinhos Mais Próximos (<em>K-Nearest Neighbors</em>)</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="ptII.html"><a href="ptII.html#exknn"><i class="fa fa-check"></i><b>7.5.1</b> Exemplo</a></li>
-</ul></li>
+<li class="chapter" data-level="7.5" data-path="ptII.html"><a href="ptII.html#redesneurais"><i class="fa fa-check"></i><b>7.5</b> Redes Neurais Artificiais (RNA)</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="ptIII.html"><a href="ptIII.html"><i class="fa fa-check"></i><b>8</b> Os métodos <em>Ensemble</em></a><ul>
 <li class="chapter" data-level="8.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>8.1</b> <em>Bagging</em></a></li>
-<li class="chapter" data-level="8.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>8.2</b> <em>Boosting</em></a></li>
-<li class="chapter" data-level="8.3" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>8.3</b> Floresta Aleatória - <em>Random Forest</em></a></li>
+<li class="chapter" data-level="8.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>8.2</b> <em>Boosting</em></a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ptIII.html"><a href="ptIII.html#adaboost"><i class="fa fa-check"></i><b>8.2.1</b> <em>AdaBoost</em></a></li>
+<li class="chapter" data-level="8.2.2" data-path="ptIII.html"><a href="ptIII.html#gradientboost"><i class="fa fa-check"></i><b>8.2.2</b> <em>Gradient Boosting</em></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="redesneurais.html"><a href="redesneurais.html"><i class="fa fa-check"></i><b>9</b> Redes Neurais</a></li>
+<li class="chapter" data-level="8.3" data-path="ptIII.html"><a href="ptIII.html#bagboost"><i class="fa fa-check"></i><b>8.3</b> <em>Bagging x Boosting</em></a></li>
+<li class="chapter" data-level="8.4" data-path="ptIII.html"><a href="ptIII.html#stacking"><i class="fa fa-check"></i><b>8.4</b> <em>Stacking</em></a></li>
+<li class="chapter" data-level="8.5" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>8.5</b> Floresta Aleatória - <em>Random Forest</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ptII.html"><a href="ptII.html#redesneurais"><i class="fa fa-check"></i><b>9</b> Redes Neurais</a></li>
+<li class="chapter" data-level="10" data-path="deeplearning.html"><a href="deeplearning.html"><i class="fa fa-check"></i><b>10</b> <em>Deep Learning</em></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
@@ -176,7 +183,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Machine Learning</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de <em>Machine Learning</em></a>
           </h1>
         </div>
 
@@ -185,23 +192,23 @@
 
             <section class="normal" id="section-">
 <div id="ptII" class="section level1">
-<h1><span class="header-section-number">Capítulo 7</span> Algoritmos de Aprendizagem II</h1>
+<h1><span class="header-section-number">Capítulo 7</span> Modelos de Aprendizagem II</h1>
 <div id="svm" class="section level2">
 <h2><span class="header-section-number">7.1</span> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></h2>
 <p>A Máquina de Vetores de Suporte (SVMs, do inglês <em>Support Vectors Machine</em>), teve como alicerce a teoria de aprendizado estatístico, desenvolvida por <span class="citation">Vapnik (<a href="#ref-vapnik2013nature">2013</a>)</span> com o propósito de resolver problemas de classificação de padrões, foi originalmente desenvolvida para classificação binária, construindo um hiperplano como superfície de decisão que separa classes linearmente separáveis (ao caso de não-linearmente separáveis utiliza-se função de mapeamento). Muitos a comparam com redes neurais pelo fato de ser eficiente em trabalhar com dados de alta dimensionalidade <span class="citation">(Sung and Mukkamala <a href="#ref-sung2003identifying">2003</a>; Ding and Dubchak <a href="#ref-ding2001multi">2001</a>)</span>. É utilizada atualmente tanto para regressão quanto para qualissificação e é uma análise supervisionada.</p>
 <p>Vamos supor um gráfico com características <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> e já classificados na amostra os indivíduos que estão e não estão doentes, quanto maior o valor de ambos maior a probabilidade do indivíduo ser classificado como doente.</p>
 <div class="figure" style="text-align: center"><span id="fig:svm1"></span>
-<img src="Figuras/svm1.png" alt="Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes." width="70%" />
+<img src="Figuras/svm1.png" alt="Gráfico de \(X_1\) e \(X_2\) com a classificação de em doentes e não doentes." width="70%" />
 <p class="caption">
-Figura 7.1: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> classificado em doentes e não doentes.
+Figura 7.1: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> com a classificação de em doentes e não doentes.
 </p>
 </div>
 
 <p>Um exemplo como esse é simples observar que podemos separar os dados traçando uma linha reta. Classificando os doentes para a direita e acima do gráfico e não doentes a esquerda e abaixo. Esta linha é o que chamamos de <strong>hiperplano de separação</strong>.</p>
 <div class="figure" style="text-align: center"><span id="fig:svm2"></span>
-<img src="Figuras/svm2.png" alt="Gráfico de \(X_1\) e \(X_2\) classificado em doentes e não doentes por meio de um hiperplano." width="70%" />
+<img src="Figuras/svm2.png" alt="Gráfico de \(X_1\) e \(X_2\) com a classificação de doentes e não doentes por meio de um hiperplano." width="70%" />
 <p class="caption">
-Figura 7.2: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> classificado em doentes e não doentes por meio de um hiperplano.
+Figura 7.2: Gráfico de <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> com a classificação de doentes e não doentes por meio de um hiperplano.
 </p>
 </div>
 
@@ -249,7 +256,7 @@ Figura 7.5: Interpretação geométrica de <span class="math inline">\(\vec{w}\)
 <h3><span class="header-section-number">7.1.2</span> Hiperplano de Separação Ótima / Margem Máxima</h3>
 <p>Um hiperplano é considerado de margem máxima se separa um conjunto de vetores sem erros e a distância entre os vetores de classes diferentes mais próximos do hiperplano é a máxima possível.</p>
 <div class="figure" style="text-align: center"><span id="fig:margmax"></span>
-<img src="Figuras/margmax.PNG" alt="(a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima (Silva Meloni 2009)." width="70%" />
+<img src="Figuras/margmax.PNG" alt="(a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima (Silva Meloni 2009)." width="90%" />
 <p class="caption">
 Figura 7.6: (a) Um hiperplano de separação com uma pequena margem. (b) Um hiperplano de Margem máxima <span class="citation">(Silva Meloni <a href="#ref-da2009classificaccao">2009</a>)</span>.
 </p>
@@ -345,16 +352,16 @@ sgn(\langle \vec{w}^* . \vec{z}\rangle+b^*)
 <h3><span class="header-section-number">7.1.3</span> Classificação de Padrões Não-Linearmente Separáveis</h3>
 <p>Nas situações reais a maioria dos padrões são mais complexos e não-lineares. O conjunto de dados é classificado como não-linearmente separável ao caso de não ser possível separar os dados com um hiperplano:</p>
 <div class="figure" style="text-align: center"><span id="fig:svm7"></span>
-<img src="Figuras/svm7.PNG" alt="Padrões linearmente e não-linearmente separável respectivamente (Gonçalves 2008)." width="70%" />
+<img src="Figuras/svm7.PNG" alt="Padrões linearmente e não-linearmente separável respectivamente (Gonçalves 2008)." width="90%" />
 <p class="caption">
 Figura 7.8: Padrões linearmente e não-linearmente separável respectivamente <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.
 </p>
 </div>
 
-<p>Segundo <span class="citation">Smola et al. (<a href="#ref-smola2000introduction">2000</a>)</span>, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções <em>Kernel</em> para tratarmos de uma problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).</p>
+<p>Segundo <span class="citation">Smola et al. (<a href="#ref-smola2000introduction">2000</a>)</span>, o teorema de Cover afima que um problema não-linear possui maior probabilidade de ser linearmente separável em um espaço de mais alta dimensionalidade. Com isso, a SVM não-linear faz uma mudança de dimensionalidade por meio das funções <em>Kernel</em> para tratarmos de um problema de classificação linear e permitindo elaborar o hiperplano ótimo (note que ACP possui uma ideia similar dado suas propriedades).</p>
 <p>Um conjunto de entrada <span class="math inline">\(X\)</span> com pares <span class="math inline">\(\{(x_1,y_1);(x_2,y_2),...,(x_n,y_n)\}\)</span> de uma amostra de treinamento (não-linearmente separável), são mapeados por meio de uma função <span class="math inline">\(\phi\)</span> a fim de obter um novo conjunto de dados <span class="math inline">\(X&#39;\)</span> linearmente separável em um espaço de maior dimensionalidade, representado por <span class="math inline">\(\{(\phi(x_1),y_1),...,(\phi(x_n),y_n)\}\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:svm8"></span>
-<img src="Figuras/svm8.png" alt="Mapeamento de um conjunto de entrada \(X\) para o espaço caracerística. Um novo conjunto \(X&#39;\)." width="70%" />
+<img src="Figuras/svm8.png" alt="Mapeamento de um conjunto de entrada \(X\) para o espaço caracerística. Um novo conjunto \(X&#39;\)." width="100%" />
 <p class="caption">
 Figura 7.9: Mapeamento de um conjunto de entrada <span class="math inline">\(X\)</span> para o espaço caracerística. Um novo conjunto <span class="math inline">\(X&#39;\)</span>.
 </p>
@@ -380,12 +387,12 @@ sgn(\langle \vec{w}^* \ . \ \phi(z)\rangle+b^*)
 \kappa=(x_i,x_j)=\langle \phi(x_i) \ . \ \phi(x_j)\rangle
 \tag{7.20}
 \end{equation}\]</span></p>
-<p>A função precisa satisfazer as condições do <strong>Teorema de Mercer</strong>, portanto a matriz <span class="math inline">\(K\)</span> é positivamente definida (autovalores maiores que zero). <span class="math inline">\(K\)</span> é obtida por:</p>
+<p>A função precisa satisfazer as condições do <strong>Teorema de Mercer</strong> que permite verificar se um <em>Kernel</em> pode ser representado como um produto interno no espaço de características <span class="citation">(Mercer <a href="#ref-mercer1909xvi">1909</a>)</span>, portanto a matriz <span class="math inline">\(K\)</span> é positivamente definida (autovalores maiores que zero). <span class="math inline">\(K\)</span> é obtida por:</p>
 <p><span class="math display" id="eq:mercer">\[\begin{equation}
 K=K_{ij}=\kappa(x_i,x_j)
 \tag{7.21}
 \end{equation}\]</span></p>
-<p>As funções <em>Kernel</em> mais utilizadas são:</p>
+<p>As funções <em>Kernel</em> mais utilizadas nas pesquisas e no mercado de trabalho são:</p>
 <table>
 <caption><span id="tab:kernel">Tabela 7.1: </span> <em>Kernels</em> mais populares <span class="citation">(Gonçalves <a href="#ref-gonccalves2015maquina">2008</a>)</span>.</caption>
 <thead>
@@ -517,7 +524,7 @@ Logo <span class="math inline">\(\alpha_1=2,44\)</span>,<span class="math inline
 </div>
 <div id="decisiontree" class="section level2">
 <h2><span class="header-section-number">7.2</span> Árvore de Decisão (<em>Decision Tree</em>)</h2>
-<p>A Árvore de Decisão - <em>Decision Tree</em> - é muito utilizada em algoritmos para classificação de dados, tem como objetivo construir classificadores que predizem classes baseadas nos valores de atributos de um <em>dataset</em> (análise supervisionada). Ela pode ser aplicada tanto em variáveis categóricas quanto contínuas de entrada e de saída. Na árvore de decisão, dividimos a população ou amostra em dois ou mais conjuntos homogêneos com base nos divisores mais significativos das variáveis de entrada. É um modelo fácil de compreensão, útil para explorar os dados e classificar os dados, sem restrição do tipo de seus dados e pode ser considerada como não paramétrica, porém precisa-se tomar cuidado em ocorrer um sobreajuste e a aplicação em variáveis contínuas pode perder informações.</p>
+<p>A Árvore de Decisão, do inglês <em>Decision Tree</em>, é muito utilizada em algoritmos para classificação de dados, tem como objetivo construir classificadores que predizem classes baseadas nos valores de atributos de um <em>dataset</em> (análise supervisionada). Ela pode ser aplicada tanto em variáveis categóricas quanto contínuas de entrada e de saída. Na árvore de decisão, dividimos a população ou amostra em dois ou mais conjuntos homogêneos com base nos divisores mais significativos das variáveis de entrada. É um modelo fácil de compreensão, útil para explorar os dados e classificar os dados, sem restrição do tipo de seus dados e pode ser considerada como não paramétrica, porém precisa-se tomar cuidado em ocorrer um sobreajuste e a aplicação em variáveis contínuas pode perder informações.</p>
 <p>Há muitos algoritmos de classificação que constroem árvores de decisão. Cada um pode ter melhor desempenho em determinada situação e outro algoritmo pode ser mais eficiente em outros tipos de situações, não há como apontar qual o melhor método. Ela é composta por:</p>
 <ol style="list-style-type: decimal">
 <li><p>Nó Raiz/Nodos: Representa a população ou uma amostra, podendo ser ainda dividido em dois ou mais conjuntos homogêneos;</p></li>
@@ -526,9 +533,9 @@ Logo <span class="math inline">\(\alpha_1=2,44\)</span>,<span class="math inline
 <li><p>Folha/Nó de Término: Os nós não divididos são denominados de Folha ou Nó de Término, representam as diferentes classes de um conjunto de treinamento;</p></li>
 <li><p>Poda: O processo de remover sub-nós de um nó de decisão é chamado poda. Existe técnicas para avaliar o bom momento de podar o galho (sub-nó) da árvore.</p></li>
 </ol>
-<p>Segue abaixo uma demonstração da ramificação da árvore:</p>
+<p>Segue a Figura <a href="ptII.html#fig:decisiontree">7.10</a> uma demonstração da ramificação da árvore:</p>
 <div class="figure" style="text-align: center"><span id="fig:decisiontree"></span>
-<img src="Figuras/decisiontree.png" alt="Terminologia de Árvore de Decisão." width="70%" />
+<img src="Figuras/decisiontree.png" alt="Terminologia de Árvore de Decisão." width="80%" />
 <p class="caption">
 Figura 7.10: Terminologia de Árvore de Decisão.
 </p>
@@ -551,9 +558,9 @@ Figura 7.10: Terminologia de Árvore de Decisão.
 <p>A poda (pós-poda) de uma árvore é importante para que se verifique a melhor divisão e chegue até a condição de parada especificada. Um exemplo que gosto muito e creio que facilitará para a compreensão da poda <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span> : suponha que há duas pistas, você está em seu veículo verde na pista da direita com uma certa quantidade de carros em sua frente movendo a aproximados 80<span class="math inline">\(km/h\)</span> cada. Na pista da esquerda encontra-se dois caminhões de entrega de encomendas à apenas 30<span class="math inline">\(km/h\)</span> cada. Caso você vá pela esquerda irá alcançar o carro à frente, podendo passar até chegar atrás do caminhão e irá manter seu veículo a 30<span class="math inline">\(km/h\)</span> procurando desesperadamente encontrar alguma oportunidade de voltar para a direita. Entretando todos os outros carros ultrapassam você.</p>
 <p>Seria uma ótima escolha caso você precisasse ultrapassá-los em poucos segundos. Mas a um prazo maior poderia ser uma escolha bem ruim. Esta é a diferença entre a árvore de decisão sem e com a poda. O algoritmo de árvore de decisão com restrições não irá visualizar os caminhões a frente e adotará o trajeto interessante naquele momento e iria optar pela esquerda. Porém quando utilizamos a poda, estamos observando alguns passos à frente antes de tomarmos decisões de que lado iríamos. Ao observar que para a esquerda é ruim, poda-se este galho.</p>
 <div class="figure" style="text-align: center"><span id="fig:poda"></span>
-<img src="Figuras/poda.png" alt="Desenho de veículos em uma pista. Adaptado de (ANALYTICS VIDHYA 2016)." width="70%" />
+<img src="Figuras/poda.png" alt="Representação de uma poda: veículos em uma pista. Adaptado de (ANALYTICS VIDHYA 2016)." width="70%" />
 <p class="caption">
-Figura 7.11: Desenho de veículos em uma pista. Adaptado de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
+Figura 7.11: Representação de uma poda: veículos em uma pista. Adaptado de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
 </p>
 </div>
 
@@ -569,7 +576,7 @@ E(T)=\frac{ce}{ce+cc}
 <p>Aos exemplos de Árvore de Decisão, vamos tomar como base da literatura de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.</p>
 <p>Vamos supor uma amostra com 30 alunos com duas características cada: Sexo (meninos e meninas), Classe (I e II). Temos como propósito elaborar um modelo de árvore de decisão para prevermos quais alunos iriam jogar tênis durante o intervalo. Portanto precisamos classificar estes alunos com base nestas duas características. Supondo valores pré-estabelecidos dos alunos, a árvore segregará os alunos com base nestas variáveis e identificará a variável que cria os melhores conjuntos homogêneos e heterogêneos entre si.</p>
 <div class="figure" style="text-align: center"><span id="fig:decision"></span>
-<img src="Figuras/decision.jpg" alt="Divisão de alunos que jogam tênis, traduzido de (ANALYTICS VIDHYA 2016)." width="70%" />
+<img src="Figuras/decision.jpg" alt="Divisão de alunos que jogam tênis, traduzido de (ANALYTICS VIDHYA 2016)." width="90%" />
 <p class="caption">
 Figura 7.12: Divisão de alunos que jogam tênis, traduzido de <span class="citation">(ANALYTICS VIDHYA <a href="#ref-analytics">2016</a>)</span>.
 </p>
@@ -610,7 +617,7 @@ Como o Ganho de Informação de Sexo é maior que o de Classe (menos impuro), a 
 <li>Exemplo numérico - Adilson tem uma lanchonete e recebe cerca de 300 clientes por mês. Cada cliente gasta em média R$100,00. Uma concorrente vai abrir uma nova unidade próximo de seu estabelecimento, o que reduzirá seu número de clientes a não ser que Adilson amplie seu comércio. Considerando que está apertado financeiramente, está na dúvida se vale este investimento contabilizando num prazo de 5 meses. A análise foi: caso ele investisse R$40.000,00, as chances de ele obter 330 clientes por mês é de 30% e de obter 380 é 70%. Se Adilson não optar expandir, não irá gastar nada porém com a concorrente, irá ter uma probabilidade de 60% de atender 250 clientes por mês e de 40% de atender 290. Qual seria sua decisão, tomando como base o algoritmo de Árvore de Decisão?</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:decisionlanche"></span>
-<img src="Figuras/decisionlanche.png" alt="Árvore de Decisão sobre o lucro da lanchonete." width="70%" />
+<img src="Figuras/decisionlanche.png" alt="Árvore de Decisão sobre o lucro da lanchonete." width="80%" />
 <p class="caption">
 Figura 7.13: Árvore de Decisão sobre o lucro da lanchonete.
 </p>
@@ -629,15 +636,16 @@ Figura 7.13: Árvore de Decisão sobre o lucro da lanchonete.
 <p>A Análise de Componentens Principais, popularmente conhecida como ACP ou PCA (<em>Principal Component Analysis</em>), em inglês, foi introduzida por <span class="citation">Pearson (<a href="#ref-pearson1901liii">1901</a>)</span> e fundamentada no artigo de <span class="citation">Hotelling (<a href="#ref-hotelling1933analysis">1933</a>)</span>. É uma <strong>análise multivariada</strong> que tem como objetivo explicar a estrutura de variância e covariância de um vetor aleatório, composto por <span class="math inline">\(p\)</span>-variáveis aleatórias, através da construção de combinações lineares das variáveis originais que são chamadas de componentes principais e não correlacionadas entre si <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>. É uma técnica bastante utilizada em diversas áreas do conhecimento, como a biologia, a agronomia, a zootécnica, a ecologia, a engenharia florestal, a medicina, a economia, entre outras áreas. Muitos sugerem o seu uso quando o volume de dados ou variáveis é grande possibilitando reduzir a dimensão da matriz de dados que compõem o conjunto de variáveis resposta com apenas poucos componentes, ou seja, <span class="math inline">\(p\)</span> variáveis originais substituídas por <span class="math inline">\(k\)</span> (sendo <span class="math inline">\(k &lt; p\)</span>) componentes principais não correlacionadas.</p>
 <p>Vamos supor um conjunto de dados em apenas duas dimensões <span class="math inline">\((x, y)\)</span> e que pode ser plotado em um plano cartesiano. Podemos verificar pelo seu comportamento que possuem alta correlação positiva.</p>
 <div class="figure" style="text-align: center"><span id="fig:pca1"></span>
-<img src="Figuras/pca1.png" alt="Gráfico bidimensional \(x\) por \(y\)." width="70%" />
+<img src="Figuras/pca1.png" alt="Gráfico bidimensional \(x\) por \(y\)." width="90%" />
 <p class="caption">
 Figura 7.14: Gráfico bidimensional <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span>.
 </p>
 </div>
 
-<p>Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor <span class="math inline">\((x, y)\)</span>. Os eixos não representam algo físico, mas representam combinações de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que denominamos <strong>“componentes principais”</strong>, escolhidas para analisar a variação do eixo. Observe que rotacionamos o gráfico na Figura <a href="ptII.html#fig:pca2">7.15</a> e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo <span class="math inline">\(y\)</span>, visto que a componente do eixo <span class="math inline">\(x\)</span> explica 99,30% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo <span class="math inline">\(x\)</span>, analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.</p>
+<p>Mas se quisermos descobrir a variação do conjunto de dados, o ACP busca encontrar um novo sistema de coordenadas em que cada ponto tem um novo valor <span class="math inline">\((x, y)\)</span>. Os eixos não representam algo físico, mas representam combinações de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que denominamos <strong>“componentes principais”</strong>, escolhidas para analisar a variação do eixo.</p>
+<p>Observe que rotacionamos o gráfico na Figura <a href="ptII.html#fig:pca2">7.15</a> e que após a ACP, podemos verificar a possibilidade de dercartar a componente referente ao eixo <span class="math inline">\(y\)</span>, visto que a componente do eixo <span class="math inline">\(x\)</span> explica 99,30% da variação total dos dados, ou seja, o primeiro componente tem uma maior dispersão (variância). Possibilitando pela componente principal do eixo <span class="math inline">\(x\)</span>, analisar e até mesmo classificar as observações, como por exemplo, a observação 1 e 2 como um conjunto e a 3, 4 e 5 como um segundo conjunto.</p>
 <div class="figure" style="text-align: center"><span id="fig:pca2"></span>
-<img src="Figuras/pca2.png" alt="Gráfico de \(x\) por \(y\) rotacionado." width="70%" />
+<img src="Figuras/pca2.png" alt="Gráfico de \(x\) por \(y\) rotacionado." width="100%" />
 <p class="caption">
 Figura 7.15: Gráfico de <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> rotacionado.
 </p>
@@ -645,7 +653,7 @@ Figura 7.15: Gráfico de <span class="math inline">\(x\)</span> por <span class=
 
 <p>Com mais dimensões, o ACP torna-se ainda mais útil pois possibilita observarmos o conjunto de dados num melhor ângulo.</p>
 <div class="figure" style="text-align: center"><span id="fig:pca3"></span>
-<img src="Figuras/pca3.PNG" alt="Gráfico tridimensional, em Powell, Victor and Lehe, Lewis (2014)." width="70%" />
+<img src="Figuras/pca3.PNG" alt="Gráfico tridimensional, em Powell, Victor and Lehe, Lewis (2014)." width="90%" />
 <p class="caption">
 Figura 7.16: Gráfico tridimensional, em <span class="citation">Powell, Victor and Lehe, Lewis (<a href="#ref-powellpca">2014</a>)</span>.
 </p>
@@ -659,7 +667,7 @@ Figura 7.16: Gráfico tridimensional, em <span class="citation">Powell, Victor a
 <p>Caso ainda não tenha muito contato com a Álgebra Linear, recomendo buscar algumas literaturas a respeito. Em <a href="dicio.html#dicio">3</a> encontra-se sobre Escalar, Vetores, Espaço Vetorial e Transformação Linear que serão tratadas neste tópico.</p>
 <p>Dado uma matriz <span class="math inline">\(A_{mxn}\)</span> que define uma transformação linear (não muda sua dimensão), existem vetores onde sua orientação não é afetada por esta transformação, os <strong>autovetores</strong>. Na Figura <a href="ptII.html#fig:autovetor">7.17</a>, <span class="math inline">\(u\)</span> é um autovetor e <span class="math inline">\(V\)</span> não.</p>
 <div class="figure" style="text-align: center"><span id="fig:autovetor"></span>
-<img src="Figuras/autovetor.png" alt="\(u\) é um autovetor de \(T\), porém \(V\) não." width="70%" />
+<img src="Figuras/autovetor.png" alt="\(u\) é um autovetor de \(T\), porém \(V\) não." width="80%" />
 <p class="caption">
 Figura 7.17: <span class="math inline">\(u\)</span> é um autovetor de <span class="math inline">\(T\)</span>, porém <span class="math inline">\(V\)</span> não.
 </p>
@@ -830,7 +838,7 @@ r_{Y_j,X_i}=\frac{e_{ji}\sqrt{\lambda_j}}{\sqrt{\sigma}}
 <p>Sendo geralmente escolhido as componentes com seus respectivos autovalores que explicam entre 70%-90% segundo alguns pesquisadores. Outros como <span class="citation">Kaiser (<a href="#ref-kaiser1960application">1960</a>)</span>, propõe aceitar, observando diretamente, somente os autovalores iguais ou superiores à unidade.</p>
 <p><strong>Importante:</strong> sobre utilizar matriz de covariância ou de correlação depende muito das fundamentações teóricas e recomendaçõesdos pesquisadores. Em geral, utiliza-se a matriz de correlação (quando padronizamos e elaboramos a matriz) ao caso de padronizar escalas distintas que podem viesar, como por exemplo, medidas de distância e de peso.</p>
 <p>Caso esteja utilizando software para a análise, dependendo do software utilizado com seu determinado modelo de formulação de componentes principais, pode ocorrer essa troca de sinal que nada mais é do que uma reflexão em relação ao eixo, uma rotação em seu espaço vetorial n-dimensional em torno da origem, poderá ocasionar uma “rotação” em torno do eixo. Tratando de algebra linear e suas combinações lineares, a combinação poderá possuir soluções diferentes que diferem apenas o sinal.</p>
-<p><strong>Resumo geral:</strong> É comum o pesquisador trabalhar com um volume de dados muito grande e que estão muitas vezes correlacionadas. A Análise de Componentes principais busca explicar a estrutura de variância e covariância de um vetor aleatório com <span class="math inline">\(p\)</span> variáveis, possibilitando por meio da combinação linear deste vetor aleatório novas componentes (denominada componente principal) com menos variáveis (<span class="math inline">\(k&lt;p\)</span>) que o conjunto de dados original e não correlacionadas de modo que estas componentes principais retenha a maior parte da variação apresentada pelas originais, possibilitando classificarmos o conjunto de dados e até mesmo descartar variáveis que podem ser redundantes ou não importantes. Utiliza-se de fundamentações teóricas de Autovetores e Autovalores para que se encontre um novo sistema de coordenadas com novos pontos a partir das originais, pode-se dizer que rotacionamos para que se visualize num “novo ângulo”, para descobrir e avaliar em ordem decrescente a variação (matriz de covariância do vetor aleatório) deste conjunto de dados. Os passos:</p>
+<p>Sintetizando, é comum o pesquisador trabalhar com um volume de dados muito grande e que estão muitas vezes correlacionadas. A Análise de Componentes principais busca explicar a estrutura de variância e covariância de um vetor aleatório com <span class="math inline">\(p\)</span> variáveis, possibilitando por meio da combinação linear deste vetor aleatório novas componentes (denominada componente principal) com menos variáveis (<span class="math inline">\(k&lt;p\)</span>) que o conjunto de dados original e não correlacionadas de modo que estas componentes principais retenha a maior parte da variação apresentada pelas originais, possibilitando classificarmos o conjunto de dados e até mesmo descartar variáveis que podem ser redundantes ou não importantes. Utiliza-se de fundamentações teóricas de Autovetores e Autovalores para que se encontre um novo sistema de coordenadas com novos pontos a partir das originais, pode-se dizer que rotacionamos para que se visualize num “novo ângulo”, para descobrir e avaliar em ordem decrescente a variação (matriz de covariância do vetor aleatório) deste conjunto de dados. Os passos:</p>
 <ol style="list-style-type: decimal">
 <li><p>Calcular a Matriz de Correlação amostral <span class="math inline">\(R_{mxn}\)</span> ou Covariância amostral <span class="math inline">\(S_{mxn}\)</span> do vetor aleatório de <span class="math inline">\(p\)</span> variáveis.</p></li>
 <li><p>Encontrar <span class="math inline">\(\lambda_i\)</span> autovalores da matriz.</p></li>
@@ -934,26 +942,26 @@ r_{Y_j,X_i}=\frac{e_{ji}\sqrt{\lambda_j}}{\sqrt{\sigma}}
 <thead>
 <tr class="header">
 <th align="center"></th>
-<th align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></th>
-<th align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></th>
-<th align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></th>
+<th align="center"><strong>Ganho Bruto(<span class="math inline">\(X_1\)</span>)</strong></th>
+<th align="center"><strong>Ganho Líq.(<span class="math inline">\(X_2\)</span>)</strong></th>
+<th align="center"><strong>Patrimônio Líq.(<span class="math inline">\(X_3\)</span>)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></td>
+<td align="center"><strong>Ganho Bruto(<span class="math inline">\(X_1\)</span>)</strong></td>
 <td align="center">9550608,6</td>
 <td align="center">706121,1</td>
 <td align="center">14978232,5</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></td>
+<td align="center"><strong>Ganho Líq.(<span class="math inline">\(X_2\)</span>)</strong></td>
 <td align="center">706121,1</td>
 <td align="center">76269,5</td>
 <td align="center">933915,1</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></td>
+<td align="center"><strong>Patrimônio Líq.(<span class="math inline">\(X_3\)</span>)</strong></td>
 <td align="center">14978232,5</td>
 <td align="center">933915,1</td>
 <td align="center">34408113,0</td>
@@ -1168,26 +1176,26 @@ u_1\\ u_2 \\ u_3
 <thead>
 <tr class="header">
 <th align="center"></th>
-<th align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></th>
-<th align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></th>
-<th align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></th>
+<th align="center"><strong>Ganho Bruto(<span class="math inline">\(X_1\)</span>)</strong></th>
+<th align="center"><strong>Ganho Líq.(<span class="math inline">\(X_2\)</span>)</strong></th>
+<th align="center"><strong>Patrimônio Líq.(<span class="math inline">\(X_3\)</span>)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>Ganho Bruto (<span class="math inline">\(X_1\)</span>)</strong></td>
+<td align="center"><strong>Ganho Bruto(<span class="math inline">\(X_1\)</span>)</strong></td>
 <td align="center">1,00</td>
 <td align="center">0,827</td>
 <td align="center">0,826</td>
 </tr>
 <tr class="even">
-<td align="center"><strong>Ganho Líquido (<span class="math inline">\(X_2\)</span>)</strong></td>
+<td align="center"><strong>Ganho Líq.(<span class="math inline">\(X_2\)</span>)</strong></td>
 <td align="center">0,827</td>
 <td align="center">1,00</td>
 <td align="center">0,576</td>
 </tr>
 <tr class="odd">
-<td align="center"><strong>Patrimônio Líquido (<span class="math inline">\(X_3\)</span>)</strong></td>
+<td align="center"><strong>Patrimônio Líq.(<span class="math inline">\(X_3\)</span>)</strong></td>
 <td align="center">0,826</td>
 <td align="center">0,576</td>
 <td align="center">1,00</td>
@@ -1328,9 +1336,9 @@ u_1\\ u_2 \\ u_3
 <p>Note que se compararmos os Escores do primeiro exemplo com matriz de covariância amostral e os Escores do exemplo com matriz de correlação amostral, foram concordantes a indicação das três empresas com melhor desempenho global e na de pior desempenho. Porém, algumas discordaram em algumas posições. Houve 5 concordância em 12 classificações (41,7%). Como as componentes principais foram obtidas pela decomposição espectral de matrizes diferentes, houve esta diferença. E que a matriz de correlação amostral leva em consideração a média do conjunto de 12 empresas de cada variável original, a matriz de covariância amostral não. Importante notar que neste caso, as primeiras componentes obtidas possuem a mesma interpretação, verificando consistência nas análises de ambos os métodos.</p>
 <p>Com valores padronizados, fica mais fácil a visualizaçãor e interpretação da ACP por um gráfico, que denominamos de biplot. Basicamente colocamos no eixo X a primeira componente e no eixo Y a segunda componente principal (as que mais explicam a variância total). No qual as observações em análise são os Escores das observações (no caso as empresas) e os respectivos vetores das variáveis (Ganho Bruto, Ganho Líquido e Patrimônio Líquido).</p>
 <div class="figure" style="text-align: center"><span id="fig:biplotpadro"></span>
-<img src="Figuras/biplotpadro.png" alt="Gráfico de biplot, em X a primeira componente principal e Y a segunda componente." width="70%" />
+<img src="Figuras/biplotpadro.png" alt="Gráfico de biplot, em \(X\) a primeira componente principal e \(Y\) a segunda componente." width="80%" />
 <p class="caption">
-Figura 7.18: Gráfico de biplot, em X a primeira componente principal e Y a segunda componente.
+Figura 7.18: Gráfico de biplot, em <span class="math inline">\(X\)</span> a primeira componente principal e <span class="math inline">\(Y\)</span> a segunda componente.
 </p>
 </div>
 
@@ -1345,7 +1353,7 @@ Para a segunda componente principal (Dim2), note que Patrimônio e Ganho Líquid
 <p>É muito importante o critério que o pesquisador utilizará para delimitar até que ponto os elementos podem ser considerados semelhantes em suas características ou não, por isso precisa-se de medidas apropriadas para classificar. Cada elemento amostral têm informações de <span class="math inline">\(p\)</span> variáveis dentro de um vetor e por meio de medidas matemáticas, como as medidas de distância pode ser possível compararmos as observações dentro de seu banco de dados. Calculando a distância entre os vetores das observações da amostra e agrupando de acordo com suas distância (agrupar os de menores distâncias entre si). Aqui entramos com a aplicação de Medida de Distância, em <a href="dicio.html#meddist">3.3.3</a>. Quaquer medida de distância pode ser utilizada em variáveis quantitativas pode ser transformada num coeficiente de similaridade <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.</p>
 <p>A Análise de Clusters são frequentemente classificadas em <strong>Hierárquicas (aglomerativas e divisivas)</strong> que comumente utilizada para identificar possíveis agrupamentos e um provável valor da quantitade de grupos <span class="math inline">\(g\)</span> e <strong>Não hierárquicas</strong> que necessita um número de grupos pré-estabelecido pelo pesquisados que a aplica.</p>
 <div class="figure" style="text-align: center"><span id="fig:hierarq"></span>
-<img src="Figuras/hierarq.PNG" alt="Esquema geral de procedimentos hierárquicos aglomerativos e divisivos (Mingoti 2007)." width="70%" />
+<img src="Figuras/hierarq.PNG" alt="Esquema geral de procedimentos hierárquicos aglomerativos e divisivos (Mingoti 2007)." width="90%" />
 <p class="caption">
 Figura 7.19: Esquema geral de procedimentos hierárquicos aglomerativos e divisivos <span class="citation">(Mingoti <a href="#ref-mingoti2007analise">2007</a>)</span>.
 </p>
@@ -1883,7 +1891,7 @@ A Distância entre os conglomerados <span class="math inline">\(C_l\)</span> e <
 <li><strong>Análise do comportamento do nível de fusão:</strong> sabemos que a medida que o passo aumenta, a similaridade entre os conglomerados vai decrescendo. Portanto muitos elaboram um gráfico de passo pelo nível de distância. Se há “pontos de salto” grandes em relações aos outros pontos de distância, pode indicar parar. Ao caso do exemplo Método de Ligação Simples ficaria:</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:steps"></span>
-<img src="Figuras/steps.png" alt="Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos versus Distância." width="70%" />
+<img src="Figuras/steps.png" alt="Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos versus Distância." width="90%" />
 <p class="caption">
 Figura 7.25: Gráfico de Passo a partir do exemplo de Método de Ligação Simples. Passos <em>versus</em> Distância.
 </p>
@@ -2463,121 +2471,28 @@ V_{i}=\displaystyle \frac{\sum^n_{j=1}(u_{ij})^m X_j}{\sum^n_{j=1}(u_{ij})^m}
 </div>
 </div>
 </div>
-<div id="knn-k-vizinhos-mais-próximos-k-nearest-neighbors" class="section level2">
-<h2><span class="header-section-number">7.5</span> KNN: K-Vizinhos Mais Próximos (<em>K-Nearest Neighbors</em>)</h2>
-<p>Uma metodologia muito conhecida e utilizada, referida na literatura de <span class="citation">(Bhattacharya, Poulsen, and Toussaint <a href="#ref-bhattacharya1981application">1981</a>)</span> e <span class="citation">(Bhattacharya, Mukherjee, and Toussaint <a href="#ref-bhattacharya2005geometric">2005</a>)</span>. O <strong>K-Vizinhos Mais Próximos</strong>, do inglês <strong><em>K-Nearest Neighbors</em> (KNN)</strong>, é um classificador simples. O conjunto de treinamento é formado por vetores com <span class="math inline">\(n\)</span>-dimensões no qual cada elemento deste conjunto retrata um ponto no espaço <span class="math inline">\(n\)</span>-dimensional.</p>
-<p>Vamos supor que temos um conjunto de dados repartido em duas classes: doentes e não doentes. Com a entrada de mais um paciente para a análise, temos uma nova observação que ainda não está classificada. Dentro do conjunto de treinamento, o classificador KNN procura <span class="math inline">\(K\)</span> elementos que estejam mais próximos deste elemento de classe desconhecida, ou seja, que tenham a menor distância. Após verificar quais são as classes desses <span class="math inline">\(K\)</span> vizinhos e a classe mais frequente das observações próximas, será atribuída a classe deste elemento desconhecido. Por isso é denominado por K-Vizinhos Mais Próximos, onde <span class="math inline">\(K\)</span> indica a quantidade de vizinhos próximos à observação nova no conjunto de dados.</p>
-<p>Como já vimos, existe diversos métodos de calcular a distância entre as observações, algumas delas estão apresentadas em <a href="dicio.html#meddist">3.3.3</a>. Muitas vezes por ser um exaustivo processo computacional para calcular todas as distâncias entre as observações com a observação de classe desconhecida, é comum para que identifique vizinhos mais próximos, elaborar uma hiper-esfera de raio <span class="math inline">\(R\)</span> que será decidido pelo pesquisador e selecionar os elementos que estão dentro desta hiper-esfera. Este processo torna muito mais rápido e barato para o pesquisador, porém como desvantagem de haver possibilidade de não ter pontos dentro da hiper-esfera.</p>
-<p>Na figura <a href="ptII.html#fig:knn1">7.26</a> temos como exemplo uma situação onde queremos saber se o novo paciente de um hospital está doente ou não. De acordo com pacientes anteriores, podemos reprentar graficamente com características <span class="math inline">\(X_1\)</span> E <span class="math inline">\(X_2\)</span> e identificar em qual classe cada um pertence. Após calcularmos as distância entre as observações e este elemento de classificação desconhecida, podemos identificar os vizinhos mais próximos. Supondo que temos três vizinhos (<span class="math inline">\(k=3\)</span>) mais próximo do elemento de classe desconhecida, note que das três observações (duas azuis e uma vermelha) próximas do elemento, duas são consideradas “doentes” (cor azul) e uma “não doente” (vermelho).</p>
-<div class="figure" style="text-align: center"><span id="fig:knn1"></span>
-<img src="Figuras/knn1.png" alt="Exemplo gráfico de KNN com \(k=3\)." width="70%" />
+<div id="redesneurais" class="section level2">
+<h2><span class="header-section-number">7.5</span> Redes Neurais Artificiais (RNA)</h2>
+<p>Como foi mencionado no capítulo <a href="i-a.html#i-a">1</a>, o primeiro trabalho a ser reconhecido como uma IA teve como objetivo estudar como os neurônios podiam funcionar. Foi elaborada por <span class="citation">McCulloch and Pitts (<a href="#ref-mcculloch1943logical">1943</a>)</span> com a modelagem de uma rede neural simples com circuitos elétricos, havendo em seguida, a publicação de <em>The Organization of Behavior</em> <span class="citation">(@ Hebb <a href="#ref-hebb1949organization">1949</a>)</span> que fortalecia as teorias de que o condicionamento psicológico estava presente em qualquer parte dos animais.</p>
+<p>Conforme <span class="citation">Russel and NORVIG (<a href="#ref-russel2004inteligencia">2004</a>)</span>, desde 1943 têm sido desenvolvidos modelos muitos mais detalhados e realistas, tanto de neurônios como também de sistemas maiores no cérebro, conduzindo ao campo moderno da <strong>neurociência computacional</strong>. Além disso, pesquisadores de IA e estatísticos aumentaram o interese nas propriedades mais avançadas das redes neurais, como por exemplo, a capacidade de realizar a computação distribuída, tolerando entradas ruidosas e aprender.</p>
+<p>Uma rede neural artificial (RNA) assim como os outros modelos de ML, é treinado por exemplos de treino (dados históricos), porém a composição é feita por <strong>“neurônios”</strong> interligados. Normalmente o tipo de processamento de um único neurônio é a combinação linear das entradas com os pesos seguida pela passagem da combinação linear por uma <strong>função de ativação</strong> <span class="citation">(Rauber <a href="#ref-rauber2005redes">2005</a>)</span>. Com base em <span class="citation">Russel and NORVIG (<a href="#ref-russel2004inteligencia">2004</a>)</span>, as redes são compostas por <strong>nós</strong> ou <strong>unidades</strong> conectadas por <strong>ligações</strong> direcionadas, onde uma ligação da unidade <span class="math inline">\(i\)</span> para a unidade <span class="math inline">\(j\)</span> serve para propagar a <strong>ativação</strong> <span class="math inline">\(x_i\)</span> de <span class="math inline">\(i\)</span> para <span class="math inline">\(j\)</span>. Cada ligação também possui um <strong>peso</strong> númerico <span class="math inline">\(w_{i,j}\)</span> associado a ele, que tem como função determinar a força e o sinal de conexão. Como o caso, por exemplo, de modelos de regressão linear, onde cada unidade tem uma entrada fictícia <span class="math inline">\(x_1=1\)</span> com peso <span class="math inline">\(w_{0,j}\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:neuronio"></span>
+<img src="Figuras/neuronio.png" alt="Modelo simples de um neurônio de McCulloch e Pitts. A ativação de saída da unidade é \(x_j=g(\sum^n_{i=0}w_{i,j}x_i)\), em que \(x_j=y\) é a ativação de saída da unidade \(i\) e \(w_{i,j}\) é o peso sobre a ligação da unidade \(i\) com essa unidade." width="70%" />
 <p class="caption">
-Figura 7.26: Exemplo gráfico de KNN com <span class="math inline">\(k=3\)</span>.
+Figura 7.26: Modelo simples de um neurônio de McCulloch e Pitts. A ativação de saída da unidade é <span class="math inline">\(x_j=g(\sum^n_{i=0}w_{i,j}x_i)\)</span>, em que <span class="math inline">\(x_j=y\)</span> é a ativação de saída da unidade <span class="math inline">\(i\)</span> e <span class="math inline">\(w_{i,j}\)</span> é o peso sobre a ligação da unidade <span class="math inline">\(i\)</span> com essa unidade.
 </p>
 </div>
 
-<p>Por voto de maioria, com duas azuis e uma vermelha (2x1), este elemento será classificado pelo algoritmo como “doente”.</p>
-<div class="figure" style="text-align: center"><span id="fig:knn2"></span>
-<img src="Figuras/knn2.png" alt="Exemplo gráfico de KNN com \(k=3\). Como a maioria é classificada como “doente” entre os vizinhos próximos do elemento, o elemento desconhecido também será." width="70%" />
-<p class="caption">
-Figura 7.27: Exemplo gráfico de KNN com <span class="math inline">\(k=3\)</span>. Como a maioria é classificada como “doente” entre os vizinhos próximos do elemento, o elemento desconhecido também será.
-</p>
-</div>
+<p><span class="math display" id="eq:reglinrede">\[\begin{equation} 
+  in_j=\displaystyle \sum^n_{i=0} w_{i,j}x_i
+  \tag{7.46}
+\end{equation}\]</span></p>
+<p>Em seguida, é aplicado uma função de ativação <span class="math inline">\(g\)</span> a essa soma para que se obtenha a saída:</p>
+<p><span class="math display" id="eq:reglinrede">\[\begin{equation} 
+  x_j=g(in_j)=g(\displaystyle \sum^n_{i=0}w_{i,j}x_i)
+  \tag{7.46}
+\end{equation}\]</span></p>
 
-<div id="exknn" class="section level3">
-<h3><span class="header-section-number">7.5.1</span> Exemplo</h3>
-<p>1 - A EmprestaX, uma empresa de empréstimos nova em uma cidade, possui apenas alguns dias de serviço. Com intuito de melhorar na identificação de seu público alvo, a empresa pretende utilizar o algoritmo de KNN com base no histórico de seus primeiros clientes: Renda mensal, a quantidade de Contas atrasadas e sua classificação de ser ou não um possível cliente.</p>
-<table>
-<caption><span id="tab:dadossrendaaknn">Tabela 7.15: </span> Dados históricos de clientes da EmprestaX com as variáveis Renda Mensal (R$), Contas Atrasadas e Possível Cliente.</caption>
-<thead>
-<tr class="header">
-<th><strong>Cliente</strong></th>
-<th><strong>A</strong></th>
-<th><strong>B</strong></th>
-<th><strong>C</strong></th>
-<th><strong>D</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Renda Mensal</strong></td>
-<td>R$ 4000,00</td>
-<td>R$ 1000,00</td>
-<td>R$ 2500,00</td>
-<td>R$ 2800,00</td>
-</tr>
-<tr class="even">
-<td><strong>Contas Atrasadas</strong></td>
-<td>1</td>
-<td>3</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td><strong>Possível Cliente</strong></td>
-<td>Não</td>
-<td>Sim</td>
-<td>Sim</td>
-<td>Não</td>
-</tr>
-</tbody>
-</table>
-<p>Supondo um indivíduo E com uma renda mensal de R$ 3300,00 , duas contas atrasadas. Pelo método de KNN, com k=3 vizinhos, qual será sua classificação de ser ou não um possível cliente para a EmprestaX?</p>
-<p>Primeiramente, vamos observar os pontos em um gráfico:</p>
-<div class="figure" style="text-align: center"><span id="fig:knnex1"></span>
-<img src="Figuras/knnex1.png" alt="Gráfico gerado com base na tabela 7.15 e classificação para Possível Cliente em: Sim, Não, Não Classificado." width="70%" />
-<p class="caption">
-Figura 7.28: Gráfico gerado com base na tabela <a href="ptII.html#tab:dadossrendaaknn">7.15</a> e classificação para Possível Cliente em: Sim, Não, Não Classificado.
-</p>
-</div>
-
-<p>Agora que observamos o gráfico, lembrando que pode haver diversos métodos para calcular a distância ou considerando uma hiper-esfera, vamos calcular a Distância Euclidiana entre as observações:
-<span class="math display">\[\mbox{Distância entre E e A=}\sqrt{(4000-3300)^2+(1-2)^2}=700,0007\]</span>
-Repetindo o mesmo processo para todas observações, obtemos:</p>
-<p><span class="math display">\[D_{5x5}=\begin{bmatrix}\\
- &amp;A&amp;B&amp;C&amp;D&amp;E \\
- A&amp;0&amp;&amp;&amp;&amp;\\
- B&amp;3000,0007&amp;0&amp;&amp;&amp;\\
- C &amp; 1500,0003&amp; 1500,0003&amp;0&amp;&amp;\\
- D&amp; 1200,0004&amp; 1800,0003&amp; 300,0000&amp;0&amp;\\
- E&amp; 700,0007&amp; 2300,0002&amp; 800,0000&amp; 500,0000&amp;0\\
-\end{bmatrix}\]</span></p>
-<p>Como queremos <span class="math inline">\(k=3\)</span> vizinhos mais próximos do indivíduo E para que se possa classificá-lo, temos então:</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>A</strong></th>
-<th><strong>C</strong></th>
-<th><strong>D</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>E</strong></td>
-<td>700,0007</td>
-<td>800,0000</td>
-<td>500,0000</td>
-</tr>
-<tr class="even">
-<td><strong>Possível Cliente</strong></td>
-<td>Não</td>
-<td>Sim</td>
-<td>Não</td>
-</tr>
-</tbody>
-</table>
-<p>Portanto, pela maioria, temos que o indivído E não será considerado um possível cliente pelo algoritmo de KNN.</p>
-<div class="figure" style="text-align: center"><span id="fig:knnex2"></span>
-<img src="Figuras/knnex2.png" alt="Gráfico gerado com base na tabela @tab:dadossrendaaknn e classificado conforme o algoritmo de KNN com \(k=3\) vizinhos próximos do elemento novo na amostra." width="70%" />
-<p class="caption">
-Figura 7.29: Gráfico gerado com base na tabela @tab:dadossrendaaknn e classificado conforme o algoritmo de KNN com <span class="math inline">\(k=3\)</span> vizinhos próximos do elemento novo na amostra.
-</p>
-</div>
-
-<p>Note que neste exemplo, caso fosse escolhido com <span class="math inline">\(k=4\)</span> ou <span class="math inline">\(k=2\)</span> vizinhos, haveria empate e necessitaria de alterarmos o valor de <span class="math inline">\(k\)</span> ou utilizar algum outro método de classificação. Aumentar o número de observações para a amostra também é muito importante para que se treine seu modelo de Aprendizado de Máquina.</p>
-
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -2587,12 +2502,6 @@ Figura 7.29: Gráfico gerado com base na tabela @tab:dadossrendaaknn e classific
 </div>
 <div id="ref-bezdek1981objective">
 <p>Bezdek, James C. 1981. “Objective Function Clustering.” In <em>Pattern Recognition with Fuzzy Objective Function Algorithms</em>, 43–93. Springer.</p>
-</div>
-<div id="ref-bhattacharya1981application">
-<p>Bhattacharya, Binay K, Ronald S Poulsen, and Godfried T Toussaint. 1981. “Application of Proximity Graphs to Editing Nearest Neighbor Decision Rule.” In <em>International Symposium on Information Theory, Santa Monica</em>.</p>
-</div>
-<div id="ref-bhattacharya2005geometric">
-<p>Bhattacharya, Binay, Kaustav Mukherjee, and Godfried Toussaint. 2005. “Geometric Decision Rules for Instance-Based Learning Problems.” In <em>International Conference on Pattern Recognition and Machine Intelligence</em>, 60–69. Springer.</p>
 </div>
 <div id="ref-breiman1984classification">
 <p>Breiman, Leo, Jerome Friedman, Charles J Stone, and Richard A Olshen. 1984. <em>Classification and Regression Trees</em>. CRC press.</p>
@@ -2608,6 +2517,9 @@ Figura 7.29: Gráfico gerado com base na tabela @tab:dadossrendaaknn e classific
 </div>
 <div id="ref-hartigan1979algorithm">
 <p>Hartigan, John A, and Manchek A Wong. 1979. “Algorithm as 136: A K-Means Clustering Algorithm.” <em>Journal of the Royal Statistical Society. Series c (Applied Statistics)</em> 28 (1): 100–108.</p>
+</div>
+<div id="ref-hebb1949organization">
+<p>Hebb, Donald Olding. 1949. <em>The Organization of Behavior: A Neuropsychological Theory</em>. J. Wiley; Chapman &amp; Hall.</p>
 </div>
 <div id="ref-holsheimer1994data">
 <p>Holsheimer, Marcel, and Arno PJM Siebes. 1994. <em>Data Mining: The Search for Knowledge in Databases</em>. Centrum voor Wiskunde en Informatica.</p>
@@ -2633,6 +2545,12 @@ Figura 7.29: Gráfico gerado com base na tabela @tab:dadossrendaaknn e classific
 <div id="ref-lorena2003introduccaoas">
 <p>Lorena, Ana Carolina, and André CPLF de Carvalho. 2003. “Introduçaoas Máquinas de Vetores Suporte.” <em>Relatório Técnico Do Instituto de Ciências Matemáticas E de Computaçao (USP/Sao Carlos)</em> 192: 11.</p>
 </div>
+<div id="ref-mcculloch1943logical">
+<p>McCulloch, Warren S, and Walter Pitts. 1943. “A Logical Calculus of the Ideas Immanent in Nervous Activity.” <em>The Bulletin of Mathematical Biophysics</em> 5 (4): 115–33.</p>
+</div>
+<div id="ref-mercer1909xvi">
+<p>Mercer, James. 1909. “Xvi. Functions of Positive and Negative Type, and Their Connection the Theory of Integral Equations.” <em>Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character</em> 209 (441-458): 415–46.</p>
+</div>
 <div id="ref-mingoti2007analise">
 <p>Mingoti, Sueli Aparecida. 2007. “Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada.” In <em>Análise de Dados Através de Métodos Estatı́stica Multivariada: Uma Abordagem Aplicada</em>, 295–95.</p>
 </div>
@@ -2644,6 +2562,12 @@ Figura 7.29: Gráfico gerado com base na tabela @tab:dadossrendaaknn e classific
 </div>
 <div id="ref-punj1983cluster">
 <p>Punj, Girish, and David W Stewart. 1983. “Cluster Analysis in Marketing Research: Review and Suggestions for Application.” <em>Journal of Marketing Research</em> 20 (2): 134–48.</p>
+</div>
+<div id="ref-rauber2005redes">
+<p>Rauber, Thomas Walter. 2005. “Redes Neurais Artificiais.” <em>Universidade Federal Do Espı́rito Santo</em>, 29.</p>
+</div>
+<div id="ref-russel2004inteligencia">
+<p>Russel, Stuart, and Peter NORVIG. 2004. “Inteligência Artificial. 2. Edição.” <em>Rio de Janeiro: Campus</em>.</p>
 </div>
 <div id="ref-shiba2005classificaccao">
 <p>Shiba, Marcelo Hiroshi, Rosangela Leal Santos, José Alberto Quintanilha, and Hae Yong Kim. 2005. “Classificação de Imagens de Sensoriamento Remoto Pela Aprendizagem Por árvore de Decisão: Uma Avaliação de Desempenho.” <em>Simpósio Brasileiro de Sensoriamento Remoto</em> 12: 4319–26.</p>
@@ -2703,7 +2627,7 @@ gitbook.start({
 },
 "fontsettings": ["white", "sepia", "night"],
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/08.1-ModeloIIFilho.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08.1-svm.Rmd",
 "text": "Edit"
 },
 "history": {

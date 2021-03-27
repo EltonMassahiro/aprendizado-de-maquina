@@ -24,7 +24,7 @@
 <meta name="author" content="Elton Massahiro Saito Loures" />
 
 
-<meta name="date" content="2021-02-07" />
+<meta name="date" content="2021-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="ptIII.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="deeplearning.html"/>
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -131,8 +131,11 @@
 <li class="chapter" data-level="6.4.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#penalizacoes"><i class="fa fa-check"></i><b>6.4.1</b> Penalizações - Regressão <em>Lasso</em> e a Regressão <em>Ridge</em></a></li>
 <li class="chapter" data-level="6.4.2" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#elasticnet"><i class="fa fa-check"></i><b>6.4.2</b> Elastic Net - <span class="math inline">\(L_1+L_2\)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#knn-k-vizinhos-mais-próximos-k-nearest-neighbors"><i class="fa fa-check"></i><b>6.5</b> KNN: K-Vizinhos Mais Próximos (<em>K-Nearest Neighbors</em>)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="Algoritmosaprendizagem.html"><a href="Algoritmosaprendizagem.html#exknn"><i class="fa fa-check"></i><b>6.5.1</b> Exemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Algoritmos de Aprendizagem II</a><ul>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ptII.html"><a href="ptII.html"><i class="fa fa-check"></i><b>7</b> Modelos de Aprendizagem II</a><ul>
 <li class="chapter" data-level="7.1" data-path="ptII.html"><a href="ptII.html#svm"><i class="fa fa-check"></i><b>7.1</b> Máquina de Vetores Suporte - <em>Support Vectors Machine</em></a><ul>
 <li class="chapter" data-level="7.1.1" data-path="ptII.html"><a href="ptII.html#classificação-de-padrões-linearmente-separáveis"><i class="fa fa-check"></i><b>7.1.1</b> Classificação de Padrões Linearmente Separáveis</a></li>
 <li class="chapter" data-level="7.1.2" data-path="ptII.html"><a href="ptII.html#margmax"><i class="fa fa-check"></i><b>7.1.2</b> Hiperplano de Separação Ótima / Margem Máxima</a></li>
@@ -153,16 +156,20 @@
 <li class="chapter" data-level="7.4.2" data-path="ptII.html"><a href="ptII.html#número-final-de-grupos"><i class="fa fa-check"></i><b>7.4.2</b> Número final de grupos</a></li>
 <li class="chapter" data-level="7.4.3" data-path="ptII.html"><a href="ptII.html#técnicas-não-hierárquicas"><i class="fa fa-check"></i><b>7.4.3</b> Técnicas Não Hierárquicas</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="ptII.html"><a href="ptII.html#knn-k-vizinhos-mais-próximos-k-nearest-neighbors"><i class="fa fa-check"></i><b>7.5</b> KNN: K-Vizinhos Mais Próximos (<em>K-Nearest Neighbors</em>)</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="ptII.html"><a href="ptII.html#exknn"><i class="fa fa-check"></i><b>7.5.1</b> Exemplo</a></li>
-</ul></li>
+<li class="chapter" data-level="7.5" data-path="ptII.html"><a href="ptII.html#redesneurais"><i class="fa fa-check"></i><b>7.5</b> Redes Neurais Artificiais (RNA)</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="ptIII.html"><a href="ptIII.html"><i class="fa fa-check"></i><b>8</b> Os métodos <em>Ensemble</em></a><ul>
 <li class="chapter" data-level="8.1" data-path="ptIII.html"><a href="ptIII.html#bagging"><i class="fa fa-check"></i><b>8.1</b> <em>Bagging</em></a></li>
-<li class="chapter" data-level="8.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>8.2</b> <em>Boosting</em></a></li>
-<li class="chapter" data-level="8.3" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>8.3</b> Floresta Aleatória - <em>Random Forest</em></a></li>
+<li class="chapter" data-level="8.2" data-path="ptIII.html"><a href="ptIII.html#boost"><i class="fa fa-check"></i><b>8.2</b> <em>Boosting</em></a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ptIII.html"><a href="ptIII.html#adaboost"><i class="fa fa-check"></i><b>8.2.1</b> <em>AdaBoost</em></a></li>
+<li class="chapter" data-level="8.2.2" data-path="ptIII.html"><a href="ptIII.html#gradientboost"><i class="fa fa-check"></i><b>8.2.2</b> <em>Gradient Boosting</em></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="redesneurais.html"><a href="redesneurais.html"><i class="fa fa-check"></i><b>9</b> Redes Neurais</a></li>
+<li class="chapter" data-level="8.3" data-path="ptIII.html"><a href="ptIII.html#bagboost"><i class="fa fa-check"></i><b>8.3</b> <em>Bagging x Boosting</em></a></li>
+<li class="chapter" data-level="8.4" data-path="ptIII.html"><a href="ptIII.html#stacking"><i class="fa fa-check"></i><b>8.4</b> <em>Stacking</em></a></li>
+<li class="chapter" data-level="8.5" data-path="ptIII.html"><a href="ptIII.html#rf"><i class="fa fa-check"></i><b>8.5</b> Floresta Aleatória - <em>Random Forest</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ptII.html"><a href="ptII.html#redesneurais"><i class="fa fa-check"></i><b>9</b> Redes Neurais</a></li>
+<li class="chapter" data-level="10" data-path="deeplearning.html"><a href="deeplearning.html"><i class="fa fa-check"></i><b>10</b> <em>Deep Learning</em></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado com bookdown</a></li>
@@ -176,7 +183,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Machine Learning</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de <em>Machine Learning</em></a>
           </h1>
         </div>
 
@@ -194,7 +201,7 @@
         </div>
       </div>
 <a href="ptIII.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="deeplearning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -221,7 +228,7 @@ gitbook.start({
 },
 "fontsettings": ["white", "sepia", "night"],
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/09.3-ModeloIIIFilho.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09.4-randomforest.Rmd",
 "text": "Edit"
 },
 "history": {
