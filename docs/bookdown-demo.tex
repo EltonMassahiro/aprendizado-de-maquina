@@ -75,8 +75,6 @@
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm}
-\renewcommand{\figurename}{Figura}
-\renewcommand{\tablename}{Tabela}
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
@@ -88,7 +86,7 @@
 
 \title{Fundamentos de \emph{Machine Learning}}
 \author{Elton Massahiro Saito Loures}
-\date{2021-03-26}
+\date{2021-04-01}
 
 \begin{document}
 \maketitle
@@ -2543,7 +2541,7 @@ O modelo \textbf{logit} faz com que:
 
 em que, com a variância \(\hat{\sigma}^2=\frac{1}{N_i\hat{P_i}(1-\hat{P_i})}\), \(W_i\) é o peso \(N_i\hat{P_i}(1-\hat{P_i})\). Por fim, aplicar o mínimos quadrados ponderados (da mesma forma que MQO, porém com a nova transformação de dados) e estimarmos os parâmetros normalmente.
 
-Como o \(R^2\) não é significativa nos modelos binários. É comum utilizar as \textbf{pseudo \$R\^{}2} {[}long1997regression{]} - existe uma variedade delas - ou o \textbf{Count \(R^2\)} que nada mais é que o número de previsões corretas com o número total de observações. Para a hiótese nula de que todos os coeficientes angulares são simultâneamente iguais a zero, utiliza-se a \textbf{estatística da razão de verossimilhança} que segue a distribuição \(\chi^2\) que equivale ao teste F.
+Como o \(R^2\) não é significativa nos modelos binários. É comum utilizar as \textbf{pseudo \(R^2\)} \citep{long1997regression} - existe uma variedade delas - ou o \textbf{Count \(R^2\)} que nada mais é que o número de previsões corretas com o número total de observações. Para a hiótese nula de que todos os coeficientes angulares são simultâneamente iguais a zero, utiliza-se a \textbf{estatística da razão de verossimilhança} que segue a distribuição \(\chi^2\) que equivale ao teste F.
 
 Ressalto que existe muitos outros modelo de regressão, como por exemplo os modelos \textbf{Probit} e \textbf{Tobit}. Podemos dizer que possuem em geral os mesmos fundamentos da regressão que conhecemos, porém possuem algumas particularidades como a distribuição acumulada adequada dependendo da situação. O modelo \textbf{Probit} é muito utilizado quando supomos de que na distribuição do termo de erro, segue uma distribuição normal e utilizamos um limiar como referência para podermos estimar a probabilidade (possui resultados semelhantes de Logit). Ao caso da \textbf{Tobit} é muito utilizada para estimar relações com variáveis dependentes censuradas (por exemplo \(Y_i=Y_i^* \ \mbox{para} \ Y_i^* > 0 \ \mbox{e} \ Y_i=0 \ \mbox{para} \ Y_i^*\leq 0\)). Importante o pesquisador preparar seus dados e ter ciência de qual problema tratar e como lidar com este problema, para que se aplique um modelo adequado à situação.
 
@@ -5415,8 +5413,181 @@ Em seguida, é aplicado uma função de ativação \(g\) a essa soma para que se
 
 \begin{equation} 
   x_j=g(in_j)=g(\displaystyle \sum^n_{i=0}w_{i,j}x_i)
-  \label{eq:reglinrede}
+  \label{eq:funativacao}
 \end{equation}
+
+A Ativação da função da \(g\) \textbf{tipicamente} é um limiar rígido (a), em que é chamado de \textbf{\emph{perceptron}} ou como uma função logística, que chamamos de \textbf{\emph{perceptron sigmoide}} (b). Ambas funções de ativação não linear garantem a propriedade importante de que toda a rede de unidades pode representar uma função não linear.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/limiar} 
+
+}
+
+\caption{(a) A função de limiar rígido \(Limiar(z)\) com saída 0/1. A função não é diferenciável em \(z=0\). (b) A função logística, \(Logística(z)=\frac{1}{1+e^{-z}}\), conhecida como função sigmoide \citep{russel2004inteligencia}.}\label{fig:limiar}
+\end{figure}
+
+
+
+Selecionado o modelo matemático para os ``neurônios individuais'', precisa-se conectá-los para formar uma rede. A seguir, apresenta-se alguns métodos de Redes Neurais.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Rede com alimentação para frente (\emph{fast-forward networks})}:
+\end{itemize}
+
+alguns tipos de redes são estruturadas em forma de \textbf{camadas}, de modo que cada unidade recebe a entrada somente a partir de unidades na camada imediatamente anterior, ou seja, neste método o fluxo de informação é sempre da camada de entrada para a de saída. Os neurônios são dispostos em diferentes conjuntos e ordenados sequencialmente.
+
+Uma rede com todas as entradas conectadas diretamente com as saídas é denominada de \textbf{rede neural de camada única} ou \textbf{rede perceptron}. Na Figura \ref{fig:netfastforward}, uma rede de \emph{perceptron} com duas entradas e duas saídas.
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{\label{tab:tabredepercep} Dados de treinamento para aprender a função de adicionador de dois \emph{bits}.}\tabularnewline
+\toprule
+\(x_1\) & \(x_2\) & \(y_3\)(transporte) & \(y_4\)(soma)\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\(x_1\) & \(x_2\) & \(y_3\)(transporte) & \(y_4\)(soma)\tabularnewline
+\midrule
+\endhead
+0 & 0 & 0 & 0\tabularnewline
+0 & 1 & 0 & 1\tabularnewline
+1 & 0 & 0 & 1\tabularnewline
+1 & 1 & 1 & 0\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/netfastforward} 
+
+}
+
+\caption{Rede neural alimentada para frente. (a) Uma rede \emph{perceptron} com duas unidades de entrada e duas unidades de saída. (b) Rede neural com duas entradas, uma camada oculta (não conectadas às saídas da rede) de duas unidade e uma unidade de saída \citep{russel2004inteligencia}.}\label{fig:netfastforward}
+\end{figure}
+
+
+
+Note que a rede possui \(m\) saídas e separadas, pois cada peso afeta apenas uma das saídas e portanto, haverá \(m\) processos de treinamento separados. Lembrando que pode variar o método, como regra de aprendizagem \emph{perceptron} (como limiar rígido) ou, por exemplo, regra de descida pelo gradiente por regressão logística. Lembrando que classificadores lineares (como regressão) representam limiares de decisão linear no espaço de entrada. Mas esta função soma, conforme a tabela anterior, possui duas entradas (1 ou 0) e portanto, no caso da Figura (c) não é linearmente separável de modo que o \emph{perceptron} não pode aprendê-la. Apenas nos casos (a) e (b) da mesma.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/perpcep1} 
+
+}
+
+\caption{Separação de \emph{perceptrons}. Pontos pretos indicam um ponto no espaço de entrada em que o valor da função é igual a 1 e pontos brancos ao valor 0. Em (c) não há essa linha que classifica corretamente as entradas, por haver apenas duas entradas \citep{russel2004inteligencia}.}\label{fig:perpcep1}
+\end{figure}
+
+
+
+É importante entender: \citet{haykin2007redes}, distingue as redes alimentadas em \emph{Redes de Camada Unica\textbf{ e }Redes de Múltiplas Camadas - ou }Multilayer Perceptron***, apenas diferenciando do número de camadas e o de saídas, mas o conceito de alimentação é o mesmo. Dessa forma trabalha-se como função vetorial \(h_w\) de implementação em vez de escalar (por exemplo a Figura \ref{fig:netfastforward}).
+
+Ciente de que a rede perceptron se decompõe em \(m\) problemas de aprendizagem em separado para um problema de \(m\) saídas, essa decomposição falha em uma rede de múltiplas camadas. Como em \ref{fig:netfastforward} que haverá duas saídas que dependem de todos os pesos da camada de entrada, de forma que as atualizações
+desses pesos dependerão de erros de ambos. Porém com o gradiente de perda, torna-se possível corrigir pra este caso do erro \(y-h_w\) na camada de saída.
+
+\begin{equation} 
+  \frac{\partial}{\partial w} Perda(w)=\frac{\partial}{\partial w}|y-h_w(x)|^2 = \frac{\partial}{\partial w} \displaystyle \sum_k (y_k-x_k)^2=\displaystyle \sum_k \frac{\partial}{\partial w}(y_k-x_j)^2
+  \label{eq:gradienteredes}
+\end{equation}
+
+em que \(k\) varia no intervalo dos nós na camada de saída. Cada termo, no somatório final, é apenas o gradiente de perda para a \(k\)-ésima saída, calculado como se outras saídas não existissem \citep{russel2004inteligencia}. Portanto, os neurônios são arranjados em camadas, tal que a camada inicial recebe sinais de entrada e a final obtém as saídas (camadas intermediárias são as ocultas); cada neurônio presente na camada é conectado com todos os outros neurônios da sucessiva camada e não há conexões entre os neurônios presente em uma mesma camada.
+
+Ao erro nas camadas ocultas, é possível retropropagar o erro da camada de saída para as ocultas que vem diretamente da derivação do gradiente de erro geral. Inicialmente, define-se um erro modificado \(\Delta_k=Err_k.g'(in_k)\) para que a atualização de peso seja:
+
+\begin{equation} 
+  w_{j,kj}\leftarrow w_{j,k}+x.x_j \Delta_k
+  \label{eq:pesoatualizaCAO}
+\end{equation}
+
+o nó oculto \(j\) faz parte de uma fração do erro \(\Delta_k\) em cada um dos nós de saíde que ele se conecta. Logo os valores \(\Delta_k\) são divididas de acordo com a força de ligação entre o nó oculto e o nó de saída, sendo propagados para fornecer os valores \(\Delta_j\) para a camada oculta:
+
+\begin{equation} 
+  \Delta_j=g'(in_j)_k w_{j,k} \Delta_k
+  \label{eq:deltaj}
+\end{equation}
+
+Portando, será sua regra de atualização de peso semelhante a camada de saída:
+
+\begin{equation} 
+  w_{j,j}\leftarrow w_{i,j}+x.x_i \Delta_j
+  \label{eq:pesoatualizaCAOj}
+\end{equation}
+
+Então, matematicamente, para que se obtenha o gradiente da perda com relação aos pesos \(w_{j,j}\), basta derivar \(\frac{\partial Perda_k}{\partial w_{j,k}}\) e obter \(-2(y_k-x_j)g'(in_k)x_j=-x_j\Delta_k\). E com relação aos pesos \(w_{i,j}\) em conexão com a camada de entrada até \(x_j\) camada oculta, aplica-se \(\frac{\partial Perda_k}{w_{i,j}}\) para obter \(-2\Delta_k w_{j,k}g'(in)_j)x_i=-x_i \Delta_j\).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Redes Recorrentes (\emph{Feed-backward networks}):}
+\end{itemize}
+
+neste método ocorre a realimentação. A saída de um neurônio é aplicada como entrada no próprio neurônio que pode ou não também ser aplicado em outros neurônios de camadas anteriores.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/redesrecorrentes} 
+
+}
+
+\caption{Exemplo de uma rede neural com realimentação \citep{redesandre}.}\label{fig:redesrecorrentes}
+\end{figure}
+
+
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Redes Competitivas:}
+\end{itemize}
+
+divide-se os neurônios em duas camadas, a camada de entrada e a camada de saída - também conhecidos respectivamente como nós
+fontes e grade. Neste caso, os neurônios da grade competem-se entre si, com base no nível de similaridade entre o padrão de entrada e a camada de saída de neurônios, somente o neurônio vencedor será ativado a cada iteração \citep{basheer2000artificial}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/redecompet} 
+
+}
+
+\caption{Rede Competitiva. Uma única saída que emite um sinal \(y_i=1\) será do vencedor neurônio \(i^*\) que possui a maior semelhança com o estímulo \(x\)
+\citep{rauber2005redes}.}\label{fig:redecompet}
+\end{figure}
+
+
+
+
+O vencedor pode ser selecionado, por exemplo, pelo maior produto interno ou determinação de maior semelhança entre a entrada \(x\) e o peso \(w_i\) com base na distância Euclidiana.
+
+Ressalta-se que pode haver diversos métodos e processos de aprendizagem, desde por correção de erro utilizando pesos, aprendizagem \emph{Hebbiana} com dois neurônios ativados sincronamente, competitivos, entre outros.
+
+Por mais que haja a desvantagem dos \emph{perceptrons} não aprenderem funções simples como em \ref{fig:perpcep1}(c), ainda é muito utilizada e eficaz. Os \emph{perceptrons} podem representar funções booleanas bastantes complexas e muito mais rápido do que modelos como árvores de decisão.
+
+\begin{itemize}
+\tightlist
+\item
+  Um modelo semelhante ao perceptron que atualmente, também é muito utilizado, é o \textbf{\emph{ADALINE}} \citep{widrow1960adaptive}. O \emph{ADALINE} tem como diferença de que em vez de estar limitada a valores binários, suas saídas são contínuas. A função calculada é a combinação linear dos pesos e das entradas, ou seja, o produto interno do vetor de pesos e o vetor das entradas:
+\end{itemize}
+
+\begin{equation} 
+  ADALINE: d(X)=\displaystyle \sum^D_{j=0}w_j x_j = W^T X
+  \label{eq:adaline}
+\end{equation}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{G:/Hiro/Documents/Meus-feitos/LivroML/bookdown-demo-master/Figuras/adaline} 
+
+}
+
+\caption{\emph{ADALINE} com 4 variáveis de entrada \citep{rauber2005redes}.}\label{fig:adaline}
+\end{figure}
+
+
+
+em que pode-se aplicar, por exemplo, o erro quadrado mínimo, Gradiente Descendente para que minimize os erros e meça a qualidade da função. Conforme \citet{russel2004inteligencia}, se escolhermos uma rede muito grande, ela será capaz de memorizar todos os exemplos, formando uma tabela grande de pesquisa, porém não generalizará bem necessariamente as entradas que nunca
+foram vistas antes e torna possível de não possuirmos um modelo bom. Como todos os modelos mencionados anteriormente, pode-se - e recomenda-se, adaptações com a combinação de outras técnicas. Por exemplo, o uso da técnica validação cruzada para identificar o melhor parâmetro e/ou modelo e até mesmo o próprio controle manual dos parâmetros das redes neurais, selecionando de modo que seja coerente com a proposta do pesquisador e dentro das fundamentações teóricas.
 
 \hypertarget{ptIII}{%
 \chapter{\texorpdfstring{Os métodos \emph{Ensemble}}{Os métodos Ensemble}}\label{ptIII}}
@@ -5616,9 +5787,6 @@ O erro tradicional, geralmente utiliza-se todas as árvores como vantagem, poré
 Para aumentar a aleatoriedade no modelo. É possível utilizar o \emph{bagging} em conjunto, onde cada novo conjunto de treinamento é criado por substituição a partir do novo vetor de entrada inicial. Uma nova árvore é induzida a partir de um novo conjunto de treinmaneto usando a seleção aleatória de atributos \citep{gomez2012random}. Conforme \citep{breiman2001random}, o uso do \emph{bagging} melhora o desempenho quando características aleatórias são utilizadas; este método também pode ser usado para fornecer estimativas contínuas do erro generalizado do conjunto combinado de árvores, bem como estimativas para força e correlação com o estimador \emph{OOB}. A força pode ser interpretada como medida de desempenho para cada árvore, uma árvore com uma baixa taxa de erro é um classificador forte. Aumentando a força das árvores individuais, reduz-se a taxa de erro de uma floresta, assim como a baixa correlação tende a diminuir \citep{oshiro2013abordagem}.
 
 Um algoritmo que se tornou bem conhecido e bastante similar à Floresta Aleatória, é o \textbf{\emph{Extra-Trees}} \citep{geurts2006extremely}. Neste caso, é adicionado mais uma camada de aleatoriedade para montar as árvores. O algoritmo utiliza como estratégia aleatória, na montagem dos nós ao invés de utilizar métricas como ganho de informação. Este acréscimo de aleatoriedade faz com que tenha uma diminuição no viés com menor custo computacional e dispêndio de tempo \citep{machado2020avaliaccao}.
-
-\hypertarget{redesneurais}{%
-\chapter{Redes Neurais}\label{redesneurais}}
 
 \hypertarget{deeplearning}{%
 \chapter{\texorpdfstring{\emph{Deep Learning}}{Deep Learning}}\label{deeplearning}}
